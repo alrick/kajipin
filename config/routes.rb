@@ -1,4 +1,30 @@
 Socialrails::Application.routes.draw do
+  resources :assignments
+
+  resources :tags
+
+  resources :friendships
+
+  resources :galleries
+
+  resources :logpages
+
+  resources :categories
+
+  resources :logbooks
+
+  resources :comments
+
+  resources :accesstokens
+
+  resources :continents
+
+  resources :countries
+
+  resources :locations
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

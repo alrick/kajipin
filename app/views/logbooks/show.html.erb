@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @logbook.description %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @logbook.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_logbook_path(@logbook) %> |
+<%= link_to 'Back', logbooks_path %>

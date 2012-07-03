@@ -1,0 +1,29 @@
+<h1>Listing logpages</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Logbook</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @logpages.each do |logpage| %>
+  <tr>
+    <td><%= logpage.title %></td>
+    <td><%= logpage.content %></td>
+    <td><%= logpage.logbook_id %></td>
+    <td><%= logpage.category_id %></td>
+    <td><%= link_to 'Show', logpage %></td>
+    <td><%= link_to 'Edit', edit_logpage_path(logpage) %></td>
+    <td><%= link_to 'Destroy', logpage, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Logpage', new_logpage_path %>
