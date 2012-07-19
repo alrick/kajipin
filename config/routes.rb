@@ -25,6 +25,10 @@ Socialrails::Application.routes.draw do
 
   resources :users
 
+  resources :worldmaps
+
+  root :to => "Countries#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

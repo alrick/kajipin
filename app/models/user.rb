@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessible :email, :first_name, :last_name
 
   has_many :locations, dependent: :destroy
   has_many :accesstokens, dependent: :destroy

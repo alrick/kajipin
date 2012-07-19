@@ -1,30 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @location.class -%>
+<div class="page-header profile-page">
+  <div class="row">
+    <div class="span8">
+      <h1><%= @location.title %> - <%= @location.country.name %> (<%= @location.country.continent.name %>)</h1>
+      <h2><%= @location.user.first_name %> <%= @location.user.last_name %>'s Location</h2>
+    </div>
+    <div class="span4">
+      <p><a class="btn btn-large btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map</a></p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Title:</b>
-  <%= @location.title %>
-</p>
-
-<p>
-  <b>Subtitle:</b>
-  <%= @location.subtitle %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @location.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @location.longitude %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @location.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs loc-profile-tabs">
+    <li class="active"><a href="#tab-loc-1" data-toggle="tab"><i class="icon-list-alt"></i> Galleries (0)</a></li>
+    <li><a href="#tab-loc-2" data-toggle="tab"><i class="icon-list-alt"></i> Comments (0)</a></li>
+    <li><a href="#tab-loc-3" data-toggle="tab"><i class="icon-list-alt"></i> Logpages (0)</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-loc-1">
+      <p>--</p>
+    </div>
+    <div class="tab-pane" id="tab-loc-2">
+      <p>--</p>
+    </div>
+    <div class="tab-pane" id="tab-loc-3">
+      <p>--</p>
+    </div>
+  </div>
+</div>

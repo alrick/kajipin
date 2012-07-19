@@ -4,6 +4,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships.json
   def index
     @friendships = Friendship.all
+    @watchers = Friendship.where(:user_id => 2)
+    @sharers = Friendship.where(:friend_id => 2)
 
     respond_to do |format|
       format.html # index.html.erb
