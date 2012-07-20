@@ -1,11 +1,13 @@
 class Location < ActiveRecord::Base
-  attr_accessible :title, :subtitle, :country_id, :user_id, :latitude, :longitude
-  validates :title, :latitude, :longitude, :user_id, :country_id, :presence => true
+  attr_accessible :title, :subtitle, :user_id, :latitude, :longitude
 
   belongs_to :user
-  belongs_to :country
   has_many :comments, dependent: :destroy
   has_one :logbook, dependent: :destroy
   has_many :galleries, dependent: :destroy
 
+  validates :title, :country_name, :continent_name, :presence => true
+  validates :latitude, :longitude, :numericality => true
+  validates :subtitle, :length => { :in => 2..100 }, :allow_blank => true
+  validates :user_id, :numericality => { :greater_than => 0}
 end

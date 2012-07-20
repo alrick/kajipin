@@ -4,7 +4,6 @@ class CreateLogpages < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :logbook_id
-      t.integer :category_id
 
       t.timestamps
     end

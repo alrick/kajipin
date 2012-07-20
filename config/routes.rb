@@ -17,17 +17,13 @@ Socialrails::Application.routes.draw do
 
   resources :accesstokens
 
-  resources :continents
-
-  resources :countries
-
   resources :locations
 
   resources :users
 
   resources :worldmaps
 
-  root :to => "Countries#index"
+  root :to => "Worldmaps#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

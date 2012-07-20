@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Tag.delete_all
+Tag.create!(:name => "Building", :description => "Can be a museum, a factory, etc.")
+Tag.create!(:name => "Event", :description => "Maybe the FIFA world cup?")
+Tag.create!(:name => "Exploration", :description => "Indiana Jones would use this.")
+Tag.create!(:name => "Food", :description => "Can be a restaurant, a hot dog vendor, etc.")
+Tag.create!(:name => "Monument", :description => "Eiffel tower and Wall of China are munuments.")
+Tag.create!(:name => "Music", :description => "Can be a festival, a concert, etc.")
+Tag.create!(:name => "Party", :description => "Wherever we can party.")
+Tag.create!(:name => "Relation", :description => "That's your encounters.")
+Tag.create!(:name => "Relaxation", :description => "Can be a beach, a swimming pool, etc.")
+Tag.create!(:name => "Sport", :description => "Because travel does not necessarily rhyme with relaxation.")
+Tag.create!(:name => "Transport", :description => "Can be a road trip, a plane ride, etc.")

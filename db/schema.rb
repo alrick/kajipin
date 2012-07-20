@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703143429) do
+ActiveRecord::Schema.define(:version => 20120703133237) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -31,31 +31,12 @@ ActiveRecord::Schema.define(:version => 20120703143429) do
   add_index "assignments", ["logpage_id"], :name => "index_assignments_on_logpage_id"
   add_index "assignments", ["tag_id"], :name => "index_assignments_on_tag_id"
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "comments", :force => true do |t|
     t.text     "value"
     t.integer  "location_id"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "continents", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "continent_id"
   end
 
   create_table "friendships", :force => true do |t|
@@ -81,9 +62,10 @@ ActiveRecord::Schema.define(:version => 20120703143429) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "country_id"
+    t.string   "country_name"
+    t.string   "continent_name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "logbooks", :force => true do |t|
@@ -97,15 +79,15 @@ ActiveRecord::Schema.define(:version => 20120703143429) do
     t.string   "title"
     t.text     "content"
     t.integer  "logbook_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -114,9 +96,9 @@ ActiveRecord::Schema.define(:version => 20120703143429) do
     t.string   "first_name"
     t.string   "last_name"
     t.date     "birth"
+    t.string   "sex"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "sex"
   end
 
 end
