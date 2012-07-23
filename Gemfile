@@ -23,7 +23,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'json'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,6 +39,9 @@ gem 'json'
 # To use debugger
 # gem 'debugger'
 
+gem 'json'
+
 group :development do
-  gem "rails-erd"
+  gem 'rails-erd'
+  gem 'hirb'
 end
