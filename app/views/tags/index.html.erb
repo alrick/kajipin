@@ -1,23 +1,15 @@
-<h1>Listing tags</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tags.each do |tag| %>
-  <tr>
-    <td><%= tag.name %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Tag.new.class -%>
+<div class="page-header">
+  <h1>Tags</h1>
+  <h2>Here is a list of all available tags for the logpages of your logbooks.</h2>
+</div>
+<table class="table table-striped">
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><b><%= tag.name %></b></td>
+        <td><%= tag.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Tag', new_tag_path %>
