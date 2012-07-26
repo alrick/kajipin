@@ -17,8 +17,8 @@
   font-size: 1.6em;
 }
 
-#map-container {
-  background: #1A1A1A;
-  width: 100%;
-  height: 100%;
+.map-container {
+  background: #1A1A1A !important;
+  width: 100% !important;
+  height: 100% !important;
 }
