@@ -34,4 +34,8 @@ Socialrails::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Configure the default_url, devise requirement
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # and don't forget the other environments
 end
