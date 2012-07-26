@@ -39,12 +39,14 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     commonjs (0.2.6)
+    daemons (1.1.8)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
     erubis (2.7.0)
+    eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
@@ -68,6 +70,7 @@ GEM
     mime-types (1.18)
     multi_json (1.3.6)
     orm_adapter (0.4.0)
+    pg (0.14.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -108,9 +111,12 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
+    thin (1.4.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.15.2)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -137,9 +143,10 @@ DEPENDENCIES
   hirb
   jquery-rails
   json
+  pg
   rails (= 3.2.5)
   rails-erd
   sass-rails (~> 3.2.3)
-  sqlite3
+  thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
