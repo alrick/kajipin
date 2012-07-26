@@ -1,5 +1,3 @@
 class WorldmapsController < ApplicationController
-  def index
-    render :layout => 'map'
-  end
+  layout "map"
 end
