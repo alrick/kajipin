@@ -1,5 +1,5 @@
 Socialrails::Application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   resources :assignments
 
@@ -25,7 +25,10 @@ Socialrails::Application.routes.draw do
 
   resources :worldmaps
 
-  root :to => "Worldmaps#index"
+  authenticate :user do
+    root :to => "tags#index"
+  end
+  root :to => "devise/sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

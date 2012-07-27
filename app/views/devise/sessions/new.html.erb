@@ -1,0 +1,24 @@
+<% content_for :page_title do %> - Log in<% end %>
+
+<div class="hero-unit">
+  <h1>Welcome, traveler!</h1>
+  <p>
+    SocialRails is a social network for people that love traveling and sharing it with other people. If you like to journey and want to show it with galeries, logbooks, comments and so, SocialRails is for you!
+  </p>
+  <p>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-warning btn-large' %>
+  </p>
+</div>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
+  <%= f.email_field :email, :class => 'input-small', :placeholder => 'Email' %>
+  <%= f.password_field :password, :class => 'input-small', :placeholder => 'Password' %>
+  <% if devise_mapping.rememberable? -%>
+    <label class="checkbox">
+      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </label>
+  <% end -%>
+  <%= f.submit "Log in", :class => 'btn' %>
+<% end %>
+
+<%= render "devise/shared/links" %>

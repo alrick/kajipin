@@ -1,14 +1,21 @@
-<ul class="nav pull-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      <i class="icon-user icon-white bigger"></i>
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to '<i class="icon-pencil"></i> Modify profile'.html_safe %></li>
-      <li><%= link_to '<i class="icon-map-marker"></i> Manage locations'.html_safe %></li>
-      <li><%= link_to '<i class="icon-heart"></i> Manage friends'.html_safe %></li>
-      <li><%= link_to '<i class="icon-off"></i> Sign out'.html_safe %></li>
-    </ul>
-  </li>
-</ul>
+<% if user_signed_in? %>
+  <ul class="nav pull-right">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="icon-user icon-white bigger"></i>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+          <li>
+            <%= link_to(edit_user_registration_path) do %>
+              <strong><%= current_user.first_name %> <%= current_user.last_name %></strong><br />
+              <i class="icon-pencil"></i> Modify profile
+            <% end %>
+          </li>
+          <li><%= link_to '<i class="icon-map-marker"></i> Manage locations'.html_safe %></li>
+          <li><%= link_to '<i class="icon-heart"></i> Manage friends'.html_safe %></li>
+          <li><%= link_to '<i class="icon-off"></i> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+<% end %>

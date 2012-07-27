@@ -8,6 +8,7 @@
         <%= render "shared/collapse" %>
         <a class="brand" href="/"><b><i class="icon-map-marker"></i> SocialRails</b></a>
         <div class="nav-collapse">
+          <%= render "shared/not_logged_menu" %>
           <%= render "shared/tools_menu" %>
           <%= render "shared/user_menu" %>
           <%= render "shared/search_bar" %>
@@ -16,6 +17,10 @@
     </div>
   </div>
   <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+     
     <%= yield %>
   </div>
 </body>

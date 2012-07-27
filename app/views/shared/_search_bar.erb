@@ -1,3 +1,5 @@
-<form class="navbar-search pull-right input-append">
-  <input type="text" class="search-query" placeholder="Search"><span class="add-on"><i class="icon-search icon-white"></i></span>
-</form>
+<% if user_signed_in? %>
+  <form class="navbar-search pull-right input-append">
+    <input type="text" class="search-query" placeholder="Search"><span class="add-on"><i class="icon-search icon-white"></i></span>
+  </form>
+<% end %>
