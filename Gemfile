@@ -41,12 +41,9 @@ gem 'jquery-rails'
 
 gem 'json'
 gem 'devise'
+gem 'thin'
 
 group :development do
   gem 'rails-erd'
   gem 'hirb'
-end
-
-group :production do
-  gem 'thin'
 end
