@@ -6,7 +6,7 @@
     <div class="navbar-inner">
       <div class="container">
         <%= render "shared/collapse" %>
-        <a class="brand" href="/"><b><i class="icon-map-marker"></i> SocialRails</b></a>
+        <a class="brand" href="/"><b><i class="icon-map-marker"></i> Sloppin</b></a>
         <div class="nav-collapse">
           <%= render "shared/not_logged_menu" %>
           <%= render "shared/tools_menu" %>
@@ -17,10 +17,14 @@
     </div>
   </div>
   <div class="container">
+
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        <%= raw(msg) %>
+      </div>
     <% end %>
-     
+
     <%= yield %>
   </div>
 </body>

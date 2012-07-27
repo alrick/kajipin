@@ -1,18 +1,26 @@
-<h2>Sign up</h2>
+<% content_for :page_title do %> - Tags<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<div class="hero-unit">
+  <h1>Join us</h1>
+  <p>
+    We look forward to welcome you.
+  </p>
+</div>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= f.text_field :first_name, :class => 'input-medium', :placeholder => 'First name' %>
+  <%= f.text_field :last_name, :class => 'input-medium', :placeholder => 'Last name' %>
+  <%= f.email_field :email, :class => 'input-medium', :placeholder => 'Email' %>
+  <%= f.password_field :password, :class => 'input-medium', :placeholder => 'Password' %>
+  <%= f.password_field :password_confirmation, :class => 'input-medium', :placeholder => 'Password confirmation' %>
+  <%= f.submit "Join", :class => 'btn btn-primary' %>
+  <p>
+    <label class="checkbox">
+      <input type="checkbox"> I accept the Sloppin Terms of Service
+    </label>
+  </p>
+  <%= render "devise/shared/links" %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>
