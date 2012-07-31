@@ -1,7 +1,7 @@
 <%- model_class = @user.class -%>
 <div class="page-header profile-page">
   <div class="row">
-    <div class="span3"><%= image_tag("http://www.gravatar.com/avatar/fd864a466e8c4f164dcced51ab062f8b?s=190") %></div>
+    <div class="span3"><%= image_tag gravatar_url(@user, 190) %></div>
     <div class="span3">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
       <p><b>23 years old</b></p>
