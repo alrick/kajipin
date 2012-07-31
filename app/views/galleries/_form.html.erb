@@ -1,4 +1,4 @@
-<%= form_for(@gallery) do |f| %>
+<%= simple_form_for @gallery, :html => { :class => 'form-horizontal'} do |f| %>
   <% if @gallery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+    <%= f.input :name %>
+    
   <div class="field">
     <%= f.label :location_id %><br />
     <%= f.number_field :location_id %>
