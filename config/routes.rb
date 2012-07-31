@@ -25,10 +25,14 @@ Socialrails::Application.routes.draw do
 
   resources :worldmaps
 
-  authenticate :user do
+  authenticated :user do
     root :to => "tags#index"
   end
-  root :to => "devise/sessions#new"
+  unauthenticated :user do
+    devise_scope :user do 
+      get "/" => "devise/sessions#new"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
