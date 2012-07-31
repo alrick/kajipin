@@ -42,6 +42,7 @@ gem 'jquery-rails'
 gem 'json'
 gem 'devise'
 gem 'thin'
+gem 'simple_form'
 
 group :development do
   gem 'rails-erd'
