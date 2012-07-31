@@ -14,11 +14,25 @@
  */
 
 .bigger {
-  font-size: 1.6em;
+  font-size: 1.8em !important;
 }
 
 .map-container {
   background: #1A1A1A !important;
   width: 100% !important;
   height: 100% !important;
+}
+
+.user-menu-avatar {
+  float: left;
+  margin-right: 9px
+}
+
+.user-menu-name {
+  font-size: 14px;
+}
+
+.user-menu-viewprofile {
+  font-size: 11px;
+  height: 7px;
 }
