@@ -1,4 +1,4 @@
-<% content_for :page_title do %> - Tags<% end %>
+<% content_for :page_title do %> - Join<% end %>
 
 <div class="hero-unit">
   <h1>Join us</h1>
@@ -7,18 +7,21 @@
   </p>
 </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
+<div>
   <%= devise_error_messages! %>
+</div>
 
-  <%= f.text_field :first_name, :class => 'input-medium', :placeholder => 'First name' %>
-  <%= f.text_field :last_name, :class => 'input-medium', :placeholder => 'Last name' %>
-  <%= f.email_field :email, :class => 'input-medium', :placeholder => 'Email' %>
-  <%= f.password_field :password, :class => 'input-medium', :placeholder => 'Password' %>
-  <%= f.password_field :password_confirmation, :class => 'input-medium', :placeholder => 'Password confirmation' %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
+
+  <%= f.input_field :first_name, :class => 'input-medium', :placeholder => 'First name' %>
+  <%= f.input_field :last_name, :class => 'input-medium', :placeholder => 'Last name' %>
+  <%= f.input_field :email, :class => 'input-medium', :placeholder => 'Email' %>
+  <%= f.input_field :password, :class => 'input-medium', :placeholder => 'Password' %>
+  <%= f.input_field :password_confirmation, :class => 'input-medium', :placeholder => 'Password confirmation' %>
   <%= f.submit "Join", :class => 'btn btn-primary' %>
   <p>
     <label class="checkbox">
-      <input type="checkbox"> I accept the Sloppin Terms of Service
+      <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> Terms of Service
     </label>
   </p>
   <%= render "devise/shared/links" %>
