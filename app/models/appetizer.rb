@@ -1,5 +1,5 @@
 class Appetizer < ActiveRecord::Base
   def self.appname
-    "Sloppin"
+    "Kajipin"
   end
 end
