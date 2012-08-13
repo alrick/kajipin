@@ -1,4 +1,3 @@
-
 class LocationsController < ApplicationController
   before_filter :get_user
   before_filter :get_location, :only => [:show, :edit, :update, :destroy]

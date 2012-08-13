@@ -1,4 +1,7 @@
-<script>
+<% content_for :page_title do %> - <%= @user.first_name %>'s Worldmap<% end %>
+
+<script type="text/javascript">
+
   var map = new L.Map('map');
 
   var southWest = new L.LatLng(40.712,-74.227),
@@ -11,5 +14,16 @@
 
   map.addLayer(cloudmade);
   map.fitWorld();
+
+  if(gon) {
+    alert(gon.locations.length);
+  }
+
+  var marker, markerLocation;
+
+  markerLocation = new L.LatLng(51.5, -0.09);
+      marker = new L.Marker(markerLocation);
+      map.addLayer(marker);
+      marker.bindPopup("<b>"+item.title+"</b><br /><a>Open</a>");
 
 </script>
