@@ -1,4 +1,3 @@
-
 class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
