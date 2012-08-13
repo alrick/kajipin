@@ -1,50 +1,31 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'pg'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-
-  gem 'twitter-bootstrap-rails'
+  gem 'sass-rails',   '~> 3.2.3' #sass for better css
+  gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
+  gem 'uglifier', '>= 1.0.3' # for javascript
+  gem 'twitter-bootstrap-rails' #bootstrap for better interface
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails' #jquery integration
+gem 'pg' #postgres database
+gem 'json' #self explained
+gem 'devise' #authentification system
+gem 'thin' #thin server
+gem 'simple_form' #better forms
+gem 'rabl' #manage json formating
+gem 'gon' #passing data to javascript
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+group :development do
+  gem 'rails-erd' #create schema of entities
+  gem 'hirb' #better visualisation in rails console
+end
 
 # To use debugger
 # gem 'debugger'
-
-gem 'json'
-gem 'devise'
-gem 'thin'
-gem 'simple_form'
-
-group :development do
-  gem 'rails-erd'
-  gem 'hirb'
-end
