@@ -49,6 +49,9 @@ GEM
     eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    gon (4.0.0)
+      actionpack (>= 2.3.0)
+      json
     hike (1.2.1)
     hirb (0.7.0)
     i18n (0.6.0)
@@ -72,6 +75,9 @@ GEM
     orm_adapter (0.4.0)
     pg (0.14.0)
     polyglot (0.3.3)
+    rabl (0.7.0)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -143,10 +149,12 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  gon
   hirb
   jquery-rails
   json
   pg
+  rabl
   rails (= 3.2.5)
   rails-erd
   sass-rails (~> 3.2.3)
