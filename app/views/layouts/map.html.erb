@@ -19,7 +19,7 @@
   </div>
 
   <div class="map-container">
-    <% flash.each do |name, msg| %><%= render "shared/flash" %><% end %>
+    <%= render "shared/show_flash" %>
     <div id="map" style="width: 100%; height: 92%; margin-top: -16px;"></div>
     <%= yield %>
   </div>

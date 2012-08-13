@@ -18,7 +18,7 @@
   </div>
 
   <div class="container">
-    <% flash.each do |name, msg| %><%= render "shared/flash" %><% end %>
+    <%= render "shared/show_flash" %>
     <%= yield %>
   </div>
 
