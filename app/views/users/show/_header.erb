@@ -3,7 +3,12 @@
     <div class="span3"><%= image_tag gravatar_url(@user, 190) %></div>
     <div class="span3">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p><b>23 years old</b></p>
+      <div class="user-show-header-ginfos">
+        <% if(!@user.age.nil?) %>
+          <p><%= @user.age %> years old</p>
+        <% end %>
+        <!-- <p>TODO SEX</p> -->
+      </div>
     </div>
     <div class="span3">
       <p><a class="btn btn-large btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map</a></p>
