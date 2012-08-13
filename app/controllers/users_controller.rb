@@ -1,26 +1,7 @@
-require 'open-uri'
-require 'json'
-
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
+  before_filter :authenticate_user!
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-
-  # GET /users/1
-  # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    @user = User.includes(:locations).find(params[:id])
   end
 end

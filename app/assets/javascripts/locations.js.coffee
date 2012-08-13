@@ -1,0 +1,1 @@
+alert gon.locations if gon

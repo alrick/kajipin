@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(:version => 20120724065650) do
     t.string   "subtitle"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "user_id"
     t.string   "country_name"
-    t.string   "continent_name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "country_code"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "logbooks", :force => true do |t|

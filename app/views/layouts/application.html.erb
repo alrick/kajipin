@@ -16,16 +16,11 @@
       </div>
     </div>
   </div>
+
   <div class="container">
-
-    <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-        <a class="close" data-dismiss="alert" href="#">×</a>
-        <%= raw(msg) %>
-      </div>
-    <% end %>
-
+    <% flash.each do |name, msg| %><%= render "shared/flash" %><% end %>
     <%= yield %>
   </div>
+
 </body>
 </html>

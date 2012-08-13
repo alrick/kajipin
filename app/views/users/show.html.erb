@@ -1,27 +1,11 @@
-<%- model_class = @user.class -%>
-<div class="page-header profile-page">
-  <div class="row">
-    <div class="span3"><%= image_tag gravatar_url(@user, 190) %></div>
-    <div class="span3">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p><b>23 years old</b></p>
-    </div>
-    <div class="span3">
-      <p><a class="btn btn-large btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map</a></p>
-      <p><a class="btn btn-large btn-warning" href=""><i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with</a></p>
-    </div>
-    <div class="span3">
-      <p><b>2</b> Watchers</p>
-      <p><b>3</b> Sharers</p>
-    </div>
-  </div>
-</div>
+<% content_for :page_title do %> - <%= @user.first_name %> <%= @user.last_name %><% end %>
+
+<%= render "users/show/header" %>
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs user-profile-tabs">
-    <li class="active"><a href="#tab-user-<%= @user.id %>-1" data-toggle="tab"><i class="icon-list-alt"></i> Locations (5)</a></li>
-    <li><a href="#tab-user-<%= @user.id %>-2" data-toggle="tab"><i class="icon-list-alt"></i> Countries (4)</a></li>
-    <li><a href="#tab-user-<%= @user.id %>-3" data-toggle="tab"><i class="icon-list-alt"></i> Continents (2)</a></li>
+    <li class="active"><a href="#tab-user-<%= @user.id %>-1" data-toggle="tab"><i class="icon-list-alt"></i> Locations (<%= @user.locations.count %>)</a></li>
+    <li><a href="#tab-user-<%= @user.id %>-2" data-toggle="tab"><i class="icon-list-alt"></i> Countries (0)</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab-user-<%= @user.id %>-1">
@@ -37,54 +21,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Cairo</td>
-            <td>Egypt</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-          </tr>
-          <tr>
-            <td>Liverpool</td>
-            <td>United-Kingdom</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-          </tr>
-          <tr>
-            <td>Luxor</td>
-            <td>Egypt</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-          </tr>
-          <tr>
-            <td>Paris</td>
-            <td>France</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-          </tr>
-          <tr>
-            <td>Zürich</td>
-            <td>Switzerland</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-          </tr>
+          <% @user.locations.each do |location| %>
+            <tr>
+              <td><%= location.title %></td>
+              <td><%= location.country_name %></td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
     <div class="tab-pane" id="tab-user-<%= @user.id %>-2">
       <p>Countries go here.</p>
-    </div>
-    <div class="tab-pane" id="tab-user-<%= @user.id %>-3">
-      <p>Continents go here.</p>
     </div>
   </div>
 </div>

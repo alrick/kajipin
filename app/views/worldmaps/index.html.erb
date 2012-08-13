@@ -13,15 +13,4 @@
 
   map.addLayer(cloudmade);
   map.fitWorld();
-
-  var markerLocation, marker;
-
-  $.getJSON("/locations.json", function(data) {
-    $.each(data, function(i,item){
-      markerLocation = new L.LatLng(item.latitude, item.longitude);
-      marker = new L.Marker(markerLocation);
-      map.addLayer(marker);
-      marker.bindPopup("<b>"+item.title+"</b><br /><a>Open</a>");
-    });
-  });
 </script>
