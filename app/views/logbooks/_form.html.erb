@@ -1,25 +1,9 @@
-<%= form_for(@logbook) do |f| %>
-  <% if @logbook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@logbook.errors.count, "error") %> prohibited this logbook from being saved:</h2>
-
-      <ul>
-      <% @logbook.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.number_field :location_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+<%= simple_form_for @logbook, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :description %>
+  <%= f.input :location_id %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                logbooks_path, :class => 'btn' %>
   </div>
 <% end %>
