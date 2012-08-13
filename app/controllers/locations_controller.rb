@@ -5,7 +5,11 @@ class LocationsController < ApplicationController
   before_filter :check_auth, :only => [:edit, :update, :destroy]
 
   def get_user
-    @user = User.find(params[:user_id])
+    if params[:user_id].nil?
+      @user = current_user
+    else
+      @user = User.find(params[:user_id])
+    end
   end
 
   def get_location
