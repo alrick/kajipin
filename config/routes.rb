@@ -26,7 +26,7 @@ Socialrails::Application.routes.draw do
   resources :worldmaps
 
   authenticated :user do
-    root :to => "tags#index"
+    root :to => "users#show"
   end
   unauthenticated :user do
     devise_scope :user do 
