@@ -1,6 +1,8 @@
 <div class="page-header profile-page">
   <div class="row">
-    <div class="span3"><%= image_tag gravatar_url(@user, 190) %></div>
+    <div class="span3 user-show-photo">
+      <%= image_tag gravatar_url(@user, 190) %>
+    </div>
     <div class="span3">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
       <div class="user-show-header-ginfos">
@@ -11,12 +13,21 @@
       </div>
     </div>
     <div class="span3">
-      <p><a class="btn btn-large btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map</a></p>
+      <p><%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_locations_path(@user), :class => 'btn btn-large btn-primary' %></p>
       <p><a class="btn btn-large btn-warning" href=""><i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with</a></p>
     </div>
     <div class="span3">
-      <p><b>2</b> Watchers</p>
-      <p><b>3</b> Sharers</p>
+      <div>
+        <h2>Friends&nbsp;<%= image_tag("milky/48/81.png", :size => "16x16") %></h2>
+        <p><b>2</b> Watchers</p>
+        <p><b>3</b> Sharers</p>
+      </div>
+      <div style="margin-top: 20px">
+        <h2>Travel&nbsp;<%= image_tag("milky/48/81.png", :size => "16x16") %></h2>
+        <p><b><%= @user.number_locations %></b> Locations</p>
+        <p><b><%= @user.number_countries %></b> Countries</p>
+        <p></p>
+      </div>
     </div>
   </div>
 </div>
