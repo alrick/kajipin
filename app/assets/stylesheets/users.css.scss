@@ -2,19 +2,46 @@
   font-size: 1.8em;
 }
 
+
 .user-profile-tabs {
   font-size: 1.6em;
 }
+
 
 .user-profile-table {
   font-size: 1.6em;
 }
 
+
 .user-show-header-ginfos {
   margin-top: 10px;
 }
 
+
 .user-show-header-ginfos p {
   margin: 0px;
   padding-bottom : 7px;
+}
+
+
+.user-show-photo img {
+
+  /* Rotation */
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+
+  /* Border */
+  border: solid 15px #fff;
+
+  /* Shadow */
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+  -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+  box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+
+  /* Adjustement for chrome rotation */
+  -webkit-backface-visibility: hidden;
+
 }
