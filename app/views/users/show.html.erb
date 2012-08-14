@@ -2,40 +2,34 @@
 
 <%= render "users/show/header" %>
 
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs user-profile-tabs">
-    <li class="active"><a href="#tab-user-<%= @user.id %>-1" data-toggle="tab"><i class="icon-list-alt"></i> Locations (<%= @user.locations.count %>)</a></li>
-    <li><a href="#tab-user-<%= @user.id %>-2" data-toggle="tab"><i class="icon-list-alt"></i> Countries (0)</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab-user-<%= @user.id %>-1">
-      <table class="table table-striped user-profile-table">
-        <thead>
-          <tr>
-            <th>Location</th>
-            <th>Country</th>
-            <th>Galleries</th>
-            <th>Comments</th>
-            <th>Logpages</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.locations.each do |location| %>
-            <tr>
-              <td><%= location.title %></td>
-              <td><%= location.country_name %></td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td><a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab-user-<%= @user.id %>-2">
-      <p>Countries go here.</p>
-    </div>
-  </div>
-</div>
+<h2><i class="icon-list-alt"></i>&nbsp;&nbsp;<%= @user.first_name %>'s Locations</h2>
+<table class="table table-striped user-profile-table">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Country</th>
+      <th>Galleries</th>
+      <th>Comments</th>
+      <th>Logpages</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.locations.each do |location| %>
+      <tr>
+        <td><%= location.title %></td>
+        <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>
+          <%= link_to '<i class="icon-info-sign icon-white"></i>&nbsp;&nbsp;More Info'.html_safe, user_path(@user), :class => 'btn btn-info' %>
+        </td>
+        <td>
+          <a class="btn btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
