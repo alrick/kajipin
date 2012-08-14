@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_filter :get_user
+  before_filter :get_locations, :only => [:index, :manage]
   before_filter :get_location, :only => [:show, :edit, :update, :destroy]
   before_filter :check_auth, :only => [:edit, :update, :destroy]
 
@@ -15,12 +16,15 @@ class LocationsController < ApplicationController
     @location = @user.locations.find(params[:id])
   end
 
+  def get_locations
+    @locations = @user.locations
+  end
+
   def check_auth
 
   end
 
   def index
-    @locations = @user.locations
     gon.rabl "app/views/locations/index.json.rabl", as: "locations"
     render :layout => 'map'
   end
@@ -37,6 +41,10 @@ class LocationsController < ApplicationController
 
   def edit
     # edit.html.erb
+  end
+
+  def manage
+    # manage.html.erb
   end
 
   def create
