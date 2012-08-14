@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class LocationsController < ApplicationController
   before_filter :get_user
   before_filter :get_locations, :only => [:index, :manage]
@@ -35,8 +38,8 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
-
-    # new.html.erb
+    url = "http://api.geonames.org/searchJSON?q=london&maxRows="+Geonamesconfig.maxrows+"&fuzzy="+Geonamesconfig.fuzzy+"&username="+Geonamesconfig.username
+    @geos = JSON.parse(open(url).read)
   end
 
   def edit
