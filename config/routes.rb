@@ -20,7 +20,11 @@ Socialrails::Application.routes.draw do
   resources :accesstokens
 
   resources :users do
-    resources :locations
+    resources :locations do
+      collection do
+        get 'manage'
+      end
+    end
   end
 
   resources :worldmaps

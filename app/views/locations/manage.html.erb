@@ -1,0 +1,45 @@
+<% content_for :page_title do %> - Manage <%= @user.first_name %>'s Locations<% end %>
+
+<div class="page-header">
+  <h1>Manage Locations <small><%= @user.first_name %>'s Locations</small></h1>
+</div>
+
+<form class="well form-inline">
+  <p><strong>Simply specifiy location's name to add it.</strong></p>
+  <input type="text" class="input-large" placeholder="Name">
+  <button type="submit" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Subtitle</th>
+      <th>Country</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Tools</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.title %></td>
+        <td><%= location.subtitle %></td>
+        <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td>
+          <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Galleries' %>
+          <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Logbook' %>
+          <%= link_to '<i class="icon-edit icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Comments' %>
+        </td>
+        <td>
+          <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-warning' %>
+          <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
