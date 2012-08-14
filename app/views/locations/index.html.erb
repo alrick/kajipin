@@ -15,15 +15,14 @@
   map.addLayer(cloudmade);
   map.fitWorld();
 
+  var marker, markerLocation, i;
   if(gon) {
-    alert(gon.locations.length);
-  }
-
-  var marker, markerLocation;
-
-  markerLocation = new L.LatLng(51.5, -0.09);
+    for(i=0 ; i<gon.locations.length ; i++) {
+      markerLocation = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
       marker = new L.Marker(markerLocation);
       map.addLayer(marker);
-      marker.bindPopup("<b>"+item.title+"</b><br /><a>Open</a>");
+      marker.bindPopup("<b>"+gon.locations[i].title+"</b><br /><a>Open</a>");
+    }
+  }
 
 </script>
