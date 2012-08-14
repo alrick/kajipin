@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
-  has_many :locations, dependent: :destroy
+  has_many :locations, dependent: :destroy, :order => 'title'
   has_many :accesstokens, dependent: :destroy
   has_many :comments
   has_many :friendships, dependent: :destroy
@@ -27,5 +27,13 @@ class User < ActiveRecord::Base
       age = Date.today.year - birth.year
       age -= 1 if Date.today < birth + age.years #for days before birthday
     end
+  end
+
+  def number_locations
+    locations.count
+  end
+
+  def number_countries
+    locations.select("distinct(country_code)").count
   end
 end
