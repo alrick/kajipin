@@ -19,7 +19,7 @@ gem 'json' #self explained
 gem 'devise' #authentification system
 gem 'thin' #thin server
 gem 'simple_form' #better forms
-gem 'rabl' #manage json formating
+gem 'rabl' #manage json formating, MUST BE before gon
 gem 'gon' #passing data to javascript
 
 group :development do
