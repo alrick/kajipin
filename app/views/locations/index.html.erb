@@ -4,10 +4,6 @@
 
   var map = new L.Map('map');
 
-  var southWest = new L.LatLng(40.712,-74.227),
-    northEast = new L.LatLng(40.774,-74.125),
-    bounds = new L.LatLngBounds(southWest, northEast);
-
   var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/998/256/{z}/{x}/{y}.png',
     cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
     cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, minZoom: 3, attribution: cloudmadeAttribution});
@@ -17,11 +13,18 @@
 
   var marker, markerLocation, i;
   if(gon) {
+
     for(i=0 ; i<gon.locations.length ; i++) {
       markerLocation = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
       marker = new L.Marker(markerLocation);
       map.addLayer(marker);
       marker.bindPopup("<b>"+gon.locations[i].title+"</b><br /><a>Open</a>");
+
+      if(gon.locations[i].id == gon.highloc) {
+        var center = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
+        map.setView(center, 10, false);
+        marker.openPopup(); 
+      }
     }
   }
 
