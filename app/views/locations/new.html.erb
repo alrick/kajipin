@@ -4,31 +4,37 @@
   <h1>Add location <small>Provided by Geonames</small></h1>
 </div>
 
-<p><strong>Please choose from results :</strong></p>
+<% if @geos["totalResultsCount"] == 0 %>
+  <p><strong>No result found.</strong></p>
+<% else %>
+  <p><strong>Please choose from results :</strong></p>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Area</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Description</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @geos["geonames"].each do |geo| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= geo["toponymName"] %></td>
-        <td><%= geo["countryName"] %></td>
-        <td><%= geo["adminName1"] %></td>
-        <td><%= geo["lat"] %></td>
-        <td><%= geo["lng"] %></td>
-        <td><%= geo["fcodeName"] %></td>
-        <td>blu</td>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Area</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Description</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @geos["geonames"].each do |geo| %>
+        <tr>
+          <td><%= geo["toponymName"] %></td>
+          <td><%= image_tag("flags/"+geo["countryCode"].downcase+".png") %>&nbsp;<%= geo["countryName"] %></td>
+          <td><%= geo["adminName1"] %></td>
+          <td><%= geo["lat"] %></td>
+          <td><%= geo["lng"] %></td>
+          <td><%= geo["fcodeName"].capitalize %></td>
+          <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this location'.html_safe, user_locations_path(current_user, :title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-primary' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to "Cancel", manage_user_locations_path(current_user), :class => 'btn' %>
