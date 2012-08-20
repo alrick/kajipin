@@ -14,8 +14,8 @@
     </div>
     <div class="span3">
       <p><%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_locations_path(@user), :class => 'btn btn-large btn-primary user-buttons-unify' %></p>
-      <p><a class="btn btn-large btn-warning user-buttons-unify" href=""><i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with</a></p>
-      <p><a class="btn btn-large btn-warning user-buttons-unify" href=""><i class="icon-eye-open icon-white"></i>&nbsp;&nbsp;Watch</a></p>
+      <p><%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, user_path(@user), :class => 'btn btn-large btn-warning user-buttons-unify' %></p>
+      <p><%= link_to '<i class="icon-eye-open icon-white"></i>&nbsp;&nbsp;Watch'.html_safe, user_path(@user), :class => 'btn btn-large btn-warning user-buttons-unify' %></p>
     </div>
     <div class="span3">
       <div>
