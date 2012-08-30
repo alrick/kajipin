@@ -18,7 +18,7 @@
       markerLocation = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
       marker = new L.Marker(markerLocation);
       map.addLayer(marker);
-      marker.bindPopup("<b>"+gon.locations[i].title+"</b><br /><a>Open</a>");
+      marker.bindPopup("<b>"+gon.locations[i].title+'</b><br /><a href="locations/'+gon.locations[i].id+'">Open</a>');
 
       if(gon.locations[i].id == gon.highloc) {
         var center = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
