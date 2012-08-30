@@ -13,7 +13,7 @@
         <td><a href="#" rel="tooltip" title="Logpages" class="btn">0 <i class="icon-book"></a></td>
         <td><a href="#" rel="tooltip" title="Comments" class="btn">0 <i class="icon-comment"></a></td>
         <td>
-          <%= link_to '<i class="icon-info-sign icon-white"></i>&nbsp;&nbsp;More Info'.html_safe, user_path(@user), :class => 'btn btn-info' %>
+          <%= link_to '<i class="icon-info-sign icon-white"></i>&nbsp;&nbsp;More Info'.html_safe, user_location_path(@user, location), :class => 'btn btn-info' %>
         </td>
         <td>
           <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map'.html_safe, user_locations_path(@user, :l => location.id), :class => 'btn btn-primary' %>
