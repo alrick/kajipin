@@ -40,3 +40,7 @@
   font-size: 11px;
   height: 7px;
 }
+
+.dropdown-toggle-countries {
+  padding-top: 15.5px !important;
+}
