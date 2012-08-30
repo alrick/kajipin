@@ -1,15 +1,6 @@
-<%- model_class = @location.class -%>
-<div class="page-header profile-page">
-  <div class="row">
-    <div class="span8">
-      <h1><%= @location.title %> - </h1>
-      <h2><%= @location.user.first_name %> <%= @location.user.last_name %>'s Location</h2>
-    </div>
-    <div class="span4">
-      <p><a class="btn btn-large btn-primary" href=""><i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map</a></p>
-    </div>
-  </div>
-</div>
+<% content_for :page_title do %> - <%= @location.title %> by <%= @location.user.first_name %><% end %>
+
+<%= render "locations/show/header" %>
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs loc-profile-tabs">
