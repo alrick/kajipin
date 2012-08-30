@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   validates :first_name, :length => { :minimum => 2 }
   validates :last_name, :length => { :minimum => 2 }
@@ -35,5 +37,17 @@ class User < ActiveRecord::Base
 
   def number_countries
     locations.select("distinct(country_code)").count
+  end
+
+  def number_watchers
+    friends.count
+  end
+
+  def number_sharers
+    inverse_friends.count
+  end
+
+  def isWatcher(sharer_id)
+    !Friendship.where(:user_id => id, :friend_id => sharer_id).empty?
   end
 end
