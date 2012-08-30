@@ -21,6 +21,7 @@ gem 'thin' #thin server
 gem 'simple_form' #better forms
 gem 'rabl' #manage json formating, MUST BE before gon
 gem 'gon' #passing data to javascript
+gem 'nokogiri' #xml parsing
 
 group :development do
   gem 'rails-erd' #create schema of entities
