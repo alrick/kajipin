@@ -16,7 +16,7 @@
           <li class="divider"></li>
           <li><%= link_to '<i class="icon-pencil"></i> Modify profile'.html_safe, edit_user_registration_path %></li>
           <li><%= link_to '<i class="icon-map-marker"></i> Manage locations'.html_safe, manage_user_locations_path(current_user) %></li>
-          <li><%= link_to '<i class="icon-heart"></i> Manage friends'.html_safe %></li>
+          <li><%= link_to '<i class="icon-heart"></i> Manage friends'.html_safe, friendships_path %></li>
           <li><%= link_to '<i class="icon-off"></i> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
       </ul>
     </li>
