@@ -1,0 +1,19 @@
+<div class="tab-pane active" id="tab-friends-1">
+  <% if current_user.friendships.empty? %>
+    <p>You have no watcher.</p>
+  <% else %>
+    <table class="table table-striped friendships-table">
+      <tbody>
+        <% current_user.friendships.each do |watchership| %>
+          <tr>
+            <td class="friendships-table-avatar"><%= image_tag gravatar_url(watchership.friend, 30), :class => 'user-menu-avatar' %></td>
+            <td class="friendships-table-name"><%= watchership.friend.first_name %> <%= watchership.friend.last_name %></td>
+            <td>
+              <%= link_to '<i class="icon-remove"></i> Remove'.html_safe, watchership, :method => :delete, :class => 'btn btn-danger user-buttons-unify' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,42 +1,15 @@
 <%- model_class = Friendship.new.class -%>
 <div class="page-header">
-  <h1>Your friends</h1>
+  <h1>Your friends <small>A list of all your Watchers &amp; Sharers</small></h1>
 </div>
+
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs user-profile-tabs">
     <li class="active"><a href="#tab-friends-1" data-toggle="tab"><i class="icon-list-alt"></i> Watchers</a></li>
     <li><a href="#tab-friends-2" data-toggle="tab"><i class="icon-list-alt"></i> Sharers</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab-friends-1">
-      <table class="table table-striped user-profile-table">
-        <tbody>
-          <% @watchers.each do |watcher| %>
-            <tr>
-              <td><%= watcher.friend.first_name %> <%= watcher.friend.last_name %></td>
-              <td>
-                <%= link_to '<i class="icon-remove"></i> Remove'.html_safe, watcher, :method => :delete, :class => 'btn btn-big btn-danger' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab-friends-2">
-      <table class="table table-striped user-profile-table">
-        <tbody>
-          <% @sharers.each do |sharer| %>
-            <tr>
-              <td><%= sharer.user.first_name %> <%= sharer.user.last_name %></td>
-              <td>
-                <% if sharer.user_id == 5 %>
-                  <%= link_to '<i class="icon-heart"></i> Share with'.html_safe, sharer, :method => :delete, :class => 'btn btn-big btn-warning' %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <%= render "friendships/index/watcherships" %>
+    <%= render "friendships/index/sharerships" %>
   </div>
 </div>

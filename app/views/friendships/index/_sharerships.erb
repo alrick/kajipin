@@ -1,0 +1,23 @@
+<div class="tab-pane" id="tab-friends-2">
+  <% if current_user.inverse_friendships.empty? %>
+    <p>You have no sharer.</p>
+  <% else %>
+    <table class="table table-striped friendships-table">
+      <tbody>
+        <% current_user.inverse_friendships.each do |sharership| %>
+          <tr>
+            <td class="friendships-table-avatar"><%= image_tag gravatar_url(sharership.user, 30), :class => 'user-menu-avatar' %></td>
+            <td class="friendships-table-name">
+              <%= link_to sharership.user.first_name+' '+sharership.user.last_name, user_path(sharership.user) %>
+            </td>
+            <td>
+              <% if !current_user.isWatcher(sharership.user.id) %>
+                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-warning user-buttons-unify' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
