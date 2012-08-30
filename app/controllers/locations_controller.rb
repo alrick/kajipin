@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require 'nokogiri'
 
 class LocationsController < ApplicationController
   before_filter :get_user
@@ -28,6 +29,12 @@ class LocationsController < ApplicationController
   end
 
   def index
+    doc = Nokogiri::XML(File.open("app/data/country_info.xml"))
+    @countries = doc.xpath('//country').map do |c|
+      {'name' => c.xpath('countryName').inner_text}
+    end
+    @countries.sort! { |a,b| a["name"] <=> b["name"] }
+
     gon.rabl "app/views/locations/index.json.rabl", as: "locations"
 
     # Get location if map opened via a single location
