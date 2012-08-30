@@ -19,6 +19,8 @@ Socialrails::Application.routes.draw do
 
   resources :accesstokens
 
+  resources :countries
+
   resources :users do
     resources :locations do
       collection do
