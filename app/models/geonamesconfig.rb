@@ -1,6 +1,6 @@
 class Geonamesconfig < ActiveRecord::Base
   def self.maxrows
-    "15"
+    "20"
   end
   def self.fuzzy
     "0.8"
