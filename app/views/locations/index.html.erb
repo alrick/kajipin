@@ -2,13 +2,19 @@
 
 <script type="text/javascript">
 
-  var map = new L.Map('map');
+  var map = new L.Map('map', {
+    maxZoom: 18,
+    minZoom: 3
+  });
 
   var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/998/256/{z}/{x}/{y}.png',
     cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, minZoom: 3, attribution: cloudmadeAttribution});
+    cloudmade = new L.TileLayer(cloudmadeUrl);
 
-  map.addLayer(cloudmade);
+    mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png');
+
+  // map.addLayer(cloudmade);
+  map.addLayer(mapbox);
   map.fitWorld();
 
   var marker, markerLocation, i;
@@ -20,11 +26,20 @@
       map.addLayer(marker);
       marker.bindPopup("<b>"+gon.locations[i].title+'</b><br /><a href="locations/'+gon.locations[i].id+'">Open</a>');
 
+      // center with location
       if(gon.locations[i].id == gon.highloc) {
         var center = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
         map.setView(center, 10, false);
         marker.openPopup(); 
       }
+    }
+
+    // define bounds for countries
+    if(gon.south != null) {
+      var southWest = new L.LatLng(gon.south, gon.west),
+        northEast = new L.LatLng(gon.north, gon.east),
+        bounds = new L.LatLngBounds(southWest, northEast);
+      map.fitBounds(bounds);
     }
   }
 
