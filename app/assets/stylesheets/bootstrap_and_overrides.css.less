@@ -43,3 +43,8 @@ body {
 .navbar .brand {
   font-size: 2em;
 }
+
+/* Font awesome fix with last bootstrap-rails release */
+[class^="icon-"], [class*=" icon-"] {
+  background-image:none !important;
+}
