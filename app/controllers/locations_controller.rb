@@ -2,7 +2,7 @@ require 'open-uri'
 require 'json'
 require 'nokogiri'
 
-class LocationsController < ApplicationController
+class LocationsController < GeoController
   before_filter :get_user
   before_filter :get_locations, :only => [:index, :manage]
   before_filter :get_location, :only => [:show, :edit, :update, :destroy]
@@ -29,17 +29,21 @@ class LocationsController < ApplicationController
   end
 
   def index
-    doc = Nokogiri::XML(File.open("app/data/country_info.xml"))
-    @countries = doc.xpath('//country').map do |c|
-      {'name' => c.xpath('countryName').inner_text}
-    end
-    @countries.sort! { |a,b| a["name"] <=> b["name"] }
+    get_countries
 
     gon.rabl "app/views/locations/index.json.rabl", as: "locations"
 
     # Get location if map opened via a single location
     if !params[:l].nil?
       gon.highloc = params[:l]
+    end
+
+    # Define bounds if country selected
+    if (!params[:w].nil? && !params[:n].nil? && !params[:e].nil? && !params[:s].nil?)
+      gon.west = params[:w];
+      gon.north = params[:n];
+      gon.east = params[:e];
+      gon.south = params[:s];
     end
 
     render :layout => 'map'
