@@ -29,8 +29,6 @@ Socialrails::Application.routes.draw do
     end
   end
 
-  resources :worldmaps
-
   authenticated :user do
     root :to => "users#show"
   end
