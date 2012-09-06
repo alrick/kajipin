@@ -11,7 +11,7 @@
       
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :birth, :as => :date, :start_year => Date.today.year - 100,
+      <%= f.input :birth, :as => :date, :start_year => Date.today.year - 600,
                                   :end_year => Date.today.year - 12,
                                   :order => [:day, :month, :year] %>
       <%= f.input :password, :autocomplete => "off", :hint => 'Leave blank if you don\'t want to change it.' %>

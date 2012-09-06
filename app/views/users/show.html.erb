@@ -5,20 +5,24 @@
 <h2><i class="icon-list-alt"></i>&nbsp;&nbsp;<%= @user.first_name %>'s Locations</h2>
 <table class="table table-striped user-profile-table">
   <tbody>
-    <% @user.locations.each do |location| %>
-      <tr>
-        <td><%= location.title %></td>
-        <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
-        <td><a href="#" rel="tooltip" title="Galleries" class="btn">0 <i class="icon-camera"></i></a></td>
-        <td><a href="#" rel="tooltip" title="Logpages" class="btn">0 <i class="icon-book"></i></a></td>
-        <td><a href="#" rel="tooltip" title="Comments" class="btn">0 <i class="icon-comment"></i></a></td>
-        <td>
-          <%= link_to '<i class="icon-info-sign icon-white"></i>&nbsp;&nbsp;More Info'.html_safe, user_location_path(@user, location), :class => 'btn btn-info' %>
-        </td>
-        <td>
-          <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map'.html_safe, user_locations_path(@user, :l => location.id), :class => 'btn btn-primary' %>
-        </td>
-      </tr>
+    <% if @user.locations.empty? %>
+      <p>No location added.</p>
+    <% else %>
+      <% @user.locations.each do |location| %>
+        <tr>
+          <td><%= location.title %></td>
+          <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
+          <td><a href="#" rel="tooltip" title="Galleries" class="btn">0 <i class="icon-camera"></i></a></td>
+          <td><a href="#" rel="tooltip" title="Logpages" class="btn">0 <i class="icon-book"></i></a></td>
+          <td><a href="#" rel="tooltip" title="Comments" class="btn">0 <i class="icon-comment"></i></a></td>
+          <td>
+            <%= link_to '<i class="icon-info-sign icon-white"></i>&nbsp;&nbsp;More Info'.html_safe, user_location_path(@user, location), :class => 'btn btn-info' %>
+          </td>
+          <td>
+            <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;Show on Map'.html_safe, user_locations_path(@user, :l => location.id), :class => 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

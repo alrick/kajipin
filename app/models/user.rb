@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
 
   def age
     if(!birth.nil?)
-      age = Date.today.year - birth.year
-      age -= 1 if Date.today < birth + age.years #for days before birthday
+      age = Time.now.utc.to_date
+      age.year - birth.year - ((age.month > birth.month || (age.month == birth.month && age.day >= birth.day)) ? 0 : 1)
     end
   end
 

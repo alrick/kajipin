@@ -10,36 +10,40 @@
   <%= button_tag '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add'.html_safe, :class => "btn btn-success" %>
 <% end %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Subtitle</th>
-      <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Tools</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @locations.each do |location| %>
+<% if @locations.empty? %>
+  <p>No location added.</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= location.title %></td>
-        <td><%= location.subtitle %></td>
-        <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
-        <td><%= location.latitude %></td>
-        <td><%= location.longitude %></td>
-        <td>
-          <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Galleries' %>
-          <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Logbook' %>
-          <%= link_to '<i class="icon-comment icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Comments' %>
-        </td>
-        <td>
-          <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-warning' %>
-          <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, user_location_path(current_user, location), :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
-        </td>
+        <th>Location</th>
+        <th>Subtitle</th>
+        <th>Country</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Tools</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.title %></td>
+          <td><%= location.subtitle %></td>
+          <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
+          <td><%= location.latitude %></td>
+          <td><%= location.longitude %></td>
+          <td>
+            <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Galleries' %>
+            <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Logbook' %>
+            <%= link_to '<i class="icon-comment icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Comments' %>
+          </td>
+          <td>
+            <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-warning' %>
+            <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, user_location_path(current_user, location), :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
