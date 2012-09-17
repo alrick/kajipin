@@ -4,13 +4,14 @@ gem 'rails', '3.2.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'twitter-bootstrap-rails' #bootstrap for better interface
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3' #sass for better css
   gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
   gem 'uglifier', '>= 1.0.3' # for javascript
-  gem 'twitter-bootstrap-rails' #bootstrap for better interface
 end
 
 gem 'jquery-rails' #jquery integration
