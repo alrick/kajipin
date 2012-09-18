@@ -51,6 +51,7 @@ class LocationsController < GeoController
 
   def show
     # show.html.erb
+    @comments = @location.comments.all
   end
 
   def new

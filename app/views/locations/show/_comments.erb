@@ -1,0 +1,18 @@
+<div class="location-comments">
+  <% if @comments.empty? %>
+    <p class="lead">No comment yet</p>
+  <% else %>
+    <% @comments.each do |comment| %>
+      <blockquote>
+        <p><%= comment.value %></p>
+        <small>
+          <%= link_to comment.user.full_name, user_path(comment.user) %>
+        </small>
+      </blockquote>
+    <% end %>
+  <% end %>
+  <form class="location-add-comment">
+    <textarea rows="3"></textarea>
+    <button class="btn btn-primary" type="button">Comment</button>
+  </form>
+</div>
