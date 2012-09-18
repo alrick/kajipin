@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def full_name
+    first_name+' '+last_name
+  end
+
   def number_locations
     locations.count
   end
