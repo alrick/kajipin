@@ -1,13 +1,11 @@
 class FriendshipsController < ApplicationController
 
   def index
-    @friendships = Friendship.all
     @watcherships = Friendship.where(:user_id => current_user.id)
     @sharerships = Friendship.where(:friend_id => current_user.id)
   end
 
   def create
-
     if !current_user.isWatcher(params[:friend_id])
       @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
 

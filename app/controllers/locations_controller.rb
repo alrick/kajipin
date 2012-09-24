@@ -3,8 +3,8 @@ require 'json'
 require 'nokogiri'
 
 class LocationsController < GeoController
-  before_filter :get_user
-  before_filter :get_locations, :only => [:index, :manage]
+  before_filter :get_user, :except => [:manage]
+  before_filter :get_locations, :only => [:index]
   before_filter :get_location, :only => [:show, :edit, :update, :destroy]
   before_filter :check_auth, :only => [:edit, :update, :destroy]
 
@@ -31,6 +31,7 @@ class LocationsController < GeoController
   def index
     get_countries
 
+    # Init JSON locations via rabl
     gon.rabl "app/views/locations/index.json.rabl", as: "locations"
 
     # Get location if map opened via a single location
@@ -50,8 +51,12 @@ class LocationsController < GeoController
   end
 
   def show
-    # show.html.erb
-    @comments = @location.comments.all
+    # get all comment for this location
+    @comments = @location.comments.order('created_at ASC')
+    
+    # prepare the comment for user
+    @comment = Comment.new
+
   end
 
   def new
@@ -72,7 +77,8 @@ class LocationsController < GeoController
   end
 
   def manage
-    # manage.html.erb
+    @user = current_user
+    @locations = current_user.locations
   end
 
   def create

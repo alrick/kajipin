@@ -7,7 +7,7 @@
       </a>
       <ul class="dropdown-menu">
           <li>
-            <%= link_to(current_user) do %>
+            <%= link_to(profile_path) do %>
               <%= image_tag gravatar_url(current_user, 34), :class => 'user-menu-avatar' %>
                 <strong class="user-menu-name"><%= current_user.first_name %> <%= current_user.last_name %></strong>
                 <p class="user-menu-viewprofile">View my profile</p>

@@ -15,11 +15,11 @@ Socialrails::Application.routes.draw do
 
   resources :logbooks
 
-  resources :comments
-
   resources :accesstokens
 
   resources :countries
+
+  resources :comments
 
   resources :users do
     resources :locations do
@@ -37,6 +37,8 @@ Socialrails::Application.routes.draw do
       get "/" => "devise/sessions#new"
     end
   end
+
+  match "profile" => "users#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
