@@ -18,7 +18,7 @@
       <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' }, :required => false %>
       <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= c.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
-      <%= c.button :submit, 'Comment', :class => 'btn btn-primary' %>
+      <%= c.button :submit, 'Comment', :class => 'btn btn-social' %>
     <% end %>
   </div>
 </div>

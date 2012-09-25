@@ -2,7 +2,7 @@
 
 // Necessary for a fixed navbar
 body { 
-  padding-top: 80px;
+  padding-top: 90px;
 }
 
 // Don't use responsive for the moment, mobile oriented soon
@@ -31,24 +31,18 @@ body {
 // If you'd like to override bootstrap's own variables, you can do so here as well
 // See http://twitter.github.com/bootstrap/less.html for their names and documentation
 
-@bodyBackground: #FFFDF9;
+@bodyBackground: #F2F1E4;
+@linkColor: #7FA4B1;
+
 @heroUnitBackground : #B94630;
 @heroUnitHeadingColor: #FFFFFF;
 @heroUnitLeadColor: #FFFFFF;
-@navbarHeight: 47px;
-// @navbarLinkColor: #CFCFCF;
-// @navbarLinkColorHover: #EFEFEF;
 
+@navbarHeight: 50px;
+@navbarBackground: #403730;
+@navbarBackgroundHighlight: #524338;
+@navbarBrandColor: #EFEFEF;
 
-.navbar .brand {
-  font-size: 2em;
-}
+@tableBackgroundAccent: #DEDDD3;
 
-/* Font awesome fix with last bootstrap-rails release */
-[class^="icon-"], [class*=" icon-"] {
-  background-image:none !important;
-}
-
-.navbar-inner {
-  padding-top: 5px;
-}
+@formActionsBackground: #E1D6CC;

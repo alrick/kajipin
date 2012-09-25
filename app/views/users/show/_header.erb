@@ -1,7 +1,7 @@
 <div class="page-header profile-page">
   <div class="row">
     <div class="span3 user-show-photo">
-      <%= image_tag gravatar_url(@user, 190) %>
+      <%= image_tag gravatar_url(@user, 165) %>
     </div>
     <div class="span3">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
@@ -14,16 +14,16 @@
     </div>
     <div class="span3">
       <p>
-        <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_locations_path(@user), :class => 'btn btn-large btn-primary user-buttons-unify' %>
+        <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_locations_path(@user), :class => 'btn btn-large btn-map user-buttons-unify' %>
       </p>
       <% if current_user != @user %>
         <% if !current_user.isWatcher(@user.id) %>
           <p>
-            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => @user), :method => :post, :class => 'btn btn-large btn-warning user-buttons-unify' %>
+            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => @user), :method => :post, :class => 'btn btn-large btn-social user-buttons-unify' %>
           </p>
         <% else %>
           <p>
-            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Watcher'.html_safe, '#', :class => 'btn btn-large btn-success user-buttons-unify disabled' %>
+            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Watcher'.html_safe, '#', :class => 'btn btn-large btn-social user-buttons-unify disabled' %>
           </p>
         <% end %>
       <% end %>

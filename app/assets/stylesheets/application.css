@@ -42,16 +42,31 @@
   height: 7px;
 }
 
-.navbar-form {
-  padding-top: 5px;
+/* Style search bar */
+.navbar-search {
   padding-right: 10px;
 }
 
+/* Make dropdown with scrollbar */
 .dropdown-menu-countries {
   height: 400px;
   overflow: auto;
 }
 
-.brand span {
-  font-size: 0.5em;
+/* For the beta information */
+.betasig {
+  font-size: 0.6em;
+}
+
+/* Font awesome fix with last bootstrap-rails release */
+[class^="icon-"], [class*=" icon-"] {
+  background-image:none !important;
+}
+
+/* Redefine some bootstrap elements */
+.well {
+  background: #D7CCC2 !important;
+}
+.page-header {
+  border-bottom: 1px solid #403730 !important;
 }

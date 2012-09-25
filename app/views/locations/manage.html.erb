@@ -1,4 +1,4 @@
-<% content_for :page_title do %> - Manage <%= @user.first_name %>'s Locations<% end %>
+<% content_for :page_title do %>Manage <%= @user.first_name %>'s Locations<% end %>
 
 <div class="page-header">
   <h1>Manage Locations <small><%= @user.first_name %>'s Locations</small></h1>
@@ -7,7 +7,7 @@
 <%= form_tag("new", :method => "get", :class => "well form-inline") do %>
   <p><strong>Simply specifiy location's name to add it.</strong></p>
   <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
-  <%= button_tag '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add'.html_safe, :class => "btn btn-success" %>
+  <%= button_tag '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add'.html_safe, :class => "btn btn-crud" %>
 <% end %>
 
 <% if @locations.empty? %>
@@ -34,13 +34,13 @@
           <td><%= location.latitude %></td>
           <td><%= location.longitude %></td>
           <td>
-            <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Galleries' %>
-            <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Logbook' %>
-            <%= link_to '<i class="icon-comment icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-info', :rel => 'tooltip', :title => 'Manage Comments' %>
+            <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-alt', :rel => 'tooltip', :title => 'Manage Galleries' %>
+            <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-alt', :rel => 'tooltip', :title => 'Manage Logbook' %>
+            <%= link_to '<i class="icon-comment icon-white"></i>'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-alt', :rel => 'tooltip', :title => 'Manage Comments' %>
           </td>
           <td>
-            <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-warning' %>
-            <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, user_location_path(current_user, location), :method => :delete, :class => 'btn btn-mini btn-danger', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+            <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, manage_user_locations_path(@user), :class => 'btn btn-mini btn-crud' %>
+            <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, user_location_path(current_user, location), :method => :delete, :class => 'btn btn-mini btn-crud', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
           </td>
         </tr>
       <% end %>
