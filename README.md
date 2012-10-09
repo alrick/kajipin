@@ -1,3 +1,3 @@
-Sloppin
+Kajipin
 ===========
-Socialrails is a project of social network for travelers based on Rails.
+© Curly Brackets - Curlybrackets.ch
