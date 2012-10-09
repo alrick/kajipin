@@ -1,11 +1,11 @@
-<div class="page-header profile-page">
+<div class="page-header global-bigger">
   <div class="row">
-    <div class="span3 user-show-photo">
-      <%= image_tag gravatar_url(@user, 165) %>
+    <div class="span3">
+      <%= image_tag gravatar_url(@user, 165), :id => 'user-avatar' %>
     </div>
     <div class="span3">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <div class="user-show-header-ginfos">
+      <div id="user-generalinfos">
         <% if(!@user.age.nil?) %>
           <p><%= @user.age %> years old</p>
         <% end %>
@@ -14,16 +14,16 @@
     </div>
     <div class="span3">
       <p>
-        <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_locations_path(@user), :class => 'btn btn-large btn-map user-buttons-unify' %>
+        <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_pins_path(@user), :class => 'btn btn-large btn-map user-buttonsunify' %>
       </p>
       <% if current_user != @user %>
         <% if !current_user.isWatcher(@user.id) %>
           <p>
-            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => @user), :method => :post, :class => 'btn btn-large btn-social user-buttons-unify' %>
+            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => @user), :method => :post, :class => 'btn btn-large btn-social user-buttonsunify' %>
           </p>
         <% else %>
           <p>
-            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Watcher'.html_safe, '#', :class => 'btn btn-large btn-social user-buttons-unify disabled' %>
+            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Watcher'.html_safe, '#', :class => 'btn btn-large btn-social user-buttonsunify disabled' %>
           </p>
         <% end %>
       <% end %>
@@ -31,13 +31,13 @@
     <div class="span3">
       <div>
         <h2>Friends&nbsp;<%= image_tag("milky/48/81.png", :size => "16x16") %></h2>
-        <p><b><%= @user.number_watchers %></b> Watchers</p>
-        <p><b><%= @user.number_sharers %></b> Sharers</p>
+        <p>Watchers <b><%= @user.number_watchers %></b></p>
+        <p>Sharers <b><%= @user.number_sharers %></b></p>
       </div>
       <div style="margin-top: 20px">
         <h2>Travel&nbsp;<%= image_tag("milky/48/81.png", :size => "16x16") %></h2>
-        <p><b><%= @user.number_locations %></b> Locations</p>
-        <p><b><%= @user.number_countries %></b> Countries</p>
+        <p>Locations <b><%= @user.number_locations %></b></p>
+        <p>Countries <b><%= @user.number_countries %></b></p>
         <p></p>
       </div>
     </div>

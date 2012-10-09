@@ -27,14 +27,14 @@
           <td><%= geo["toponymName"] %></td>
           <td><%= image_tag("flags/"+geo["countryCode"].to_s.downcase+".png") %>&nbsp;<%= geo["countryName"] %></td>
           <td><%= geo["adminName1"] %></td>
-          <td><%= geo["lat"] %></td>
-          <td><%= geo["lng"] %></td>
+          <td><%= '%.3f' % geo["lat"] %>&deg;</td>
+          <td><%= '%.3f' % geo["lng"] %>&deg;</td>
           <td><%= geo["fcodeName"].to_s.capitalize %></td>
-          <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this'.html_safe, user_locations_path(current_user, :title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-crud' %></td>
+          <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this'.html_safe, locations_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-crud location-addthis' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
 
-<%= link_to "Cancel", manage_user_locations_path(current_user), :class => 'btn' %>
+<%= link_to "Cancel", locations_path, :class => 'btn' %>

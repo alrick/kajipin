@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span8 offset2">
+  <div class="span6 offset3">
     <% if @comments.empty? %>
       <p class="lead">No comment yet</p>
     <% else %>
@@ -13,11 +13,11 @@
       <% end %>
     <% end %>
   </div>
-  <div class="span6 offset3 location-add-comment">
+  <div class="span6 offset3 pins-addcomment">
     <%= simple_form_for @comment do |c| %>
-      <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' }, :required => false %>
+      <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' } %>
       <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-      <%= c.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
+      <%= c.input :location_id, :as => :hidden, :input_html => { :value => @pin.id } %>
       <%= c.button :submit, 'Comment', :class => 'btn btn-social' %>
     <% end %>
   </div>

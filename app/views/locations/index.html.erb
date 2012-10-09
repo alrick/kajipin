@@ -1,46 +1,49 @@
-<% content_for :page_title do %><%= @user.first_name %>'s Worldmap<% end %>
+<% content_for :page_title do %>Manage <%= @user.first_name %>'s Locations<% end %>
 
-<script type="text/javascript">
+<div class="page-header">
+  <h1>Manage Locations <small><%= @user.first_name %>'s Locations</small></h1>
+</div>
 
-  var map = new L.Map('map', {
-    maxZoom: 18,
-    minZoom: 3
-  });
+<%= form_tag('locations/new', :method => "get", :class => "well form-inline") do %>
+  <p><strong>Simply specify location's name to add it.</strong></p>
+  <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
+  <%= button_tag '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add'.html_safe, :class => "btn btn-crud" %>
+<% end %>
 
-  var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/998/256/{z}/{x}/{y}.png',
-    cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-    cloudmade = new L.TileLayer(cloudmadeUrl);
-
-    mapbox = new L.TileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png');
-
-  // map.addLayer(cloudmade);
-  map.addLayer(mapbox);
-  map.fitWorld();
-
-  var marker, markerLocation, i;
-  if(gon) {
-
-    for(i=0 ; i<gon.locations.length ; i++) {
-      markerLocation = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
-      marker = new L.Marker(markerLocation);
-      map.addLayer(marker);
-      marker.bindPopup("<b>"+gon.locations[i].title+'</b><br /><a href="locations/'+gon.locations[i].id+'">Open</a>');
-
-      // center with location
-      if(gon.locations[i].id == gon.highloc) {
-        var center = new L.LatLng(gon.locations[i].latitude, gon.locations[i].longitude);
-        map.setView(center, 10, false);
-        marker.openPopup(); 
-      }
-    }
-
-    // define bounds for countries
-    if(gon.south != null) {
-      var southWest = new L.LatLng(gon.south, gon.west),
-        northEast = new L.LatLng(gon.north, gon.east),
-        bounds = new L.LatLngBounds(southWest, northEast);
-      map.fitBounds(bounds);
-    }
-  }
-
-</script>
+<% if @locations.empty? %>
+  <p>No location added.</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Subtitle</th>
+        <th>Country</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Tools</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.title %></td>
+          <td><%= location.subtitle %></td>
+          <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
+          <td><%= location.short_lat %>&deg;</td>
+          <td><%= location.short_lon %>&deg;</td>
+          <td>
+            <%= link_to '<i class="icon-camera icon-white"></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Galleries' %>
+            <%= link_to '<i class="icon-book icon-white"></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Logbook' %>
+            <%= link_to '<i class="icon-comment icon-white"></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Comments' %>
+          </td>
+          <td>
+            <%= link_to '<i class="icon-pencil icon-white"></i>&nbsp;&nbsp;Edit'.html_safe, locations_path, :class => 'btn btn-mini btn-crud' %>
+            <%= link_to '<i class="icon-remove icon-white"></i>&nbsp;&nbsp;Remove'.html_safe, location_path(location), :method => :delete, :class => 'btn btn-mini btn-crud', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

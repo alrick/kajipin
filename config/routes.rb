@@ -11,8 +11,6 @@ Socialrails::Application.routes.draw do
 
   resources :logpages
 
-  resources :categories
-
   resources :logbooks
 
   resources :accesstokens
@@ -21,12 +19,10 @@ Socialrails::Application.routes.draw do
 
   resources :comments
 
+  resources :locations
+
   resources :users do
-    resources :locations do
-      collection do
-        get 'manage'
-      end
-    end
+    resources :pins
   end
 
   authenticated :user do

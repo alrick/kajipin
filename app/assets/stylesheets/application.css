@@ -10,14 +10,15 @@
  *
  *= require_self
  *= require leaflet/leaflet
+ *= require mapbox/mapbox
  *= require bootstrap_and_overrides
  *= require_tree .
  */
 
-.bigger {
+/* Simple bigger class for the whole app */
+.global-bigger {
   font-size: 1.8em !important;
 }
-
 
 .map-container {
   background: #1A1A1A !important;
@@ -25,19 +26,19 @@
   height: 100% !important;
 }
 
-
-.user-menu-avatar {
+/* Style for the avatar of the main menu */
+#global-menufirst img {
   float: left;
   margin-right: 9px
 }
 
-
-.user-menu-name {
+/* Style for the username of the main menu */
+#global-menufirst strong {
   font-size: 14px;
 }
 
-
-.user-menu-viewprofile {
+/* Style for the View profile info of the main menu */
+#global-menufirst p {
   font-size: 11px;
   height: 7px;
 }
@@ -69,4 +70,7 @@
 }
 .page-header {
   border-bottom: 1px solid #403730 !important;
+}
+blockquote {
+  border-left: 5px solid #887D75 !important;
 }

@@ -1,31 +1,19 @@
-.profile-page p {
-  font-size: 1.8em;
-}
-
-
-.user-profile-tabs {
+/* Table for user's location is a bit bigger */
+.user-locationstable {
   font-size: 1.6em;
 }
 
-
-.user-profile-table {
-  font-size: 1.6em;
-}
-
-
-.user-show-header-ginfos {
+/* Styling the general infos of user */
+#user-generalinfos {
   margin-top: 10px;
 }
-
-
-.user-show-header-ginfos p {
+#user-generalinfos p {
   margin: 0px;
   padding-bottom : 7px;
 }
 
-
-.user-show-photo img {
-
+/* Cool frame styling for the user's avatar */
+#user-avatar {
   /* Rotation */
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
@@ -46,10 +34,14 @@
 
   /* Spacing */
   margin-right: 30px;
-
 }
 
-
-.user-buttons-unify {
+/* Unify buttons width, more attractive.. */
+.user-buttonsunify {
   width: 100px;
+}
+
+/* Unify tools buttons width */
+#user-toolsunify a {
+  min-width: 31px;
 }

@@ -6,13 +6,13 @@
       <tbody>
         <% current_user.inverse_friendships.each do |sharership| %>
           <tr>
-            <td class="friendships-table-avatar"><%= image_tag gravatar_url(sharership.user, 30), :class => 'user-menu-avatar' %></td>
-            <td class="friendships-table-name">
+            <td class="friendships-tableavatar"><%= image_tag gravatar_url(sharership.user, 30) %></td>
+            <td class="friendships-tablename">
               <%= link_to sharership.user.first_name+' '+sharership.user.last_name, user_path(sharership.user) %>
             </td>
             <td>
               <% if !current_user.isWatcher(sharership.user.id) %>
-                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-mini btn-social user-buttons-unify' %>
+                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-mini btn-social' %>
               <% end %>
             </td>
           </tr>

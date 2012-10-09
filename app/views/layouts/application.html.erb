@@ -6,15 +6,11 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand bigger" href="#"><%= Appetizer.appname %> <span class="betasig">Beta</span></a>
+          <%= link_to (Appetizer.appname+' <span class="betasig">Beta</span>').html_safe, root_path, :class => 'brand global-bigger' %>
           <div class="nav">
             <li class="divider-vertical"></li>
           </div>
-          <!-- <div class="nav">
-            <%= link_to (Appetizer.appname+' <span class="betasig">Beta</span>').html_safe, root_path, :class => 'btn btn-large title-btn' %>
-          </div> -->
           <%= render "shared/not_logged_menu" %>
-          <%= render "shared/tools_menu" %>
           <%= render "shared/user_menu" %>
           <%= render "shared/search_bar" %>
         </div>

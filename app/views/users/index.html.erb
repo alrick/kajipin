@@ -12,7 +12,7 @@
           </td>
           <td>
             <% if !current_user.isWatcher(user.id) %>
-              <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => user), :method => :post, :class => 'btn btn-warning btn-mini user-buttons-unify' %>
+              <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => user), :method => :post, :class => 'btn btn-warning btn-mini' %>
             <% end %>
           </td>
         </tr>

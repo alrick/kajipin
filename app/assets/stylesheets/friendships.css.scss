@@ -1,15 +1,19 @@
+/* Tables for watchers and sharers */
 .friendships-table {
   font-size: 1.4em;
 }
 
+/* Align middle all row in table */
 .friendships-table td {
   vertical-align: middle;
 }
 
-.friendships-table-avatar {
+/* Set width of avatar column, avatar is 30x30 */
+.friendships-tableavatar {
   width: 40px;
 }
 
-.friendships-table-name {
+/* Set width of the user's name */
+.friendships-tablename {
   width: 70%;
 }
