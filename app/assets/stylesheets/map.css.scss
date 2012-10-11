@@ -1,0 +1,80 @@
+/* Main container for the map pages */
+#map {
+  position: absolute;
+  top: 53px;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Information block about user */
+#map-info {
+  background: #FFF;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 200px;
+  margin-left: -80px;
+  z-index: 1000;
+  font-size: 20px !important;
+  text-align: center;
+  padding: 10px 0;
+  background: #FFF;
+  color: #3C4E5A;
+  display: block;
+  border: 1px solid #BBB;
+  opacity: 0.7;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+
+/* Element to show full map or countries */
+.map-nav {
+  z-index: 2;
+  font-size: 16px;
+  text-align: center;
+  padding: 4px 0px;
+  width: 56px;
+  height: 20px;
+  background: #FFF;
+  position: absolute;
+  left: 10px;
+  top: 9px;
+  display: block;
+  color: #3C4E5A;
+  border: 1px solid #BBB;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+.map-nav:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+#map-world { top: 98px; }
+#map-markers { top: 129px; }
+#map-countries { top: 160px; }
+
+/* Element that display the list of all countries */
+#map-countrieslist {
+  background: #FFF;
+  z-index: 3;
+  width: 180px;
+  height: 270px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  top: 160px;
+  left: 45px;
+  border: 1px solid #BBB;
+  opacity: 0.8;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  display: none;
+}
+#map-countrieslist li {
+  padding: 5px 5px 5px 7px;
+}
+#map-countrieslist li:hover {
+  background: #7196A3;
+  color: #FFF;
+  cursor: pointer;
+}

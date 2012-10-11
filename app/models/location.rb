@@ -2,6 +2,7 @@ class Location < ActiveRecord::Base
   attr_accessible :title, :subtitle, :user_id, :latitude, :longitude
 
   belongs_to :user
+  belongs_to :locategory
   has_many :comments, dependent: :destroy
   has_one :logbook, dependent: :destroy
   has_many :galleries, dependent: :destroy
@@ -29,5 +30,17 @@ class Location < ActiveRecord::Base
 
   def comments_count
     comments.count.to_s
+  end
+
+  def marker_size
+    self.locategory.marker_size
+  end
+
+  def marker_symbol
+    self.locategory.marker_symbol
+  end
+
+  def marker_color
+    self.locategory.marker_color
   end
 end

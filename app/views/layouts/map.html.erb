@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html style="height: 100%">
-<%= render "shared/head" %>
-<body style="height: 100%">
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="/"><i class="icon-map-marker"></i> <%= Appetizer.appname %></a>
-          <%= render "shared/map_extra_menu"%>
-          <%= render "shared/not_logged_menu" %>
-          <%= render "shared/tools_menu" %>
-          <%= render "shared/user_menu" %>
-          <%= render "shared/search_bar" %>
-      </div>
-    </div>
-  </div>
+<%= render "layouts/global_top" %>
 
-  <div class="map-container">
-    <%= render "shared/show_flash" %>
-    <div id="map" style="width: 100%; height: 92%; margin-top: -16px;"></div>
-    <%= yield %>
-  </div>
-  
-</body>
-</html>
+  <%= yield %>
+
+<%= render "layouts/global_bottom" %>

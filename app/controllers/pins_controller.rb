@@ -1,12 +1,14 @@
 require 'nokogiri'
 
 class PinsController < GeoController
+  layout "map", :only => [:index]
   before_filter :get_user
   before_filter :get_countries, :only => [:index]
 
   def index
     @pins = @user.locations
 
+    get_countries
     init_pins
     focus_pin
     focus_bounds
@@ -38,7 +40,9 @@ class PinsController < GeoController
   # Focus on a pin if set
   def focus_pin
     if !params[:p].nil?
-      gon.p = params[:p]
+      p = Location.find(params[:p])
+      gon.plat = p.latitude
+      gon.plon = p.longitude
     end
   end
 

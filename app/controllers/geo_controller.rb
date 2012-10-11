@@ -1,6 +1,8 @@
 require 'nokogiri'
 
 class GeoController < ApplicationController
+  
+  # Get a list of all countries from geonames
   def get_countries
     doc = Nokogiri::XML(File.open("app/data/country_info.xml"))
 

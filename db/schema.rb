@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724065650) do
+ActiveRecord::Schema.define(:version => 20121010093637) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20120724065650) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "locategories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "marker_size"
+    t.string   "marker_symbol"
+    t.string   "marker_color"
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "title"
     t.string   "subtitle"
@@ -64,8 +74,9 @@ ActiveRecord::Schema.define(:version => 20120724065650) do
     t.string   "country_name"
     t.string   "country_code"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "locategory_id"
   end
 
   create_table "logbooks", :force => true do |t|

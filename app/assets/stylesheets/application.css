@@ -20,12 +20,6 @@
   font-size: 1.8em !important;
 }
 
-.map-container {
-  background: #1A1A1A !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
 /* Style for the avatar of the main menu */
 #global-menufirst img {
   float: left;
