@@ -1,6 +1,6 @@
 jQuery ->
   # Check that we're on correct page
-  if ($("#map").length > 0)
+  if ($('#map').length > 0)
 
     # Map init
     map = mapbox.map('map')
@@ -16,18 +16,30 @@ jQuery ->
     map.ui.hash.add()
     map.setZoomRange(3, 17)
 
-    # Create an empty markers layer
-    markerLayer = mapbox.markers.layer()
+    # Create all empty markers layer
+    pinsLayer = mapbox.markers.layer()
+    bigcityLayer = mapbox.markers.layer()
+    smallcityLayer = mapbox.markers.layer()
+    pointofinterestLayer = mapbox.markers.layer()
 
-    # Add all location of the user
-    markerLayer.features(gon.pins)
+    # Add all location of the user into the right layer
+    pinsLayer.features(gon.pins)
+    bigcityLayer.features(gon.bigcity)
+    smallcityLayer.features(gon.smallcity)
+    pointofinterestLayer.features(gon.pointofinterest)
 
-    # Add interaction to this marker layer (title and description)
-    mapbox.markers.interaction(markerLayer)
-    map.addLayer(markerLayer)
+    # Add interaction to this marker layers (title and description)
+    mapbox.markers.interaction(bigcityLayer)
+    mapbox.markers.interaction(smallcityLayer)
+    mapbox.markers.interaction(pointofinterestLayer)
+
+    # Add layers to the map
+    map.addLayer(bigcityLayer)
+    map.addLayer(smallcityLayer)
+    map.addLayer(pointofinterestLayer)
 
     # By default, the map extent markers
-    map.extent(markerLayer.extent())
+    map.extent(pinsLayer.extent())
 
     # Set intent if location selected
     if (gon.plat && gon.plon)
@@ -40,7 +52,7 @@ jQuery ->
 
     # Cinch the map display to show all markers
     $('#map-markers').click ->
-      map.extent(markerLayer.extent())
+      map.extent(pinsLayer.extent())
 
     # Set countries bounds func
     $('.map-countryitem').click ->
@@ -59,3 +71,57 @@ jQuery ->
     # Stop hiding if in the list
     $('#map-countrieslist').click (event) ->
         event.stopPropagation()
+
+    # Display fit-world contextual
+    $('#map-world').hover \
+      (-> $('#map-fitworldcontext').css("display", "block")), \
+      (-> $('#map-fitworldcontext').css("display", "none"))
+
+    # Display markers contextual
+    $('#map-markers').hover \
+      (-> $('#map-markerscontext').css("display", "block")), \
+      (-> $('#map-markerscontext').css("display", "none"))
+
+    # Display countries contextual
+    $('#map-countries').hover \
+      (-> $('#map-countriescontext').css("display", "block")), \
+      (-> $('#map-countriescontext').css("display", "none"))
+
+    # Show and hide bigcity pins
+    $('#map-bigcity').click ->
+      if $(this).children().hasClass('icon-eye-open')
+        map.removeLayer(bigcityLayer)
+      else
+        map.addLayer(bigcityLayer)
+      $(this).children().toggleClass('icon-eye-open icon-eye-close')
+
+    # Show and hide smallcity pins
+    $('#map-smallcity').click ->
+      if $(this).children().hasClass('icon-eye-open')
+        map.removeLayer(smallcityLayer)
+      else
+        map.addLayer(smallcityLayer)
+      $(this).children().toggleClass('icon-eye-open icon-eye-close')
+
+    # Show and hide bigcity pins
+    $('#map-pointofinterest').click ->
+      if $(this).children().hasClass('icon-eye-open')
+        map.removeLayer(pointofinterestLayer)
+      else
+        map.addLayer(pointofinterestLayer)
+      $(this).children().toggleClass('icon-eye-open icon-eye-close')
+
+    # Display bigcity contextual
+    $('#map-bigcity').hover \
+      (-> $('#map-bigcitycontext').css("display", "block")), \
+      (-> $('#map-bigcitycontext').css("display", "none"))
+
+    # Display smallcity contextual
+    $('#map-smallcity').hover \
+      (-> $('#map-smallcitycontext').css("display", "block")), \
+      (-> $('#map-smallcitycontext').css("display", "none"))
+
+    # Display pointofinterest contextual
+    $('#map-pointofinterest').hover \
+      (-> $('#map-pointofinterestcontext').css("display", "block")), \
+      (-> $('#map-pointofinterestcontext').css("display", "none"))

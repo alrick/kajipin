@@ -9,6 +9,7 @@ class LocationsController < GeoController
   end
 
   def new
+    @locategories = Locategory.order(:id)
     @location = Location.new
 
     if params[:q].nil?
@@ -21,6 +22,22 @@ class LocationsController < GeoController
     @geos = JSON.parse(open(url).read)
   end
 
+  def edit
+    @locategories = Locategory.order(:id)
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+
+    if @location.update_attributes(params[:location])
+      flash[:notice] = 'Location was successfully updated.'
+      redirect_to locations_url, notice: '<strong>Success!</strong> Location was correctly modified.'
+    else
+      render :action => "edit"
+    end
+  end
+
   def create
     location = Location.new
     location.user_id = current_user.id
@@ -29,6 +46,7 @@ class LocationsController < GeoController
     location.longitude = params[:longitude]
     location.country_name = params[:country_name]
     location.country_code = params[:country_code]
+    location.locategory_id = params[:locategory]
 
     if location.save
       redirect_to locations_url, notice: '<strong>Well done!</strong> Location was successfully added.'

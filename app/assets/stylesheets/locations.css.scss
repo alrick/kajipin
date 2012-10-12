@@ -2,3 +2,14 @@
 .location-addthis {
   width: 60px
 }
+
+/* Align Geonames ccby license to right */
+#location-ccby {
+  text-align: right;
+}
+
+/* Unify marker buttons width */
+#location-locategory button {
+  width: 200px;
+  font-size: 18px;
+}

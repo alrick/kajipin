@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010093637) do
+ActiveRecord::Schema.define(:version => 20121012092743) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20121010093637) do
     t.string   "marker_size"
     t.string   "marker_symbol"
     t.string   "marker_color"
+    t.boolean  "default"
+    t.integer  "hook"
   end
 
   create_table "locations", :force => true do |t|

@@ -1,18 +1,20 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Worldmap<% end %>
 
+<!-- Map main element -->
 <div id="map"></div>
 
-<div id="map-world" class="map-nav">
+<!-- Left UI -->
+<div id="map-world" class="map-nav map-navleft">
   <i class="icon-globe"></i>
 </div>
-
-<div id="map-markers" class="map-nav">
+<div id="map-markers" class="map-nav map-navleft">
   <i class="icon-map-marker"></i>
 </div>
-
-<div id="map-countries" class="map-nav">
+<div id="map-countries" class="map-nav map-navleft">
   <i class="icon-list-alt"></i>
 </div>
+
+<!-- Left UI countries -->
 <ul id="map-countrieslist">
   <% @countries.each do |country| %>
     <li class="map-countryitem" data-north="<%= country["north"]%>" data-east="<%= country["east"]%>" data-south="<%= country["south"]%>" data-west="<%= country["west"]%>">
@@ -20,6 +22,25 @@
     </li>
   <% end %>
 </ul>
+<!-- Left UI contextual -->
+<div id="map-fitworldcontext" class="map-context map-leftcontext">Fit World</div>
+<div id="map-markerscontext" class="map-context map-leftcontext">Fit Pins</div>
+<div id="map-countriescontext" class="map-context map-leftcontext">Fit Country</div>
+
+<!-- Right UI -->
+<div id="map-bigcity" class="map-nav map-navright">
+  <i class="icon-eye-open"></i>
+</div>
+<div id="map-smallcity" class="map-nav map-navright">
+  <i class="icon-eye-open"></i>
+</div>
+<div id="map-pointofinterest" class="map-nav map-navright">
+  <i class="icon-eye-open"></i>
+</div>
+<!-- Left UI contextual -->
+<div id="map-bigcitycontext" class="map-context map-rightcontext">Show/hide "Big city" Pins</div>
+<div id="map-smallcitycontext" class="map-context map-rightcontext">Show/hide "Small city" Pins</div>
+<div id="map-pointofinterestcontext" class="map-context map-rightcontext">Show/hide "Point of interest" Pins</div>
 
 <div id="map-info">
   <%= link_to @user.first_name, user_path(@user) %>'s Worldmap

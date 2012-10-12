@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :title, :subtitle, :user_id, :latitude, :longitude
+  attr_accessible :title, :subtitle, :user_id, :latitude, :longitude, :locategory_id
 
   belongs_to :user
   belongs_to :locategory
@@ -10,7 +10,7 @@ class Location < ActiveRecord::Base
   validates :title, :country_name, :country_code, :presence => true
   validates :latitude, :longitude, :numericality => true
   validates :subtitle, :length => { :in => 2..100 }, :allow_blank => true
-  validates :user_id, :numericality => { :greater_than => 0}
+  validates :user_id, :locategory_id, :numericality => { :greater_than => 0}
 
   def short_lat
     '%.3f' % latitude

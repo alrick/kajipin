@@ -8,7 +8,3 @@ end
 node :properties do |p|
   { :title => p.title, :description => p.subtitle, :country_name => p.country_name, :country_code => p.country_code, 'marker-symbol' => p.marker_symbol, 'marker-color' => p.marker_color, 'marker-size' => p.marker_size }
 end
-
-glue @post do
-  attributes :id => :post_id, :name => :post_name
-end
