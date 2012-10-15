@@ -12,6 +12,10 @@ class Location < ActiveRecord::Base
   validates :subtitle, :length => { :in => 2..100 }, :allow_blank => true
   validates :user_id, :locategory_id, :numericality => { :greater_than => 0}
 
+  scope :bigcity, joins(:locategory).where("locategories.hook=1")
+  scope :smallcity, joins(:locategory).where("locategories.hook=2")
+  scope :pointofinterest, joins(:locategory).where("locategories.hook=3")
+
   def short_lat
     '%.3f' % latitude
   end
@@ -43,4 +47,5 @@ class Location < ActiveRecord::Base
   def marker_color
     self.locategory.marker_color
   end
+
 end

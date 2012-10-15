@@ -3,28 +3,51 @@
 <%= render "users/show/header" %>
 
 <h2><i class="icon-list-alt"></i>&nbsp;&nbsp;<%= @user.first_name %>'s Locations</h2>
-<table class="table table-striped user-locationstable">
-  <tbody>
-    <% if @user.locations.empty? %>
-      <p>No location added.</p>
-    <% else %>
-      <% @user.locations.each do |location| %>
-        <tr>
-          <td>
-            <strong><%= location.title %></strong>
-          </td>
-          <td>
-            <%= location.subtitle %>
-          </td>
-          <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
-          <td id="user-toolsunify">
-            <%= link_to (location.galleries_count+'&nbsp;<i class="icon-camera"></i>').html_safe, user_pin_path(@user, location), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Galleries' %>
-            <%= link_to (location.logpages_count+'&nbsp;<i class="icon-book"></i>').html_safe, user_pin_path(@user, location, :t => 'l'), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Logpages' %>
-            <%= link_to (location.comments_count+'&nbsp;<i class="icon-comment"></i>').html_safe, user_pin_path(@user, location, :t => 'c'), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Comments' %>
-            <%= link_to '<i class="icon-map-marker icon-white"></i>'.html_safe, user_pins_path(@user, :p => location.id), :class => 'btn btn-mini btn-map', :rel => 'tooltip', :title => 'Locate' %>
-          </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul id ="pins-toolstabs" class="nav nav-tabs">
+    <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(@big_cities.first.locategory.marker_path, :width => "15") %> Big City (<%= @big_cities.count %>)</b></a></li>
+    <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(@small_cities.first.locategory.marker_path, :width => "15") %> Small City (<%= @small_cities.count %>)</b></a></li>
+    <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(@points_of_interest.first.locategory.marker_path, :width => "15") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="bigcity">
+      <table class="table table-striped user-locationstable">
+        <tbody>
+          <% if @big_cities.empty? %>
+            <p>No location added.</p>
+          <% else %>
+            <% @big_cities.each do |location| %>
+              <%= render "users/show/location", :location => location %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="smallcity">
+      <table class="table table-striped user-locationstable">
+        <tbody>
+          <% if @small_cities.empty? %>
+            <p>No location added.</p>
+          <% else %>
+            <% @small_cities.each do |location| %>
+              <%= render "users/show/location", :location => location %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="pointofinterest">
+      <table class="table table-striped user-locationstable">
+        <tbody>
+          <% if @points_of_interest.empty? %>
+            <p>No location added.</p>
+          <% else %>
+            <% @points_of_interest.each do |location| %>
+              <%= render "users/show/location", :location => location %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
