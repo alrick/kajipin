@@ -72,21 +72,6 @@ jQuery ->
     $('#map-countrieslist').click (event) ->
         event.stopPropagation()
 
-    # Display fit-world contextual
-    $('#map-world').hover \
-      (-> $('#map-fitworldcontext').css("display", "block")), \
-      (-> $('#map-fitworldcontext').css("display", "none"))
-
-    # Display markers contextual
-    $('#map-markers').hover \
-      (-> $('#map-markerscontext').css("display", "block")), \
-      (-> $('#map-markerscontext').css("display", "none"))
-
-    # Display countries contextual
-    $('#map-countries').hover \
-      (-> $('#map-countriescontext').css("display", "block")), \
-      (-> $('#map-countriescontext').css("display", "none"))
-
     # Show and hide bigcity pins
     $('#map-bigcity').click ->
       if $(this).children().hasClass('icon-eye-open')
@@ -110,18 +95,3 @@ jQuery ->
       else
         map.addLayer(pointofinterestLayer)
       $(this).children().toggleClass('icon-eye-open icon-eye-close')
-
-    # Display bigcity contextual
-    $('#map-bigcity').hover \
-      (-> $('#map-bigcitycontext').css("display", "block")), \
-      (-> $('#map-bigcitycontext').css("display", "none"))
-
-    # Display smallcity contextual
-    $('#map-smallcity').hover \
-      (-> $('#map-smallcitycontext').css("display", "block")), \
-      (-> $('#map-smallcitycontext').css("display", "none"))
-
-    # Display pointofinterest contextual
-    $('#map-pointofinterest').hover \
-      (-> $('#map-pointofinterestcontext').css("display", "block")), \
-      (-> $('#map-pointofinterestcontext').css("display", "none"))
