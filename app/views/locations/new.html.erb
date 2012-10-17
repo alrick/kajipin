@@ -1,7 +1,7 @@
-<% content_for :page_title do %>Add Location<% end %>
+<% content_for :page_title do %>Add Pin<% end %>
 
 <div class="page-header">
-  <h1>Add location <small>Nearly done</small></h1>
+  <h1>Add Pin <small>Nearly done</small></h1>
 </div>
 
 <% if @geos["totalResultsCount"] == 0 %>
@@ -45,7 +45,7 @@
               <td><%= '%.3f' % geo["lat"] %>&deg;</td>
               <td><%= '%.3f' % geo["lng"] %>&deg;</td>
               <td><%= geo["fcodeName"].to_s.capitalize %></td>
-              <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this'.html_safe, locations_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-crud location-addthis' %></td>
+              <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this'.html_safe, locations_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-map location-addthis' %></td>
             </tr>
           <% end %>
         </tbody>

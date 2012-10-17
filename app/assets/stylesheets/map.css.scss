@@ -3,6 +3,8 @@
 
 /* Information block about user */
 #map-info {
+  font-weight: normal;
+  line-height: 20px;
   background: #FFF;
   position: absolute;
   bottom: 30px;
@@ -77,3 +79,9 @@
 }
 #map-countrieslist li { padding: 5px 5px 5px 7px; }
 #map-countrieslist li:hover { background: #7196A3; color: #FFF; cursor: pointer; }
+
+/* Tooltips of pins */
+.map-tooltiptitle { font-size: 24px; line-height: 10px; color: #403730; }
+.map-tooltipcountry { font-size: 14px; line-height: 10px; color: #403730; }
+.map-tooltipsubtitle { font-size: 12px; line-height: 10px; color: #403730; font-style: italic; padding-top: 5px; }
+.map-tooltipbtn { width: 31px; margin-bottom: 5px; font-size: 12px; }

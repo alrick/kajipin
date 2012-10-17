@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012092743) do
+ActiveRecord::Schema.define(:version => 20121016120656) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20121012092743) do
 
   create_table "locations", :force => true do |t|
     t.string   "title"
-    t.string   "subtitle"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "country_name"

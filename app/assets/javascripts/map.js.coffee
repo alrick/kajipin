@@ -16,27 +16,41 @@ jQuery ->
     map.ui.hash.add()
     map.setZoomRange(3, 17)
 
-    # Create all empty markers layer
+    # Create all empty markers layer & group vars
     pinsLayer = mapbox.markers.layer()
-    bigcityLayer = mapbox.markers.layer()
-    smallcityLayer = mapbox.markers.layer()
-    pointofinterestLayer = mapbox.markers.layer()
+    bigcityMarkers = true
+    smallcityMarkers = true
+    pointofinterestMarkers = true
+    #bigcityLayer = mapbox.markers.layer()
+    #smallcityLayer = mapbox.markers.layer()
+    #pointofinterestLayer = mapbox.markers.layer()
 
     # Add all location of the user into the right layer
     pinsLayer.features(gon.pins)
-    bigcityLayer.features(gon.bigcity)
-    smallcityLayer.features(gon.smallcity)
-    pointofinterestLayer.features(gon.pointofinterest)
+    #bigcityLayer.features(gon.bigcity)
+    #smallcityLayer.features(gon.smallcity)
+    #pointofinterestLayer.features(gon.pointofinterest)
 
     # Add interaction to this marker layers (title and description)
-    mapbox.markers.interaction(bigcityLayer)
-    mapbox.markers.interaction(smallcityLayer)
-    mapbox.markers.interaction(pointofinterestLayer)
+    interaction = mapbox.markers.interaction(pinsLayer)
+    #mapbox.markers.interaction(bigcityLayer)
+    #mapbox.markers.interaction(smallcityLayer)
+    #mapbox.markers.interaction(pointofinterestLayer)
 
     # Add layers to the map
-    map.addLayer(bigcityLayer)
-    map.addLayer(smallcityLayer)
-    map.addLayer(pointofinterestLayer)
+    map.addLayer(pinsLayer)
+    #map.addLayer(bigcityLayer)
+    #map.addLayer(smallcityLayer)
+    #map.addLayer(pointofinterestLayer)
+
+    # Define formater for pins tooltips
+    interaction.formatter (feature) ->
+      tooltipTitle = "<h2 class=\"map-tooltiptitle\">" + feature.properties.title + "</h2>"
+      tooltipCountry = "<h3 class=\"map-tooltipcountry\">" + feature.properties.country_name + "</h3>"
+      tooltipGalleries = "<a href=\"pins/" + feature.id + "\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
+      tooltipLogbook = "<a href=\"pins/" + feature.id + "?t=l\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
+      tooltipComments = "<a href=\"pins/" + feature.id + "?t=c\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
+      o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
 
     # By default, the map extent markers
     map.extent(pinsLayer.extent())
@@ -74,24 +88,46 @@ jQuery ->
 
     # Show and hide bigcity pins
     $('#map-bigcity').click ->
-      if $(this).children().hasClass('icon-eye-open')
-        map.removeLayer(bigcityLayer)
-      else
-        map.addLayer(bigcityLayer)
+      #if $(this).children().hasClass('icon-eye-open')
+      bigcityMarkers = !bigcityMarkers
       $(this).children().toggleClass('icon-eye-open icon-eye-close')
+      pinsfilter()
 
     # Show and hide smallcity pins
     $('#map-smallcity').click ->
-      if $(this).children().hasClass('icon-eye-open')
-        map.removeLayer(smallcityLayer)
-      else
-        map.addLayer(smallcityLayer)
+      smallcityMarkers = !smallcityMarkers
       $(this).children().toggleClass('icon-eye-open icon-eye-close')
+      pinsfilter()
 
     # Show and hide bigcity pins
     $('#map-pointofinterest').click ->
-      if $(this).children().hasClass('icon-eye-open')
-        map.removeLayer(pointofinterestLayer)
-      else
-        map.addLayer(pointofinterestLayer)
+      pointofinterestMarkers = !pointofinterestMarkers
       $(this).children().toggleClass('icon-eye-open icon-eye-close')
+      pinsfilter()
+
+    # Filter pins
+    pinsfilter = () ->
+      if (bigcityMarkers && smallcityMarkers && pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          true
+      else if (bigcityMarkers && smallcityMarkers && !pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 1) or (f.properties.locategory_hook is 2)
+      else if (bigcityMarkers && !smallcityMarkers && pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 1) or (f.properties.locategory_hook is 3)
+      else if (bigcityMarkers && !smallcityMarkers && !pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 1)
+      else if (!bigcityMarkers && smallcityMarkers && pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 2) or (f.properties.locategory_hook is 3)
+      else if (!bigcityMarkers && smallcityMarkers && !pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 2)
+      else if (!bigcityMarkers && !smallcityMarkers && pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          (f.properties.locategory_hook is 3)
+      else if (!bigcityMarkers && !smallcityMarkers && !pointofinterestMarkers)
+        pinsLayer.filter (f) ->
+          false

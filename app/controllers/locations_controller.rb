@@ -34,7 +34,7 @@ class LocationsController < GeoController
       flash[:notice] = 'Location was successfully updated.'
       redirect_to locations_url, notice: '<strong>Success!</strong> Location was correctly modified.'
     else
-      render :action => "edit"
+      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong.'
     end
   end
 

@@ -2,13 +2,10 @@
   <td>
     <strong><%= location.title %></strong>
   </td>
-  <td>
-    <%= location.subtitle %>
-  </td>
   <td><%= image_tag("flags/"+location.country_code.downcase+".png") %>&nbsp;<%= location.country_name %></td>
   <td id="user-toolsunify">
     <%= link_to (location.galleries_count+'&nbsp;<i class="icon-camera"></i>').html_safe, user_pin_path(@user, location), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Galleries' %>
-    <%= link_to (location.logpages_count+'&nbsp;<i class="icon-book"></i>').html_safe, user_pin_path(@user, location, :t => 'l'), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Logpages' %>
+    <%= link_to (location.logpages_count+'&nbsp;<i class="icon-book"></i>').html_safe, user_pin_path(@user, location, :t => 'l'), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Logbook' %>
     <%= link_to (location.comments_count+'&nbsp;<i class="icon-comment"></i>').html_safe, user_pin_path(@user, location, :t => 'c'), :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Comments' %>
     <%= link_to '<i class="icon-map-marker icon-white"></i>'.html_safe, user_pins_path(@user, :p => location.id), :class => 'btn btn-mini btn-map', :rel => 'tooltip', :title => 'Locate' %>
   </td>
