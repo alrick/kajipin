@@ -1,18 +1,27 @@
-<div class="row">
-  <div class="span6 offset3">
-    <% if @comments.empty? %>
+<% if @comments.empty? %>
+  <div class="row">
+    <div class="span6 offset3">
       <p class="lead">No comment yet</p>
-    <% else %>
-      <% @comments.each do |comment| %>
+    </div>
+  </div>
+<% else %>
+  <% @comments.each do |comment| %>
+    <div class="row">
+      <div class="span1 offset2" style="text-align: right">
+        <%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %>
+      </div>
+      <div class="span6">
         <blockquote>
           <p><%= comment.value %></p>
           <small>
             <%= link_to comment.user.full_name, user_path(comment.user) %> (<%= comment.created_at.to_formatted_s(:long_ordinal) %>)
           </small>
         </blockquote>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<div class="row">
   <div class="span6 offset3 pins-addcomment">
     <%= simple_form_for @comment do |c| %>
       <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' } %>
@@ -20,5 +29,8 @@
       <%= c.input :location_id, :as => :hidden, :input_html => { :value => @pin.id } %>
       <%= c.button :submit, 'Comment', :class => 'btn btn-social' %>
     <% end %>
+  </div>
+  <div class="span1">
+    <%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %>
   </div>
 </div>

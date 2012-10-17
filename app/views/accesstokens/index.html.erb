@@ -1,0 +1,58 @@
+<% content_for :page_title do %><%= @user.first_name %>'s Access<% end %>
+
+<div class="page-header">
+  <h1>Your Access <small>Because everything is connected.</small></h1>
+</div>
+
+<p class="lead">
+  You can manage all the access to other services here.<br />
+  Only one account per service.
+</p>
+
+<div class="accesstokens-servicebox">
+  <table>
+    <tr>
+      <td class="accesstokens-imgcell"><%= image_tag("services/dropbox.png") %></td>
+      <td class="accesstokens-maincell">
+        <h2>Dropbox</h2>
+        <p>Allows you to add galleries to your pins.</p>
+        <p><i class="icon-user"></i> No account linked</p>
+      </td>
+      <td class="accesstokens-btncell">
+        <%= link_to '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add an account'.html_safe, access_path, :class => 'btn btn-large btn-crud' %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="accesstokens-servicebox">
+  <table>
+    <tr>
+      <td class="accesstokens-imgcell"><%= image_tag("services/twitter.png") %></td>
+      <td class="accesstokens-maincell">
+        <h2>Twitter</h2>
+        <p>Allows you to search your Twitter's friends.</p>
+        <p class="lead">Coming Soon</p>
+      </td>
+      <td class="accesstokens-btncell">
+        <%= link_to '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add an account'.html_safe, "#", :class => 'btn btn-large btn-crud disabled' %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="accesstokens-servicebox">
+  <table>
+    <tr>
+      <td class="accesstokens-imgcell"><%= image_tag("services/facebook.png") %></td>
+      <td class="accesstokens-maincell">
+        <h2>Facebook</h2>
+        <p>Allows you to search your Facebook's friends.</p>
+        <p class="lead">Coming Soon</p>
+      </td>
+      <td class="accesstokens-btncell">
+        <%= link_to '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add an account'.html_safe, "#", :class => 'btn btn-large btn-crud disabled' %>
+      </td>
+    </tr>
+  </table>
+</div>

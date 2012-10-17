@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
 
   def index
+    @user = current_user
     @watcherships = Friendship.where(:user_id => current_user.id)
     @sharerships = Friendship.where(:friend_id => current_user.id)
   end

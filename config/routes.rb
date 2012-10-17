@@ -36,6 +36,8 @@ Socialrails::Application.routes.draw do
 
   match "profile" => "users#show"
 
+  match "access" => "accesstokens#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
