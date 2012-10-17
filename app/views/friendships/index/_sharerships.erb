@@ -6,7 +6,7 @@
       <tbody>
         <% current_user.inverse_friendships.each do |sharership| %>
           <tr>
-            <td class="friendships-tableavatar"><%= image_tag gravatar_url(sharership.user, 30) %></td>
+            <td class="friendships-tableavatar"><%= image_tag gravatar_url(sharership.user, 30), :class => 'img-polaroid' %></td>
             <td class="friendships-tablename">
               <%= link_to sharership.user.first_name+' '+sharership.user.last_name, user_path(sharership.user) %>
             </td>
