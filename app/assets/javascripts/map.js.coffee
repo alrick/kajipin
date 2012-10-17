@@ -21,27 +21,15 @@ jQuery ->
     bigcityMarkers = true
     smallcityMarkers = true
     pointofinterestMarkers = true
-    #bigcityLayer = mapbox.markers.layer()
-    #smallcityLayer = mapbox.markers.layer()
-    #pointofinterestLayer = mapbox.markers.layer()
 
     # Add all location of the user into the right layer
     pinsLayer.features(gon.pins)
-    #bigcityLayer.features(gon.bigcity)
-    #smallcityLayer.features(gon.smallcity)
-    #pointofinterestLayer.features(gon.pointofinterest)
 
     # Add interaction to this marker layers (title and description)
     interaction = mapbox.markers.interaction(pinsLayer)
-    #mapbox.markers.interaction(bigcityLayer)
-    #mapbox.markers.interaction(smallcityLayer)
-    #mapbox.markers.interaction(pointofinterestLayer)
 
     # Add layers to the map
     map.addLayer(pinsLayer)
-    #map.addLayer(bigcityLayer)
-    #map.addLayer(smallcityLayer)
-    #map.addLayer(pointofinterestLayer)
 
     # Define formater for pins tooltips
     interaction.formatter (feature) ->
