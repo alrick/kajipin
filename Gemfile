@@ -22,6 +22,7 @@ gem 'simple_form' #better forms
 gem 'rabl' #manage json formating, MUST BE before gon
 gem 'gon' #passing data to javascript
 gem 'nokogiri' #xml parsing
+gem 'dropbox-sdk' #dropbox API access
 
 group :development do
   gem 'rails-erd' #create schema of entities
