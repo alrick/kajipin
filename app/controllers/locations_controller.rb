@@ -18,7 +18,7 @@ class LocationsController < GeoController
       q = URI.escape(params[:q])
     end
 
-    url = "http://api.geonames.org/searchJSON?q="+q+"&maxRows="+Geonamesconfig.maxrows+"&fuzzy="+Geonamesconfig.fuzzy+"&username="+Geonamesconfig.username
+    url = "http://api.geonames.org/searchJSON?q="+q+"&maxRows="+Appetizer.geonames_maxrows+"&fuzzy="+Appetizer.geonames_fuzzy+"&username="+Appetizer.geonames_username
     @geos = JSON.parse(open(url).read)
   end
 
