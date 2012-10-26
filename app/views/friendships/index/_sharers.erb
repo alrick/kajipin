@@ -13,7 +13,7 @@
             </td>
             <td>
               <% if !current_user.isSharing(sharership.user.id) %>
-                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-social friendships-btn' %>
+                <%= link_to '<i class="icon-heart"></i>&nbsp;&nbsp;Share'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-social friendships-btn' %>
               <% else %>
                 <% sharingship = current_user.friendships.where(:friend_id => sharership.user.id).first %>
                 <%= link_to 'Sharing'.html_safe, sharingship, :method => :delete, :class => 'btn btn-social btn-remove btn-unsocial friendships-btn' %>
