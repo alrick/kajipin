@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     locations.select("distinct(country_code)").count
   end
 
-  def number_watchers
+  def number_sharing
     friends.count
   end
 
@@ -51,7 +51,11 @@ class User < ActiveRecord::Base
     inverse_friends.count
   end
 
-  def isWatcher(sharer_id)
+  def isSharing(sharer_id)
     !Friendship.where(:user_id => id, :friend_id => sharer_id).empty?
+  end
+
+  def isSharer(sharing_id)
+    !Friendship.where(:user_id => sharing_id, :friend_id => id).empty?
   end
 end

@@ -1,4 +1,4 @@
-/* Tables for watchers and sharers */
+/* Tables for sharing and sharers */
 .friendships-table {
   font-size: 1.4em;
 }
@@ -16,4 +16,9 @@
 /* Set width of the user's name */
 .friendships-tablename {
   width: 70%;
+}
+
+/* Unify friendships btn */
+.friendships-btn {
+  width: 60px;
 }

@@ -11,7 +11,7 @@
             <%= link_to user.first_name+' '+user.last_name, user_path(user) %>
           </td>
           <td>
-            <% if !current_user.isWatcher(user.id) %>
+            <% if !current_user.isSharing(user.id) %>
               <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => user), :method => :post, :class => 'btn btn-warning btn-mini' %>
             <% end %>
           </td>

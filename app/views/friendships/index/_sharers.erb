@@ -1,4 +1,4 @@
-<div class="tab-pane" id="tab-friends-2">
+<div class="tab-pane active" id="tab-friends-1">
   <% if current_user.inverse_friendships.empty? %>
     <p>You have no sharer.</p>
   <% else %>
@@ -11,8 +11,11 @@
               <%= link_to sharership.user.first_name+' '+sharership.user.last_name, user_path(sharership.user) %>
             </td>
             <td>
-              <% if !current_user.isWatcher(sharership.user.id) %>
-                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-mini btn-social' %>
+              <% if !current_user.isSharing(sharership.user.id) %>
+                <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share'.html_safe, friendships_path(:friend_id => sharership.user), :method => :post, :class => 'btn btn-social friendships-btn' %>
+              <% else %>
+                <% sharingship = current_user.friendships.where(:friend_id => sharership.user.id).first %>
+                <%= link_to 'Sharing'.html_safe, sharingship, :method => :delete, :class => 'btn btn-social btn-remove btn-unsocial friendships-btn' %>
               <% end %>
             </td>
           </tr>

@@ -17,13 +17,13 @@
         <%= link_to '<i class="icon-map-marker icon-white"></i>&nbsp;&nbsp;World Map'.html_safe, user_pins_path(@user), :class => 'btn btn-large btn-map user-buttonsunify' %>
       </p>
       <% if current_user != @user %>
-        <% if !current_user.isWatcher(@user.id) %>
+        <% if !current_user.isSharing(@user.id) %>
           <p>
             <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Share with'.html_safe, friendships_path(:friend_id => @user), :method => :post, :class => 'btn btn-large btn-social user-buttonsunify' %>
           </p>
         <% else %>
           <p>
-            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Watcher'.html_safe, '#', :class => 'btn btn-large btn-social user-buttonsunify disabled' %>
+            <%= link_to '<i class="icon-heart icon-white"></i>&nbsp;&nbsp;Sharing'.html_safe, '#', :class => 'btn btn-large btn-social user-buttonsunify disabled' %>
           </p>
         <% end %>
       <% end %>
@@ -31,7 +31,7 @@
     <div class="span3">
       <div>
         <h2>Friends&nbsp;<i class="icon-signal"></i></h2>
-        <p>Watchers <b><%= @user.number_watchers %></b></p>
+        <p>Sharing <b><%= @user.number_sharing %></b></p>
         <p>Sharers <b><%= @user.number_sharers %></b></p>
       </div>
       <div style="margin-top: 20px">
