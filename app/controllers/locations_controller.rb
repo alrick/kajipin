@@ -32,9 +32,9 @@ class LocationsController < GeoController
 
     if @location.update_attributes(params[:location])
       flash[:notice] = 'Location was successfully updated.'
-      redirect_to locations_url, notice: '<strong>Success!</strong> Location was correctly modified.'
+      redirect_to locations_url, notice: "#{@location.title} was successfully updated."
     else
-      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong.'
+      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong while updating.'
     end
   end
 
@@ -49,9 +49,9 @@ class LocationsController < GeoController
     location.locategory_id = params[:locategory]
 
     if location.save
-      redirect_to locations_url, notice: '<strong>Well done!</strong> Location was successfully added.'
+      redirect_to locations_url, notice: "<strong>Well done!</strong> #{location.title} was successfully added to your pins."
     else
-      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong.'
+      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong while creating your pin.'
     end
   end
 
@@ -59,6 +59,6 @@ class LocationsController < GeoController
     @location = Location.find(params[:id])
     @location.destroy
 
-    redirect_to locations_url, notice: '<strong>Well done!</strong> Location was successfully removed.'
+    redirect_to locations_url, notice: "#{@location.title} was successfully removed from your pins."
   end
 end
