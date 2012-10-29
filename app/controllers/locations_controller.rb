@@ -31,7 +31,6 @@ class LocationsController < GeoController
     @location = Location.find(params[:id])
 
     if @location.update_attributes(params[:location])
-      flash[:notice] = 'Location was successfully updated.'
       redirect_to locations_url, notice: "#{@location.title} was successfully updated."
     else
       redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong while updating.'
