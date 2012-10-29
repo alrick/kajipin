@@ -13,7 +13,11 @@ Socialrails::Application.routes.draw do
 
   resources :logbooks
 
-  resources :accesstokens
+  resources :accesstokens do
+    collection do
+      get 'dropbox'
+    end
+  end
 
   resources :countries
 
@@ -36,7 +40,7 @@ Socialrails::Application.routes.draw do
 
   match "profile" => "users#show"
 
-  match "access" => "accesstokens#index"
+  match "services" => "accesstokens#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
