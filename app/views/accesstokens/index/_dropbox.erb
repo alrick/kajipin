@@ -1,0 +1,26 @@
+<div class="accesstokens-servicebox">
+  <table>
+    <tr>
+      <td class="accesstokens-imgcell"><%= image_tag("services/dropbox.png") %></td>
+      <td class="accesstokens-maincell">
+        <h2>Dropbox</h2>
+        <p>Allows you to add galleries to your pins.</p>
+        <p>
+          <i class="icon-user"></i>
+          <% if @dropbox_token.nil? %>
+            No account linked
+          <% else %> 
+            <%= @dropbox_token.ilk %>
+          <% end %>
+        </p>
+      </td>
+      <td class="accesstokens-btncell">
+        <% if @dropbox_token.nil? %>
+          <%= link_to '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add an account'.html_safe, dropbox_accesstokens_path, :class => 'btn btn-large btn-crud' %>
+        <% else %> 
+          <%= link_to '<i class="icon-remove-sign"></i>&nbsp;&nbsp;Remove my account'.html_safe, dropbox_accesstokens_path, :class => 'btn btn-large btn-crud' %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
