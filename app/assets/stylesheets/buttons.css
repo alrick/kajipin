@@ -74,7 +74,7 @@
   font-weight: bold;
 }
 
-/* Button social for all buttons related to social like add a friend, comment a location.. */
+/* Button remove change color for delete button */
 .btn-remove:hover {
   background-color: hsl(0, 69%, 22%) !important;
   background-repeat: repeat-x;
