@@ -33,4 +33,7 @@ class Appetizer < ActiveRecord::Base
   def self.dropbox_appsecret
     "lp4raap85gu15dx"
   end
+  def self.dropbox_accesstype
+    :app_folder
+  end
 end
