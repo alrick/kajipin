@@ -7,9 +7,6 @@ class PinsController < GeoController
 
   def index
     @pins = @user.locations
-    # @pins_bigcity = @user.locations.bigcity
-    # @pins_smallcity = @user.locations.smallcity
-    # @pins_pointofinterest = @user.locations.pointofinterest
 
     get_countries
     init_pins
@@ -38,9 +35,6 @@ class PinsController < GeoController
   # Init JSON pins via rabl
   def init_pins
     gon.rabl "app/views/pins/index.json.rabl", as: "pins"
-    # gon.rabl "app/views/pins/gon/bigcity.json.rabl", as: "bigcity"
-    # gon.rabl "app/views/pins/gon/smallcity.json.rabl", as: "smallcity"
-    # gon.rabl "app/views/pins/gon/pointofinterest.json.rabl", as: "pointofinterest"
   end
 
   # Focus on a pin if set (MAP)
