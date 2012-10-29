@@ -6,13 +6,13 @@ class Appetizer < ActiveRecord::Base
 
   # Accesstokens types
   def self.dropbox_token
-    "DROPBOX"
+    "dropbox"
   end
   def self.twitter_token
-    "TWITTER"
+    "twitter"
   end
   def self.facebook_token
-    "FACEBOOK"
+    "facebook"
   end
 
   # Geonames config
