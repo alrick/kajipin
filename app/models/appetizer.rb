@@ -4,6 +4,17 @@ class Appetizer < ActiveRecord::Base
     "Kajipin"
   end
 
+  # Accesstokens types
+  def self.dropbox_token
+    "DROPBOX"
+  end
+  def self.twitter_token
+    "TWITTER"
+  end
+  def self.facebook_token
+    "FACEBOOK"
+  end
+
   # Geonames config
   def self.geonames_maxrows
     "20"
@@ -16,4 +27,10 @@ class Appetizer < ActiveRecord::Base
   end
 
   # Dropbox config
+  def self.dropbox_appkey
+    "ljdah1pozdpylvt"
+  end
+  def self.dropbox_appsecret
+    "lp4raap85gu15dx"
+  end
 end
