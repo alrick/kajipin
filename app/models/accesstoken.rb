@@ -1,4 +1,6 @@
 class Accesstoken < ActiveRecord::Base
+  attr_accessible :value, :ilk, :user_id
+
   belongs_to :user
   
   validates :value, :presence => true
