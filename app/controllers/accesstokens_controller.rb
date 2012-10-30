@@ -4,15 +4,21 @@ class AccesstokensController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    # Dropbox Stuff
     @dropbox_token = current_user.accesstokens.dropbox.first
+    @dropbox_account = dropbox_get_accountname unless @dropbox_token.nil?
+
+    # Twitter Stuff
     #@twitter_token =
+
+    # Facebook Stuff
     #@facebook_token =
   end
 
   def destroy
     @accesstoken = Accesstoken.find(params[:id])
     @accesstoken.destroy
-    ilk = @accesstoken.ilk
+    ilk = @accesstoken.ilk.dup
     ilk[0] = ilk[0].capitalize
 
     redirect_to services_url, notice: "#{ilk} was successfully removed from your services."
@@ -30,7 +36,6 @@ class AccesstokensController < ApplicationController
     end
   end
 
-
   # Main func for Dropbox link
   def dropbox
     # Check if session init or not
@@ -38,7 +43,12 @@ class AccesstokensController < ApplicationController
       dropbox_authorization
     else # the user has returned from Dropbox
       dbsession = dropbox_get_token
-      @value = dbsession.serialize
+      begin
+        @value = dbsession.serialize
+      rescue Exception => e
+        redirect_to services_url, alert: "<strong>Oh snap!</strong> We've failed linking your Dropbox account, please try again."
+        return
+      end
       @ilk = Appetizer.dropbox_token
       create
     end
@@ -57,6 +67,25 @@ class AccesstokensController < ApplicationController
     dbsession.get_access_token  # we've been authorized, so now request an access_token
     session.delete(:request_db_session) # we delete the session because we will store it in DB
     return dbsession
+  end
+
+  # Get dropbox client which allow manipulation
+  def dropbox_get_client
+    begin
+      dbsession = DropboxSession.deserialize(@dropbox_token.value) #get accesstoken for the current user
+      client = DropboxClient.new(dbsession, Appetizer.dropbox_accesstype) #raise an exception if session not authorized
+      return client
+    rescue Exception => e
+      redirect_to services_url, alert: "<strong>Oh snap!</strong> Something went wrong with your Dropbox. If it repeats, try to delete and relink your Dropbox account."
+      return
+    end
+  end
+
+  # Get account name for Dropbox
+  def dropbox_get_accountname
+    client = dropbox_get_client
+    info = client.account_info #look up account information
+    return info['display_name']
   end
 
 end
