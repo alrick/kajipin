@@ -1,7 +1,7 @@
 <div class="page-header global-bigger">
   <div class="row">
     <div class="span8">
-      <h1><%= @pin.title %> - <%= @pin.country_name %>&nbsp;<%= image_tag("flags/"+@pin.country_code.downcase+".png") %></h1>
+      <h1><%= image_tag("flags/"+@pin.country_code.downcase+".png") %><%= @pin.title %></h1>
       <h2>by <%= link_to @user.first_name, user_path(@user) %></h2>
     </div>
     <div class="span4">
