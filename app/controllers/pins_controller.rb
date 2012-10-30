@@ -2,6 +2,7 @@ require 'nokogiri'
 
 class PinsController < GeoController
   layout "map", :only => [:index]
+  before_filter :authenticate_user!
   before_filter :get_user
   before_filter :get_countries, :only => [:index]
 

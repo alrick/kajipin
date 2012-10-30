@@ -2,6 +2,7 @@ require 'open-uri'
 require 'json'
 
 class LocationsController < GeoController
+  before_filter :authenticate_user!
 
   def index
     @user = current_user
