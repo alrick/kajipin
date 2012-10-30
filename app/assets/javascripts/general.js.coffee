@@ -1,3 +1,3 @@
 jQuery ->
-  $(".alert").delay(3000).fadeOut "slow", ->
+  $(".alert-success").delay(3000).fadeOut "slow", ->
     $(this).remove()
