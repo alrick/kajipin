@@ -85,3 +85,6 @@
 .map-tooltipcountry { font-size: 14px; line-height: 10px; color: #403730; }
 .map-tooltipsubtitle { font-size: 12px; line-height: 10px; color: #403730; font-style: italic; padding-top: 5px; }
 .map-tooltipbtn { width: 31px; margin-bottom: 5px; font-size: 12px; }
+
+// Remove the focus on modal link
+.map-modalopen { outline: none !important; }
