@@ -3,7 +3,7 @@
   <% if current_user.friendships.empty? %>
     <p>You have no sharing.</p>
   <% else %>
-    <table class="table table-striped friendships-table">
+    <table class="table table-hover friendships-table">
       <tbody>
         <% current_user.friendships.each do |sharingship| %>
           <tr>

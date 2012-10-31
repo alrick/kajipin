@@ -68,3 +68,9 @@
 blockquote {
   border-left: 5px solid #887D75 !important;
 }
+.nav-tabs > li > a:hover {
+    background: #DBDACF !important;
+}
+.nav-tabs > li.active > a:hover {
+    background: #FFF !important;
+}

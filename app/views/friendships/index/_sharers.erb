@@ -3,7 +3,7 @@
   <% if current_user.inverse_friendships.empty? %>
     <p>You have no sharer.</p>
   <% else %>
-    <table class="table table-striped friendships-table">
+    <table class="table table-hover friendships-table">
       <tbody>
         <% current_user.inverse_friendships.each do |sharership| %>
           <tr>
