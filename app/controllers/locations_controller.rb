@@ -34,7 +34,7 @@ class LocationsController < GeoController
     if @location.update_attributes(params[:location])
       redirect_to locations_url, notice: "#{@location.title} was successfully updated."
     else
-      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong while updating.'
+      redirect_to locations_url, alert: "<strong>Oh snap!</strong> Something went wrong while updating."
     end
   end
 
@@ -51,7 +51,7 @@ class LocationsController < GeoController
     if location.save
       redirect_to locations_url, notice: "<strong>Well done!</strong> #{location.title} was successfully added to your pins."
     else
-      redirect_to locations_url, alert: '<strong>Oh snap!</strong> Something went wrong while creating your pin.'
+      redirect_to locations_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
     end
   end
 

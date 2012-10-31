@@ -8,7 +8,7 @@
   <% @comments.each do |comment| %>
     <div class="row">
       <div class="span1 offset2" style="text-align: right">
-        <%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %>
+        <%= image_tag gravatar_url(comment.user, 40), :class => "img-polaroid" %>
       </div>
       <div class="span6">
         <blockquote>
@@ -24,13 +24,13 @@
 <div class="row">
   <div class="span6 offset3 pins-addcomment">
     <%= simple_form_for @comment do |c| %>
-      <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' } %>
+      <%= c.input :value, :label => "Share your thoughts", :label_html => { :class => "lead" } %>
       <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       <%= c.input :location_id, :as => :hidden, :input_html => { :value => @pin.id } %>
-      <%= c.button :submit, 'Comment', :class => 'btn btn-social' %>
+      <%= c.button :submit, "Comment", :class => "btn btn-social" %>
     <% end %>
   </div>
   <div class="span1">
-    <%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %>
+    <%= image_tag gravatar_url(current_user, 40), :class => "img-polaroid" %>
   </div>
 </div>

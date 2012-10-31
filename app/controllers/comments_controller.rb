@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.save
-      redirect_to :back, notice: 'Comment was successfully created.'
+      redirect_to :back, notice: "Comment was successfully created."
     else
-      redirect_to :back, alert: '<strong>Oh snap!</strong> Can\'t add your comment, give us another chance!'
+      redirect_to :back, alert: "<strong>Oh snap!</strong> Can't add your comment, give us another chance!"
     end
   end
 

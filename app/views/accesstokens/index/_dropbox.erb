@@ -16,9 +16,9 @@
       </td>
       <td class="accesstokens-btncell">
         <% if @dropbox_token.nil? %>
-          <%= link_to '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add'.html_safe, dropbox_accesstokens_path, :id => 'accesstokens-add', :class => 'btn btn-large btn-crud accesstokens-btnunify' %>
+          <%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add".html_safe, dropbox_accesstokens_path, :id => "accesstokens-add", :class => "btn btn-large btn-crud accesstokens-btnunify" %>
         <% else %> 
-          <%= link_to '<i class="icon-remove-sign"></i>&nbsp;&nbsp;Remove'.html_safe, accesstoken_path(@dropbox_token), :method => :delete, :class => 'btn btn-large btn-crud btn-remove accesstokens-btnunify' %>
+          <%= link_to "<i class=\"icon-remove-sign\"></i>&nbsp;&nbsp;Remove".html_safe, accesstoken_path(@dropbox_token), :method => :delete, :class => "btn btn-large btn-crud btn-remove accesstokens-btnunify" %>
         <% end %>
       </td>
     </tr>

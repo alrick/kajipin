@@ -85,7 +85,7 @@ class AccesstokensController < ApplicationController
   def dropbox_get_accountname
     client = dropbox_get_client
     info = client.account_info #look up account information
-    return info['display_name']
+    return info["display_name"]
   end
 
 end

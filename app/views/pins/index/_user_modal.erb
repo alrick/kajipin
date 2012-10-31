@@ -1,12 +1,12 @@
 <div id="userModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><%= @user.full_name %> <small><%= '('+@user.age.to_s+' years old)' unless @user.age.nil? %></small></h3>
+    <h3 id="myModalLabel"><%= @user.full_name %> <small><%= "("+@user.age.to_s+" years old)" unless @user.age.nil? %></small></h3>
   </div>
   <div class="modal-body">
     <table>
       <tr>
-        <td><%= image_tag gravatar_url(@user, 165), :class => 'img-polaroid' %></td>
+        <td><%= image_tag gravatar_url(@user, 165), :class => "img-polaroid" %></td>
         <td style="padding-left: 60px">
           <h4><i class="icon-signal"></i> Friends</h4>
           <ul class="unstyled">

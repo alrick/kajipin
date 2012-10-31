@@ -8,17 +8,17 @@
       <ul class="dropdown-menu">
         <li id="global-menufirst">
           <%= link_to(profile_path) do %>
-            <%= image_tag gravatar_url(current_user, 28), :class => 'img-polaroid' %>
+            <%= image_tag gravatar_url(current_user, 28), :class => "img-polaroid" %>
               <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
               <p>View my profile</p>
           <% end %>
         </li>
         <li class="divider"></li>
-        <li><%= link_to '<i class="icon-map-marker"></i> Your Pins'.html_safe, locations_path %></li>
-        <li><%= link_to '<i class="icon-heart"></i> Your Friends'.html_safe, friendships_path %></li>
-        <li><%= link_to '<i class="icon-retweet"></i> Your Services'.html_safe, services_path %></li>
-        <li><%= link_to '<i class="icon-cog"></i> Your Account'.html_safe, edit_user_registration_path %></li>
-        <li><%= link_to '<i class="icon-off"></i> Log out'.html_safe, destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "<i class=\"icon-map-marker\"></i> Your Pins".html_safe, locations_path %></li>
+        <li><%= link_to "<i class=\"icon-heart\"></i> Your Friends".html_safe, friendships_path %></li>
+        <li><%= link_to "<i class=\"icon-retweet\"></i> Your Services".html_safe, services_path %></li>
+        <li><%= link_to "<i class=\"icon-cog\"></i> Your Account".html_safe, edit_user_registration_path %></li>
+        <li><%= link_to "<i class=\"icon-off\"></i> Log out".html_safe, destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>
   </ul>

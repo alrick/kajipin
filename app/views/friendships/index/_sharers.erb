@@ -7,16 +7,16 @@
       <tbody>
         <% current_user.inverse_friendships.each do |sharership| %>
           <tr>
-            <td class="friendships-tableavatar"><%= image_tag gravatar_url(sharership.user, 30), :class => 'img-polaroid' %></td>
+            <td class="friendships-tableavatar"><%= image_tag gravatar_url(sharership.user, 30), :class => "img-polaroid" %></td>
             <td class="friendships-tablename">
-              <%= link_to sharership.user.first_name+' '+sharership.user.last_name, user_path(sharership.user) %>
+              <%= link_to sharership.user.full_name, user_path(sharership.user) %>
             </td>
             <td>
               <% if !current_user.isSharing(sharership.user) %>
-                <%= link_to '<i class="icon-heart"></i>&nbsp;&nbsp;Share'.html_safe, friendships_path(:friend => sharership.user), :method => :post, :class => 'btn btn-social friendships-btn' %>
+                <%= link_to "<i class=\"icon-heart\"></i>&nbsp;&nbsp;Share".html_safe, friendships_path(:friend => sharership.user), :method => :post, :class => "btn btn-social friendships-btn" %>
               <% else %>
                 <% sharingship = current_user.friendships.where(:friend_id => sharership.user.id).first %>
-                <%= link_to 'Sharing'.html_safe, sharingship, :method => :delete, :class => 'btn btn-social btn-remove btn-unsocial friendships-btn' %>
+                <%= link_to "Sharing".html_safe, sharingship, :method => :delete, :class => "btn btn-social btn-remove btn-unsocial friendships-btn" %>
               <% end %>
             </td>
           </tr>

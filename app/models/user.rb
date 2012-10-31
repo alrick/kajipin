@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
-  has_many :locations, dependent: :destroy, :order => 'title'
+  has_many :locations, dependent: :destroy, :order => "title"
   has_many :accesstokens, dependent: :destroy
   has_many :comments
   has_many :friendships, dependent: :destroy
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    first_name+' '+last_name
+    first_name+" "+last_name
   end
 
   def number_locations

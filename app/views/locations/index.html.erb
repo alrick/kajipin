@@ -4,10 +4,10 @@
   <h1>Your Pins <small>Manage them all!</small></h1>
 </div>
 
-<%= form_tag('locations/new', :method => "get", :class => "well form-inline") do %>
+<%= form_tag("locations/new", :method => "get", :class => "well form-inline") do %>
   <p><strong>Simply specify location's name to add a pin.</strong></p>
   <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
-  <%= button_tag '<i class="icon-plus-sign"></i>&nbsp;&nbsp;Add'.html_safe, :class => "btn btn-map", :value => "add" %>
+  <%= button_tag "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add".html_safe, :class => "btn btn-map", :value => "add" %>
 <% end %>
 
 <h2>Current pins</h2>
@@ -26,13 +26,13 @@
             <td><%= location.short_lat %>&deg;</td>
             <td><%= location.short_lon %>&deg;</td>
             <td>
-              <%= link_to '<i class="icon-camera"></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Galleries' %>
-              <%= link_to '<i class="icon-book "></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Logbook' %>
-              <%= link_to '<i class="icon-comment "></i>'.html_safe, locations_path, :class => 'btn btn-mini btn-tool', :rel => 'tooltip', :title => 'Manage Comments' %>
+              <%= link_to "<i class=\"icon-camera\"></i>".html_safe, locations_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Galleries" %>
+              <%= link_to "<i class=\"icon-book\"></i>".html_safe, locations_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Logbook" %>
+              <%= link_to "<i class=\"icon-comment\"></i>".html_safe, locations_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Comments" %>
             </td>
             <td>
-              <%= link_to '<i class="icon-edit"></i>&nbsp;&nbsp;Edit'.html_safe, edit_location_path(location), :class => 'btn btn-mini btn-map' %>
-              <%= link_to '<i class="icon-trash"></i>&nbsp;&nbsp;Remove'.html_safe, location_path(location), :method => :delete, :class => 'btn btn-mini btn-map btn-remove', :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+              <%= link_to "<i class=\"icon-edit\"></i>&nbsp;&nbsp;Edit".html_safe, edit_location_path(location), :class => "btn btn-mini btn-map" %>
+              <%= link_to "<i class=\"icon-trash\"></i>&nbsp;&nbsp;Remove".html_safe, location_path(location), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
             </td>
           </tr>
         <% end %>

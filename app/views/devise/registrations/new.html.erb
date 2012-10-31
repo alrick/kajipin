@@ -11,14 +11,14 @@
   <%= devise_error_messages! %>
 </div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "well form-inline"}) do |f| %>
 
-  <%= f.input_field :first_name, :class => 'input-medium', :placeholder => 'First name' %>
-  <%= f.input_field :last_name, :class => 'input-medium', :placeholder => 'Last name' %>
-  <%= f.input_field :email, :class => 'input-medium', :placeholder => 'Email' %>
-  <%= f.input_field :password, :class => 'input-medium', :placeholder => 'Password' %>
-  <%= f.input_field :password_confirmation, :class => 'input-medium', :placeholder => 'Password confirmation' %>
-  <%= f.submit "Join", :class => 'btn btn-map' %>
+  <%= f.input_field :first_name, :class => "input-medium", :placeholder => "First name" %>
+  <%= f.input_field :last_name, :class => "input-medium", :placeholder => "Last name" %>
+  <%= f.input_field :email, :class => "input-medium", :placeholder => "Email" %>
+  <%= f.input_field :password, :class => "input-medium", :placeholder => "Password" %>
+  <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Password confirmation" %>
+  <%= f.submit "Join", :class => "btn btn-map" %>
   <p>
     <label class="checkbox">
       <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> Terms of Service

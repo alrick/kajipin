@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
       if @friendship.save
         redirect_to friendships_path(:t => "s"), notice: "You are now sharing with #{@friendship.friend.first_name}."
       else
-        redirect_to friendships_path(:t => "s"), alert: '<strong>Oh snap!</strong> Something went wrong, please retry.'
+        redirect_to friendships_path(:t => "s"), alert: "<strong>Oh snap!</strong> Something went wrong, please retry."
       end
     else
       redirect_to friendships_path(:t => "s"), alert: "<strong>Oh snap!</strong> You are already sharing with #{@friendship.friend.first_name}."

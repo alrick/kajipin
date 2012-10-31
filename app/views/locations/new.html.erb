@@ -42,21 +42,21 @@
               <td><%= geo["toponymName"] %></td>
               <td><%= image_tag("flags/"+geo["countryCode"].to_s.downcase+".png") %>&nbsp;<%= geo["countryName"] %></td>
               <td><%= geo["adminName1"] %></td>
-              <td><%= '%.3f' % geo["lat"] %>&deg;</td>
-              <td><%= '%.3f' % geo["lng"] %>&deg;</td>
+              <td><%= "%.3f" % geo["lat"] %>&deg;</td>
+              <td><%= "%.3f" % geo["lng"] %>&deg;</td>
               <td><%= geo["fcodeName"].to_s.capitalize %></td>
-              <td><%= link_to '<i class="icon-plus-sign icon-white"></i>&nbsp;&nbsp;Add this'.html_safe, locations_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => 'btn btn-mini btn-map location-addthis' %></td>
+              <td><%= link_to "<i class=\"icon-plus-sign icon-white\"></i>&nbsp;&nbsp;Add this".html_safe, locations_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => "btn btn-mini btn-map location-addthis" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <p id="location-ccby">
-        All data informations are provided by <%= link_to 'GeoNames', 'http://www.geonames.org/' %> under <%= link_to 'CC BY 2.5', 'http://creativecommons.org/licenses/by/2.5/' %>
+        All data informations are provided by <%= link_to "GeoNames", "http://www.geonames.org/" %> under <%= link_to "CC BY 2.5", "http://creativecommons.org/licenses/by/2.5/" %>
       </p>
     </div>
   </div>
 <% end %>
 
 <div class="form-actions">
-  <%= link_to "Cancel", locations_path, :class => 'btn' %>
+  <%= link_to "Cancel", locations_path, :class => "btn" %>
 </div>

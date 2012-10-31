@@ -4,6 +4,6 @@ jQuery ->
     
     # Display correct tab
     if (gon.tab == "l")
-      $('#pins-toolstabs a[href="#logbook"]').tab('show')
+      $("#pins-toolstabs a[href=\"#logbook\"]").tab("show")
     else if (gon.tab == "c")
-      $('#pins-toolstabs a[href="#comments"]').tab('show')
+      $("#pins-toolstabs a[href=\"#comments\"]").tab("show")

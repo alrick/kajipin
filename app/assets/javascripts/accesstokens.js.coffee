@@ -3,6 +3,6 @@ jQuery ->
   if ($("#accesstokens-add").length > 0)
     
     #replace text for sharing/unshare
-    $('#accesstokens-add').click ->
-      $(this).children('.icon-plus-sign').attr('class', 'icon-time')
-      $(this).addClass('disabled')
+    $("#accesstokens-add").click ->
+      $(this).children(".icon-plus-sign").attr("class", "icon-time")
+      $(this).addClass("disabled")

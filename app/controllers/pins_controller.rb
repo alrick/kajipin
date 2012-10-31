@@ -19,7 +19,7 @@ class PinsController < GeoController
     @pin = @user.locations.find(params[:id])
 
     # get all comment for this location
-    @comments = @pin.comments.order('created_at ASC')
+    @comments = @pin.comments.order("created_at ASC")
     
     # prepare the comment for user
     @comment = Comment.new

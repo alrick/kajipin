@@ -6,14 +6,14 @@
     <%= Appetizer.appname %> is a social network for people that loves traveling and sharing it with others. If you like to journey and want to show it with galleries, logbooks, comments and so, <%= Appetizer.appname %> is for you!
   </p>
   <p>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-inverse btn-large' %>
+    <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-inverse btn-large" %>
   </p>
 </div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'well form-inline'}) do |f| %>
-  <%= f.email_field :email, :class => 'input-large', :placeholder => 'Email' %>
-  <%= f.password_field :password, :class => 'input-large', :placeholder => 'Password' %>
-  <%= f.submit "Log in", :class => 'btn btn-map' %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "well form-inline"}) do |f| %>
+  <%= f.email_field :email, :class => "input-large", :placeholder => "Email" %>
+  <%= f.password_field :password, :class => "input-large", :placeholder => "Password" %>
+  <%= f.submit "Log in", :class => "btn btn-map" %>
   <% if devise_mapping.rememberable? -%>
     <p>
       <label class="checkbox">

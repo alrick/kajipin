@@ -16,11 +16,11 @@ class Location < ActiveRecord::Base
   scope :pointofinterest, joins(:locategory).where("locategories.hook=3")
 
   def short_lat
-    '%.3f' % latitude
+    "%.3f" % latitude
   end
 
   def short_lon
-    '%.3f' % longitude
+    "%.3f" % longitude
   end
 
   def galleries_count
@@ -28,7 +28,7 @@ class Location < ActiveRecord::Base
   end
 
   def logpages_count
-    '0'
+    "0"
   end
 
   def comments_count
