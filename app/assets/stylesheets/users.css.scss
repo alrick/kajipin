@@ -1,9 +1,9 @@
-/* Table for user's location is a bit bigger */
+// Table for user's location is a bit bigger
 .user-locationstable {
   font-size: 1.2em;
 }
 
-/* Styling the general infos of user */
+// Styling the general infos of user
 #user-generalinfos {
   margin-top: 10px;
 }
@@ -12,36 +12,36 @@
   padding-bottom : 7px;
 }
 
-/* Cool frame styling for the user's avatar */
+// Cool frame styling for the user's avatar
 #user-avatar {
-  /* Rotation */
+  // Rotation
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 
-  /* Border */
+  // Border
   border: solid 15px #fff;
 
-  /* Shadow */
+  // Shadow
   -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
   -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
   box-shadow: 0px 0px 10px rgba(0,0,0,.8);
 
-  /* Adjustement for chrome rotation */
+  // Adjustement for chrome rotation
   -webkit-backface-visibility: hidden;
 
-  /* Spacing */
+  // Spacing
   margin-right: 30px;
 }
 
-/* Unify buttons width, more attractive.. */
+// Unify buttons width, more attractive..
 .user-buttonsunify {
   width: 100px;
 }
 
-/* Unify tools buttons width */
+// Unify tools buttons width
 #user-toolsunify a {
   min-width: 31px;
 }

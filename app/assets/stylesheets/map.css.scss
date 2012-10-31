@@ -1,7 +1,7 @@
-/* Main container for the map pages */
+// Main container for the map pages
 #map { position: absolute; top: 53px; bottom: 0; width: 100%; }
 
-/* Information block about user */
+// Information block about user
 #map-info {
   font-weight: normal;
   line-height: 20px;
@@ -24,7 +24,7 @@
           border-radius: 3px;
 }
 
-/* Element UI (button) */
+// Element UI (button)
 .map-nav {
   z-index: 2;
   font-size: 16px;
@@ -48,19 +48,19 @@
 }
 .map-nav:hover { text-decoration: none; cursor: pointer; }
 
-/* Positioning left UI */
+// Positioning left UI
 .map-navleft { left: 10px; }
 #map-world { top: 98px; }
 #map-markers { top: 129px; }
 #map-countries { top: 160px; }
 
-/* Positioning+styling right UI */
+// Positioning+styling right UI
 .map-navright { right: 10px; width: 28px !important; text-align: center; }
 #map-bigcity { top: 63px; background: #4A4459 !important; color: #FFF !important; }
 #map-smallcity { top: 94px; background: #887D75 !important; color: #FFF !important; }
 #map-pointofinterest { top: 125px; background: #7FA4B1 !important; color: #FFF !important; }
 
-/* Element that display the list of all countries */
+// Element that display the list of all countries
 #map-countrieslist {
   background: #FFF;
   z-index: 3;
@@ -80,7 +80,7 @@
 #map-countrieslist li { padding: 5px 5px 5px 7px; }
 #map-countrieslist li:hover { background: #7196A3; color: #FFF; cursor: pointer; }
 
-/* Tooltips of pins */
+// Tooltips of pins
 .map-tooltiptitle { font-size: 24px; line-height: 10px; color: #403730; }
 .map-tooltipcountry { font-size: 14px; line-height: 10px; color: #403730; }
 .map-tooltipsubtitle { font-size: 12px; line-height: 10px; color: #403730; font-style: italic; padding-top: 5px; }

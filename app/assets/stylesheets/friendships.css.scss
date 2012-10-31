@@ -1,24 +1,24 @@
-/* Tables for sharing and sharers */
+// Tables for sharing and sharers
 .friendships-table {
   font-size: 1.4em;
 }
 
-/* Align middle all row in table */
+// Align middle all row in table
 .friendships-table td {
   vertical-align: middle;
 }
 
-/* Set width of avatar column, avatar is 30x30 */
+// Set width of avatar column, avatar is 30x30
 .friendships-tableavatar {
   width: 40px;
 }
 
-/* Set width of the user's name */
+// Set width of the user's name
 .friendships-tablename {
   width: 70%;
 }
 
-/* Unify friendships btn */
+// Unify friendships btn
 .friendships-btn {
   width: 60px;
 }

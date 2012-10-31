@@ -1,3 +1,4 @@
+// Style for the boxes that represent services
 .accesstokens-servicebox {
   background: #FFF;
   width: 80%;
@@ -8,27 +9,29 @@
           border-radius: 10px;
 }
 
+// Adjust content of servicebox to full width
 .accesstokens-servicebox table {
   width: 100%;
 }
 
+// Styling service title
 .accesstokens-servicebox h2 {
   font-weight: 200;
 }
 
+// Box disposition
 .accesstokens-imgcell {
   width: 15%;
 }
-
 .accesstokens-maincell {
   width: 40%;
 }
-
 .accesstokens-btncell {
   text-align: right;
   padding-right: 50px;
 }
 
+// Unify buttons width
 .accesstokens-btnunify {
   width: 85px;
 }
