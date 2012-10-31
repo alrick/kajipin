@@ -9,8 +9,8 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    if !current_user.isSharing(params[:friend_id])
-      @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+    if !current_user.isSharing(params[:friend])
+      @friendship = current_user.friendships.build(:friend_id => params[:friend])
 
       if @friendship.save
         redirect_to friendships_path(:t => "s"), notice: "You are now sharing with #{@friendship.friend.first_name}."
