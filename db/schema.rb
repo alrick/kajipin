@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029094425) do
+ActiveRecord::Schema.define(:version => 20121105151445) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(:version => 20121029094425) do
 
   create_table "comments", :force => true do |t|
     t.text     "value"
-    t.integer  "location_id"
+    t.integer  "pin_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "friendships", :force => true do |t|
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(:version => 20121029094425) do
 
   create_table "galleries", :force => true do |t|
     t.string   "name"
-    t.integer  "location_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "pin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "locategories", :force => true do |t|
@@ -68,21 +68,9 @@ ActiveRecord::Schema.define(:version => 20121029094425) do
     t.integer  "hook"
   end
 
-  create_table "locations", :force => true do |t|
-    t.string   "title"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "country_name"
-    t.string   "country_code"
-    t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "locategory_id"
-  end
-
   create_table "logbooks", :force => true do |t|
     t.text     "description"
-    t.integer  "location_id"
+    t.integer  "pin_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -93,6 +81,18 @@ ActiveRecord::Schema.define(:version => 20121029094425) do
     t.integer  "logbook_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pins", :force => true do |t|
+    t.string   "title"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "country_name"
+    t.string   "country_code"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "locategory_id"
   end
 
   create_table "tags", :force => true do |t|

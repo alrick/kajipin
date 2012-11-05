@@ -1,11 +1,11 @@
 jQuery ->
   # Check that we're on correct page
-  if ($(".location-addthis").length > 0)
+  if ($(".pins-addthis").length > 0)
 
     # Add param for locategory
-    $(".location-addthis").click ->
-      addi = $(".location-locategorybtn.active").attr("value")
-      $(".location-addthis").each ->
+    $(".pins-addthis").click ->
+      addi = $(".pins-locategorybtn.active").attr("value")
+      $(".pins-addthis").each ->
         href = this.href
         if (href.indexOf("?") != -1)
           href = href + "&locategory=" + addi
@@ -14,9 +14,9 @@ jQuery ->
         $(this).attr("href", href)
 
   # Check that we're on correct page
-  if ($("#location-locategoryedit").length > 0)
+  if ($("#pins-locategoryedit").length > 0)
 
     # Change hidden value
-    $(".location-locategorybtn").click ->
+    $(".pins-locategorybtn").click ->
       val = $(this).attr("value")
-      $("#location_locategory_id").attr("value", val)
+      $("#pins_locategory_id").attr("value", val)

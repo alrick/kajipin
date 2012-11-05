@@ -1,7 +1,7 @@
 class Locategory < ActiveRecord::Base
   attr_accessible :name, :description, :marker_symbol, :marker_size, :marker_color, :default
 
-  has_many :locations
+  has_many :pins
 
   def marker_path
     dir = "markers/"

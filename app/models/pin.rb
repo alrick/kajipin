@@ -1,4 +1,4 @@
-class Location < ActiveRecord::Base
+class Pin < ActiveRecord::Base
   attr_accessible :title, :user_id, :latitude, :longitude, :locategory_id
 
   belongs_to :user

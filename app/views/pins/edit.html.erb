@@ -1,0 +1,25 @@
+<% content_for :page_title do %>Edit pin - <%= @pin.title %><% end %>
+
+<div class="page-header">
+  <h1>Edit pin <small><%= @pin.title %> (<%= @pin.country_name %>)</small></h1>
+</div>
+
+<h2>Pin</h2>
+<div class="well">
+  <p><strong>You can change the type of pin for your pin :</strong></p>
+  <div id="pin-locategory" class="btn-group" data-toggle="buttons-radio">
+    <% @locategories.each do |locategory| %>
+      <button type="radio" class="btn pin-locategorybtn <%= 'active' if locategory.id == @pin.locategory_id %>" value="<%= locategory.id %>">
+        <%= image_tag(locategory.marker_path, :width => "20") %>
+        <%= locategory.name %>
+      </button>
+    <% end %>
+  </div>
+</div>
+<%= simple_form_for(@pin) do |f| %>
+  <%= f.hidden_field :locategory_id %>
+  <div class="form-actions">
+    <%= link_to "Cancel", pins_path, :class => "btn btn-medium" %>
+    <%= f.submit "Save", :id => "pin-locategoryedit", :class => "btn btn-large btn-map" %>
+  </div>
+<% end %>

@@ -7,7 +7,7 @@ class UsersController < GeoController
   before_filter :get_countries, :only => [:show]
 
   def show
-    @pins = @user.locations
+    @pins = @user.pins
 
     get_list
     get_countries
@@ -22,9 +22,9 @@ class UsersController < GeoController
 
   # Get a list of pins
   def get_list
-    @big_cities = @user.locations.bigcity
-    @small_cities = @user.locations.smallcity
-    @points_of_interest = @user.locations.pointofinterest
+    @big_cities = @user.pins.bigcity
+    @small_cities = @user.pins.smallcity
+    @points_of_interest = @user.pins.pointofinterest
   end
 
   # Get user to display the map
@@ -38,13 +38,13 @@ class UsersController < GeoController
 
   # Init JSON pins via rabl
   def init_pins
-    gon.rabl "app/views/locations/index.json.rabl", as: "pins"
+    gon.rabl "app/views/pins/index.json.rabl", as: "pins"
   end
 
   # Focus on a pin if set (MAP)
   def focus_pin
     if !params[:p].nil?
-      p = Location.find(params[:p])
+      p = Pin.find(params[:p])
       gon.plat = p.latitude
       gon.plon = p.longitude
     end

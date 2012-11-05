@@ -1,0 +1,42 @@
+<% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
+
+<div class="page-header">
+  <h1>Your Pins <small>Manage them all!</small></h1>
+</div>
+
+<%= form_tag("pins/new", :method => "get", :class => "well form-inline") do %>
+  <p><strong>Simply specify location's name to add a pin.</strong></p>
+  <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
+  <%= button_tag "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add".html_safe, :class => "btn btn-map", :value => "add" %>
+<% end %>
+
+<h2>Current pins</h2>
+
+<div class="form-actions">
+  <% if @pins.empty? %>
+    <p>No pin added.</p>
+  <% else %>
+    <table class="table table-striped">
+      <tbody>
+        <% @pins.each do |pin| %>
+          <tr>
+            <td><strong><%= pin.title %></strong></td>
+            <td><%= image_tag(pin.locategory.marker_path, :width => "15") %> <%= pin.locategory.name %></td>
+            <td><%= image_tag("flags/"+pin.country_code.downcase+".png") %>&nbsp;<%= pin.country_name %></td>
+            <td><%= pin.short_lat %>&deg;</td>
+            <td><%= pin.short_lon %>&deg;</td>
+            <td>
+              <%= link_to "<i class=\"icon-camera\"></i>".html_safe, pins_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Galleries" %>
+              <%= link_to "<i class=\"icon-book\"></i>".html_safe, pins_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Logbook" %>
+              <%= link_to "<i class=\"icon-comment\"></i>".html_safe, pins_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Comments" %>
+            </td>
+            <td>
+              <%= link_to "<i class=\"icon-edit\"></i>&nbsp;&nbsp;Edit".html_safe, edit_pin_path(pin), :class => "btn btn-mini btn-map" %>
+              <%= link_to "<i class=\"icon-trash\"></i>&nbsp;&nbsp;Remove".html_safe, pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

@@ -23,11 +23,9 @@ Socialrails::Application.routes.draw do
 
   resources :comments
 
-  resources :locations
+  resources :pins
 
-  resources :users do
-    resources :pins
-  end
+  resources :users
 
   authenticated :user do
     root :to => "users#show"

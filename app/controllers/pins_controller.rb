@@ -1,74 +1,64 @@
-require 'nokogiri'
+require 'open-uri'
+require 'json'
 
 class PinsController < GeoController
-  layout "map", :only => [:index]
   before_filter :authenticate_user!
-  before_filter :get_user
-  before_filter :get_countries, :only => [:index]
 
   def index
-    @pins = @user.locations
-
-    get_list
-    get_countries
-    init_pins
-    focus_pin
-    focus_bounds
+    @user = current_user
+    @pins = @user.pins
   end
 
-  def show
-    @pin = @user.locations.find(params[:id])
+  def new
+    @locategories = Locategory.order(:id)
+    @pin = Pin.new
 
-    # get all comment for this location
-    @comments = @pin.comments.order("created_at ASC")
-    
-    # prepare the comment for user
-    @comment = Comment.new
+    if params[:q].nil?
+      q = "london"
+    else
+      q = URI.escape(params[:q])
+    end
 
-    #open right tab
-    open_tab
+    url = "http://api.geonames.org/searchJSON?q="+q+"&maxRows="+Appetizer.geonames_maxrows+"&fuzzy="+Appetizer.geonames_fuzzy+"&username="+Appetizer.geonames_username
+    @geos = JSON.parse(open(url).read)
   end
 
-  # Get a list of pins
-  def get_list
-    @big_cities = @user.locations.bigcity
-    @small_cities = @user.locations.smallcity
-    @points_of_interest = @user.locations.pointofinterest
+  def edit
+    @locategories = Locategory.order(:id)
+    @pin = Pin.find(params[:id])
   end
 
-  # Get user to display the map
-  def get_user
-    @user = User.find(params[:user_id])
-  end
+  def update
+    @pin = Pin.find(params[:id])
 
-  # Init JSON pins via rabl
-  def init_pins
-    gon.rabl "app/views/pins/index.json.rabl", as: "pins"
-  end
-
-  # Focus on a pin if set (MAP)
-  def focus_pin
-    if !params[:p].nil?
-      p = Location.find(params[:p])
-      gon.plat = p.latitude
-      gon.plon = p.longitude
+    if @pin.update_attributes(params[:pin])
+      redirect_to pins_url, notice: "#{@pin.title} was successfully updated."
+    else
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while updating."
     end
   end
 
-  # Focus bounds if country selected (MAP)
-  def focus_bounds
-    if (!params[:w].nil? and !params[:n].nil? and !params[:e].nil? and !params[:s].nil?)
-      gon.west = params[:w]
-      gon.north = params[:n]
-      gon.east = params[:e]
-      gon.south = params[:s]
+  def create
+    pin = Pin.new
+    pin.user_id = current_user.id
+    pin.title = params[:title]
+    pin.latitude = params[:latitude]
+    pin.longitude = params[:longitude]
+    pin.country_name = params[:country_name]
+    pin.country_code = params[:country_code]
+    pin.locategory_id = params[:locategory]
+
+    if pin.save
+      redirect_to pins_url, notice: "<strong>Well done!</strong> #{pin.title} was successfully added to your pins."
+    else
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
     end
   end
 
-  # Open right tab regarding params (SHOW)
-  def open_tab
-    if params[:t] == "l" or params[:t] == "c"
-      gon.tab = params[:t]
-    end
+  def destroy
+    @pin = Pin.find(params[:id])
+    @pin.destroy
+
+    redirect_to pins_url, notice: "#{@pin.title} was successfully removed from your pins."
   end
 end

@@ -22,7 +22,7 @@ jQuery ->
     smallcityMarkers = true
     pointofinterestMarkers = true
 
-    # Add all location of the user into the right layer
+    # Add all pin of the user into the right layer
     pinsLayer.features(gon.pins)
 
     # Add interaction to this marker layers (title and description)
@@ -35,15 +35,15 @@ jQuery ->
     interaction.formatter (feature) ->
       tooltipTitle = "<h2 class=\"map-tooltiptitle\">" + feature.properties.title + "</h2>"
       tooltipCountry = "<h3 class=\"map-tooltipcountry\">" + feature.properties.country_name + "</h3>"
-      tooltipGalleries = "<a href=\"pins/" + feature.id + "\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
-      tooltipLogbook = "<a href=\"pins/" + feature.id + "?t=l\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
-      tooltipComments = "<a href=\"pins/" + feature.id + "?t=c\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
+      tooltipGalleries = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
+      tooltipLogbook = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
+      tooltipComments = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
       o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
 
     # By default, the map extent markers
     map.extent(pinsLayer.extent())
 
-    # Set intent if location selected
+    # Set intent if pin selected
     if (gon.plat && gon.plon)
       map.centerzoom({ lat: gon.plat, lon: gon.plon }, 12)
 

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
-  has_many :locations, dependent: :destroy, :order => "title"
+  has_many :pins, dependent: :destroy, :order => "title"
   has_many :accesstokens, dependent: :destroy
   has_many :comments
   has_many :friendships, dependent: :destroy
@@ -35,12 +35,12 @@ class User < ActiveRecord::Base
     first_name+" "+last_name
   end
 
-  def number_locations
-    locations.count
+  def number_pins
+    pins.count
   end
 
   def number_countries
-    locations.select("distinct(country_code)").count
+    pins.select("distinct(country_code)").count
   end
 
   def number_sharing
