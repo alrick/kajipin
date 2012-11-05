@@ -1,5 +1,5 @@
 Socialrails::Application.routes.draw do
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout", sign_up: "join"}
+  devise_for :users, :path => "", path_names: {sign_in: "login", sign_out: "logout", sign_up: "join"}
 
   resources :assignments
 
@@ -39,8 +39,8 @@ Socialrails::Application.routes.draw do
   end
 
   match "profile" => "users#show"
-
   match "services" => "accesstokens#index"
+  match "friends" => "friendships#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
