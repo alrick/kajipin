@@ -59,11 +59,5 @@ class UsersController < GeoController
       gon.south = params[:s]
     end
   end
-
-  # Open right tab regarding params (SHOW)
-  def open_tab
-    if params[:t] == "l" or params[:t] == "c"
-      gon.tab = params[:t]
-    end
-  end
+  
 end
