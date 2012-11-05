@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
 
   def index
     @user = current_user
+    @friendships = Friendship.where("user_id = ? OR friend_id = ?", @user, @user)
 
     #open right tab
     open_tab
@@ -26,7 +27,11 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
 
-    redirect_to friendships_path(:t => "s"), notice: "You do not share with #{@friendship.friend.first_name} anymore."
+    # Allow js format for remote call
+    respond_to do |format|
+      format.html { redirect_to friendships_path(:t => "s"), notice: "You do not share with #{@friendship.friend.first_name} anymore." }
+      format.js
+    end
   end
 
   # Open right tab regarding params (SHOW)

@@ -4,6 +4,14 @@
   <h1>Your Friends <small>A list of all your Sharers &amp; Sharing</small></h1>
 </div>
 
+<div>
+  <ul>
+    <% @friendships.each do |friendship| %>
+      <li><%= friendship.user.full_name %> || <%= friendship.friend.full_name %></li>
+    <% end %>
+  </ul>
+</div>
+
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul id="friendships-friendstabs" class="nav nav-tabs">
     <li class="active"><a href="#tab-friends-1" data-toggle="tab"><b><i class="icon-list-alt"></i> Sharers</b></a></li>
