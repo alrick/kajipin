@@ -59,6 +59,7 @@
 #map-bigcity { top: 63px; background: #4A4459 !important; color: #FFF !important; }
 #map-smallcity { top: 94px; background: #887D75 !important; color: #FFF !important; }
 #map-pointofinterest { top: 125px; background: #7FA4B1 !important; color: #FFF !important; }
+#map-pinslist { top: 156px; background: #403730 !important; color: #FFF !important; }
 
 // Element that display the list of all countries
 #map-countrieslist {
@@ -84,7 +85,7 @@
 .map-tooltiptitle { font-size: 24px; line-height: 10px; color: #403730; }
 .map-tooltipcountry { font-size: 14px; line-height: 10px; color: #403730; }
 .map-tooltipsubtitle { font-size: 12px; line-height: 10px; color: #403730; font-style: italic; padding-top: 5px; }
-.map-tooltipbtn { width: 31px; margin-bottom: 5px; font-size: 12px; }
+.map-tooltipbtn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
 
 // Remove the focus on modal link
 .map-modalopen { outline: none !important; }

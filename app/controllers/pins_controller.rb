@@ -9,6 +9,7 @@ class PinsController < GeoController
   def index
     @pins = @user.locations
 
+    get_list
     get_countries
     init_pins
     focus_pin
@@ -26,6 +27,13 @@ class PinsController < GeoController
 
     #open right tab
     open_tab
+  end
+
+  # Get a list of pins
+  def get_list
+    @big_cities = @user.locations.bigcity
+    @small_cities = @user.locations.smallcity
+    @points_of_interest = @user.locations.pointofinterest
   end
 
   # Get user to display the map
