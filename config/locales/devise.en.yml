@@ -22,7 +22,7 @@ en:
       timeout: '<strong>Oh snap!</strong> Your session expired, please log in again to continue.'
       inactive: '<strong>Oh snap!</strong> Your account was not activated yet.'
     sessions:
-      signed_in: '<strong>Well done!</strong> Logged in successfully.'
+      signed_in: ''
       signed_out: '<strong>Well done!</strong> Logged out successfully.'
     passwords:
       send_instructions: '<strong>Heads up!</strong> You will receive an email with instructions about how to reset your password in a few minutes.'

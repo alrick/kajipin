@@ -38,7 +38,6 @@ Socialrails::Application.routes.draw do
     end
   end
 
-  match "profile" => "users#show"
   match "services" => "accesstokens#index"
   match "friends" => "friendships#index"
 

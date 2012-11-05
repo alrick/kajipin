@@ -1,53 +1,47 @@
-<% content_for :page_title do %><%= @user.first_name %> <%= @user.last_name %><% end %>
+<% content_for :page_title do %><%= @user.first_name %>'s Worldmap<% end %>
 
-<%= render "users/show/header" %>
+<!-- Map main element -->
+<div id="map"></div>
 
-<h2><i class="icon-list-alt"></i>&nbsp;&nbsp;<%= @user.first_name %>'s Locations</h2>
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul id ="pins-toolstabs" class="nav nav-tabs">
-    <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Locategory.bigcity_marker_path, :width => "15") %> Big City (<%= @big_cities.count %>)</b></a></li>
-    <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Locategory.smallcity_marker_path, :width => "15") %> Small City (<%= @small_cities.count %>)</b></a></li>
-    <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Locategory.pointofinterest_marker_path, :width => "15") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="bigcity">
-      <table class="table table-striped user-locationstable">
-        <tbody>
-          <% if @big_cities.empty? %>
-            <p>No location added.</p>
-          <% else %>
-            <% @big_cities.each do |location| %>
-              <%= render "users/show/location", :location => location %>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="smallcity">
-      <table class="table table-striped user-locationstable">
-        <tbody>
-          <% if @small_cities.empty? %>
-            <p>No location added.</p>
-          <% else %>
-            <% @small_cities.each do |location| %>
-              <%= render "users/show/location", :location => location %>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="pointofinterest">
-      <table class="table table-striped user-locationstable">
-        <tbody>
-          <% if @points_of_interest.empty? %>
-            <p>No location added.</p>
-          <% else %>
-            <% @points_of_interest.each do |location| %>
-              <%= render "users/show/location", :location => location %>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<!-- Left UI -->
+<a id="map-world" class="map-nav map-navleft" rel="tooltip" title="Fit World" data-placement="right">
+  <i class="icon-globe"></i>
+</a>
+<a id="map-markers" class="map-nav map-navleft" rel="tooltip" title="Fit Pins" data-placement="right">
+  <i class="icon-map-marker"></i>
+</a>
+<a id="map-countries" class="map-nav map-navleft" rel="tooltip" title="Fit Country" data-placement="right">
+  <i class="icon-list-alt"></i>
+</a>
+
+<!-- Left UI countries -->
+<ul id="map-countrieslist">
+  <% @countries.each do |country| %>
+    <li class="map-countryitem" data-north="<%= country["north"]%>" data-east="<%= country["east"]%>" data-south="<%= country["south"]%>" data-west="<%= country["west"]%>">
+      <%= country["name"] %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Right UI -->
+<a id="map-bigcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Big city' Pins" data-placement="left">
+  <i class="icon-eye-open"></i>
+</a>
+<a id="map-smallcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Small city' Pins" data-placement="left">
+  <i class="icon-eye-open"></i>
+</a>
+<a id="map-pointofinterest" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Point of interest' Pins" data-placement="left">
+  <i class="icon-eye-open"></i>
+</a>
+<!-- <a id="map-pinslist" class="map-nav map-navright" rel="tooltip" title="Show a list of Pins" data-placement="left">
+  <i class="icon-list-alt"></i>
+</a> -->
+<%= link_to "<i class=\"icon-list-alt\"></i>".html_safe, "#pinslistModal", :id => "map-pinslist", :class => "map-modalopen map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
+
+<h1 id="map-info">
+  <%= link_to @user.first_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>'s Pins
+</h1>
+
+<!-- Include modals -->
+<%= render "users/show/user_modal" %>
+<%= render "users/show/pinslist_modal" %>

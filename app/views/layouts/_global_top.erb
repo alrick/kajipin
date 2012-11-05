@@ -5,7 +5,11 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <%= link_to (Appetizer.appname+" <span class=\"betasig\">Beta</span>").html_safe, root_path, :class => "brand global-bigger" %>
+        <% if user_signed_in? %>
+          <%= link_to (Appetizer.appname+" <span class=\"betasig\">Beta</span>").html_safe, user_path(current_user), :class => "brand global-bigger" %>
+        <% else %>
+          <%= link_to (Appetizer.appname+" <span class=\"betasig\">Beta</span>").html_safe, root_path, :class => "brand global-bigger" %>
+        <% end %>
         <div class="nav">
           <li class="divider-vertical"></li>
         </div>
