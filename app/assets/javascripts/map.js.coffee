@@ -2,6 +2,11 @@ jQuery ->
   # Check that we're on correct page
   if ($("#map").length > 0)
 
+
+    #########################################
+    #### INITIALISATION
+    #########################################
+
     # Map init
     map = mapbox.map("map")
     map.addLayer(mapbox.layer().url("http://a.tiles.mapbox.com/v3/alrick.map-y17w9hkl.jsonp", () ->
@@ -47,6 +52,11 @@ jQuery ->
     if (gon.plat && gon.plon)
       map.centerzoom({ lat: gon.plat, lon: gon.plon }, 12)
 
+
+    #########################################
+    #### LEFT UI
+    #########################################
+
     # Set worldmap zoom func
     $("#map-world").click -> 
       map.zoom(3)
@@ -73,6 +83,11 @@ jQuery ->
     # Stop hiding if in the list
     $("#map-countrieslist").click (event) ->
         event.stopPropagation()
+
+
+    #########################################
+    #### RIGHT UI
+    #########################################
 
     # Show and hide bigcity pins
     $("#map-bigcity").click ->

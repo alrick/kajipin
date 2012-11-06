@@ -32,7 +32,7 @@ class PinsController < GeoController
     @pin = Pin.find(params[:id])
 
     if @pin.update_attributes(params[:pin])
-      redirect_to pins_url, notice: "#{@pin.title} was successfully updated."
+      redirect_to pins_url, notice: "<strong>#{@pin.title}</strong> was successfully updated."
     else
       redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while updating."
     end
@@ -49,7 +49,7 @@ class PinsController < GeoController
     pin.locategory_id = params[:locategory]
 
     if pin.save
-      redirect_to pins_url, notice: "<strong>Well done!</strong> #{pin.title} was successfully added to your pins."
+      redirect_to pins_url, notice: "<strong>#{pin.title}</strong> was successfully added to your pins."
     else
       redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
     end

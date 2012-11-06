@@ -1,11 +1,15 @@
-// Style the comment block of a pin view
-.pins-addcomment {
+// Button to add the pin
+.pins-addthis {
+  width: 60px
+}
+
+// Align Geonames ccby license to right
+#pins-ccby {
   text-align: right;
 }
 
-// Style the textarea of the add comment block
-.pins-addcomment textarea {
-  resize: vertical;
-  width: 100%;
-  height: 60px;
+// Unify marker buttons width
+#pins-locategory button {
+  width: 200px;
+  font-size: 18px;
 }

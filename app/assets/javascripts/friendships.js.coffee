@@ -1,6 +1,6 @@
 jQuery ->
   # Check that we're on correct page (user profile or friendships)
-  if ($("#friendships-friendstabs").length > 0) || ($("#user-generalinfos").length > 0)
+  if $("#friendships-friendstabs").length > 0
     
     #replace text for sharing/unshare
     $(".btn-unsocial").hover(
