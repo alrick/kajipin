@@ -6,7 +6,10 @@ class PinsController < GeoController
 
   def index
     @user = current_user
-    @pins = @user.pins
+    @big_cities = @user.pins.bigcity
+    @small_cities = @user.pins.smallcity
+    @points_of_interest = @user.pins.pointofinterest
+    open_tab
   end
 
   def new
@@ -32,9 +35,9 @@ class PinsController < GeoController
     @pin = Pin.find(params[:id])
 
     if @pin.update_attributes(params[:pin])
-      redirect_to pins_url, notice: "<strong>#{@pin.title}</strong> was successfully updated."
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully updated."
     else
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while updating."
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating."
     end
   end
 
@@ -49,7 +52,7 @@ class PinsController < GeoController
     pin.locategory_id = params[:locategory]
 
     if pin.save
-      redirect_to pins_url, notice: "<strong>#{pin.title}</strong> was successfully added to your pins."
+      redirect_to pins_url(:tab => pin.locategory.get_tab), notice: "<strong>#{pin.title}</strong> was successfully added to your pins."
     else
       redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
     end
@@ -59,6 +62,18 @@ class PinsController < GeoController
     @pin = Pin.find(params[:id])
     @pin.destroy
 
-    redirect_to pins_url, notice: "#{@pin.title} was successfully removed from your pins."
+    # Allow js format for remote call
+    respond_to do |format|
+      format.html { redirect_to pins_url, notice: "#{@pin.title} was successfully removed from your pins." }
+      format.js
+    end
   end
+
+  # Open right tab regarding params (SHOW)
+  def open_tab
+    if params[:tab] == "s" or params[:tab] == "p"
+      gon.tab = params[:tab]
+    end
+  end
+
 end

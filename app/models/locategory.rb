@@ -1,5 +1,5 @@
 class Locategory < ActiveRecord::Base
-  attr_accessible :name, :description, :marker_symbol, :marker_size, :marker_color, :default
+  attr_accessible :name, :description, :marker_symbol, :marker_size, :marker_color, :default, :hook
 
   has_many :pins
 
@@ -33,5 +33,29 @@ class Locategory < ActiveRecord::Base
     symbol = "star"
     ext = ".png"
     marker_path = dir+symbol+"+"+color+ext
+  end
+
+  def self.bigcity_hook
+    1
+  end
+
+  def self.smallcity_hook
+    2
+  end
+
+  def self.pointofinterest_hook
+    3
+  end
+
+  # Get right tab in terms of locategory
+  def get_tab
+    if(hook == Locategory.smallcity_hook)
+      tab = "s"
+    elsif (hook == Locategory.pointofinterest_hook)
+      tab = "p"
+    else
+      tab = "b"
+    end
+    return tab
   end
 end
