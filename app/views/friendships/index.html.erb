@@ -1,24 +1,51 @@
-<% content_for :page_title do %><%= @user.first_name %>'s Friends<% end %>
+<% content_for :page_title do %><%= current_user.first_name %>'s Friends<% end %>
 
 <div class="page-header">
-  <h1>Your Friends <small>A list of all your Sharers &amp; Sharing</small></h1>
+  <h1>Your Friends <small>A list of all your Sharing &amp; Sharers</small></h1>
 </div>
+
+<p class="friendships-stats">
+  You currently have <span id="friendships-numbersharing" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
+  <a href="#" rel="tooltip" title="A person who can see your worldmap."><strong>Sharing</strong></a>&nbsp;
+  and <span id="friendships-numbersharers" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
+  <a href="#" rel="tooltip" title="A person sharing his worldmap with you."><strong>Sharers</strong></a>.
+</p>
 
 <div>
-  <ul>
-    <% @friendships.each do |friendship| %>
-      <li><%= friendship.user.full_name %> || <%= friendship.friend.full_name %></li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul id="friendships-friendstabs" class="nav nav-tabs">
-    <li class="active"><a href="#tab-friends-1" data-toggle="tab"><b><i class="icon-list-alt"></i> Sharers</b></a></li>
-    <li><a href="#tab-friends-2" data-toggle="tab"><b><i class="icon-list-alt"></i> Sharing</b></a></li>
-  </ul>
-  <div class="tab-content">
-    <%= render "friendships/index/sharers" %>
-    <%= render "friendships/index/sharing" %>
-  </div>
+  <% @mates.each do |mate| %>
+    <div id="<%= dom_id(mate) %>" class="friendships-userbox well">
+      <% if current_user.isSharer(mate) %>
+        <%= link_to ("<strong>"+mate.full_name+"</strong>").html_safe, user_path(mate), :class => "friendships-userboxtitle" %>
+        <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
+      <% else %>
+        <div class="friendships-userboxtitle"><strong><%= mate.full_name %></strong></div>
+        <%= image_tag gravatar_url(mate, 150), :class => "img-polaroid" %>
+      <% end %>
+      <table>
+        <tr>
+          <td><span class="badge badge-map"><%= mate.number_pins %></span></td>
+          <td><strong>Pins</strong></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
+          <td><strong>Countries</strong></td>
+        </tr>
+      </table>
+      <p>
+        <% if current_user.isSharing(mate) %>
+          <% friendship = current_user.friendships.where(:friend_id => mate.id).first %>
+          <%= link_to "<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing".html_safe, friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial friendships-btn" %>
+        <% else %>
+          <%= link_to "Share".html_safe, friendships_path(:friend => mate), :method => :post, :remote => true, :class => "btn btn-social friendships-btn" %>
+        <% end %>
+      </p>
+      <p>
+        <% if current_user.isSharer(mate) %>
+          <span class="label label-social">Sharer</span>
+        <% else %>
+          <span>&nbsp;</span>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
 </div>

@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require leaflet/leaflet
 //= require mapbox/mapbox
+//= require jquery.hoverIntent.minified
 //= require_tree .

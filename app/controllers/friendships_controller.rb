@@ -2,24 +2,26 @@ class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @user = current_user
-    @friendships = Friendship.where("user_id = ? OR friend_id = ?", @user, @user)
-
-    #open right tab
-    open_tab
+    sharings = current_user.friends
+    sharers = current_user.inverse_friends
+    @mates = (sharings+sharers).uniq.sort_by(&:first_name)
   end
 
   def create
-    if !current_user.isSharing(params[:friend])
-      @friendship = current_user.friendships.build(:friend_id => params[:friend])
+    friend = User.find(params[:friend])
+    if !current_user.isSharing(friend)
+      @friendship = current_user.friendships.build(:friend_id => friend.id)
 
       if @friendship.save
-        redirect_to friendships_path(:t => "s"), notice: "You are now sharing with #{@friendship.friend.first_name}."
+        respond_to do |format|
+          format.html { redirect_to friendships_path, notice: "You are now sharing with #{@friendship.friend.first_name}." }
+          format.js
+        end
       else
-        redirect_to friendships_path(:t => "s"), alert: "<strong>Oh snap!</strong> Something went wrong, please retry."
+        redirect_to friendships_path, alert: "<strong>Oh snap!</strong> Something went wrong, please retry."
       end
     else
-      redirect_to friendships_path(:t => "s"), alert: "<strong>Oh snap!</strong> You are already sharing with #{@friendship.friend.first_name}."
+      redirect_to friendships_path, alert: "<strong>Oh snap!</strong> You are already sharing with #{@friendship.friend.first_name}."
     end
   end
 
@@ -29,15 +31,8 @@ class FriendshipsController < ApplicationController
 
     # Allow js format for remote call
     respond_to do |format|
-      format.html { redirect_to friendships_path(:t => "s"), notice: "You do not share with #{@friendship.friend.first_name} anymore." }
+      format.html { redirect_to friendships_path, notice: "You do not share with #{@friendship.friend.first_name} anymore." }
       format.js
-    end
-  end
-
-  # Open right tab regarding params (SHOW)
-  def open_tab
-    if params[:t] == "s"
-      gon.tab = params[:t]
     end
   end
 end

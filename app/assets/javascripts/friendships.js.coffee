@@ -1,13 +1,9 @@
 jQuery ->
   # Check that we're on correct page (user profile or friendships)
-  if $("#friendships-friendstabs").length > 0
+  if $(".friendships-userbox").length > 0
     
     #replace text for sharing/unshare
-    $(".btn-unsocial").hover(
-      -> $(this).text("Unshare"),
-      -> $(this).text("Sharing")
+    $(".btn-unsocial").hoverIntent(
+      -> $(this).html("Unshare").addClass("btn-remove"),
+      -> $(this).html("<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing").removeClass("btn-remove")
     )
-
-    # Display correct tab
-    if (gon.tab == "s")
-      $("#friendships-friendstabs a[href=\"#tab-friends-2\"]").tab("show")

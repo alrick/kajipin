@@ -9,17 +9,28 @@
         <td><%= image_tag gravatar_url(@user, 165), :class => "img-polaroid" %></td>
         <td style="padding-left: 60px">
           <h4><i class="icon-signal"></i> Friends</h4>
-          <ul class="unstyled">
-            <li><b><%= @user.number_sharing %></b> Sharing</li>
-            <li><b><%= @user.number_sharers %></b> Sharers</li>
+          <table>
+            <tr>
+              <td><span class="badge badge-social"><%= @user.number_sharing %></span>&nbsp;</td><td><strong>Sharing</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-social"><%= @user.number_sharers %></span></td><td><strong>Sharers</strong></td>
+            </tr>
+          </table>
           </ul>
         </td>
         <td style="padding-left: 40px">
           <h4><i class="icon-signal"></i> Travel</h4>
-          <ul class="unstyled">
-            <li><b><%= @user.number_pins %></b> Pins</li>
-            <li><b><%= @user.number_countries %></b> Countries</li>
-          </ul>
+          <table>
+            <tr>
+              <td><span class="badge badge-map"><%= @user.number_pins %></span>&nbsp;</td>
+              <td><strong>Pins</strong></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-map"><%= @user.number_countries %></span></td>
+              <td><strong>Countries</strong></td>
+            </tr>
+          </table>
         </td>
       </tr>
     </table>

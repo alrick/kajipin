@@ -64,7 +64,7 @@ class PinsController < GeoController
 
     # Allow js format for remote call
     respond_to do |format|
-      format.html { redirect_to pins_url, notice: "#{@pin.title} was successfully removed from your pins." }
+      format.html { redirect_to pins_url, notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins." }
       format.js
     end
   end

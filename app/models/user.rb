@@ -53,11 +53,11 @@ class User < ActiveRecord::Base
 
   # Is user passed in params in the sharing of this user
   def isSharing(user)
-    !Friendship.where(:user_id => id, :friend_id => user).empty?
+    Friendship.exists?(:user_id => id, :friend_id => user.id)
   end
 
   # Is user passed in params a sharer of this user
   def isSharer(user)
-    !Friendship.where(:user_id => user, :friend_id => id).empty?
+    Friendship.exists?(:user_id => user.id, :friend_id => id)
   end
 end

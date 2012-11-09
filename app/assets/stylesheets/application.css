@@ -80,3 +80,12 @@ blockquote {
 .modal-footer {
   background: #DBDACF !important;
 }
+
+/* Custom bootstrap elements */
+.badge-map, .label-map {
+  background: #4A4359 !important;
+}
+.badge-social, .label-social {
+  background: #E69922 !important;
+  color: #333 !important;
+}
