@@ -6,14 +6,14 @@
 
 <p class="friendships-stats">
   You currently have <span id="friendships-numbersharing" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
-  <a href="#" rel="tooltip" title="A person who can see your worldmap."><strong>Sharing</strong></a>&nbsp;
+  <a rel="tooltip" title="A person who can see your worldmap." class="friendships-sharedef"><strong>Sharing</strong></a>&nbsp;
   and <span id="friendships-numbersharers" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
-  <a href="#" rel="tooltip" title="A person sharing his worldmap with you."><strong>Sharers</strong></a>.
+  <a rel="tooltip" title="A person sharing his worldmap with you." class="friendships-sharedef"><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
 </p>
 
 <div>
   <% @mates.each do |mate| %>
-    <div id="<%= dom_id(mate) %>" class="friendships-userbox well">
+    <div id="<%= dom_id(mate) %>" class="friendships-userbox well<%= " friendships-shareruserbox" unless current_user.isSharer(mate) %>">
       <% if current_user.isSharer(mate) %>
         <%= link_to ("<strong>"+mate.full_name+"</strong>").html_safe, user_path(mate), :class => "friendships-userboxtitle" %>
         <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
@@ -24,11 +24,11 @@
       <table>
         <tr>
           <td><span class="badge badge-map"><%= mate.number_pins %></span></td>
-          <td><strong>Pins</strong></td>
+          <td><strong><%= "Pin".pluralize(mate.number_pins) %></strong></td>
         </tr>
         <tr>
           <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
-          <td><strong>Countries</strong></td>
+          <td><strong><%= "Country".pluralize(mate.number_pins) %></strong></td>
         </tr>
       </table>
       <p>

@@ -11,10 +11,12 @@
           <h4><i class="icon-signal"></i> Friends</h4>
           <table>
             <tr>
-              <td><span class="badge badge-social"><%= @user.number_sharing %></span>&nbsp;</td><td><strong>Sharing</strong></td>
+              <td><span class="badge badge-social"><%= @user.number_sharing %></span>&nbsp;</td>
+              <td><strong>Sharing</strong></td>
             </tr>
             <tr>
-              <td><span class="badge badge-social"><%= @user.number_sharers %></span></td><td><strong>Sharers</strong></td>
+              <td><span class="badge badge-social"><%= @user.number_sharers %></span></td>
+              <td><strong><%= "Sharer".pluralize(@user.number_sharers) %></strong></td>
             </tr>
           </table>
           </ul>
@@ -24,11 +26,11 @@
           <table>
             <tr>
               <td><span class="badge badge-map"><%= @user.number_pins %></span>&nbsp;</td>
-              <td><strong>Pins</strong></td>
+              <td><strong><%= "Pin".pluralize(@user.number_pins) %></strong></td>
             </tr>
             <tr>
               <td><span class="badge badge-map"><%= @user.number_countries %></span></td>
-              <td><strong>Countries</strong></td>
+              <td><strong><%= "Country".pluralize(@user.number_countries) %></strong></td>
             </tr>
           </table>
         </td>
