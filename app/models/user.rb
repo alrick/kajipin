@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates :last_name, :length => { :minimum => 2 }
   validates :terms, :acceptance => true
 
+  default_scope order("first_name", "last_name")
+
   def default_values
     
   end
@@ -59,5 +61,14 @@ class User < ActiveRecord::Base
   # Is user passed in params a sharer of this user
   def isSharer(user)
     Friendship.exists?(:user_id => user.id, :friend_id => id)
+  end
+
+  # Search func for users
+  def self.search(q)
+    if q
+      find(:all, :conditions => ["lower(first_name) LIKE ? or lower(last_name) LIKE ? or concat(lower(first_name), ' ', lower(last_name)) LIKE ?", "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%"])
+    else
+      find(:all)
+    end
   end
 end

@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
-  <form class="navbar-search">
+  <form class="navbar-search" action="/users" method="get">
     <div class="input-append">
-      <input type="text" class="span2" placeholder="Search user"><span class="add-on"><i class="icon-search icon-white"></i></span>
+      <input name="q" type="text" class="span2" placeholder="Search user">
+      <span class="add-on"><i class="icon-search icon-white"></i></span>
     </div>
   </form>
 <% end %>

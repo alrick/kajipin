@@ -1,0 +1,40 @@
+<% if mates.empty? %>
+  <p class="lead">No user found.</p>
+<% else %>
+  <% mates.each do |mate| %>
+    <div id="<%= dom_id(mate) %>" class="friendships-userbox well<%= " friendships-shareruserbox" unless current_user.isSharer(mate) %>">
+      <% if current_user.isSharer(mate) %>
+        <%= link_to ("<strong>"+mate.full_name+"</strong>").html_safe, user_path(mate), :class => "friendships-userboxtitle" %>
+        <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
+      <% else %>
+        <div class="friendships-userboxtitle"><strong><%= mate.full_name %></strong></div>
+        <%= image_tag gravatar_url(mate, 150), :class => "img-polaroid" %>
+      <% end %>
+      <table>
+        <tr>
+          <td><span class="badge badge-map"><%= mate.number_pins %></span></td>
+          <td><strong><%= "Pin".pluralize(mate.number_pins) %></strong></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
+          <td><strong><%= "Country".pluralize(mate.number_pins) %></strong></td>
+        </tr>
+      </table>
+      <p>
+        <% if current_user.isSharing(mate) %>
+          <% friendship = current_user.friendships.where(:friend_id => mate.id).first %>
+          <%= link_to "<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing".html_safe, friendship_path(friendship, :caller => "friendships"), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial friendships-btn" %>
+        <% else %>
+          <%= link_to "Share".html_safe, friendships_path(:friend => mate, :caller => "friendships"), :method => :post, :remote => true, :class => "btn btn-social friendships-btn" %>
+        <% end %>
+      </p>
+      <p>
+        <% if current_user.isSharer(mate) %>
+          <span class="label label-social">Sharer</span>
+        <% else %>
+          <span>&nbsp;</span>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+<% end %>

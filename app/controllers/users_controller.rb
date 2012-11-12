@@ -17,7 +17,9 @@ class UsersController < GeoController
   end
 
   def index
-    @users = User.where("id != '#{current_user.id}'")
+    @users = User.where("id != '#{current_user.id}'").search(params[:q])
+    @q = ""
+    @q = params[:q] if params[:q]
   end
 
   # Get a list of pins
