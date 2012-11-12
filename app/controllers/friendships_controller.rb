@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :get_context, :only => [:create, :destroy]
 
   def index
     sharings = current_user.friends
@@ -34,5 +35,10 @@ class FriendshipsController < ApplicationController
       format.html { redirect_to friendships_path, notice: "You do not share with #{@friendship.friend.first_name} anymore." }
       format.js
     end
+  end
+
+  # Get page that call the action
+  def get_context
+    @caller = params[:caller]
   end
 end
