@@ -1,0 +1,39 @@
+/* Redefine some bootstrap elements */
+.well {
+  background: #D7CCC2 !important;
+}
+.page-header {
+  border-bottom: 1px solid #403730 !important;
+}
+blockquote {
+  border-left: 5px solid #887D75 !important;
+}
+.nav-tabs > li > a:hover {
+    background: #DBDACF !important;
+}
+.nav-tabs > li.active > a:hover {
+    background: #FFF !important;
+}
+.modal {
+  background: #F2F1E4 !important;
+}
+.modal-footer {
+  background: #DBDACF !important;
+}
+.brand {
+  font-size: 25px !important;
+}
+
+/* Custom bootstrap elements */
+.badge-map, .label-map {
+  background: #4A4359 !important;
+}
+.badge-social, .label-social {
+  background: #E69922 !important;
+  color: #333 !important;
+}
+
+/* Font awesome fix with last bootstrap-rails release */
+[class^="icon-"], [class*=" icon-"] {
+  background-image:none !important;
+}
