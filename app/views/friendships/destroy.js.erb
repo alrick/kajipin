@@ -1,14 +1,19 @@
-// Calling from friendships page
+// Calling from friendships
 <% if @caller == "friendships" %>
-  <% if Friendship.exists?(:user_id => @friendship.friend_id, :friend_id => @friendship.user_id) %>
+  <% if Friendship.exists?(:user_id => @friendship.friend_id, :friend_id => @friendship.user_id) or  %>
     // Reload the friend div
     $("#<%= dom_id(@friendship.friend) %>").load(location.href + " #<%= dom_id(@friendship.friend) %> > *");
   <% else %>
-    // The friend disapear
+    // The friend disapear only on friendships page
     $("#<%= dom_id(@friendship.friend) %>").fadeOut();
   <% end %>
   // Reload the sharing counter
   $("#friendships-numbersharing").html("<%= current_user.number_sharing %>");
+
+// Calling from users page
+<% elsif @caller == "users" %>
+  // Reload the friend div
+  $("#<%= dom_id(@friendship.friend) %>").load(location.href + " #<%= dom_id(@friendship.friend) %> > *");
 
 // Calling from map page, usermodal
 <% elsif @caller == "usermodal" %>

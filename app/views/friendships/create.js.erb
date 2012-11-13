@@ -1,5 +1,5 @@
 // Calling from friendships page
-<% if @caller == "friendships" %>
+<% if @caller == "friendships" || @caller == "users" %>
   // Reload the friend div and add the hoverIntent effect to the btn
   $("#<%= dom_id(@friendship.friend) %>").load(location.href + " #<%= dom_id(@friendship.friend) %> > *", function() {
     $("#<%= dom_id(@friendship.friend) %> a.btn-social").hoverIntent(function() {
