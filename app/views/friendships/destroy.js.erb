@@ -1,6 +1,6 @@
 // Calling from friendships
 <% if @caller == "friendships" %>
-  <% if Friendship.exists?(:user_id => @friendship.friend_id, :friend_id => @friendship.user_id) or  %>
+  <% if Friendship.exists?(:user_id => @friendship.friend_id, :friend_id => @friendship.user_id) %>
     // Reload the friend div
     $("#<%= dom_id(@friendship.friend) %>").load(location.href + " #<%= dom_id(@friendship.friend) %> > *");
   <% else %>

@@ -1,10 +1,10 @@
-// Unify friendships btn
-.friendships-btn {
+// Unify btns
+.usersgrid-btn {
   width: 130px;
 }
 
 // Style the box for each user
-.friendships-userbox {
+.usersgrid-userbox {
   width: 160px;
   float: left;
   margin-bottom: 30px;
@@ -12,21 +12,21 @@
   position: relative;
   padding: 20px 20px 0 20px;
 }
-.friendships-userbox p {
+.usersgrid-userbox p {
   text-align: center;
 }
-.friendships-userbox img {
+.usersgrid-userbox img {
   margin-top: 38px;
 }
-.friendships-userbox table {
+.usersgrid-userbox table {
   margin: 10px 0 10px 30px;
 }
-.friendships-userbox table td {
+.usersgrid-userbox table td {
   padding-right: 5px;
 }
 
 // Define title of user box
-.friendships-userboxtitle {
+.usersgrid-userboxtitle {
   font-size: 16px;
   position: absolute;
   background: #fff;
@@ -38,29 +38,13 @@
   color: #333;
   text-decoration: none;
 }
-a.friendships-userboxtitle:hover {
+a.usersgrid-userboxtitle:hover {
   background: #EFEFEF;
   text-decoration: none;
   color: #333;
 }
 
-// Define stats
-.friendships-stats {
-  font-size: 16px;
-  margin-bottom: 40px;
-}
-
 // Different color for sharer userbox
-.friendships-shareruserbox {
+.usersgrid-shareruserbox {
   background: #C8C2B8 !important;
-}
-
-// Descriptions of sharers and sharing
-.friendships-sharedef {
-  border-bottom: 1px dotted #333;
-  color: #333 !important;
-}
-.friendships-sharedef:hover {
-  text-decoration: none;
-  cursor: default;
 }
