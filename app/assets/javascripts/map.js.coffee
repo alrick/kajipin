@@ -21,32 +21,38 @@ jQuery ->
     map.ui.hash.add()
     map.setZoomRange(3, 17)
 
-    # Create all empty markers layer & group vars
-    pinsLayer = mapbox.markers.layer()
-    bigcityMarkers = true
-    smallcityMarkers = true
-    pointofinterestMarkers = true
+    # Only if user has pins to diplay
+    if gon.pins.length > 0
+      # Create all empty markers layer & group vars
+      pinsLayer = mapbox.markers.layer()
+      bigcityMarkers = true
+      smallcityMarkers = true
+      pointofinterestMarkers = true
 
-    # Add all pin of the user into the right layer
-    pinsLayer.features(gon.pins)
+      # Add all pin of the user into the right layer
+      pinsLayer.features(gon.pins)
 
-    # Add interaction to this marker layers (title and description)
-    interaction = mapbox.markers.interaction(pinsLayer)
+      # Add interaction to this marker layers (title and description)
+      interaction = mapbox.markers.interaction(pinsLayer)
 
-    # Add layers to the map
-    map.addLayer(pinsLayer)
+      # Add layers to the map
+      map.addLayer(pinsLayer)
 
-    # Define formater for pins tooltips
-    interaction.formatter (feature) ->
-      tooltipTitle = "<h2 class=\"map-tooltiptitle\">" + feature.properties.title + "</h2>"
-      tooltipCountry = "<h3 class=\"map-tooltipcountry\">" + feature.properties.country_name + "</h3>"
-      tooltipGalleries = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
-      tooltipLogbook = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
-      tooltipComments = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
-      o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
+      # Define formater for pins tooltips
+      interaction.formatter (feature) ->
+        tooltipTitle = "<h2 class=\"map-tooltiptitle\">" + feature.properties.title + "</h2>"
+        tooltipCountry = "<h3 class=\"map-tooltipcountry\">" + feature.properties.country_name + "</h3>"
+        tooltipGalleries = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
+        tooltipLogbook = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
+        tooltipComments = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
+        o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
 
-    # By default, the map extent markers
-    map.extent(pinsLayer.extent())
+      # By default, the map extent markers
+      map.extent(pinsLayer.extent())
+      
+    # Else display a little message
+    else
+      $("#map-infonopin").css("display", "block")
 
     # Set intent if pin selected
     if (gon.plat && gon.plon)
