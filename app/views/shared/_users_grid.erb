@@ -3,13 +3,8 @@
 <% else %>
   <% mates.each do |mate| %>
     <div id="<%= dom_id(mate) %>" class="usersgrid-userbox well<%= " usersgrid-shareruserbox" unless current_user.isSharer(mate) %>">
-      <% if current_user.isSharer(mate) %>
-        <%= link_to ("<strong>"+mate.full_name+"</strong>").html_safe, user_path(mate), :class => "usersgrid-userboxtitle" %>
-        <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
-      <% else %>
-        <div class="usersgrid-userboxtitle"><strong><%= mate.full_name %></strong></div>
-        <%= image_tag gravatar_url(mate, 150), :class => "img-polaroid" %>
-      <% end %>
+      <%= link_to ("<strong>"+mate.full_name+"</strong>").html_safe, user_path(mate), :class => "usersgrid-userboxtitle" %>
+      <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
       <table>
         <tr>
           <td><span class="badge badge-map"><%= mate.number_pins %></span></td>

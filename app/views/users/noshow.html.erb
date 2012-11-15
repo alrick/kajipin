@@ -38,10 +38,10 @@
 <h1 id="map-infouser" class="map-info">
   <%= link_to @user.first_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>'s Pins
 </h1>
-<p id="map-infocenter" class="map-info">
-  This user has no pin.
-</p>
+<div id="map-infocenter" class="map-info">
+  <p><%= @user.first_name %> does not share with you.</p>
+  <%= link_to "Ask him to share", "#", :class => "btn btn-social" %>
+</div>
 
 <!-- Include modals -->
 <%= render "users/show/user_modal" %>
-<%= render "users/show/pinslist_modal" %>

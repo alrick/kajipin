@@ -22,7 +22,7 @@ jQuery ->
     map.setZoomRange(3, 17)
 
     # Only if user has pins to diplay
-    if gon.pins.length > 0
+    if gon.pins and gon.pins.length > 0
       # Create all empty markers layer & group vars
       pinsLayer = mapbox.markers.layer()
       bigcityMarkers = true
@@ -52,7 +52,7 @@ jQuery ->
       
     # Else display a little message
     else
-      $("#map-infonopin").css("display", "block")
+      $("#map-infocenter").css("display", "block")
 
     # Set intent if pin selected
     if (gon.plat && gon.plon)
@@ -70,7 +70,8 @@ jQuery ->
 
     # Cinch the map display to show all markers
     $("#map-markers").click ->
-      map.extent(pinsLayer.extent())
+      if pinsLayer
+        map.extent(pinsLayer.extent())
 
     # Set countries bounds func
     $(".map-countryitem").click ->

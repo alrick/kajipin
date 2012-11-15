@@ -6,20 +6,24 @@ class UsersController < GeoController
   before_filter :get_user, :only => [:show]
   before_filter :get_countries, :only => [:show]
 
-  def show
-    @pins = @user.pins
-
-    get_list
-    get_countries
-    init_pins
-    focus_pin
-    focus_bounds
-  end
-
   def index
     @users = User.where("id != '#{current_user.id}'").search(params[:q])
     @q = ""
     @q = params[:q] if params[:q]
+  end
+
+  def show
+    if check_access
+      @pins = @user.pins
+
+      get_list
+      get_countries
+      init_pins
+      focus_pin
+      focus_bounds
+    else
+      render :noshow
+    end
   end
 
   # Get a list of pins
@@ -31,6 +35,7 @@ class UsersController < GeoController
 
   # Get user to display the map
   def get_user
+    # If no id provided, auto redirect to the logged user profile
     if params[:id].nil?
       redirect_to user_path(current_user)
       return
@@ -59,6 +64,17 @@ class UsersController < GeoController
       gon.north = params[:n]
       gon.east = params[:e]
       gon.south = params[:s]
+    end
+  end
+
+  # Check if user can access map (user page)
+  def check_access
+    if @user == current_user
+      return true
+    elsif current_user.isSharer(@user)
+      return true
+    else
+      return false
     end
   end
   
