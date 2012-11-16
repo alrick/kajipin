@@ -28,20 +28,22 @@
           border-radius: 3px;
 }
 
-// Nopin Information block
+// Center Information block
 #map-infocenter {
   width: 400px;
   top: 50%;
   left: 50%;
-  margin-top: -60px;
   margin-left: -240px;
   padding: 40px;
   opacity: 0.9;
-  font-size: 30px !important;
-  line-height: 1.1;
   display: none;
   -webkit-border-radius: 10px;
           border-radius: 10px;
+}
+
+// Bigger font for some infos
+.map-infocenterbig {
+  font-size: 30px !important;
 }
 
 // Element UI (button)

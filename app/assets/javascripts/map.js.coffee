@@ -141,3 +141,13 @@ jQuery ->
       else if (!bigcityMarkers && !smallcityMarkers && !pointofinterestMarkers)
         pinsLayer.filter (f) ->
           false
+
+
+    #########################################
+    #### CENTER UI
+    #########################################
+
+    # Center information block if present
+    if ($("#map-infocenter").length > 0)
+      topmargin = ($("#map-infocenter").height()/2) * -1
+      $("#map-infocenter").css("margin-top", topmargin)
