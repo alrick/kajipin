@@ -34,13 +34,14 @@
   <i class="icon-eye-open"></i>
 </a>
 <%= link_to "<i class=\"icon-list-alt\"></i>".html_safe, "#pinslistModal", :id => "map-pinslist", :class => "map-modalopen map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
-
 <h1 id="map-infouser" class="map-info">
-  <%= link_to @user.first_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>'s Pins
+  <%= link_to @user.full_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>
 </h1>
-<p id="map-infocenter" class="map-info">
-  This user has no pin.
-</p>
+
+<!-- Center information -->
+<div id="map-infocenter" class="map-info">
+  <p class="lead map-infocenterbig"><%= @user.first_name %> has no pin.</p>
+</div>
 
 <!-- Include modals -->
 <%= render "users/show/user_modal" %>
