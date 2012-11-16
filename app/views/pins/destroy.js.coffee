@@ -1,0 +1,1 @@
+$("#<%= dom_id(@pin) %>").fadeOut()
