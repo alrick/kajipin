@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :get_pin
+
+  def index
+    @comments = @pin.comments
+  end
 
   def create
     @comment = Comment.new(params[:comment])
@@ -19,5 +24,10 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url }
       format.json { head :no_content }
     end
+  end
+
+  # Get the pin the comment belongs to (nested)
+  def get_pin
+    @pin = Pin.find(params[:pin_id])
   end
 end
