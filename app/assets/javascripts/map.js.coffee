@@ -9,7 +9,7 @@ jQuery ->
 
     # Map init
     map = mapbox.map("map")
-    map.addLayer(mapbox.layer().url("http://a.tiles.mapbox.com/v3/alrick.map-y17w9hkl.jsonp", () ->
+    map.addLayer(mapbox.layer().id("alrick.map-y17w9hkl", () ->
       map.ui.refresh()))
 
     # Map config
@@ -44,7 +44,7 @@ jQuery ->
         tooltipCountry = "<h3 class=\"map-tooltipcountry\">" + feature.properties.country_name + "</h3>"
         tooltipGalleries = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.galleries_count + "&nbsp;<i class=\"icon-camera\"></i></a>&nbsp;"
         tooltipLogbook = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.logpages_count + "&nbsp;<i class=\"icon-book\"></i></a>&nbsp;"
-        tooltipComments = "<a href=\"#\" class=\"btn btn-small btn-tool map-tooltipbtn\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>" 
+        tooltipComments = "<a href=\"#commentsModal\" class=\"btn btn-small btn-tool map-tooltipbtn map-modalopen\" role=\"link\" data-toggle=\"modal\">" + feature.properties.comments_count + "&nbsp;<i class=\"icon-comment\"></i></a>"
         o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
 
       # By default, the map extent markers
