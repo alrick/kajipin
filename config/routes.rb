@@ -23,7 +23,9 @@ Socialrails::Application.routes.draw do
 
   resources :comments
 
-  resources :pins
+  resources :pins do
+    resources :comments
+  end
 
   resources :users
 
