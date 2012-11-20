@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 
-class PinsController < GeoController
+class PinsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
