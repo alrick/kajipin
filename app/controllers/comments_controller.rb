@@ -4,6 +4,10 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @pin.comments
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create

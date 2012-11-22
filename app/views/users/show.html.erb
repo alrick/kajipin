@@ -36,6 +36,7 @@
 <%= link_to "<i class=\"icon-list-alt\"></i>".html_safe, "#pinslistModal", :id => "map-pinslist", :class => "map-modalopen map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
 
 <h1 id="map-infouser" class="map-info">
+  <%= link_to 'po', pin_comments_path(@pins.last), :remote=> true %>
   <%= link_to @user.full_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>
 </h1>
 
