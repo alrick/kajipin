@@ -115,3 +115,45 @@
 // Unify buttons width
 .map-btnunify { min-width: 31px; }
 .mapuser-btn { min-width: 72px; }
+
+// Adjust h1 size
+#userModalLabel {
+  font-size: 30px;
+}
+#userModalLabel small {
+  font-size: 20px;
+}
+
+// Styling pinModal
+#pinModal .modal-footer, #pinModal .modal-body {
+  text-align: center;
+}
+
+// Style comment blockquote
+.map-commentcontainer {
+  display: inline-block;
+}
+.map-comment {
+  clear: both;
+}
+.map-comment img, .map-comment blockquote {
+  float: left;
+  text-align: left;
+}
+.map-comment img {
+  margin-right: 10px;
+}
+
+// Style comment form
+.map-commentcontainer form {
+  float: left;
+}
+.map-commentcontainer textarea {
+  width: 100%;
+  height: 60px;
+  resize: vertical;
+}
+.map-commentcontainer label {
+  margin-bottom: 0;
+  text-align: right;
+}

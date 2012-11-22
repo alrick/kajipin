@@ -1,0 +1,16 @@
+<div id="pinModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="pinModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2 id="pinModalLabel"><%= @user.first_name %>'s Nowhere</h2>
+  </div>
+  <div class="modal-body">
+    <p class="lead">Are you lost?</p>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group" data-toggle="buttons-radio">
+      <button type="button" id="map-galleriesmodalbtn" class="btn btn-tool"><b>Galleries</b></button>
+      <button type="button" id="map-logbookmodalbtn" class="btn btn-tool"><b>Logbook</b></button>
+      <button type="button" id="map-commentsmodalbtn" class="btn btn-tool"><b>Comments</b></button>
+    </div>
+  </div>
+</div>
