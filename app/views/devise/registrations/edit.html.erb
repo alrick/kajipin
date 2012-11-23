@@ -26,7 +26,7 @@
   </div>
   <div class="span3">
     <h2>Profile photo</h2>
-    <%= image_tag gravatar_url(current_user, 205) %>
+    <%= image_tag gravatar_url(current_user, 205), :class => "img-polaroid" %>
     <p><b><%= Appetizer.appname %></b> uses <a href="#" rel="tooltip" title="Gravatar allows you to bind your email address with an avatar / profile photo.">Gravatar</a> to display your profile photo, more informations <%= link_to "here", "http://en.gravatar.com" %>.
   </div>
 </div>
