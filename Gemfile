@@ -10,7 +10,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3' #sass for better css
   gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
   gem 'uglifier', '>= 1.0.3' # for javascript
-  gem 'twitter-bootstrap-rails' #bootstrap for better interface
+  gem "therubyracer" #required for twitter-bootstrap-rails
 end
 
 gem 'jquery-rails' #jquery integration
@@ -23,6 +23,8 @@ gem 'rabl' #manage json formating, MUST BE before gon
 gem 'gon' #passing data to javascript
 gem 'nokogiri' #xml parsing
 gem 'dropbox-sdk' #dropbox API access
+gem 'less-rails' #required for twitter-bootstrap-rails
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' #bootstrap for better interface
 
 group :development do
   gem 'rails-erd' #create schema of entities
