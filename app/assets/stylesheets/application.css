@@ -11,5 +11,6 @@
  *= require_self
  *= require mapbox/mapbox
  *= require bootstrap_and_overrides
+ *= require bootstrap-modal/bootstrap-modal
  *= require_tree .
  */

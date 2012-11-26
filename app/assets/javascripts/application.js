@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require mapbox/mapbox
-//= require jquery.hoverIntent.minified
+//= require hoverintent/jquery.hoverIntent.minified
+//= require bootstrap-modal/bootstrap-modal
+//= require bootstrap-modal/bootstrap-modalmanager
 //= require_tree .
