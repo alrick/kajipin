@@ -1,25 +1,33 @@
-<div class="map-commentcontainer">
+<div class="container-fluid">
   <% if comments.empty? %>
-    <p class="lead">No comment</p>
+    <strong>No comment</strong>
   <% else %>
       <% comments.each do |comment| %>
-        <div class="map-comment">
-          <%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %>
-          <blockquote>
-            <p><%= comment.value %></p>
-            <small>
-              <%= link_to comment.user.full_name, user_path(comment.user) %> (<%= comment.created_at.to_formatted_s(:long_ordinal) %>)
-            </small>
-          </blockquote>
-        </div>
+          <div class="row">
+            <div class="span1"><%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %></div>
+            <div class="span5">
+              <blockquote>
+                <p><%= comment.value %></p>
+                <small>
+                  <%= link_to comment.user.full_name, user_path(comment.user) %> (<%= comment.created_at.to_formatted_s(:long_ordinal) %>)
+                </small>
+              </blockquote>
+            </div>
+          </div>
       <% end %>
   <% end %>
 
-  <%= simple_form_for comment do |c| %>
-    <%= c.input :value, :label => 'Share your thoughts', :label_html => { :class => 'lead' } %>
-    <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-    <%= c.input :location_id, :as => :hidden, :input_html => { :value => @pin.id } %>
-    <%= c.button :submit, 'Comment', :class => 'btn btn-social' %>
-  <% end %>
-  <%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %>
+  <p class="lead map-shareytho">Share your thoughts</p>
+  <div class="row">
+    <div class="span4">
+      <%= simple_form_for comment do |c| %>
+        <%= c.input :value, :label => false %>
+        <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= c.input :location_id, :as => :hidden, :input_html => { :value => @pin.id } %>
+        <%= c.button :submit, 'Comment', :class => 'btn btn-social map-btncomment' %>
+      <% end %>
+    </div>
+    <div class="span1"><%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %></div>
+  </div>
+
 </div>

@@ -17,6 +17,9 @@ blockquote {
 .modal {
   background: #F2F1E4 !important;
 }
+.modal-header {
+  border-bottom: 1px solid #D9D8CE !important;
+}
 .modal-footer {
   background: #DBDACF !important;
 }
