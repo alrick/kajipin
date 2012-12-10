@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @pin.comments
+    @comment = Comment.new
 
     respond_to do |format|
       format.js
