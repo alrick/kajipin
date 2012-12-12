@@ -142,3 +142,13 @@
 .map-btncomment {
   margin-top: -16px;
 }
+
+// Custom alert for map
+.alert-map {
+  position: absolute;
+  width: 888px;
+  z-index: 999;
+  left: 50%;
+  margin-left: -444px;
+  box-shadow: 0 1px 5px #888;
+}
