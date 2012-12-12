@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @pin.comments
-    @comment = Comment.new
 
     respond_to do |format|
       format.js
@@ -14,10 +13,13 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
-    if @comment.save
-      redirect_to user_path(current_user), notice: "Comment was successfully created."
-    else
-      redirect_to user_path(current_user), alert: "<strong>Oh snap!</strong> Can't add your comment, give us another chance!"
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to user_path(@comment.pin.user_id), notice: "Comment was successfully created." }
+      else
+        format.html { redirect_to user_path(@comment.pin.user_id), alert: "<strong>Oh snap!</strong> Can't add your comment, give us another chance!" }
+      end
+      format.js
     end
   end
 
