@@ -1,26 +1,16 @@
-<div class="container-fluid">
+<div id="comments" class="container-fluid">
   <% if @comments.empty? %>
     <strong>No comment</strong>
   <% else %>
       <% @comments.each do |comment| %>
-          <div class="row">
-            <div class="span1"><%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %></div>
-            <div class="span5" style="margin-left: 0">
-              <blockquote>
-                <p><%= comment.value %></p>
-                <small>
-                  <%= link_to comment.user.full_name, user_path(comment.user) %> (<%= comment.created_at.to_formatted_s(:long_ordinal) %>)
-                </small>
-              </blockquote>
-            </div>
-          </div>
+        <%= render comment, :comment => comment %>
       <% end %>
   <% end %>
 
   <p class="lead map-shareytho">Share your thoughts</p>
   <div class="row">
     <div class="span4">
-      <%= simple_form_for [@pin, @comment] do |c| %>
+      <%= simple_form_for [@pin, Comment.new] do |c| %>
         <%= c.input :value, :label => false %>
         <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= c.input :pin_id, :as => :hidden, :input_html => { :value => @pin.id } %>
