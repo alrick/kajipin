@@ -14,22 +14,19 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to user_path(@comment.pin.user_id), notice: "Comment was successfully created." }
-      else
-        format.html { redirect_to user_path(@comment.pin.user_id), alert: "<strong>Oh snap!</strong> Can't add your comment, give us another chance!" }
-      end
+      @comment.save
       format.js
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    if @comment.pin.user == current_user
+      @comment.destroy
+    end
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
-      format.json { head :no_content }
+      format.html { redirect_to :back }
     end
   end
 
