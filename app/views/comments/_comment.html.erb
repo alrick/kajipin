@@ -1,11 +1,16 @@
-<div class="row">
+<%= div_for comment, :class => "row" do %>
   <div class="span1"><%= image_tag gravatar_url(comment.user, 40), :class => 'img-polaroid' %></div>
   <div class="span5" style="margin-left: 0">
     <blockquote>
-      <p><%= comment.value %></p>
+      <p>
+        <% if comment.pin.user == current_user %>
+          <%= link_to "<i class=\"icon-remove-sign\"></i>".html_safe, pin_comment_path(comment.pin, comment), :method => :delete %>
+        <% end %>
+        <%= comment.value %>
+      </p>
       <small>
         <%= link_to comment.user.full_name, user_path(comment.user) %> (<%= comment.created_at.to_formatted_s(:long_ordinal) %>)
       </small>
     </blockquote>
   </div>
-</div>
+<% end %>
