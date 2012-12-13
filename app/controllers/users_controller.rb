@@ -45,7 +45,7 @@ class UsersController < GeoController
 
   # Init JSON pins via rabl
   def init_pins
-    gon.rabl "app/views/pins/index.json.rabl", as: "pins"
+    gon.watch.rabl "app/views/pins/index.json.rabl", as: "pins"
   end
 
   # Focus on a pin if set (MAP)
