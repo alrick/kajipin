@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-
+    @comment.save
+    
     respond_to do |format|
-      @comment.save
       format.js
     end
   end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.js
     end
   end
 

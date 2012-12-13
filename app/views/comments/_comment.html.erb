@@ -4,7 +4,7 @@
     <blockquote>
       <p>
         <% if comment.pin.user == current_user %>
-          <%= link_to "<i class=\"icon-remove-sign\"></i>".html_safe, pin_comment_path(comment.pin, comment), :method => :delete %>
+          <%= link_to "<i class=\"icon-remove-sign\"></i>".html_safe, pin_comment_path(comment.pin, comment), :method => :delete, :remote => true %>
         <% end %>
         <%= comment.value %>
       </p>
