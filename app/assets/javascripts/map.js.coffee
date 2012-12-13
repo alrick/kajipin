@@ -2,7 +2,6 @@ jQuery ->
   # Check that we're on correct page
   if ($("#map").length > 0)
 
-
     #########################################
     #### INITIALISATION
     #########################################
@@ -57,6 +56,9 @@ jQuery ->
     # Set intent if pin selected
     if (gon.plat && gon.plon)
       map.centerzoom({ lat: gon.plat, lon: gon.plon }, 12)
+
+    gon.map = map
+    gon.pinsLayer = pinsLayer
 
 
     #########################################
