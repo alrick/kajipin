@@ -1,16 +1,18 @@
-<div id="comments" class="container-fluid">
-  <% if @comments.empty? %>
-    <strong>No comment</strong>
-  <% else %>
-      <% @comments.each do |comment| %>
-        <%= render comment, :comment => comment %>
-      <% end %>
-  <% end %>
+<div class="container-fluid">
+  <div id="comments">
+    <% if @comments.empty? %>
+      <strong>No comment</strong>
+    <% else %>
+        <% @comments.each do |comment| %>
+          <%= render comment %>
+        <% end %>
+    <% end %>
+  </div>
 
   <p class="lead map-shareytho">Share your thoughts</p>
   <div class="row">
     <div class="span4">
-      <%= simple_form_for [@pin, Comment.new] do |c| %>
+      <%= simple_form_for [@pin, Comment.new], :remote => true do |c| %>
         <%= c.input :value, :label => false %>
         <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= c.input :pin_id, :as => :hidden, :input_html => { :value => @pin.id } %>
