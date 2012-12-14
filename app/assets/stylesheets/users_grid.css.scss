@@ -1,50 +1,37 @@
-// Unify btns
-.usersgrid-btn {
-  width: 130px;
-}
-
 // Style the box for each user
-.usersgrid-userbox {
+.userbox {
   width: 160px;
   float: left;
   margin-bottom: 30px;
   margin-right: 30px;
   position: relative;
   padding: 20px 20px 0 20px;
-}
-.usersgrid-userbox p {
-  text-align: center;
-}
-.usersgrid-userbox img {
-  margin-top: 38px;
-}
-.usersgrid-userbox table {
-  margin: 10px 0 10px 30px;
-}
-.usersgrid-userbox table td {
-  padding-right: 5px;
-}
 
-// Define title of user box
-.usersgrid-userboxtitle {
-  font-size: 16px;
-  position: absolute;
-  background: #fff;
-  padding: 10px;
-  top: 10px;
-  left: -10px;
-  border: #E3E3E3 solid 1px;
-  max-width: 160px;
-  color: #333;
-  text-decoration: none;
-}
-a.usersgrid-userboxtitle:hover {
-  background: #EFEFEF;
-  text-decoration: none;
-  color: #333;
-}
+  p { text-align: center; }
+  img { margin-top: 38px; }
+  table { 
+    margin: 10px 0 10px 30px;
+    td { padding-right: 5px; }
+  }
 
-// Different color for sharer userbox
-.usersgrid-shareruserbox {
-  background: #C8C2B8 !important;
+  // Define title of user box
+  > a:first-child {
+    font-size: 16px;
+    position: absolute;
+    background: #FFF;
+    padding: 10px;
+    top: 10px;
+    left: -10px;
+    border: #E3E3E3 solid 1px;
+    max-width: 160px;
+    color: #333;
+    text-decoration: none;
+    &:hover { background: #EFEFEF; }
+  }
+
+  // Unify btns
+  .btn { width: 130px; }
+
+  // Different color for sharer userbox
+  &.sharer-userbox { background: #C8C2B8 !important; }
 }

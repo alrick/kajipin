@@ -1,0 +1,12 @@
+// Style main menu
+#global-menufirst {
+  img { float: left; margin-right: 9px; } // Style for the avatar of the main menu
+  strong { font-size: 14px; } // Style for the username of the main menu
+  p { font-size: 11px; height: 7px; } // Style for the View profile info of the main menu
+}
+
+// For the beta information
+#betasig { font-size: 0.6em; }
+
+// No margin effect
+.no-margin { margin: 0 !important; }

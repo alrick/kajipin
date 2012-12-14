@@ -1,17 +1,11 @@
-
-
 // Define stats
-.friendships-stats {
-  font-size: 16px;
+#friendships-stats {
+  font-size: 20px;
   margin-bottom: 40px;
-}
 
-// Descriptions of sharers and sharing
-.friendships-sharedef {
-  border-bottom: 1px dotted #333;
-  color: #333 !important;
-}
-.friendships-sharedef:hover {
-  text-decoration: none;
-  cursor: default;
+  a { // Descriptions of sharers and sharing
+    border-bottom: 1px dotted #333; 
+    color: #333 !important;
+    &:hover { text-decoration: none; cursor: default; }
+  }
 }

@@ -39,11 +39,7 @@
   display: none;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-}
-
-// Bigger font for some infos
-.map-infocenterbig {
-  font-size: 30px !important;
+  .lead { font-size: 30px; }
 }
 
 // Element UI (button)
@@ -99,9 +95,11 @@
   -webkit-border-radius: 3px;
           border-radius: 3px;
   display: none;
+  li { 
+    padding: 5px 5px 5px 7px;
+    &:hover { background: #7196A3; color: #FFF; cursor: pointer; }
+  }
 }
-#map-countrieslist li { padding: 5px 5px 5px 7px; }
-#map-countrieslist li:hover { background: #7196A3; color: #FFF; cursor: pointer; }
 
 // Tooltips of pins
 .map-tooltiptitle { font-size: 24px; line-height: 10px; color: #403730; }
@@ -117,31 +115,13 @@
 .mapuser-btn { min-width: 72px; }
 
 // Adjust h1 size
-#userModalLabel {
+#userModal h1 {
   font-size: 30px;
-}
-#userModalLabel small {
-  font-size: 20px;
+  small { font-size: 20px; }
 }
 
 // Styling pinModal
-#pinModal .modal-footer {
-  text-align: center;
-}
-
-// Styling comments
-#pinModal textarea {
-  width: 300px;
-  height: 50px;
-  resize: vertical;
-}
-.map-shareytho {
-  margin-bottom: 0;
-  margin-top: 20px;
-}
-.map-btncomment {
-  margin-top: -16px;
-}
+#pinModal .modal-footer { text-align: center; }
 
 // Custom alert for map
 .alert-map {

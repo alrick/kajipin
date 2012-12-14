@@ -4,11 +4,11 @@
   <h1>Your Friends <small>A list of all your Sharing &amp; Sharers</small></h1>
 </div>
 
-<p class="friendships-stats">
+<p id="friendships-stats">
   You currently have <span id="friendships-numbersharing" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
-  <a rel="tooltip" title="A person who can see your worldmap." class="friendships-sharedef"><strong>Sharing</strong></a>&nbsp;
+  <a rel="tooltip" title="A person who can see your worldmap."><strong>Sharing</strong></a>&nbsp;
   and <span id="friendships-numbersharers" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
-  <a rel="tooltip" title="A person sharing his worldmap with you." class="friendships-sharedef"><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
+  <a rel="tooltip" title="A person sharing his worldmap with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
 </p>
 
 <div>

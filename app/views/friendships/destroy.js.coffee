@@ -1,19 +1,20 @@
 # Calling from friendships
 <% if @caller == "friendships" %>
-  
+
   # If friend is a sharer, update the div. If not, fadeout
   <% if Friendship.exists?(:user_id => @friendship.friend_id, :friend_id => @friendship.user_id) %>
     # Reload the friend div
     $("#<%= dom_id(@friendship.friend) %>").load location.href + " #<%= dom_id(@friendship.friend) %> > *"
+    # Reload the sharing counter
+    $("#friendships-numbersharing").html "<%= @friendship.user.number_sharing %>"
 
   <% else %>
     # The friend disapear only on friendships page
     $("#<%= dom_id(@friendship.friend) %>").fadeOut()
+    # Reload the sharing counter
+    $("#friendships-numbersharing").html "<%= @friendship.user.number_sharing %>"
 
   <% end %>
-
-  # Reload the sharing counter
-  $("#friendships-numbersharing").html "<%= current_user.number_sharing %>"
 
 
 # Calling from users page

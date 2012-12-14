@@ -9,17 +9,19 @@
     <% end %>
   </div>
 
-  <p class="lead map-shareytho">Share your thoughts</p>
-  <div class="row">
-    <div class="span4">
-      <%= simple_form_for [@pin, Comment.new], :remote => true do |c| %>
-        <%= c.input :value, :label => false %>
-        <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-        <%= c.input :pin_id, :as => :hidden, :input_html => { :value => @pin.id } %>
-        <%= c.button :submit, 'Comment', :class => 'btn btn-small btn-social map-btncomment' %>
-      <% end %>
+  <div id="comments-answer">
+    <p class="lead map-shareytho">Share your thoughts</p>
+    <div class="row">
+      <div class="span4">
+        <%= simple_form_for [@pin, Comment.new], :remote => true do |c| %>
+          <%= c.input :value, :label => false %>
+          <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+          <%= c.input :pin_id, :as => :hidden, :input_html => { :value => @pin.id } %>
+          <%= c.button :submit, 'Comment', :class => 'btn btn-small btn-social map-btncomment' %>
+        <% end %>
+      </div>
+      <div class="span1"><%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %></div>
     </div>
-    <div class="span1"><%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %></div>
   </div>
 
 </div>
