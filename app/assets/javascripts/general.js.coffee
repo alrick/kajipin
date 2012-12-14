@@ -5,7 +5,7 @@ jQuery ->
     $(this).remove()
 
   # Check that we're on correct page (user profile or friendships)
-  if ($(".usersgrid-userbox").length > 0) or ($("#userModal").length > 0)
+  if ($(".userbox").length > 0) or ($("#userModal").length > 0)
     
     #replace text for sharing/unshare
     $(".btn-unsocial").hoverIntent(

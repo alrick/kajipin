@@ -11,6 +11,6 @@
   <a rel="tooltip" title="A person sharing his worldmap with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
 </p>
 
-<div>
-  <%= render "shared/users_grid", :mates => @mates, :caller => "friendships" %>
+<div id="friendships">
+  <%= render "shared/users_grid", :mates => @mates %>
 </div>

@@ -18,7 +18,7 @@
     <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Locategory.smallcity_marker_path, :width => "15") %> Small City</b></a></li>
     <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Locategory.pointofinterest_marker_path, :width => "15") %> Point of Interest</b></a></li>
   </ul>
-  <div class="tab-content">
+  <div id="pins" class="tab-content">
     <div class="tab-pane active" id="bigcity">
       <%= render "pins/index/pins_table", :pins => @big_cities %>
     </div>

@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_context, :only => [:create, :destroy]
 
   def index
     sharings = current_user.friends
@@ -12,17 +11,11 @@ class FriendshipsController < ApplicationController
     friend = User.find(params[:friend])
     if !current_user.isSharing(friend)
       @friendship = current_user.friendships.build(:friend_id => friend.id)
+      @friendship.save
+    end
 
-      if @friendship.save
-        respond_to do |format|
-          format.html { redirect_to friendships_path, notice: "You are now sharing with #{@friendship.friend.first_name}." }
-          format.js
-        end
-      else
-        redirect_to friendships_path, alert: "<strong>Oh snap!</strong> Something went wrong, please retry."
-      end
-    else
-      redirect_to friendships_path, alert: "<strong>Oh snap!</strong> You are already sharing with #{@friendship.friend.first_name}."
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -35,10 +28,5 @@ class FriendshipsController < ApplicationController
       format.html { redirect_to friendships_path, notice: "You do not share with #{@friendship.friend.first_name} anymore." }
       format.js
     end
-  end
-
-  # Get page that call the action
-  def get_context
-    @caller = params[:caller]
   end
 end

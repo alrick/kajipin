@@ -4,6 +4,6 @@
   <h1>Searching User <small><%= @q %></small></h1>
 </div>
 
-<div>
-  <%= render "shared/users_grid", :mates => @users, :caller => "users" %>
+<div id="users">
+  <%= render "shared/users_grid", :mates => @users %>
 </div>
