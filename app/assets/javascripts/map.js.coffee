@@ -39,12 +39,13 @@ jQuery ->
 
       # Define formater for pins tooltips
       interaction.formatter (feature) ->
-        tooltipTitle = '<h2 class="map-tooltiptitle">' + feature.properties.title + "</h2>"
-        tooltipCountry = '<h3 class="map-tooltipcountry">' + feature.properties.country_name + "</h3>"
+        tooltipTitle = '<h2 class="map-tooltiptitle">' + feature.properties.title + '</h2>'
+        tooltipCountry = '<h3 class="map-tooltipcountry">' + feature.properties.country_name + '</h3>'
         tooltipGalleries = '<a href="#" class="btn btn-small btn-tool map-tooltipbtn map-modalopen">' + feature.properties.galleries_count + '&nbsp;<i class="icon-camera"></i></a>&nbsp;'
-        tooltipLogbook = '<a href="#" class="btn btn-small btn-tool map-tooltipbtn map-modalopen">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>&nbsp;'
         tooltipComments = '<a href="' + feature.properties.comments_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.comments_count + '&nbsp;<i class="icon-comment"></i></a>'
-        o = tooltipTitle + tooltipCountry + tooltipGalleries + tooltipLogbook + tooltipComments
+        tooltipLogbook = '<a href="#" class="btn btn-small btn-tool map-tooltipbtn map-modalopen">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>&nbsp;'
+        tooltipZoom = '<a onclick="gon.map.centerzoom({ lat: ' + feature.geometry.coordinates[1] + ', lon: ' + feature.geometry.coordinates[0] + ' }, 12, true)" class="btn btn-small btn-map map-tooltipbtn map-tooltipzoom" data-lat="' + feature.geometry.coordinates[1] + '" data-lon="' + feature.geometry.coordinates[0] + '"><i class="icon-zoom-in"></i></a>'
+        o = '<div style="text-align:center">' + tooltipTitle + tooltipCountry + '<div>' + tooltipGalleries + tooltipComments + '</div><div>' + tooltipLogbook + tooltipZoom + '</div></div>'
 
       # By default, the map extent markers
       map.extent(pinsLayer.extent())
