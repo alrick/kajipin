@@ -67,18 +67,17 @@ jQuery ->
     #########################################
 
     # Set worldmap zoom func
-    $("#map-world").click -> 
-      map.zoom(3)
-      map.center({ lat: 24.06, lon: 13.33 })
+    $("#map-world").click ->
+      map.centerzoom({ lat: 24.06, lon: 13.33 }, 3, false);
 
     # Cinch the map display to show all markers
     $("#map-markers").click ->
       if pinsLayer
-        map.extent(pinsLayer.extent())
+        map.setExtent(pinsLayer.extent())
 
     # Set countries bounds func
     $(".map-countryitem").click ->
-      map.setExtent(new MM.Extent($(this).attr("data-north"), $(this).attr("data-west"), $(this).attr("data-south"), $(this).attr("data-east")));
+      map.setExtent(new MM.Extent($(this).attr("data-north"), $(this).attr("data-west"), $(this).attr("data-south"), $(this).attr("data-east")))
 
     # Display list of countries when button clicked
     $("#map-countries").click (event) ->
