@@ -8,7 +8,7 @@
           <td style="width: 50%">
             <a rel="tooltip" title="<%= pin.country_name %>" data-placement="left"><%= image_tag("flags/"+pin.country_code.downcase+".png", :width => 12) %></a><strong> <%= pin.title %></strong>
           </td>
-          <td style="width: 50%">
+          <td>
             <%= link_to (pin.galleries_count+"&nbsp;<i class=\"icon-camera\"></i>").html_safe, "#", :class => "btn btn-mini btn-tool map-btnunify", :rel => "tooltip", :title => "Galleries" %>
             <%= link_to (pin.logpages_count+"&nbsp;<i class=\"icon-book\"></i>").html_safe, "#", :class => "btn btn-mini btn-tool map-btnunify", :rel => "tooltip", :title => "Logbook" %>
             <%= link_to (pin.comments_count+"&nbsp;<i class=\"icon-comment\"></i>").html_safe, "#", :class => "btn btn-mini btn-tool map-btnunify", :rel => "tooltip", :title => "Comments" %>
