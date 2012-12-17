@@ -16,7 +16,7 @@ blockquote {
 }
 .modal {
   background: #F2F1E4 !important;
-  margin-top: -350px !important;
+  margin-top: -360px !important;
 }
 .modal-header {
   border-bottom: 1px solid #D9D8CE !important;
@@ -29,6 +29,9 @@ blockquote {
 }
 .brand {
   font-size: 25px !important;
+}
+.map-attribution {
+  z-index: 10 !important;
 }
 
 /* Custom bootstrap elements */
