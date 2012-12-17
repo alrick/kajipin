@@ -16,9 +16,13 @@ blockquote {
 }
 .modal {
   background: #F2F1E4 !important;
+  margin-top: -350px !important;
 }
 .modal-header {
   border-bottom: 1px solid #D9D8CE !important;
+}
+.modal-body {
+  max-height: 560px !important;
 }
 .modal-footer {
   background: #DBDACF !important;
