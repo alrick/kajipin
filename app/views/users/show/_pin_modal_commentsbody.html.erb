@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div id="comments">
     <% if @comments.empty? %>
-      <strong>No comment</strong>
+      <strong>No comments</strong>
     <% else %>
         <% @comments.each do |comment| %>
           <%= render comment %>
