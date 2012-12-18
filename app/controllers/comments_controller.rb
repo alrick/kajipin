@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :get_pin
 
   def index
-    @comments = @pin.comments
+    @comments = @pin.comments.order("created_at ASC")
 
     respond_to do |format|
       format.js
