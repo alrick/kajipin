@@ -1,4 +1,4 @@
-$("#pinModal .modal-body").html("<%= j(render('users/show/pin_modal_commentsbody')) %>")
+$("#pinModal .modal-body").html("<%= j(render('comments/comments')) %>")
 $("#pinModalLabel").html("<%= j(render('users/show/pin_modal_header')) %>")
 $("#pinModal .modal-footer").html("<%= j(render('users/show/pin_modal_footer')) %>")
 $("#map-commentsmodalbtn").button("toggle")

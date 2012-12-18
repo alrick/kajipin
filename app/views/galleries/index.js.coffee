@@ -1,4 +1,4 @@
-$("#pinModal .modal-body").html("<%= j(render('users/show/pin_modal_galleriesbody')) %>")
+$("#pinModal .modal-body").html("<%= j(render('galleries/galleries')) %>")
 $("#pinModalLabel").html("<%= j(render('users/show/pin_modal_header')) %>")
 $("#pinModal .modal-footer").html("<%= j(render('users/show/pin_modal_footer')) %>")
 $("#map-galleriesmodalbtn").button("toggle")
