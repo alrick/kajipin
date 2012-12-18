@@ -4,8 +4,8 @@ class Pin < ActiveRecord::Base
   belongs_to :user
   belongs_to :locategory
   has_many :comments, dependent: :destroy
-  has_one :logbook, dependent: :destroy
   has_many :galleries, dependent: :destroy
+  has_many :logpages, dependent: :destroy
 
   validates :title, :country_name, :country_code, :presence => true
   validates :latitude, :longitude, :numericality => true

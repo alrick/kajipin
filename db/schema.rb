@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105151445) do
+ActiveRecord::Schema.define(:version => 20121218150929) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -68,19 +68,12 @@ ActiveRecord::Schema.define(:version => 20121105151445) do
     t.integer  "hook"
   end
 
-  create_table "logbooks", :force => true do |t|
-    t.text     "description"
-    t.integer  "pin_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "logpages", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "logbook_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "pin_id"
   end
 
   create_table "pins", :force => true do |t|
