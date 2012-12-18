@@ -10,17 +10,18 @@ jQuery ->
       topmargin = ((padding+height)/2) * -1
       $("#map-infocenter").css("margin-top", topmargin)
 
-    # Update pins
-    updatepins = (pins) ->
-      gon.pinsLayer.features(pins)
-
     # Trigger buttons to update pins
-    $(".map-updatepins").click ->
-      if $(this).attr("id") == "map-refresh"
-        $(this).find(':first-child').fadeOut ->
-          $(this).attr("class", "icon-time")
-          $(this).fadeIn ->
-            $(this).fadeOut ->
-              $(this).attr("class", "icon-refresh")
-              $(this).fadeIn()
-      gon.watch('pins', updatepins)
+    $("#map-refresh").click ->
+      $(this).find(':first-child').fadeOut ->
+        $(this).attr("class", "icon-time")
+        $(this).fadeIn ->
+          $(this).fadeOut ->
+            $(this).attr("class", "icon-refresh")
+            $(this).fadeIn()
+      gon.watch "pins", (pins) ->
+        gon.pinsLayer.features(pins)
+
+    # Update pins when modal is hide
+    $("#pinModal").on "hide", ->
+      gon.watch "pins", (pins) ->
+        gon.pinsLayer.features(pins)
