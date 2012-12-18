@@ -17,7 +17,6 @@ jQuery ->
     map.ui.attribution.add()
     map.ui.zoombox.add()
     map.ui.zoomer.add()
-    map.ui.hash.add()
     map.setZoomRange(3, 17)
 
     # Only if user has pins to diplay
