@@ -1,5 +1,5 @@
 <div class="btn-group" data-toggle="buttons-radio">
-  <%= link_to "<b><i class=\"icon-camera\"></i> Galleries</b>".html_safe, pin_galleries_path(@pin), :id => "map-galleriesmodalbtn", :class => "btn btn-tool map-modalresizebig", :remote => true %>
-  <%= link_to "<b><i class=\"icon-comment\"></i> Comments</b>".html_safe, pin_comments_path(@pin), :id => "map-commentsmodalbtn", :class => "btn btn-tool map-modalresizesmall", :remote => true %>
-  <%= link_to "<b><i class=\"icon-book\"></i> Logbook</b>".html_safe, "#", :id => "map-logbookmodalbtn", :class => "btn btn-tool map-modalresizesmall", :remote => true %>
+  <%= link_to "<b><i class=\"icon-camera\"></i> Galleries</b>".html_safe, pin_galleries_path(@pin), :id => "map-galleriesmodalbtn", :class => "btn btn-tool", :remote => true %>
+  <%= link_to "<b><i class=\"icon-comment\"></i> Comments</b>".html_safe, pin_comments_path(@pin), :id => "map-commentsmodalbtn", :class => "btn btn-tool", :remote => true %>
+  <%= link_to "<b><i class=\"icon-book\"></i> Logbook</b>".html_safe, pin_logpages_path(@pin), :id => "map-logbookmodalbtn", :class => "btn btn-tool", :remote => true %>
 </div>

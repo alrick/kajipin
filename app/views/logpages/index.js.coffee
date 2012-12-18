@@ -1,0 +1,6 @@
+$("#pinModal .modal-body").html("<%= j(render('logpages/logpages')) %>")
+$("#pinModalLabel").html("<%= j(render('users/show/pin_modal_header')) %>")
+$("#pinModal .modal-footer").html("<%= j(render('users/show/pin_modal_footer')) %>")
+$("#map-logbookmodalbtn").button("toggle")
+$("#pinModal").animate({ width: "560px", marginLeft: "-280px" })
+$("#pinModal").modal()

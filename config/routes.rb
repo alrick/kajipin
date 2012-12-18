@@ -12,6 +12,7 @@ Socialrails::Application.routes.draw do
   resources :pins do
     resources :comments
     resources :galleries
+    resources :logpages
   end
 
   resources :users
