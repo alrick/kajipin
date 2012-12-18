@@ -17,6 +17,7 @@ node :properties do |p|
     :logpages_count => p.logpages_count, 
     :comments_count => p.comments_count, 
     :locategory_hook => p.locategory_hook, 
-    'comments_path' => pin_comments_path(p) 
+    'comments_path' => pin_comments_path(p),
+    'galleries_path' => pin_galleries_path(p)
   }
 end

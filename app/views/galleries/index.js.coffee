@@ -1,0 +1,6 @@
+$("#pinModal .modal-body").html("<%= j(render('users/show/pin_modal_galleriesbody')) %>")
+$("#pinModalLabel").html("<%= j(render('users/show/pin_modal_header')) %>")
+$("#pinModal .modal-footer").html("<%= j(render('users/show/pin_modal_footer')) %>")
+$("#map-galleriesmodalbtn").button("toggle")
+$("#pinModal").animate({ width: "1000px", marginLeft: "-500px" })
+$("#pinModal").modal()
