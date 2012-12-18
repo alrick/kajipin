@@ -1,6 +1,20 @@
-$("#pinModal .modal-body").html("<%= j(render('comments/comments')) %>")
+# Modal specific vars
+width = 560
+path = "<%= j(render('comments/comments')) %>"
+btn = "#map-commentsmodalbtn"
+
+# Calculate height
+$("#calculator").html(path)
+height = 560
+cHeight = $("#calculator").height()
+height = cHeight if cHeight < 560
+$("calculator").html("")
+
+# Resizing and content
+$("#pinModal").animate({ width: width+"px", marginLeft: "-"+(width/2)+"px" })
+$("#pinModal .modal-body").animate({ height: height+"px" })
+$("#pinModal .modal-body").html(path)
 $("#pinModalLabel").html("<%= j(render('users/show/pin_modal_header')) %>")
 $("#pinModal .modal-footer").html("<%= j(render('users/show/pin_modal_footer')) %>")
-$("#map-commentsmodalbtn").button("toggle")
-$("#pinModal").animate({ width: "560px", marginLeft: "-280px" })
+$(btn).button("toggle")
 $("#pinModal").modal()
