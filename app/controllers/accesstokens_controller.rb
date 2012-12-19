@@ -5,8 +5,9 @@ class AccesstokensController < ApplicationController
 
   def index
     # Dropbox Stuff
-    @dropbox_token = current_user.accesstokens.dropbox.first
-    @dropbox_account = dropbox_get_accountname unless @dropbox_token.nil?
+    @accesstokens = current_user.accesstokens.all
+    #@dropbox_token = current_user.accesstokens.dropbox.first
+    #@dropbox_account = dropbox_get_accountname unless @dropbox_token.nil?
 
     # Twitter Stuff
     #@twitter_token =

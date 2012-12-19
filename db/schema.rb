@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218150929) do
+ActiveRecord::Schema.define(:version => 20121219123415) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
-    t.string   "ilk"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "type"
+    t.string   "account"
   end
 
   create_table "assignments", :force => true do |t|
