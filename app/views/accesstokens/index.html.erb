@@ -4,9 +4,21 @@
   <h1>Your Services <small>Because everything is connected.</small></h1>
 </div>
 
-<%= render :partial => "accesstoken", :collection => @accesstokens %>
+<%= render(:partial => "accesstoken", :collection => @accesstokens) || "<p class=\"lead\">You haven't added service yet.</p>".html_safe %>
 
 <div class="clearfix"></div>
+
+<div class="well">
+  <p><strong>You can add one of the services available, only one account per service.</strong></p>
+  <% if @has_dropbox %>
+    <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Dropbox</button>
+  <% else %>
+    <%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Dropbox".html_safe, accesstokens_path(:type => Dropboxtoken.sti_name), :method => :post, :class => "btn btn-large btn-tool" %>
+  <% end %>
+  <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Twitter</button>
+  <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Facebook</button>
+</div>
+
 <dl class="dl-horizontal">
   <dt>Dropbox</dt>
   <dd><%= Dropboxtoken.description %></dd>

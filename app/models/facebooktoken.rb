@@ -8,6 +8,6 @@ class Facebooktoken < Accesstoken
   end
 
   def self.description
-    "Allows you to search for friends."
+    "Allows you to search your friends."
   end
 end
