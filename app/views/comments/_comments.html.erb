@@ -1,12 +1,6 @@
 <div id="comments-container">
   <div id="comments">
-    <% if @comments.empty? %>
-      <strong>No comments</strong>
-    <% else %>
-        <% @comments.each do |comment| %>
-          <%= render comment %>
-        <% end %>
-    <% end %>
+    <%= render(@comments) || "<strong>No comments</strong>".html_safe %>
   </div>
 
   <div id="comments-answer">
