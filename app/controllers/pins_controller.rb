@@ -42,17 +42,17 @@ class PinsController < ApplicationController
   end
 
   def create
-    pin = Pin.new
-    pin.user_id = current_user.id
-    pin.title = params[:title]
-    pin.latitude = params[:latitude]
-    pin.longitude = params[:longitude]
-    pin.country_name = params[:country_name]
-    pin.country_code = params[:country_code]
-    pin.locategory_id = params[:locategory]
+    @pin = Pin.new
+    @pin.user_id = current_user.id
+    @pin.title = params[:title]
+    @pin.latitude = params[:latitude]
+    @pin.longitude = params[:longitude]
+    @pin.country_name = params[:country_name]
+    @pin.country_code = params[:country_code]
+    @pin.locategory_id = params[:locategory]
 
-    if pin.save
-      redirect_to pins_url(:tab => pin.locategory.get_tab), notice: "<strong>#{pin.title}</strong> was successfully added to your pins."
+    if @pin.save
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully added to your pins."
     else
       redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
     end
