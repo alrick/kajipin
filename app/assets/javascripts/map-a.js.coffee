@@ -40,7 +40,7 @@ jQuery ->
         tooltipGalleries = '<a href="' + feature.properties.galleries_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.galleries_count + '&nbsp;<i class="icon-camera"></i></a>&nbsp;'
         tooltipComments = '<a href="' + feature.properties.comments_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.comments_count + '&nbsp;<i class="icon-comment"></i></a>'
         tooltipLogbook = '<a href="' + feature.properties.logpages_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>&nbsp;'
-        tooltipZoom = '<a onclick="gon.map.centerzoom({ lat: ' + feature.geometry.coordinates[1] + ', lon: ' + feature.geometry.coordinates[0] + ' }, 12, true)" class="btn btn-small btn-map map-tooltipbtn map-tooltipzoom" data-lat="' + feature.geometry.coordinates[1] + '" data-lon="' + feature.geometry.coordinates[0] + '"><i class="icon-zoom-in"></i></a>'
+        tooltipZoom = '<a class="btn btn-small btn-map map-tooltipbtn map-tooltipzoom" data-lat="' + feature.geometry.coordinates[1] + '" data-lon="' + feature.geometry.coordinates[0] + '"><i class="icon-zoom-in"></i></a>'
         o = '<div style="text-align:center">' + tooltipTitle + tooltipCountry + '<div>' + tooltipGalleries + tooltipComments + '</div><div>' + tooltipLogbook + tooltipZoom + '</div></div>'
 
       # By default, the map extent markers

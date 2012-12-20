@@ -25,3 +25,9 @@ jQuery ->
     $("#pinModal").on "hide", ->
       gon.watch "pins", (pins) ->
         gon.pinsLayer.features(pins)
+
+    # Zoom on a pin func
+    $(document).on "click", ".map-tooltipzoom", ->
+      lat = $(this).attr("data-lat")
+      lon = $(this).attr("data-lon")
+      gon.map.centerzoom({ lat: lat, lon: lon }, 12, true)
