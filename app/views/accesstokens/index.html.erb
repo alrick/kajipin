@@ -13,7 +13,7 @@
   <% if @has_dropbox %>
     <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Dropbox</button>
   <% else %>
-    <%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Dropbox".html_safe, accesstokens_path(:type => Dropboxtoken.sti_name), :method => :post, :class => "btn btn-large btn-tool" %>
+    <%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Dropbox".html_safe, dropbox_accesstokens_path, :class => "btn btn-large btn-tool" %>
   <% end %>
   <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Twitter</button>
   <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Facebook</button>

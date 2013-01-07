@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Socialrails::Application.load_tasks
+Kajipin::Application.load_tasks

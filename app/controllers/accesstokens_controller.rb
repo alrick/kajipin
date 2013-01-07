@@ -21,13 +21,40 @@ class AccesstokensController < ApplicationController
   def create
     @accesstoken = params[:type].constantize.new # Get type of accesstoken and init it with the right model class
     @accesstoken.user_id = current_user.id
-    @accesstoken.account = "alrick"
-    @accesstoken.value = "asdfasdfasdf"
+    
+    
+    redirect_to @accesstoken.oauth_token(url_for(:action => "index"))
+    
+    # if params[:oauth_token] then
+    #   result = request_token.get_access_token(:oauth_verifier => oauth_token)
+    #   return
+    # else
+    #   consumer = Dropbox::API::OAuth.consumer(:authorize)
+    #   request_token = consumer.get_request_token
+    #   redirect_to request_token.authorize_url(:oauth_callback => url_for(:action => "create"))
+    #   # Here the user goes to Dropbox, authorizes the app and is redirected
+    #   return
+    # end
+    #@accesstoken.user_id = current_user.id
+    #@accesstoken.account = "alrick"
+    #@accesstoken.value = "asdfasdfasdf"
 
-    if @accesstoken.save
-      redirect_to services_url, notice: "<strong>#{@accesstoken.fancy_name}</strong> account successfully linked."
+    
+    # if @accesstoken.save
+    #   redirect_to services_url, notice: "<strong>#{@accesstoken.fancy_name}</strong> account successfully linked."
+    # else
+    #   redirect_to services_url, alert: "<strong>Oh snap!</strong> We've failed linking your <strong>#{@accesstoken.fancy_name}</strong> account, please try again."
+    # end
+  end
+
+  def dropbox
+    if params[:oauth_token] then
+      result = session[:request_token].get_access_token(:oauth_verifier => params[:oauth_token])
+      redirect_to services_url, notice: "#{result.token}, #{result.secret}"
     else
-      redirect_to services_url, alert: "<strong>Oh snap!</strong> We've failed linking your <strong>#{@accesstoken.fancy_name}</strong> account, please try again."
+      consumer = Dropbox::API::OAuth.consumer(:authorize)
+      session[:request_token] = consumer.get_request_token
+      redirect_to session[:request_token].authorize_url(:oauth_callback => url_for(:action => "dropbox"))
     end
   end
 
