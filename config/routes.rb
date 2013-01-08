@@ -3,7 +3,7 @@ Kajipin::Application.routes.draw do
 
   resources :friendships
 
-  resources :accesstokens do
+  resources :accesstokens, :path => 'services' do
     collection do
       get 'dropbox'
     end
@@ -12,7 +12,11 @@ Kajipin::Application.routes.draw do
   resources :pins do
     resources :comments
     resources :galleries
-    resources :logpages
+    resources :logpages, :path => 'logbook' do
+      collection do
+        get 'manage'
+      end
+    end
   end
 
   resources :users
@@ -25,8 +29,7 @@ Kajipin::Application.routes.draw do
       get "/" => "devise/sessions#new"
     end
   end
-
-  match "services" => "accesstokens#index"
+  
   match "friends" => "friendships#index"
 
 end
