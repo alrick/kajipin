@@ -1,0 +1,9 @@
+<% content_for :page_title do %><%= @pin.title %>'s Logbook<% end %>
+
+<div class="page-header">
+  <h1 style="display:inline">Logbook <small><%= @pin.title %></small></h1>&nbsp;
+  <%= link_to "Return to pins", pins_path, :class => "btn btn-map btn-small" %>
+</div>
+
+<p class="well"><%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add a page".html_safe, pins_path, :class => "btn btn-tool" %></p>
+<%= render(@logpages) || "<p class=\"lead\">You have not yet added pages.</p>".html_safe %>

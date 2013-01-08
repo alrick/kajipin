@@ -1,4 +1,6 @@
 class Logpage < ActiveRecord::Base
+  attr_accessible :title, :content, :pin_id
+
   belongs_to :pin
   has_many :assignments, dependent: :destroy
   has_many :tags, through: :assignments
