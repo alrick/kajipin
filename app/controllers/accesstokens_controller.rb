@@ -41,16 +41,16 @@ class AccesstokensController < ApplicationController
 
     
     # if @accesstoken.save
-    #   redirect_to services_url, notice: "<strong>#{@accesstoken.fancy_name}</strong> account successfully linked."
+    #   redirect_to accesstokens_url, notice: "<strong>#{@accesstoken.fancy_name}</strong> account successfully linked."
     # else
-    #   redirect_to services_url, alert: "<strong>Oh snap!</strong> We've failed linking your <strong>#{@accesstoken.fancy_name}</strong> account, please try again."
+    #   redirect_to accesstokens_url, alert: "<strong>Oh snap!</strong> We've failed linking your <strong>#{@accesstoken.fancy_name}</strong> account, please try again."
     # end
   end
 
   def dropbox
     if params[:oauth_token] then
       result = session[:request_token].get_access_token(:oauth_verifier => params[:oauth_token])
-      redirect_to services_url, notice: "#{result.token}, #{result.secret}"
+      redirect_to accesstokens_url, notice: "#{result.token}, #{result.secret}"
     else
       consumer = Dropbox::API::OAuth.consumer(:authorize)
       session[:request_token] = consumer.get_request_token
