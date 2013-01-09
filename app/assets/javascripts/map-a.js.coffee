@@ -37,9 +37,9 @@ jQuery ->
       interaction.formatter (feature) ->
         tooltipTitle = '<h2 class="map-tooltiptitle">' + feature.properties.title + '</h2>'
         tooltipCountry = '<h3 class="map-tooltipcountry">' + feature.properties.country_name + '</h3>'
-        tooltipGalleries = '<a href="' + feature.properties.galleries_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.galleries_count + '&nbsp;<i class="icon-camera"></i></a>&nbsp;'
-        tooltipComments = '<a href="' + feature.properties.comments_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.comments_count + '&nbsp;<i class="icon-comment"></i></a>'
-        tooltipLogbook = '<a href="' + feature.properties.logpages_path + '" class="btn btn-small btn-tool map-tooltipbtn map-modalopen" data-remote="true">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>&nbsp;'
+        tooltipGalleries = '<a href="' + feature.properties.galleries_path + '" class="btn btn-small btn-tool map-tooltipbtn modal-open" data-remote="true">' + feature.properties.galleries_count + '&nbsp;<i class="icon-camera"></i></a>&nbsp;'
+        tooltipComments = '<a href="' + feature.properties.comments_path + '" class="btn btn-small btn-tool map-tooltipbtn modal-open" data-remote="true">' + feature.properties.comments_count + '&nbsp;<i class="icon-comment"></i></a>'
+        tooltipLogbook = '<a href="' + feature.properties.logpages_path + '" class="btn btn-small btn-tool map-tooltipbtn modal-open" data-remote="true">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>&nbsp;'
         tooltipZoom = '<a class="btn btn-small btn-map map-tooltipbtn map-tooltipzoom" data-lat="' + feature.geometry.coordinates[1] + '" data-lon="' + feature.geometry.coordinates[0] + '"><i class="icon-zoom-in"></i></a>'
         o = '<div style="text-align:center">' + tooltipTitle + tooltipCountry + '<div>' + tooltipGalleries + tooltipComments + '</div><div>' + tooltipLogbook + tooltipZoom + '</div></div>'
 

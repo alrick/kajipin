@@ -36,10 +36,10 @@
 <a id="map-pointofinterest" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Point of interest' Pins" data-placement="left">
   <i class="icon-eye-open"></i>
 </a>
-<%= link_to "<i class=\"icon-list-alt\"></i>".html_safe, "#pinslistModal", :id => "map-pinslist", :class => "map-modalopen map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
+<%= link_to "<i class=\"icon-list-alt\"></i>".html_safe, "#pinslistModal", :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
 
 <h1 id="map-infouser" class="map-info">
-  <%= link_to @user.full_name, "#userModal", :class => "map-modalopen", :role => "link", "data-toggle" => "modal" %>
+  <%= link_to @user.full_name, "#userModal", :class => "modal-open", :role => "link", "data-toggle" => "modal" %>
 </h1>
 
 <!-- Center information -->

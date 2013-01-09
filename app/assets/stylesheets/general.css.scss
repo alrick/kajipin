@@ -13,3 +13,6 @@
 
 // Standard margin bottom
 .s-margin-bottom { margin-bottom: 20px !important; }
+
+// Remove the focus on modal link
+.modal-open { outline: none !important; }
