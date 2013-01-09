@@ -5,8 +5,25 @@
   <%= link_to "Return to pins", pins_path, :class => "btn btn-map btn-small" %>
 </div>
 
-<p class="well"><%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add a page".html_safe, pins_path, :class => "btn btn-tool" %></p>
+<p class="well"><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add a page", "#addLogpageModal", :class => "btn btn-tool modal-open", "data-toggle" => "modal", :role => "button" %></p>
 
 <div id="logpages">
-  <%= render(@logpages) || "<p class=\"lead\">You have not yet added pages.</p>".html_safe %>
+  <%= render(@logpages) || content_tag("p", "You have not yet added pages.", class: "lead") %>
+</div>
+ 
+<!-- Modal -->
+<div id="addLogpageModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addLogpageModalLabel" aria-hidden="true">
+  <%= simple_form_for [@pin,@logpage], :remote => true do |f| %>
+    <div class="modal-header">
+      <h2 id="addLogpageModalLabel">Add a page<small> <%= @pin.title %>'s Logbook</small></h2>
+    </div>
+    <div class="modal-body">
+      <p><%= f.input :title, :input_html => { :class => "lead", :width => "80%" }, :label => "<strong>Title</strong>" %></p>
+      <p><%= f.input :content, :input_html => { :class => "lead" }, :label => "<strong>Content</strong>" %></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-crud btn-small" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <%= f.button :submit, "Add", :class => "btn btn-tool btn" %>
+    </div>
+  <% end %>
 </div>

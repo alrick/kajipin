@@ -10,6 +10,15 @@ class LogpagesController < ApplicationController
     end
   end
 
+  def create
+    @logpage = @pin.logpages.build(params[:logpage])
+    @logpage.save
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def update
     @logpage = Logpage.find(params[:id])
     @logpage.update_attributes(params[:logpage])
@@ -29,6 +38,7 @@ class LogpagesController < ApplicationController
   end
 
   def manage
+    @logpage = @pin.logpages.build
     @logpages = @pin.logpages.order("created_at ASC")
   end
 
