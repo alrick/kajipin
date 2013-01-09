@@ -29,7 +29,7 @@ jQuery ->
       # data-dismiss property is required for remote links
       .attr('data-dismiss', 'modal')
       # We want a button
-      .addClass('btn').addClass('btn-map').addClass('btn-remove')
+      .addClass('btn').addClass('btn-confirm')
       # We want it to sound confirmy
       .html("Yes, I'm positively certain.")
 
