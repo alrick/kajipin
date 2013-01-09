@@ -27,7 +27,7 @@
           </td>
           <td>
             <%= link_to "<i class=\"icon-edit\"></i>&nbsp;&nbsp;Edit".html_safe, edit_pin_path(pin), :class => "btn btn-mini btn-map" %>
-            <%= link_to "<i class=\"icon-trash\"></i>&nbsp;&nbsp;Remove".html_safe, pin_path(pin), :method => :delete, :remote => true, :class => "btn btn-mini btn-map btn-remove", :confirm => "All galleries/logbook/comments will also be deleted! Sure?" %>
+            <%= link_to "<i class=\"icon-trash\"></i>&nbsp;&nbsp;Remove".html_safe, pin_path(pin), :method => :delete, :remote => true, :class => "btn btn-mini btn-map btn-remove", :confirm => "All related galleries, logbook and comments will also be deleted! Sure?" %>
           </td>
         </tr>
       <% end %>

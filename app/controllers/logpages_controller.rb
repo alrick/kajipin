@@ -12,14 +12,10 @@ class LogpagesController < ApplicationController
 
   def update
     @logpage = Logpage.find(params[:id])
+    @logpage.update_attributes(params[:logpage])
 
     respond_to do |format|
-      if @logpage.update_attributes(params[:logpage])
-        flash[:notice] = 'Logpage was successfully updated.'
-        format.html { redirect_to manage_pin_logpages_url(@pin) }
-      else
-        format.html { render :action => "index" }
-      end
+      format.js
     end
   end
 
@@ -28,8 +24,7 @@ class LogpagesController < ApplicationController
     @logpage.destroy
 
     respond_to do |format|
-      format.html { redirect_to manage_pin_logpages_url(@pin) }
-      format.xml  { head :ok }
+      format.js
     end
   end
 

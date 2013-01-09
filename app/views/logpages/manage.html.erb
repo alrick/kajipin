@@ -6,4 +6,7 @@
 </div>
 
 <p class="well"><%= link_to "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add a page".html_safe, pins_path, :class => "btn btn-tool" %></p>
-<%= render(@logpages) || "<p class=\"lead\">You have not yet added pages.</p>".html_safe %>
+
+<div id="logpages">
+  <%= render(@logpages) || "<p class=\"lead\">You have not yet added pages.</p>".html_safe %>
+</div>
