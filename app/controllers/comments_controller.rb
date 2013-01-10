@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_filter :get_pin
 
   def index
+    @comment = @pin.comments.build
     @comments = @pin.comments.order("created_at ASC")
 
     respond_to do |format|
@@ -11,7 +12,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = @pin.comments.build(params[:comment])
+    @comment.user_id = current_user.id
     @comment.save
     
     respond_to do |format|

@@ -1,0 +1,10 @@
+<p class="lead map-shareytho">Share your thoughts</p>
+<div class="row">
+  <div class="span4">
+    <%= simple_form_for [@pin, @comment], :remote => true do |c| %>
+      <%= c.input :value, :label => false %>
+      <%= c.button :submit, 'Comment', :class => 'btn btn-small btn-social map-btncomment' %>
+    <% end %>
+  </div>
+  <div class="span1"><%= image_tag gravatar_url(current_user, 40), :class => 'img-polaroid' %></div>
+</div>
