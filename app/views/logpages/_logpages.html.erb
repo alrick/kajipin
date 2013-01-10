@@ -1,1 +1,1 @@
-<strong>No pages</strong>
+<%= render(:partial => "show_logpage", :collection => @logpages, :as => :logpage) || "<p class=\"lead\">Logbook is empty.</p>".html_safe %>
