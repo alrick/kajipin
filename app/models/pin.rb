@@ -28,7 +28,7 @@ class Pin < ActiveRecord::Base
   end
 
   def logpages_count
-    "0"
+    logpages.count.to_s
   end
 
   def comments_count
