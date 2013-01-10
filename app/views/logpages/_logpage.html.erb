@@ -1,10 +1,10 @@
 <div id="<%= dom_id(logpage) %>" class="logpage">
   <div class="logpage-view">
-    <h2><%= logpage.title %></h2>
+    <h2 class="title"><%= logpage.title %></h2>
     <div class="row">
       <div class="span10">
         <blockquote>
-          <p><%= logpage.content %><p>
+          <p class="content"><%= logpage.content %><p>
           <small><%= logpage.created_at.to_formatted_s(:long_ordinal) %></small>
         </blockquote>
       </div>
