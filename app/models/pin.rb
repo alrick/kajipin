@@ -24,15 +24,15 @@ class Pin < ActiveRecord::Base
   end
 
   def galleries_count
-    galleries.count.to_s
+    galleries.count.to_s.html_safe
   end
 
   def logpages_count
-    logpages.count.to_s
+    logpages.count.to_s.html_safe
   end
 
   def comments_count
-    comments.count.to_s
+    comments.count.to_s.html_safe
   end
 
   def marker_size

@@ -1,6 +1,6 @@
 <div id="comments-container">
   <div id="comments">
-    <%= render(@comments) || "<strong>No comments</strong>".html_safe %>
+    <%= render(@comments) || content_tag("strong", "No comments") %>
   </div>
 
   <div id="comments-answer">

@@ -6,9 +6,9 @@
     <div class="navbar-inner">
       <div class="container">
         <% if user_signed_in? %>
-          <%= link_to (Appetizer.appname+" <span id=\"betasig\">Alpha</span>").html_safe, user_path(current_user), :class => "brand" %>
+          <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), user_path(current_user), :class => "brand" %>
         <% else %>
-          <%= link_to (Appetizer.appname+" <span id=\"betasig\">Alpha</span>").html_safe, root_path, :class => "brand" %>
+          <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), root_path, :class => "brand" %>
         <% end %>
         <div class="nav">
           <li class="divider-vertical"></li>

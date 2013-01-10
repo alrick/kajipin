@@ -7,7 +7,7 @@
 <%= form_tag("pins/new", :method => "get", :class => "well form-inline") do %>
   <p><strong>Simply specify location's name to add a pin.</strong></p>
   <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
-  <%= button_tag "<i class=\"icon-plus-sign\"></i>&nbsp;&nbsp;Add".html_safe, :class => "btn btn-map", :value => "add" %>
+  <%= button_tag content_tag("i", "", class: "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
 <% end %>
 
 <h2>Current pins</h2>
