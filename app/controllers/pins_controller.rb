@@ -40,7 +40,7 @@ class PinsController < ApplicationController
     if @pin.update_attributes(params[:pin])
       redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully updated."
     else
-      redirect_to pins_url(:tab => @pin.locategory.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating."
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating #{@pin.title}."
     end
   end
 
