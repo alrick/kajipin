@@ -5,5 +5,5 @@
 </div>
 
 <div id="users">
-  <%= render "shared/users_grid", :mates => @users %>
+  <%= render(:partial => "shared/user_box", :collection => @users, :as => :mate) || content_tag("p", "No user found.", class: "lead") %>
 </div>

@@ -12,5 +12,5 @@
 </p>
 
 <div id="friendships">
-  <%= render "shared/users_grid", :mates => @mates %>
+  <%= render(:partial => "shared/user_box", :collection => @mates, :as => :mate) %>
 </div>
