@@ -20,13 +20,19 @@
   </ul>
   <div id="pins" class="tab-content">
     <div class="tab-pane active" id="bigcity">
-      <%= render "pins/pins_table", :pins => @big_cities %>
+      <table class="table table-hover">
+        <%= render(:partial => "pins/pin", :collection => @big_cities, :as => :pin) || content_tag("p", "No big cities added.", class: "lead") %>
+      </table>
     </div>
     <div class="tab-pane" id="smallcity">
-      <%= render "pins/pins_table", :pins => @small_cities %>
+      <table class="table table-hover">
+        <%= render(:partial => "pins/pin", :collection => @small_cities, :as => :pin) || content_tag("p", "No small cities added.", class: "lead") %>
+      </table>
     </div>
     <div class="tab-pane" id="pointofinterest">
-      <%= render "pins/pins_table", :pins => @points_of_interest %>
+      <table class="table table-hover">
+        <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No points of interest added.", class: "lead") %>
+      </table>
     </div>
   </div>
 </div>
