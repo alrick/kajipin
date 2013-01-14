@@ -3,7 +3,7 @@ require 'json'
 
 class PinsController < ApplicationController
   before_filter :authenticate_user!
-  GEONAMES_USERNAME = "sloppin"
+  GEONAMES_USERNAME = "kajipin"
   GEONAMES_MAXROWS = "20"
   GEONAMES_FUZZY = "0.8"
 
@@ -27,6 +27,11 @@ class PinsController < ApplicationController
 
     url = "http://api.geonames.org/searchJSON?q="+q+"&maxRows="+GEONAMES_MAXROWS+"&fuzzy="+GEONAMES_FUZZY+"&username="+GEONAMES_USERNAME
     @geos = JSON.parse(open(url).read)
+
+    if @geos["status"]
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
+      return
+    end
   end
 
   def edit
