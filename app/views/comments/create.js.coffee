@@ -5,6 +5,6 @@
   $("div#<%= dom_id(@comment) %>").effect("highlight", { color: "#D7CBC1" })
   $("textarea#comment_value").val("")
   
-  if ($("div#comments strong").length > 0)
-    $("div#comments strong").remove()
+  if ($("#comments .empty-set").length > 0)
+    $("#comments .empty-set").remove()
 <% end %>

@@ -1,6 +1,6 @@
 <div id="comments-container">
   <div id="comments">
-    <%= render(@comments) || content_tag("strong", "No comments") %>
+    <%= render(@comments) || content_tag("strong", "No comments", :class => "empty-set") %>
   </div>
 
   <div id="comments-new">

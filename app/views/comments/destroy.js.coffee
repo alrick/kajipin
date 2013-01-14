@@ -1,8 +1,8 @@
 <% if @comment.destroyed? %>
   $("div#<%= dom_id(@comment) %>").fadeOut ->
     $(this).remove()
-    if ($("div#comments .comment").length < 1)
-      $("div#comments").html "<strong>No comments</strong>"
+    if ($("#comments .comment").length < 1)
+      $("#comments").html "<strong class=\"empty-set\">No comments</strong>"
 <% else %>
   $("div#<%= dom_id(@comment) %>").fadeOut ->
     $(this).fadeIn()

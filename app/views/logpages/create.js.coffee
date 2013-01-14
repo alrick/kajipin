@@ -20,4 +20,8 @@
   $("html, body").animate { scrollTop: $(document).height() }, "slow"
   $("#logpages").append("<%= escape_javascript(render @logpage) %>")
   $("#<%= dom_id(@logpage) %>").delay(100).effect("highlight", { color: "#5F1818" })
+
+  # Remove indication if first page
+  if ($("#logpages .empty-set").length > 0)
+    $("#logpages .empty-set").remove()
 <% end %>
