@@ -1,7 +1,4 @@
-<% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
-
-<!-- Map main element -->
-<div id="map"></div>
+<%= render "shall_show" %>
 
 <!-- Left UI -->
 <a id="map-world" class="map-nav map-navleft" rel="tooltip" title="Fit World" data-placement="right">
@@ -13,15 +10,6 @@
 <a id="map-countries" class="map-nav map-navleft" rel="tooltip" title="Fit Country" data-placement="right">
   <i class="icon-list-alt"></i>
 </a>
-
-<!-- Left UI countries -->
-<ul id="map-countrieslist">
-  <% @countries.each do |country| %>
-    <li class="map-countryitem" data-north="<%= country["north"]%>" data-east="<%= country["east"]%>" data-south="<%= country["south"]%>" data-west="<%= country["west"]%>">
-      <%= country["name"] %>
-    </li>
-  <% end %>
-</ul>
 
 <!-- Right UI -->
 <a id="map-refresh" class="map-nav map-navright" rel="tooltip" title="Update Pins and Counters" data-placement="left">
@@ -37,10 +25,6 @@
   <i class="icon-eye-open"></i>
 </a>
 <%= link_to content_tag("i", "", class: "icon-list-alt"), "#pinslistModal", :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
-
-<h1 id="map-infouser" class="map-info">
-  <%= link_to @user.full_name, "#userModal", :class => "modal-open", :role => "link", "data-toggle" => "modal" %>
-</h1>
 
 <!-- Center information -->
 <div id="map-infocenter" class="map-info">
