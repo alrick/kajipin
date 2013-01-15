@@ -1,5 +1,5 @@
 # Modal specific vars
-width = 560
+width = 800
 path = "<%= j(render('logpages/logpages')) %>"
 btn = "#map-logbookmodalbtn"
 
