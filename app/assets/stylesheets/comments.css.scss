@@ -18,6 +18,7 @@
 
 // Style comments add box
 #comments-new {
+  small { font-size: 65%; }
   textarea { width: 300px; height: 50px; resize: vertical; }
   .lead { margin-bottom: 0; margin-top: 20px; }
   .btn { margin-top: -20px; }
