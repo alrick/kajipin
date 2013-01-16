@@ -19,7 +19,7 @@
 <%= simple_form_for(@pin) do |f| %>
   <%= f.hidden_field :locategory_id %>
   <div class="form-actions">
-    <%= link_to "Cancel", pins_path(:tab => @pin.locategory.get_tab), :class => "btn btn-crud" %>
-    <%= f.submit "Save", :id => "pins-locategoryedit", :class => "btn btn-large btn-map" %>
+    <%= link_to "Cancel", pins_path(:tab => @pin.locategory.get_tab), :class => "btn btn-crud btn-small" %>
+    <%= f.submit "Save", :id => "pins-locategoryedit", :class => "btn btn-map" %>
   </div>
 <% end %>
