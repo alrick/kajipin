@@ -37,9 +37,6 @@ jQuery ->
       doc = $(document).height()
       if doc > 800
         max_height = doc - 350 + "px"
-        margin_top = "-" + ((doc - 240) / 2) + "px"
         $(this).children(".modal-body").css "max-height", max_height
-        $(this).css "margin-top", margin_top
       else
         $(this).children(".modal-body").css "max-height", "400px"
-        $(this).css "margin-top", "-250px"
