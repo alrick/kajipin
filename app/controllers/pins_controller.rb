@@ -3,9 +3,10 @@ require 'json'
 
 class PinsController < ApplicationController
   before_filter :authenticate_user!
-  GEONAMES_USERNAME = "kajipin"
-  GEONAMES_MAXROWS = "20"
-  GEONAMES_FUZZY = "0.8"
+  GEONAMES_USERNAME = "&username=kajipin"
+  GEONAMES_MAXROWS = "&maxRows=20"
+  GEONAMES_FUZZY = "&fuzzy=0.8"
+  GEONAMES_FEATURES = "&featureClass=H&featureClass=L&featureClass=P&featureClass=R&featureClass=S&featureClass=T&featureClass=U&featureClass=V"
 
   def index
     @user = current_user
@@ -25,7 +26,7 @@ class PinsController < ApplicationController
       q = URI.escape(params[:q])
     end
 
-    url = "http://api.geonames.org/searchJSON?q="+q+"&maxRows="+GEONAMES_MAXROWS+"&fuzzy="+GEONAMES_FUZZY+"&username="+GEONAMES_USERNAME
+    url = "http://api.geonames.org/searchJSON?q="+q+GEONAMES_MAXROWS+GEONAMES_FUZZY+GEONAMES_FEATURES+GEONAMES_USERNAME
     @geos = JSON.parse(open(url).read)
 
     if @geos["status"]
