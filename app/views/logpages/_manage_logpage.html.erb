@@ -5,7 +5,7 @@
       <div class="span10">
         <blockquote>
           <p class="content"><%= logpage.content %><p>
-          <small><%= logpage.created_at.to_formatted_s(:long_ordinal) %></small>
+          <small><%= logpage.created_at.to_date.to_formatted_s(:long_ordinal) %></small>
         </blockquote>
       </div>
       <div class="span2">
