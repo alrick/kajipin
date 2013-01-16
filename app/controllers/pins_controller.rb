@@ -58,6 +58,7 @@ class PinsController < ApplicationController
     @pin.country_name = params[:country_name]
     @pin.country_code = params[:country_code]
     @pin.locategory_id = params[:locategory]
+    @pin.ext_id = params[:ext_id]
 
     if @pin.save
       redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully added to your pins."

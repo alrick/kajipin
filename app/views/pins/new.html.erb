@@ -45,7 +45,7 @@
               <td><%= "%.3f" % geo["lat"] %>&deg;</td>
               <td><%= "%.3f" % geo["lng"] %>&deg;</td>
               <td><%= geo["fcodeName"].to_s.capitalize %></td>
-              <td><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %></td>
+              <td><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"], :ext_id => geo["geonameId"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %></td>
             </tr>
           <% end %>
         </tbody>

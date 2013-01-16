@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219123415) do
+ActiveRecord::Schema.define(:version => 20130116094152) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "value"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20121219123415) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "locategory_id"
+    t.integer  "ext_id"
   end
 
   create_table "tags", :force => true do |t|

@@ -9,7 +9,7 @@ class Pin < ActiveRecord::Base
 
   validates :title, :country_name, :country_code, :presence => true
   validates :latitude, :longitude, :numericality => true
-  validates :user_id, :locategory_id, :numericality => { :greater_than => 0}
+  validates :user_id, :locategory_id, :ext_id, :numericality => { :greater_than => 0}
 
   scope :bigcity, joins(:locategory).where("locategories.hook=1")
   scope :smallcity, joins(:locategory).where("locategories.hook=2")
