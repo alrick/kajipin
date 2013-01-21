@@ -25,6 +25,7 @@ blockquote {
 }
 .brand {
   font-size: 25px !important;
+  color: #FFF !important;
 }
 .map-attribution {
   z-index: 10 !important;

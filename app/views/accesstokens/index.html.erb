@@ -3,26 +3,20 @@
 <div class="page-header">
   <h1>Your Services <small>Because everything is connected.</small></h1>
 </div>
-<%= render(:partial => "accesstoken", :collection => @accesstokens) || content_tag("p", "You haven't added service yet.", class: "lead") %>
+<%= render(:partial => "accesstoken", :collection => @accesstokens) || content_tag("p", "You haven't added services yet.", class: "lead") %>
 
 <div class="clearfix"></div>
 
 <div class="well">
   <p><strong>You can add only one account per service.</strong></p>
   <% if @has_dropbox %>
-    <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Dropbox</button>
+    <button class="btn btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Dropbox</button>
   <% else %>
-    <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Dropbox", dropbox_accesstokens_path, :class => "btn btn-large btn-tool" %>
+    <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Dropbox", dropbox_accesstokens_path, :class => "btn btn-tool" %>
   <% end %>
-  <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Twitter</button>
-  <button class="btn btn-large btn-tool disabled" type="button"><i class="icon-plus-sign"></i>&nbsp;&nbsp;Facebook</button>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Dropbox</dt>
   <dd><%= Dropboxtoken.description %></dd>
-  <dt>Twitter</dt>
-  <dd><%= Twittertoken.description %> <span class="label label-inverse">Coming soon</span></dd>
-  <dt>Facebook</dt>
-  <dd><%= Facebooktoken.description %> <span class="label label-inverse">Coming soon</span></dd>
 </dl>
