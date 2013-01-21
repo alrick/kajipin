@@ -38,8 +38,3 @@ blockquote {
   background: #E69922 !important;
   color: #333 !important;
 }
-
-/* Font awesome fix with last bootstrap-rails release */
-[class^="icon-"], [class*=" icon-"] {
-  background-image:none !important;
-}
