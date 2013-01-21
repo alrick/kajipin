@@ -1,0 +1,3 @@
+class Dropboxgallery < Gallery
+ 
+end

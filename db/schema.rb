@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121100320) do
+ActiveRecord::Schema.define(:version => 20130121152044) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "token"
@@ -52,10 +52,12 @@ ActiveRecord::Schema.define(:version => 20130121100320) do
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "galleries", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.integer  "pin_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "type"
+    t.string   "identifier"
   end
 
   create_table "locategories", :force => true do |t|

@@ -5,7 +5,7 @@
     <%= pin.short_lon %>&deg; <%= link_to "", :rel => "tooltip", :title => "Longitude" do %>&lambda;<% end %>
   </td>
   <td>
-    <%= link_to content_tag("i", "", class: "icon-camera"), pins_path, :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Galleries" %>
+    <%= link_to content_tag("i", "", class: "icon-camera"), manage_pin_galleries_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Galleries" %>
     <%= link_to content_tag("i", "", class: "icon-book"), manage_pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage Logbook" %>
   </td>
   <td>
