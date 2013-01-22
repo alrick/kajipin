@@ -3,7 +3,7 @@ require 'json'
 
 class PinsController < ApplicationController
   before_filter :authenticate_user!
-  GEONAMES_USERNAME = "&username=kajipin"
+  GEONAMES_USERNAME = "&username=curlyb"
   GEONAMES_MAXROWS = "&maxRows=20"
   GEONAMES_FUZZY = "&fuzzy=0.8"
   GEONAMES_FEATURES = "&featureClass=H&featureClass=L&featureClass=P&featureClass=R&featureClass=S&featureClass=T&featureClass=U&featureClass=V"
