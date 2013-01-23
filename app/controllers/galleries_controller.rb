@@ -10,12 +10,26 @@ class GalleriesController < ApplicationController
     end
   end
 
-  def manage
-    if Accesstoken.has_token_type(current_user, Dropboxtoken.sti_name)
-      @galleries = @pin.galleries.order("created_at ASC")
+  def create
+    @gallery = @pin.galleries.build(params[:gallery])
+    @gallery.normalized = @gallery.title.gsub(/[^0-9A-Za-z]/, '')
+    @gallery.accesstoken_id = current_user.accesstoken.id
+
+    if @gallery.save
+      redirect_to manage_pin_galleries_path(@pin), notice: "OK"
     else
-      redirect_to accesstokens_url, alert: "<strong>Oh snap!</strong> You've to link a Dropbox account in order to add galleries."
+      redirect_to manage_pin_galleries_path(@pin), alert: "NOT"
     end
+  end
+
+
+  def manage
+    if current_user.accesstoken.blank?
+      redirect_to edit_user_registration_url, alert: "<strong>Oh snap!</strong> You've to add a Dropbox account in order to add galleries."
+    end
+
+    @galleries = @pin.galleries
+    @gallery = @pin.galleries.build
   end
 
   # Get the pin the comment belongs to (nested)

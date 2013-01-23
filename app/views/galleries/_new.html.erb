@@ -1,0 +1,5 @@
+<%= simple_form_for [@pin,@gallery], :html => {:class => "well form-inline"} do |f| %>
+  <p><strong>Simply specify gallery's name to add it.</strong></p>
+  <%= f.input_field :title, :label => false, :placeholder => "Gallery's name" %>
+  <%= f.submit "Add", :class => "btn btn-tool" %>
+<% end %>

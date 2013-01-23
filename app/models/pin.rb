@@ -51,4 +51,8 @@ class Pin < ActiveRecord::Base
     locategory.hook
   end
 
+  def normalized
+    title.gsub(/[^0-9A-Za-z]/, '') + "-" + id.to_s
+  end
+
 end

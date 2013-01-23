@@ -5,10 +5,10 @@
   <%= link_to "Return to pins", pins_path, :class => "btn btn-map btn-small" %>
 </div>
 
-<p class="well">
-  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add a gallery", "#", :class => "btn btn-tool" %>
-</p>
+<%= render "new" %>
 
-<div id="logpages">
-  <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
+<div id="galleries">
+  <table class="table table-hover">
+    <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
+  </table>
 </div>

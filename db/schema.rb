@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123103734) do
+ActiveRecord::Schema.define(:version => 20130123171835) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "token"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(:version => 20130123103734) do
   create_table "galleries", :force => true do |t|
     t.string   "title"
     t.integer  "pin_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "type"
-    t.string   "identifier"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "normalized"
+    t.integer  "accesstoken_id"
   end
 
   create_table "locategories", :force => true do |t|
