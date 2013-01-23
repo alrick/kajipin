@@ -16,8 +16,7 @@
         <li class="divider"></li>
         <li><%= link_to content_tag("i", "", class: "icon-map-marker")+" Your Pins", pins_path %></li>
         <li><%= link_to content_tag("i", "", class: "icon-heart")+" Your Friends", friends_path %></li>
-        <li><%= link_to content_tag("i", "", class: "icon-retweet")+" Your Services", accesstokens_path %></li>
-        <li><%= link_to content_tag("i", "", class: "icon-cog")+" Your Account", edit_user_registration_path %></li>
+        <li><%= link_to content_tag("i", "", class: "icon-cog")+" Settings", edit_user_registration_path %></li>
         <li><%= link_to content_tag("i", "", class: "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>

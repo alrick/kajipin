@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  before_validation :default_values
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -9,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
   has_many :pins, dependent: :destroy, :order => "title"
-  has_many :accesstokens, dependent: :destroy
+  has_one  :accesstoken, dependent: :destroy
   has_many :comments
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
@@ -21,10 +20,6 @@ class User < ActiveRecord::Base
   validates :terms, :acceptance => true
 
   default_scope order("first_name", "last_name")
-
-  def default_values
-    
-  end
 
   def age
     if(!birth.nil?)

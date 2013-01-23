@@ -3,9 +3,9 @@ Kajipin::Application.routes.draw do
 
   resources :friendships
 
-  resources :accesstokens, :path => 'services' do
+  resources :accesstokens do
     collection do
-      get 'dropbox'
+      get 'authorize'
     end
   end
 
