@@ -8,12 +8,13 @@ class AccesstokensController < ApplicationController
     redirect_to edit_user_registration_url, notice: "<strong>Dropbox</strong> was successfully removed from your services."
   end
 
-  def create(token, secret, account)
+  def create(token, secret, account_name, account_uid)
     @accesstoken = Accesstoken.new
     @accesstoken.user_id = current_user.id
     @accesstoken.token = token
     @accesstoken.secret = secret
-    @accesstoken.account = account
+    @accesstoken.account = account_name
+    @accesstoken.uid = account_uid
 
     if @accesstoken.save
       redirect_to edit_user_registration_url, notice: "<strong>Dropbox</strong> successfully added."
@@ -25,12 +26,12 @@ class AccesstokensController < ApplicationController
   def authorize
     # User has already authorized Kajipin
     if params[:oauth_token] then
-      result = session[:request_token].get_access_token(:oauth_verifier => params[:oauth_token])
-      account = get_account_name(result)
-      token = result.token
-      secret = result.secret
+      access = session[:request_token].get_access_token(:oauth_verifier => params[:oauth_token])
+      client = get_client(access)
+      account_name = get_account_name(client)
+      account_uid = get_account_uid(client)
 
-      create(token,secret,account)
+      create(access.token,access.secret,account_name, account_uid)
     # User hasn't authorized Kajipin yet
     else
       # User has denied!
@@ -44,11 +45,30 @@ class AccesstokensController < ApplicationController
     end
   end
 
-  def get_account_name(access)
+  # Get Dropbox account name
+  def get_account_name(client)
     begin
-      client = Dropbox::API::Client.new :token => access.token, :secret => access.secret
       account = client.account
       account["email"]
+    rescue Exception => e
+      redirect_to edit_user_registration_url, alert: "<strong>Oh snap!</strong> Something went wrong with Dropbox, please try again later or remove and add again your account."
+    end
+  end
+
+  # Get Dropbox account uid
+  def get_account_uid(client)
+    begin
+      account = client.account
+      account["uid"]
+    rescue Exception => e
+      redirect_to edit_user_registration_url, alert: "<strong>Oh snap!</strong> Something went wrong with Dropbox, please try again later or remove and add again your account."
+    end
+  end
+
+  # Get Dropbox client necessary for all action with Dropbox
+  def get_client(access)
+    begin
+      client = Dropbox::API::Client.new :token => access.token, :secret => access.secret
     rescue Exception => e
       redirect_to edit_user_registration_url, alert: "<strong>Oh snap!</strong> Something went wrong with Dropbox, please try again later or remove and add again your account."
     end

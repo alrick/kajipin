@@ -8,9 +8,13 @@ class Gallery < ActiveRecord::Base
   validates :title, :length => { :maximum => 100 }
   validates :pin_id, :numericality => { :greater_than => 0}
   validates :accesstoken_id, :numericality => { :greater_than => 0}
-  validates :normalized, :uniqueness => true
+  validates :normalized, :uniqueness => {:scope => :pin_id}
 
-  def path
+  def full_path
     "Apps/Kajipin/" + pin.normalized+ "/" + normalized.to_s + "/"
+  end
+
+  def dropbox_path
+    pin.normalized+ "/" + normalized.to_s
   end
 end

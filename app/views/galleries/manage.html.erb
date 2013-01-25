@@ -7,8 +7,17 @@
 
 <%= render "new" %>
 
+<div class="alert">
+  <strong>Tip:</strong> In order to add images to your galleries, simply open your Dropbox at specified path and add some photos.
+</div>
+
 <div id="galleries">
-  <table class="table table-hover">
-    <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
+  <table class="table table-hover table-striped">
+    <%-# We have to do this because we build a single gallery in the controller for the new action -%>
+    <% if @galleries.count == 0 %>
+      <%= content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
+    <% else %>
+      <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
+    <% end %>
   </table>
 </div>
