@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123171835) do
+ActiveRecord::Schema.define(:version => 20130125091019) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "token"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130123171835) do
     t.datetime "updated_at", :null => false
     t.string   "account"
     t.string   "secret"
+    t.integer  "uid"
   end
 
   create_table "assignments", :force => true do |t|
