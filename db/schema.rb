@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125091019) do
+ActiveRecord::Schema.define(:version => 20130125162949) do
 
   create_table "accesstokens", :force => true do |t|
     t.string   "token"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20130125091019) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "comments", ["pin_id"], :name => "index_comments_on_pin_id"
+
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20130125091019) do
     t.string   "normalized"
     t.integer  "accesstoken_id"
   end
+
+  add_index "galleries", ["pin_id"], :name => "index_galleries_on_pin_id"
 
   create_table "locategories", :force => true do |t|
     t.string   "name"
@@ -80,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20130125091019) do
     t.integer  "pin_id"
   end
 
+  add_index "logpages", ["pin_id"], :name => "index_logpages_on_pin_id"
+
   create_table "pins", :force => true do |t|
     t.string   "title"
     t.float    "latitude"
@@ -92,6 +98,9 @@ ActiveRecord::Schema.define(:version => 20130125091019) do
     t.integer  "locategory_id"
     t.integer  "ext_id"
   end
+
+  add_index "pins", ["locategory_id"], :name => "index_pins_on_locategory_id"
+  add_index "pins", ["user_id"], :name => "index_pins_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"
