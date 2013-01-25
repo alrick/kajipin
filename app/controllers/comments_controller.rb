@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     @comment = @pin.comments.build
-    @comments = @pin.comments.order("created_at ASC")
+    @comments = @pin.comments.all
 
     respond_to do |format|
       format.js

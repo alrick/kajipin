@@ -3,7 +3,7 @@ class LogpagesController < ApplicationController
   before_filter :get_pin
 
   def index
-    @logpages = @pin.logpages.order("created_at ASC")
+    @logpages = @pin.logpages.all
 
     respond_to do |format|
       format.js
@@ -39,7 +39,7 @@ class LogpagesController < ApplicationController
 
   def manage
     @logpage = @pin.logpages.build
-    @logpages = @pin.logpages.order("created_at ASC")
+    @logpages = @pin.logpages.all
   end
 
   # Get the pin the comment belongs to (nested)
