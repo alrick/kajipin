@@ -30,6 +30,9 @@ blockquote {
 .map-attribution {
   z-index: 10 !important;
 }
+.table {
+  font-size: 16px !important;
+}
 
 /* Custom bootstrap elements */
 .badge-map, .label-map {

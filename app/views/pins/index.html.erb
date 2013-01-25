@@ -20,17 +20,17 @@
   </ul>
   <div id="pins" class="tab-content">
     <div class="tab-pane active" id="bigcity">
-      <table class="table table-hover">
+      <table class="table table-hover table-striped">
         <%= render(:partial => "pins/pin", :collection => @big_cities, :as => :pin) || content_tag("p", "No big cities added.", class: "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="smallcity">
-      <table class="table table-hover">
+      <table class="table table-hover table-striped">
         <%= render(:partial => "pins/pin", :collection => @small_cities, :as => :pin) || content_tag("p", "No small cities added.", class: "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="pointofinterest">
-      <table class="table table-hover">
+      <table class="table table-hover table-striped">
         <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No points of interest added.", class: "lead empty-set") %>
       </table>
     </div>
