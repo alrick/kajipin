@@ -3,7 +3,7 @@ class GalleriesController < ApplicationController
   before_filter :get_pin
 
   def index
-    @galleries = @pin.galleries
+    @galleries = @pin.galleries.all
 
     respond_to do |format|
       format.js
@@ -39,7 +39,7 @@ class GalleriesController < ApplicationController
       redirect_to edit_user_registration_url, alert: "<strong>Oh snap!</strong> You've to add a Dropbox account in order to add galleries."
     end
 
-    @galleries = @pin.galleries
+    @galleries = @pin.galleries.all
     @gallery = @pin.galleries.build
   end
 

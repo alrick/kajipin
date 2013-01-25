@@ -13,11 +13,6 @@
 
 <div id="galleries">
   <table class="table table-hover table-striped">
-    <%-# We have to do this because we build a single gallery in the controller for the new action -%>
-    <% if @galleries.count == 0 %>
-      <%= content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
-    <% else %>
-      <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
-    <% end %>
+    <%= render(:partial => "manage_gallery", :collection => @galleries, :as => :gallery) || content_tag("p", "You have not yet added galleries.", :class => "lead empty-set") %>
   </table>
 </div>
