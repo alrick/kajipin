@@ -1,5 +1,5 @@
 class Accesstoken < ActiveRecord::Base
-  attr_accessible :value, :account, :user_id, :uid
+  attr_accessible :value, :account, :user_id, :uid, :token, :secret
 
   belongs_to :user
   has_many :galleries, dependent: :destroy
