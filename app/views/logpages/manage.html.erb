@@ -2,7 +2,13 @@
 
 <div class="page-header">
   <h1 style="display:inline">Logbook <small><%= @pin.title %></small></h1>&nbsp;
-  <%= link_to "Return to pins", pins_path, :class => "btn btn-map btn-small" %>
+  <% if @pin.locategory_hook == 2 %>
+    <%= link_to "Return to pins", pins_path(:tab => "s"), :class => "btn btn-map btn-small" %>
+  <% elsif @pin.locategory_hook == 3 %>
+    <%= link_to "Return to pins", pins_path(:tab => "p"), :class => "btn btn-map btn-small" %>
+  <% else %>
+    <%= link_to "Return to pins", pins_path, :class => "btn btn-map btn-small" %>
+  <% end %>
 </div>
 
 <p class="well">
