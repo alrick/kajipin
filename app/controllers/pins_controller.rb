@@ -75,12 +75,12 @@ class PinsController < ApplicationController
 
   def destroy
     @pin = Pin.find(params[:id])
-    @pin.destroy
 
-    # Allow js format for remote call
-    respond_to do |format|
-      format.html { redirect_to pins_url, notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins." }
-      format.js
+    if !@pin.gallery.blank?
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), alert: "<strong>Oh snap!</strong> You have to remove the gallery before removing the pin."
+    else
+      @pin.destroy
+      redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins."
     end
   end
 

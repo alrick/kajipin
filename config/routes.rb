@@ -11,11 +11,7 @@ Kajipin::Application.routes.draw do
 
   resources :pins do
     resources :comments
-    resources :galleries do
-      collection do
-        get 'manage'
-      end
-    end
+    resources :galleries
     resources :logpages, :path => 'logbook' do
       collection do
         get 'manage'

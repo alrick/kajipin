@@ -1,0 +1,12 @@
+<% if @gallery.blank? %>
+  <p class="lead">No Gallery</p>
+<% elsif @dropbox_error %>
+  <p class="lead">Gallery temporarily unavailable.
+<% else %>
+  <ul>
+    <%= @thumb %>
+    <% @photos.each do |photo| %>
+      <li><%= photo.path %></li>
+    <% end %>
+  </ul>
+<% end %>

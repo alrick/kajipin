@@ -1,7 +1,7 @@
 # Modal specific vars
 width = 1000
-path = "<%= j(render('galleries/galleries')) %>"
-btn = "#map-galleriesmodalbtn"
+path = "<%= j(render('galleries/gallery')) %>"
+btn = "#map-gallerymodalbtn"
 
 # Resizing and content
 $("#pinModal").animate({ width: width+"px", marginLeft: "-"+(width/2)+"px" })

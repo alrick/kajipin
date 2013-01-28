@@ -4,8 +4,8 @@ class Pin < ActiveRecord::Base
   belongs_to :user
   belongs_to :locategory
   has_many :comments, dependent: :destroy, :order => "created_at ASC"
-  has_many :galleries, dependent: :destroy, :order => "title"
   has_many :logpages, dependent: :destroy, :order => "created_at ASC"
+  has_one :gallery, dependent: :destroy
 
   validates :title, :country_name, :country_code, :presence => true
   validates :latitude, :longitude, :numericality => true
@@ -24,7 +24,7 @@ class Pin < ActiveRecord::Base
   end
 
   def galleries_count
-    galleries.count.to_s.html_safe
+    "d"
   end
 
   def logpages_count

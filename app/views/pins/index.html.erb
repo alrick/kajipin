@@ -10,6 +10,10 @@
   <%= button_tag content_tag("i", "", class: "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
 <% end %>
 
+<div class="alert alert-tip">
+  <strong>Tip:</strong> In order to create a gallery for your pin, simply click the camera icon then add the photos at the Dropbox path specified.
+</div>
+
 <h2>Current pins</h2>
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -36,3 +40,10 @@
     </div>
   </div>
 </div>
+
+<dl class="dl-horizontal">
+  <dt>Latitude (&phi;)</dt>
+  <dd>Geographic coordinate that specifies the north-south position of a point on the Earth's surface.</dd>
+  <dt>Longitude (&lambda;)</dt>
+  <dd>Geographic coordinate that specifies the east-west position of a point on the Earth's surface.</dd>
+</dl>
