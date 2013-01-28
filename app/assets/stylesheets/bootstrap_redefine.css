@@ -42,3 +42,8 @@ blockquote {
   background: #E69922 !important;
   color: #333 !important;
 }
+.alert-tip {
+  background: #9FD2E5;
+  color: #465C64;
+  border-color: #8FBCCD;
+}
