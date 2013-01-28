@@ -10,6 +10,9 @@
   <h2>Pin</h2>
   <div class="well">
     <p><strong>First, you've to choose which type of pin you want to add :</strong></p>
+    <div class="alert">
+      <strong>Beware:</strong> Cities with more than 1 million population are automatically categorized as "Big City".
+    </div>
     <div id="pins-locategory" class="btn-group" data-toggle="buttons-radio">
       <% @locategories.each do |locategory| %>
         <button type="radio" class="btn pins-locategorybtn <%= 'active' if locategory.default == true %>" value="<%= locategory.id %>">
@@ -32,21 +35,38 @@
             <th>Area</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Population</th>
             <th>Description</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% @geos["geonames"].each do |geo| %>
-            <tr>
-              <td><%= geo["toponymName"] %></td>
-              <td><%= image_tag("flags/"+geo["countryCode"].to_s.downcase+".png") %>&nbsp;<%= geo["countryName"] %></td>
-              <td><%= geo["adminName1"] %></td>
-              <td><%= "%.3f" % geo["lat"] %>&deg;</td>
-              <td><%= "%.3f" % geo["lng"] %>&deg;</td>
-              <td><%= geo["fcodeName"].to_s.capitalize %></td>
-              <td><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"], :ext_id => geo["geonameId"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %></td>
-            </tr>
+            <% # Filter administrative subdivision for high populated places %>
+            <% unless (geo["fcl"] == "A" && geo["population"] > 500000) %>
+              <tr>
+                <td><%= geo["toponymName"] %></td>
+                <td><a rel="tooltip" title="<%= geo["countryName"] %>"><%= image_tag("flags/"+geo["countryCode"].to_s.downcase+".png") %></a></td>
+                <td>
+                  <% if geo["adminName1"].length > 20 %>
+                    <a rel="tooltip" title="<%= geo["adminName1"] %>"><%= truncate(geo["adminName1"], :length => 20) %></a>
+                  <% else %>
+                    <%= geo["adminName1"] %>
+                  <% end %>
+                </td>
+                <td><%= "%.3f" % geo["lat"] %>&deg;</td>
+                <td><%= "%.3f" % geo["lng"] %>&deg;</td>
+                <td><%= number_with_delimiter(geo["population"], :delimiter => " ", :separator => ",") %></td>
+                <td>
+                  <% if geo["fcodeName"].length > 20 %>
+                    <a rel="tooltip" title="<%= geo["fcodeName"].capitalize %>"><%= truncate(geo["fcodeName"].capitalize, :length => 20) %></a>
+                  <% else %>
+                    <%= geo["fcodeName"].capitalize %>
+                  <% end %>
+                </td>
+                <td><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"], :ext_id => geo["geonameId"], :population => geo["population"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %></td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
