@@ -7,7 +7,9 @@ class UsersController < GeoController
   before_filter :get_countries, :only => [:show]
 
   def index
-    @users = User.where("id != '#{current_user.id}'").search(params[:q])
+    busers = User.where("id != '#{current_user.id}'").search(params[:q])
+    @count = busers.count
+    @users = Kaminari.paginate_array(busers).page(params[:page]).per(48)
     @q = ""
     @q = params[:q] if params[:q]
   end

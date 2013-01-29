@@ -15,7 +15,4 @@
   <%= render(:partial => "shared/user_box", :collection => @mates, :as => :mate) %>
 </div>
 
-<div class="clearfix"></div>
-<div>
-  <%= paginate @mates %>
-</div>
+<%= paginate @mates %>

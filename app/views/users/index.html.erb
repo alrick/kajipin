@@ -1,9 +1,11 @@
 <% content_for :page_title do %>Searching User<% end %>
 
 <div class="page-header">
-  <h1>Searching User <small><%= @q %></small></h1>
+  <h1>Searching User <small><%= @count %> results for "<%= @q %>"</small></h1>
 </div>
 
 <div id="users">
   <%= render(:partial => "shared/user_box", :collection => @users, :as => :mate) || content_tag("p", "No user found.", class: "lead") %>
 </div>
+
+<%= paginate @users %>
