@@ -25,7 +25,6 @@ gem 'nokogiri' #xml parsing
 gem 'dropbox-api' #dropbox API access
 gem 'less-rails' #required for twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' #bootstrap for better interface
-gem 'newrelic_rpm' #new relic is a monitoring service
 
 group :development do
   gem 'rails-erd' #create schema of entities
