@@ -30,6 +30,7 @@ gem 'newrelic_rpm' #new relic is a monitoring service
 group :development do
   gem 'rails-erd' #create schema of entities
   gem 'hirb' #better visualisation in rails console
+  gem 'faker' #used to create fake resources easily
 end
 
 # To use debugger
