@@ -3,10 +3,7 @@
 <% elsif @dropbox_error %>
   <p class="lead">Gallery temporarily unavailable.
 <% else %>
-  <ul>
-    <%= @thumb %>
-    <% @photos.each do |photo| %>
-      <li><%= photo.path %></li>
-    <% end %>
-  </ul>
+  <% @photos.each do |photo| %>
+    <%= image_tag(photo) %>
+  <% end %>
 <% end %>

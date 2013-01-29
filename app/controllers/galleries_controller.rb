@@ -3,19 +3,6 @@ class GalleriesController < ApplicationController
   before_filter :get_pin
 
   def index
-    @gallery = @pin.gallery
-
-    begin
-      client = get_client
-      @photos = client.ls @gallery.path
-      @thumb = @photos.first.path.thumbnail
-    rescue Exception => e
-      @dropbox_error = true
-    end
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
