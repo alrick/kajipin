@@ -33,6 +33,10 @@ blockquote {
 .table {
   font-size: 16px !important;
 }
+.pagination li.active a {
+  background-color: #7FA4B1 !important;
+  color: #fff !important;
+}
 
 /* Custom bootstrap elements */
 .badge-map, .label-map {

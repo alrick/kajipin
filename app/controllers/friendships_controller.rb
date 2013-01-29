@@ -4,7 +4,8 @@ class FriendshipsController < ApplicationController
   def index
     sharings = current_user.friends
     sharers = current_user.inverse_friends
-    @mates = (sharings+sharers).uniq.sort_by(&:first_name)
+    bmates = (sharings+sharers).uniq.sort_by(&:first_name)
+    @mates = Kaminari.paginate_array(bmates).page(params[:page]).per(48)
   end
 
   def create
