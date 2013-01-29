@@ -8,7 +8,6 @@ class UsersController < GeoController
 
   def index
     busers = User.where("id != '#{current_user.id}'").search(params[:q])
-    @count = busers.count
     @users = Kaminari.paginate_array(busers).page(params[:page]).per(48)
     @q = ""
     @q = params[:q] if params[:q]
