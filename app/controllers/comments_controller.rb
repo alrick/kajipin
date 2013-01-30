@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     @comment = @pin.comments.build
-    @comments = @pin.comments.all
+    @comments = @pin.comments.page(params[:page]) #default to 25
 
     respond_to do |format|
       format.js
@@ -14,10 +14,14 @@ class CommentsController < ApplicationController
   def create
     @comment = @pin.comments.build(params[:comment])
     @comment.user_id = current_user.id
-    @comment.save
-    
-    respond_to do |format|
-      format.js
+
+    if @comment.save
+      num_pages = @pin.comments.page(1).num_pages
+      redirect_to pin_comments_url(@pin, :page => num_pages)
+    else
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

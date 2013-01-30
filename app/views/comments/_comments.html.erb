@@ -3,6 +3,8 @@
     <%= render(@comments) || content_tag("strong", "No comments", :class => "empty-set") %>
   </div>
 
+  <%= paginate @comments, :remote => true, :theme => "small" %>
+
   <div id="comments-new">
     <%= render "new" %>
   </div>
