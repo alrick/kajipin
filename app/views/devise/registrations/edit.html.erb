@@ -34,7 +34,7 @@
     </p>
 
     <h3>Account deletion</h3>
-    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure? This is irreversible and all of your data will be lost." }, :method => :delete %>.</p>
+    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All your galleries will be removed.</li><li>All your logbooks will be removed.</li><li>All comments associated with your pins will be removed.</li><li>Your comments will remains as 'anonymous author'.</li>" }, :method => :delete %>.</p>
   </div>
 </div>
 

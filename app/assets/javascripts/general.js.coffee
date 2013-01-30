@@ -17,6 +17,7 @@ jQuery ->
   $.rails.allowAction = (element) ->
     # The message is something like "Are you sure?"
     message = element.data('confirm')
+    beware = element.data('beware')
     # If there's no message, there's no data-confirm attribute, 
     # which means there's nothing to confirm
     return true unless message
@@ -39,6 +40,17 @@ jQuery ->
                    <div class="modal-header">
                      <h3>#{message}</h3>
                    </div>
+                 """
+    if beware
+      modal_html = modal_html + """
+                    <div class="modal-body">
+                      <strong>Beware :</strong>
+                      <ul>
+                        #{beware}
+                      </ul>
+                    </div>
+                  """
+    modal_html = modal_html + """
                    <div class="modal-footer">
                      <a data-dismiss="modal" class="btn btn-crud">Cancel</a>
                    </div>
