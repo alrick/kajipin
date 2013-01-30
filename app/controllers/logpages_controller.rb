@@ -3,7 +3,7 @@ class LogpagesController < ApplicationController
   before_filter :get_pin
 
   def index
-    @logpages = @pin.logpages.all
+    @logpages = @pin.logpages.page(params[:page]).per(10)
 
     respond_to do |format|
       format.js

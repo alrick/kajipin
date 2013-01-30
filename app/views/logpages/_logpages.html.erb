@@ -1,3 +1,5 @@
 <div id="logpages">
   <%= render(@logpages) || content_tag("p", "Logbook is empty.", :class => "lead") %>
 </div>
+
+<%= paginate @logpages, :remote => true %>
