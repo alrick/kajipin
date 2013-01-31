@@ -17,7 +17,6 @@ class UsersController < GeoController
     if check_access
       @pins = @user.pins
 
-      get_list
       get_countries
       init_pins
       focus_pin
@@ -25,13 +24,6 @@ class UsersController < GeoController
     else
       render :noshow
     end
-  end
-
-  # Get a list of pins
-  def get_list
-    @big_cities = @user.pins.bigcity
-    @small_cities = @user.pins.smallcity
-    @points_of_interest = @user.pins.pointofinterest
   end
 
   # Get user to display the map

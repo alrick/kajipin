@@ -24,7 +24,7 @@
 <a id="map-pointofinterest" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Point of interest' Pins" data-placement="left">
   <i class="icon-eye-open"></i>
 </a>
-<%= link_to content_tag("i", "", class: "icon-list-alt"), "#pinslistModal", :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :role => "link", "data-toggle" => "modal" %>
+<%= link_to content_tag("i", "", class: "icon-list-alt"), list_pins_path(:user => @user.id), :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :remote => true %>
 
 <!-- Center information -->
 <div id="map-infocenter" class="map-info">

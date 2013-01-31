@@ -4,23 +4,6 @@
     <h2 id="pinslistModalLabel"><%= @user.first_name %>'s Pins</h2>
   </div>
   <div class="modal-body">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-      <ul id ="pins-toolstabs" class="nav nav-tabs">
-        <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Locategory.bigcity_marker_path, :width => "15") %> Big City (<%= @big_cities.count %>)</b></a></li>
-        <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Locategory.smallcity_marker_path, :width => "15") %> Small City (<%= @small_cities.count %>)</b></a></li>
-        <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Locategory.pointofinterest_marker_path, :width => "15") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="bigcity">
-          <%= render "pinslist_table", :pins => @big_cities %>
-        </div>
-        <div class="tab-pane" id="smallcity">
-          <%= render "pinslist_table", :pins => @small_cities %>
-        </div>
-        <div class="tab-pane" id="pointofinterest">
-          <%= render "pinslist_table", :pins => @points_of_interest %>
-        </div>
-      </div>
-    </div>
+    <p class="lead">Stop looking at me, I'm pretty naked!</p>
   </div>
 </div>

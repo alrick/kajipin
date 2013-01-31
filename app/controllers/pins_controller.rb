@@ -9,10 +9,17 @@ class PinsController < ApplicationController
 
   def index
     @user = current_user
-    @big_cities = @user.pins.bigcity
-    @small_cities = @user.pins.smallcity
-    @points_of_interest = @user.pins.pointofinterest
+    get_pins
     open_tab
+  end
+
+  def list
+    @user = User.find(params[:user])
+    get_pins
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
@@ -82,6 +89,13 @@ class PinsController < ApplicationController
       @pin.destroy
       redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins."
     end
+  end
+
+  # Generic method to get pins
+  def get_pins
+    @big_cities = @user.pins.bigcity
+    @small_cities = @user.pins.smallcity
+    @points_of_interest = @user.pins.pointofinterest
   end
 
   # Open right tab regarding params (SHOW)
