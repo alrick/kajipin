@@ -37,7 +37,7 @@ class LogpagesController < ApplicationController
     end
   end
 
-  def manage
+  def captain
     @logpage = @pin.logpages.build
     @logpages = @pin.logpages.all
   end
