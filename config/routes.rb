@@ -25,7 +25,5 @@ Kajipin::Application.routes.draw do
   end
 
   resources :friendships, :only => [:index, :create, :destroy]
-  
-  match "friends" => "friendships#index"
 
 end
