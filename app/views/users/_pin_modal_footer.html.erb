@@ -1,10 +1,4 @@
 <div class="btn-group" data-toggle="buttons-radio">
-  <%= #link_to pin_galleries_path(@pin), :id => "map-gallerymodalbtn", :class => "btn btn-tool", :remote => true do
-    #content_tag "b" do
-      #content_tag("i", "", class: "icon-camera")+" Gallery"
-    #end
-  #end 
-  %>
   <%= link_to pin_comments_path(@pin), :id => "map-commentsmodalbtn", :class => "btn btn-tool", :remote => true do
     content_tag "b" do
       content_tag("i", "", class: "icon-comment")+" Comments"

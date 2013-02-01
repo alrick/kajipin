@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125180905) do
-
-  create_table "accesstokens", :force => true do |t|
-    t.string   "token"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "account"
-    t.string   "secret"
-    t.integer  "uid"
-  end
+ActiveRecord::Schema.define(:version => 20130201105340) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -52,15 +42,6 @@ ActiveRecord::Schema.define(:version => 20130125180905) do
 
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
-
-  create_table "galleries", :force => true do |t|
-    t.integer  "pin_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "accesstoken_id"
-  end
-
-  add_index "galleries", ["pin_id"], :name => "index_galleries_on_pin_id"
 
   create_table "locategories", :force => true do |t|
     t.string   "name"

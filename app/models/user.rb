@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
   has_many :pins, dependent: :destroy, :order => "title"
-  has_one  :accesstoken, dependent: :destroy
   has_many :comments
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships

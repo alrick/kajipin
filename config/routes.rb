@@ -3,18 +3,11 @@ Kajipin::Application.routes.draw do
 
   resources :friendships
 
-  resources :accesstokens do
-    collection do
-      get 'authorize'
-    end
-  end
-
   resources :pins do
     collection do
       get 'list'
     end
     resources :comments
-    #resources :galleries
     resources :logpages, :path => 'logbook' do
       collection do
         get 'captain'

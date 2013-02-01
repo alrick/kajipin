@@ -34,32 +34,6 @@
     </p>
 
     <h3>Account deletion</h3>
-    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All your galleries will be removed.</li><li>All your logbooks will be removed.</li><li>All comments associated with your pins will be removed.</li><li>Your comments will remains as 'anonymous author'.</li>" }, :method => :delete %>.</p>
+    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on your friend's pins will remains as 'anonymous author'.</li>" }, :method => :delete %>.</p>
   </div>
 </div>
-
-
-<h2>Services settings</h2>
-
-<p class="lead">You can add services to improve <%= Appetizer.appname %> features.</p>
-
-<div class="service well">
-  <strong>Dropbox</strong>
-  <p><%= image_tag "services/dropbox.png", :class => "img-circle" %></p>
-  <p>
-    <% if current_user.accesstoken.blank? %>
-      <%= link_to content_tag("i", "", :class => "icon-plus-sign")+" Add Dropbox", authorize_accesstokens_path, :class => "btn btn-crud" %>
-    <% else %>
-      <a href="#" class="btn btn-large account" rel="tooltip" data-placement="top" data-original-title="<%= current_user.accesstoken.account %>">
-        <i class="icon-user"></i>
-      </a>
-      <%= link_to content_tag("i", "", class: "icon-remove-sign"), accesstoken_path(current_user.accesstoken), :class => "btn btn-tool btn-small btn-remove", :method => :delete, :confirm => "Unlinking Dropbox will also remove the related galleries, photos will stay on your Dropbox. Are you sure?" %>
-    <% end %>
-  </p>
-</div>
-
-<p class="clearfix"></p>
-<dl class="dl-horizontal">
-  <dt>Dropbox</dt>
-  <dd>Dropbox allows you to add galleries to your pins.</dd>
-</dl>

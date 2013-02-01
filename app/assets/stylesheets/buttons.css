@@ -36,7 +36,7 @@
   font-weight: bold;
 }
 
-/* Button tool for all buttons related to tools (galleries, logbook, comments) */
+/* Button tool for all buttons related to tools */
 .btn-tool {
   background-color: hsl(26, 24%, 15%) !important;
   background-repeat: repeat-x;

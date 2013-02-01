@@ -6,21 +6,9 @@
   </td>
   <td>
     <%= link_to content_tag("i", "", class: "icon-book"), captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Captain Logbook" %>
-    <% #if !pin.gallery.blank? 
-    %>
-      <%= #link_to content_tag("i", "", class: "icon-camera"), pin_gallery_path(pin, pin.gallery), :class => "btn btn-mini btn-tool active btn-remove", :rel => "tooltip", :title => "Remove Gallery", "data-method" => "delete" 
-      %>
-      <%= #link_to image_tag("services/dropbox.png", :width => 20), "", :rel => "tooltip", :title => pin.gallery.full_path 
-      %>
-    <% #else 
-    %>
-      <%= #link_to content_tag("i", "", class: "icon-camera"), pin_galleries_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Create Gallery", "data-method" => "post" 
-      %>
-    <% #end 
-    %>
   </td>
   <td>
     <%= link_to content_tag("i", "", class: "icon-edit")+" Edit", edit_pin_path(pin), :class => "btn btn-mini btn-map" %>
-    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s gallery will be removed</li><li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
+    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
   </td>
 </tr>

@@ -1,9 +1,0 @@
-<% if @gallery.blank? %>
-  <p class="lead">No Gallery</p>
-<% elsif @dropbox_error %>
-  <p class="lead">Gallery temporarily unavailable.
-<% else %>
-  <% @photos.each do |photo| %>
-    <%= image_tag(photo) %>
-  <% end %>
-<% end %>

@@ -15,9 +15,8 @@ node :properties do |p|
     'marker-size' => p.marker_size,
     :logpages_count => p.logpages_count,
     :comments_count => p.comments_count,
-    :locategory_hook => p.locategory_hook,
     'comments_path' => pin_comments_path(p),
-    #'gallery_path' => pin_galleries_path(p),
-    'logpages_path' => pin_logpages_path(p)
+    'logpages_path' => pin_logpages_path(p),
+    :locategory_hook => p.locategory_hook
   }
 end
