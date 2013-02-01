@@ -2,10 +2,6 @@ jQuery ->
   # Check that we're on correct page
   if ($("#map").length > 0)
 
-    #########################################
-    #### INITIALISATION
-    #########################################
-
     # Map init
     map = mapbox.map("map")
     map.addLayer(mapbox.layer().id("alrick.map-y17w9hkl", () ->
