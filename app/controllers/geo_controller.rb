@@ -1,6 +1,5 @@
-require 'nokogiri'
-
 class GeoController < ApplicationController
+  before_filter :authenticate_user!
   
   # Get a list of all countries from geonames
   def get_countries
