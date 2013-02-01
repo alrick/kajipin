@@ -26,6 +26,7 @@ gem 'dropbox-api' #dropbox API access
 gem 'less-rails' #required for twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' #bootstrap for better interface
 gem 'kaminari' #pagination system
+gem 'cancan' #authorization library
 
 group :development do
   gem 'rails-erd' #create schema of entities

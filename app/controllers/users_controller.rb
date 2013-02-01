@@ -1,10 +1,16 @@
 require 'nokogiri'
 
 class UsersController < GeoController
-  layout "map", :only => [:show]
+  # Cancan authorize
+  load_and_authorize_resource
+  
+  # Devise authentication
   before_filter :authenticate_user!
+  
   before_filter :get_user, :only => [:show]
   before_filter :get_countries, :only => [:show]
+
+  layout "map", :only => [:show]
 
   def index
     busers = User.where("id != '#{current_user.id}'").search(params[:q])

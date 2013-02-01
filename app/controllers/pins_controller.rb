@@ -2,7 +2,13 @@ require 'open-uri'
 require 'json'
 
 class PinsController < ApplicationController
+  # Cancan authorize
+  load_and_authorize_resource 
+
+  # Devise authentication
   before_filter :authenticate_user!
+
+  # Global vars
   GEONAMES_USERNAME = "&username=curlyb"
   GEONAMES_MAXROWS = "&maxRows=20"
   GEONAMES_FUZZY = "&fuzzy=0.8"
@@ -82,13 +88,9 @@ class PinsController < ApplicationController
 
   def destroy
     @pin = Pin.find(params[:id])
+    @pin.destroy
 
-    if !@pin.gallery.blank?
-      redirect_to pins_url(:tab => @pin.locategory.get_tab), alert: "<strong>Oh snap!</strong> You have to remove the gallery before removing the pin."
-    else
-      @pin.destroy
-      redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins."
-    end
+    redirect_to pins_url(:tab => @pin.locategory.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins."
   end
 
   # Generic method to get pins

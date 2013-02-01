@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
+  # Cancan authorize
+  load_and_authorize_resource :pin
+  load_and_authorize_resource :comment, :through => :pin
+
+  # Devise authentication
   before_filter :authenticate_user!
-  before_filter :get_pin
 
   def index
     @comment = @pin.comments.build
@@ -34,10 +38,5 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  # Get the pin the comment belongs to (nested)
-  def get_pin
-    @pin = Pin.find(params[:pin_id])
   end
 end
