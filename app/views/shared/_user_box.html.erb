@@ -1,4 +1,4 @@
-<div id="<%= dom_id(mate) %>" class="userbox well<%= " sharer-userbox" unless current_user.isSharer(mate) %>">
+<div id="<%= dom_id(mate) %>" class="userbox well<%= " sharer-userbox" if mate.isSharingWith(current_user) %>">
   <%= link_to content_tag("strong", mate.full_name), user_path(mate) %>
   <%= link_to image_tag(gravatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
   <table>
@@ -12,7 +12,7 @@
     </tr>
   </table>
   <p>
-    <% if current_user.isSharing(mate) %>
+    <% if current_user.isSharingWith(mate) %>
       <% friendship = current_user.friendships.where(:friend_id => mate.id).first %>
       <%= link_to content_tag("i", "", class: "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial" %>
     <% else %>
@@ -20,7 +20,7 @@
     <% end %>
   </p>
   <p>
-    <% if current_user.isSharer(mate) %>
+    <% if mate.isSharingWith(current_user) %>
       <span class="label label-social is-sharer">Sharer</span>
     <% else %>
       <span>&nbsp;</span>

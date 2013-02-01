@@ -1,5 +1,5 @@
 class Pin < ActiveRecord::Base
-  attr_accessible :title, :user_id, :latitude, :longitude, :locategory_id
+  attr_accessible :title, :user_id, :latitude, :longitude, :locategory_id, :country_name, :country_code, :ext_id
 
   belongs_to :user
   belongs_to :locategory

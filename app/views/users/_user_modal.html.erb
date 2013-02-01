@@ -41,7 +41,7 @@
     <% if @user == current_user %>
       <p>That's you! Yeah really.</p>
     <% else %>
-      <% if current_user.isSharing(@user) %>
+      <% if current_user.isSharingWith(@user) %>
         <p>You're currently sharing with <%= @user.first_name %>.</p>
         <% friendship = current_user.friendships.where(:friend_id => @user.id).first %>
         <%= link_to content_tag("i", "", class: "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial mapuser-btn" %>

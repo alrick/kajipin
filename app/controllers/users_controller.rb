@@ -1,8 +1,6 @@
 require 'nokogiri'
 
 class UsersController < GeoController
-  # Cancan authorize
-  load_and_authorize_resource
   
   # Devise authentication
   before_filter :authenticate_user!
@@ -20,7 +18,7 @@ class UsersController < GeoController
   end
 
   def show
-    if check_access
+    if can? :read, @user
       @pins = @user.pins
 
       get_countries
@@ -36,10 +34,10 @@ class UsersController < GeoController
   def get_user
     # If no id provided, auto redirect to the logged user profile
     if params[:id].nil?
-      redirect_to user_path(current_user)
-      return
+      redirect_to user_url(current_user)
+    else
+      @user = User.find(params[:id])
     end
-    @user = User.find(params[:id])
   end
 
   # Init JSON pins via rabl
@@ -63,17 +61,6 @@ class UsersController < GeoController
       gon.north = params[:n]
       gon.east = params[:e]
       gon.south = params[:s]
-    end
-  end
-
-  # Check if user can access map (user page)
-  def check_access
-    if @user == current_user
-      return true
-    elsif current_user.isSharer(@user)
-      return true
-    else
-      return false
     end
   end
   

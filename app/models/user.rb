@@ -47,13 +47,13 @@ class User < ActiveRecord::Base
     inverse_friends.count
   end
 
-  # Is user passed in params in the sharing of this user
-  def isSharing(user)
-    Friendship.exists?(:user_id => id, :friend_id => user.id)
+  # Is this user is sharing with user passed?
+  def isSharingWith(user)
+    friends.where(:id => user.id).exists?
   end
 
   # Is user passed in params a sharer of this user
-  def isSharer(user)
+  def isSharerOf(user)
     Friendship.exists?(:user_id => user.id, :friend_id => id)
   end
 
