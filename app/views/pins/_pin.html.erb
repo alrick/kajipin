@@ -1,11 +1,21 @@
 <tr id="<%= dom_id(pin) %>" data-locategory="<%= pin.locategory_id %>">
-  <td><%= link_to image_tag("flags/"+pin.country_code.downcase+".png"), "", :rel => "tooltip", :title => pin.country_name %> <strong><%= pin.title %></strong></td>
   <td>
-    <%= pin.short_lat %>&deg; &phi;, 
-    <%= pin.short_lon %>&deg; &lambda;
+    <%= link_to image_tag("flags/"+pin.country_code.downcase+".png"), "", :rel => "tooltip", :title => pin.country_name %>&nbsp;
+    <strong><%= pin.title %></strong>&nbsp;
+    <small><%= content_tag("i", "", :class => "icon-upload") if pin.population >= 1000000 %></small>
   </td>
   <td>
-    <%= link_to content_tag("i", "", class: "icon-book"), captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Captain #{pin.title}'s logbook" %>
+    <%= pin.short_lat %>&deg; <strong>&phi;</strong>, 
+    <%= pin.short_lon %>&deg; <strong>&lambda;</strong>
+  </td>
+  <td>
+    <div class="btn-group">
+      <button class="btn btn-mini btn-tool disabled"><%= pin.comments_count %> <i class="icon-comments"></i></button>
+      <button class="btn btn-mini btn-tool disabled"><%= pin.logpages_count %> <i class="icon-book"></i></button>
+    </div>
+  </td>
+  <td>
+    <%= link_to content_tag("i", "", class: "icon-book")+" Manage", captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage #{pin.title}'s logbook" %>
   </td>
   <td>
     <%= link_to content_tag("i", "", class: "icon-edit")+" Edit", edit_pin_path(pin), :class => "btn btn-mini btn-map" %>
