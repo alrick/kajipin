@@ -9,6 +9,7 @@ class PinsController < ApplicationController
   before_filter :authenticate_user!
 
   # Global vars
+  GEONAMES_URL = "http://api.geonames.org/searchJSON?q="
   GEONAMES_USERNAME = "&username=curlyb"
   GEONAMES_MAXROWS = "&maxRows=20"
   GEONAMES_FUZZY = "&fuzzy=0.8"
@@ -38,7 +39,7 @@ class PinsController < ApplicationController
       q = URI.escape(params[:q])
     end
 
-    url = "http://api.geonames.org/searchJSON?q="+q+GEONAMES_MAXROWS+GEONAMES_FUZZY+GEONAMES_USERNAME
+    url = GEONAMES_URL+q+GEONAMES_MAXROWS+GEONAMES_FUZZY+GEONAMES_USERNAME
     @geos = JSON.parse(open(url).read)
 
     if @geos["status"]
