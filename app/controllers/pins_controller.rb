@@ -51,6 +51,11 @@ class PinsController < ApplicationController
   def edit
     @locategories = Locategory.order(:id)
     @pin = Pin.find(params[:id])
+
+    # Can't edit big cities
+    if @pin.population >= 1000000
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> You can't edit high populated pins."
+    end
   end
 
   def update
@@ -73,10 +78,11 @@ class PinsController < ApplicationController
     @pin.country_code = params[:country_code]
     @pin.locategory_id = params[:locategory]
     @pin.ext_id = params[:ext_id]
+    @pin.population = params[:population]
 
     # Force cities with 1 million or more population to Big Cities
     bigcity = Locategory.where(:hook => Locategory.bigcity_hook).first
-    if params[:population].to_f >= 1000000
+    if @pin.population >= 1000000
       @pin.locategory_id = bigcity.id
     end
 
