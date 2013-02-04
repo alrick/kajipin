@@ -12,9 +12,8 @@
     $("#<%= dom_id(@logpage) %> .logpage-form #logpage_content").effect("highlight", { color: "#5F1818" })
 
 <% else %>
-  # Update title and content of view
-  $("#<%= dom_id(@logpage) %> .logpage-view .title").html("<%= @logpage.title %>")
-  $("#<%= dom_id(@logpage) %> .logpage-view .content").html("<%= @logpage.content %>")
+  # Update logpage view and form
+  $("#<%= dom_id(@logpage) %>").html("<%= j(render('logpages/captain_logpage', :logpage => @logpage)) %>")
 
   # Switch, hide form and show view
   $("#<%= dom_id(@logpage) %> .logpage-view").css("display", "block")

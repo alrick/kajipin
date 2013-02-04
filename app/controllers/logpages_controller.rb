@@ -45,4 +45,12 @@ class LogpagesController < ApplicationController
     @logpage = @pin.logpages.build
     @logpages = @pin.logpages.all
   end
+
+  def cancel
+    @logpage = Logpage.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end

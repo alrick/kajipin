@@ -20,6 +20,7 @@ Kajipin::Application.routes.draw do
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
       collection do
         get 'captain'
+        get 'cancel'
       end
     end
   end
