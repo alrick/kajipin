@@ -51,3 +51,6 @@ blockquote {
   color: #465C64;
   border-color: #8FBCCD;
 }
+.badge-tool, .label-tool {
+  background: #6e5643 !important;
+}

@@ -9,13 +9,11 @@
     <%= pin.short_lon %>&deg; <strong>&lambda;</strong>
   </td>
   <td>
-    <div class="btn-group">
-      <button class="btn btn-mini btn-tool disabled"><%= pin.comments_count %> <i class="icon-comments"></i></button>
-      <button class="btn btn-mini btn-tool disabled"><%= pin.logpages_count %> <i class="icon-book"></i></button>
-    </div>
+    <span class="label label-tool pins-unify-stats"><%= pin.comments_count %> <i class="icon-comments"></i></span>
+    <span class="label label-tool pins-unify-stats"><%= pin.logpages_count %> <i class="icon-book"></i></span>
   </td>
   <td>
-    <%= link_to content_tag("i", "", class: "icon-book")+" Manage", captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :rel => "tooltip", :title => "Manage #{pin.title}'s logbook" %>
+    <%= link_to content_tag("i", "", class: "icon-book")+" Manage", captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool" %>
   </td>
   <td>
     <%= link_to content_tag("i", "", class: "icon-edit")+" Edit", edit_pin_path(pin), :class => "btn btn-mini btn-map" %>

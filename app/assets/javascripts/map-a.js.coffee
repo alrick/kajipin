@@ -36,7 +36,7 @@ jQuery ->
         tooltipComments = '<a href="' + feature.properties.comments_path + '" class="btn btn-small btn-tool map-tooltipbtn modal-open" data-remote="true">' + feature.properties.comments_count + '&nbsp;<i class="icon-comment"></i></a>&nbsp;'
         tooltipLogbook = '<a href="' + feature.properties.logpages_path + '" class="btn btn-small btn-tool map-tooltipbtn modal-open" data-remote="true">' + feature.properties.logpages_count + '&nbsp;<i class="icon-book"></i></a>'
         tooltipZoom = '<a class="btn btn-small btn-map map-tooltipbtn map-tooltipzoom" data-lat="' + feature.geometry.coordinates[1] + '" data-lon="' + feature.geometry.coordinates[0] + '"><i class="icon-zoom-in"></i></a>'
-        o = '<div style="text-align:center">' + tooltipTitle + tooltipCountry + '<div>' + tooltipComments + tooltipLogbook + '</div><div>' + tooltipZoom + '</div></div>'
+        o = '<div style="text-align:center">' + tooltipTitle + tooltipCountry + '<div class="btn-group">' + tooltipComments + tooltipLogbook + '</div><div>' + tooltipZoom + '</div></div>'
 
       # By default, the map extent markers
       map.extent(pinsLayer.extent())
