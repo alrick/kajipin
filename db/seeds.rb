@@ -12,8 +12,3 @@ Tag.create!(:name => "Relaxation", :description => "Can be a beach, a swimming p
 Tag.create!(:name => "Shopping", :description => "Because traveling is a good reason to spend some money.")
 Tag.create!(:name => "Sport", :description => "Because travel does not necessarily rhyme with relaxation.")
 Tag.create!(:name => "Transport", :description => "Can be a road trip, a plane ride, etc.")
-
-Locategory.delete_all
-Locategory.create!(:name => "Big city", :description => "This is a big city for you!", :marker_size => "large", :marker_symbol => "town-hall", :marker_color => "#4A4459", :default => true)
-Locategory.create!(:name => "Small city", :description => "A less famous city.", :marker_size => "medium", :marker_symbol => "town-hall", :marker_color => "#887D75", :default => false)
-Locategory.create!(:name => "Point of interest", :description => "A castle, a national park or a beautiful landscape.", :marker_size => "medium", :marker_symbol => "star", :marker_color => "#7FA4B1", :default => false)

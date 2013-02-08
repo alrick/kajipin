@@ -9,17 +9,22 @@
 <% else %>
   <h2>Pin</h2>
   <div class="well">
-    <p><strong>First, you've to choose which type of pin you want to add :</strong></p>
+    <p><strong>First, you've to choose a category for your pin :</strong></p>
     <div class="alert">
       <strong>Beware:</strong> Cities with more than 1 million population are automatically categorized as "Big City".
     </div>
-    <div id="pins-locategory" class="btn-group" data-toggle="buttons-radio">
-      <% @locategories.each do |locategory| %>
-        <button type="radio" class="btn pins-locategorybtn <%= 'active' if locategory.default == true %>" value="<%= locategory.id %>">
-          <%= image_tag(locategory.marker_path, :width => "20") %>
-          <%= locategory.name %>
+    <div id="pins-types">
+      <div class="btn-group" data-toggle="buttons-radio">
+        <button type="button" class="btn active" value="<%= Bigcity.sti_name %>">
+          <%= image_tag(Bigcity.marker_path, :width => "20") %> <strong>Big city</strong>
         </button>
-      <% end %>
+        <button type="button" class="btn" value="<%= Smallcity.sti_name %>">
+          <%= image_tag(Smallcity.marker_path, :width => "20") %> <strong>Small city</strong>
+        </button>
+        <button type="button" class="btn" value="<%= Poi.sti_name %>">
+          <%= image_tag(Poi.marker_path, :width => "20") %> <strong>Point of interest</strong>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -64,7 +69,9 @@
                     <%= geo["fcodeName"].capitalize %>
                   <% end %>
                 </td>
-                <td><%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:title => geo["toponymName"], :latitude => geo["lat"], :longitude => geo["lng"], :country_name => geo["countryName"], :country_code => geo["countryCode"], :ext_id => geo["geonameId"], :population => geo["population"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %></td>
+                <td>
+                  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:ext_id => geo["geonameId"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %>
+                </td>
               </tr>
             <% end %>
           <% end %>

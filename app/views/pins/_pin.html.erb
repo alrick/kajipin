@@ -1,4 +1,4 @@
-<tr id="<%= dom_id(pin) %>" data-locategory="<%= pin.locategory_id %>">
+<tr id="<%= dom_id(pin) %>">
   <td>
     <%= link_to image_tag("flags/"+pin.country_code.downcase+".png"), "", :rel => "tooltip", :title => pin.country_name %>&nbsp;
     <strong><%= pin.title %></strong>&nbsp;
@@ -13,10 +13,32 @@
     <span class="label label-tool pins-unify-stats"><%= pin.logpages_count %> <i class="icon-book"></i></span>
   </td>
   <td>
-    <%= link_to content_tag("i", "", class: "icon-book")+" Manage", captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool" %>
+    <%= link_to "Manage ".html_safe+content_tag("i", "", class: "icon-book"), captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool" %>
   </td>
   <td>
-    <%= link_to content_tag("i", "", class: "icon-edit")+" Edit", edit_pin_path(pin), :class => "btn btn-mini btn-map" %>
+    <div class="dropdown pins-type_dropdown">
+      <a class="dropdown-toggle btn btn-mini btn-map" id="dLabel" role="button" data-toggle="dropdown" data-target="#">
+        <i class="icon-map-marker"></i> Type
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="dLabel">
+        <% unless pin.type == Bigcity.sti_name %>
+          <li>
+            <%= link_to Bigcity.fancy_name, pin_path(pin, :type => Bigcity.sti_name), :method => :put, "tabindex" => "-1" %>
+          </li>
+        <% end %>
+        <% unless pin.type == Smallcity.sti_name %>
+          <li>
+            <%= link_to Smallcity.fancy_name, pin_path(pin, :type => Smallcity.sti_name), :method => :put, "tabindex" => "-1" %>
+          </li>
+        <% end %>
+        <% unless pin.type == Poi.sti_name %>
+          <li>
+            <%= link_to Poi.fancy_name, pin_path(pin, :type => Poi.sti_name), :method => :put, "tabindex" => "-1" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     <%= link_to content_tag("i", "", class: "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
   </td>
 </tr>

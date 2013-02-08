@@ -9,8 +9,10 @@
             <a rel="tooltip" title="<%= pin.country_name %>" data-placement="right"><%= image_tag("flags/"+pin.country_code.downcase+".png", :width => 12) %></a> <strong><%= pin.title %></strong>
           </td>
           <td>
-            <%= link_to pin.comments_count+" "+content_tag("i", "", class: "icon-comment"), pin_comments_path(pin), :class => "btn btn-mini btn-tool map-btnunify btn-pinslist", :rel => "tooltip", :title => "Comments", :remote => true %>
-            <%= link_to pin.logpages_count+" "+content_tag("i", "", class: "icon-book"), pin_logpages_path(pin), :class => "btn btn-mini btn-tool map-btnunify btn-pinslist", :rel => "tooltip", :title => "Logbook", :remote => true %>
+            <div class="btn-group">
+              <%= link_to pin.comments_count+" "+content_tag("i", "", class: "icon-comment"), pin_comments_path(pin), :class => "btn btn-mini btn-tool map-btnunify btn-pinslist", :rel => "tooltip", :title => "Comments", :remote => true %>
+              <%= link_to pin.logpages_count+" "+content_tag("i", "", class: "icon-book"), pin_logpages_path(pin), :class => "btn btn-mini btn-tool map-btnunify btn-pinslist", :rel => "tooltip", :title => "Logbook", :remote => true %>
+            </div>
             <%= link_to content_tag("i", "", class: "icon-map-marker"), "#", :class => "btn btn-mini btn-map map-btnunify btn-pinslist map-tooltipzoom", :rel => "tooltip", :title => "Locate", "data-lat" => pin.latitude, "data-lon" => pin.longitude %>
           </td>
         </tr>

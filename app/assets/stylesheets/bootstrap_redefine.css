@@ -18,7 +18,7 @@ blockquote {
   background: #F2F1E4 !important;
 }
 .modal-header {
-  border-bottom: 1px solid #D9D8CE !important;
+  border-bottom: 1px solid #6e5643 !important;
 }
 .modal-footer {
   background: #DBDACF !important;
@@ -36,6 +36,10 @@ blockquote {
 .pagination li.active a {
   background-color: #7FA4B1 !important;
   color: #fff !important;
+}
+hr {
+  border-bottom-color: #6e5643;
+  border-top-color: #6e5643;
 }
 
 /* Custom bootstrap elements */

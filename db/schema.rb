@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204135515) do
+ActiveRecord::Schema.define(:version => 20130208184327) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -43,18 +43,6 @@ ActiveRecord::Schema.define(:version => 20130204135515) do
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
-  create_table "locategories", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "marker_size"
-    t.string   "marker_symbol"
-    t.string   "marker_color"
-    t.boolean  "default"
-    t.integer  "hook"
-  end
-
   create_table "logpages", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -72,14 +60,17 @@ ActiveRecord::Schema.define(:version => 20130204135515) do
     t.string   "country_name"
     t.string   "country_code"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "locategory_id"
     t.integer  "ext_id"
     t.integer  "population"
+    t.string   "type"
+    t.string   "continent_code"
   end
 
   add_index "pins", ["locategory_id"], :name => "index_pins_on_locategory_id"
+  add_index "pins", ["type"], :name => "index_pins_on_type"
   add_index "pins", ["user_id"], :name => "index_pins_on_user_id"
 
   create_table "tags", :force => true do |t|

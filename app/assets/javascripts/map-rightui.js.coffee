@@ -33,22 +33,22 @@ jQuery ->
           true
       else if (bigcityMarkers && smallcityMarkers && !pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 1) or (f.properties.locategory_hook is 2)
+          (f.properties.type is "Bigcity") or (f.properties.type is "Smallcity")
       else if (bigcityMarkers && !smallcityMarkers && pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 1) or (f.properties.locategory_hook is 3)
+          (f.properties.type is "Bigcity") or (f.properties.type is "Poi")
       else if (bigcityMarkers && !smallcityMarkers && !pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 1)
+          (f.properties.type is "Bigcity")
       else if (!bigcityMarkers && smallcityMarkers && pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 2) or (f.properties.locategory_hook is 3)
+          (f.properties.type is "Smallcity") or (f.properties.type is "Poi")
       else if (!bigcityMarkers && smallcityMarkers && !pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 2)
+          (f.properties.type is "Smallcity")
       else if (!bigcityMarkers && !smallcityMarkers && pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
-          (f.properties.locategory_hook is 3)
+          (f.properties.type is "Poi")
       else if (!bigcityMarkers && !smallcityMarkers && !pointofinterestMarkers)
         gon.pinsLayer.filter (f) ->
           false

@@ -12,7 +12,7 @@ Kajipin::Application.routes.draw do
     end
   end
 
-  resources :pins do
+  resources :pins, :only => [:index, :new, :update, :create, :destroy] do
     collection do
       get 'list'
     end

@@ -1,8 +1,8 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Locategory.bigcity_marker_path, :width => "15") %> Big City (<%= @big_cities.count %>)</b></a></li>
-    <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Locategory.smallcity_marker_path, :width => "15") %> Small City (<%= @small_cities.count %>)</b></a></li>
-    <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Locategory.pointofinterest_marker_path, :width => "15") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
+    <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Bigcity.marker_path, :width => "20") %> Big City (<%= @big_cities.count %>)</b></a></li>
+    <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Smallcity.marker_path, :width => "20") %> Small City (<%= @small_cities.count %>)</b></a></li>
+    <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Poi.marker_path, :width => "20") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="bigcity">
