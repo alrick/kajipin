@@ -11,9 +11,10 @@
     <h3>Informations</h3>
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "well form-horizontal"}) do |f| %>
       
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :birth, :as => :date, :start_year => Date.today.year - 600,
+      <%= f.input :first_name, :label => 'First name <i class="icon-globe"></i>' %>
+      <%= f.input :last_name, :label => 'Last name <i class="icon-globe"></i>' %>
+      <%= f.input :birth, :label => 'Birth <i class="icon-globe"></i>', :as => :date, 
+                                  :start_year => Date.today.year - 600,
                                   :end_year => Date.today.year - 12,
                                   :order => [:day, :month, :year],
                                   :input_html => { :style => "width: 120px" } %>
@@ -25,9 +26,14 @@
         <%= f.submit "Modify", :class => "btn btn-crud" %>
       </div>
     <% end %>
+
+    <dl class="dl-horizontal">
+      <dt>Public (<i class="icon-globe"></i>)</dt>
+      <dd>Everyone can see this information.</dd>
+    </dl>
   </div>
   <div class="span3">
-    <h3>Profile photo</h3>
+    <h3 id="profile-photo">Profile photo <small><i class="icon-globe"></i></small></h3>
     <%= image_tag gravatar_url(current_user, 205), :class => "img-polaroid" %>
     <p>
       <b><%= Appetizer.appname %></b> uses <a href="#" rel="tooltip" title="Gravatar allows you to bind your email address with an avatar / profile photo.">Gravatar</a> to display your profile photo, more informations <%= link_to "here", "http://en.gravatar.com" %>.
