@@ -3,7 +3,11 @@
 <!-- Center information -->
 <div id="map-infocenter" class="map-info">
   <p class="lead"><%= @user.first_name %> does not share with you.</p>
-  <%= link_to "Ask "+@user.first_name+" to share", "#", :class => "btn btn-social" %>
+  <% if Request.where(:user_id => @user.id, :requester_id => current_user.id).exists? %>
+    <a class="btn btn-social disabled">Share request already sent</a>
+  <% else %>
+    <%= link_to "Ask "+@user.first_name+" to share", requests_path(:user => @user, :requester => current_user), :method => :post, :class => "btn btn-social" %>
+  <% end %>
 </div>
 
 <!-- Include modals -->

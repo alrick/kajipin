@@ -32,7 +32,10 @@ group :development do
   gem 'rails-erd' #create schema of entities
   gem 'hirb' #better visualisation in rails console
   gem 'faker' #used to create fake resources easily
+  gem 'nifty-generators' #better scaffold generators
 end
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

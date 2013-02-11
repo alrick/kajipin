@@ -19,3 +19,6 @@
 
 // Unify user menu items
 .usermenu-item i { display: inline-block !important; }
+
+// Highlight inbox if requests pending
+.active-inbox { color: #E69922 !important; }

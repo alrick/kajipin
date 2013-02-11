@@ -1,5 +1,12 @@
 jQuery ->
 
+  # Update inbox when modal is closed
+  $("#reqModal").on "hide", ->
+    if ($("#requests .request").length < 1)
+      $("#inbox").removeClass("active-inbox")
+    else
+      $("#inbox").addClass("active-inbox")
+
   # Auto fade alert-success alert after a delay
   $(".alert-success").delay(3000).fadeOut "slow", ->
     $(this).remove()

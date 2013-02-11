@@ -1,0 +1,9 @@
+<ul class="nav pull-right">
+  <li>
+    <% if current_user.hasRequest? %>
+      <%= link_to content_tag("i", "", :class => "icon-inbox"), requests_path, :id => "inbox", :class => "modal-open active-inbox", :remote => true %>
+    <% else %>
+      <%= link_to content_tag("i", "", :class => "icon-inbox"), requests_path, :id => "inbox", :class => "modal-open", :remote => true %>
+    <% end %>
+  </li>
+</ul>

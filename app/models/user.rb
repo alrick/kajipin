@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :pins, dependent: :destroy, :order => "title"
   has_many :comments, dependent: :nullify
+  has_many :requests, dependent: :destroy
+  has_many :inverse_requests, :class_name => "Request", :foreign_key => "requester_id", dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
@@ -45,6 +47,11 @@ class User < ActiveRecord::Base
 
   def number_sharers
     inverse_friends.count
+  end
+
+  # Has this user some requests pending?
+  def hasRequest?
+    !requests.empty?
   end
 
   # Is this user is sharing with user passed?

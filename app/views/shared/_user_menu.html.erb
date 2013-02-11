@@ -1,24 +1,22 @@
-<% if user_signed_in? %>
-  <ul class="nav pull-right">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="icon-user"></i>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu pull-right">
-        <li id="global-menufirst">
-          <%= link_to(user_path(current_user)) do %>
-            <%= image_tag gravatar_url(current_user, 28), :class => "img-polaroid" %>
-              <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
-              <p>View my profile</p>
-          <% end %>
-        </li>
-        <li class="divider"></li>
-        <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-map-marker")+" Pins", pins_path %></li>
-        <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-heart")+" Friendships", friendships_path %></li>
-        <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-cog")+" Settings", edit_user_registration_path %></li>
-        <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    </div>
-  </ul>
-<% end %>
+<ul class="nav pull-right">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-user"></i>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu pull-right">
+      <li id="global-menufirst">
+        <%= link_to(user_path(current_user)) do %>
+          <%= image_tag gravatar_url(current_user, 28), :class => "img-polaroid" %>
+            <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
+            <p>View my profile</p>
+        <% end %>
+      </li>
+      <li class="divider"></li>
+      <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-map-marker")+" Pins", pins_path %></li>
+      <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-heart")+" Friendships", friendships_path %></li>
+      <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-cog")+" Settings", edit_user_registration_path %></li>
+      <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </div>
+</ul>
