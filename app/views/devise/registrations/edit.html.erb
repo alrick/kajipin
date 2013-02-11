@@ -18,8 +18,8 @@
                                   :end_year => Date.today.year - 12,
                                   :order => [:day, :month, :year],
                                   :input_html => { :style => "width: 120px" } %>
-      <%= f.input :password, :autocomplete => "off", :hint => "Leave blank if you don't want to change it." %>
-      <%= f.input :password_confirmation %>
+      <%= f.input :password, :label => 'New password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it." %>
+      <%= f.input :password_confirmation, :label => 'Confirm new password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it." %>
       <%= f.input :current_password, :hint => "We need your current password to confirm your changes." %>
       
       <div class="form-actions">
@@ -40,5 +40,6 @@
     </p>
 
     <h3>Account deletion</h3>
+    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on the pins of your friends will remain as &laquo;Deleted author&raquo;.</li>" }, :method => :delete %>.</p>
   </div>
 </div>
