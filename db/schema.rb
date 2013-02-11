@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208184327) do
+ActiveRecord::Schema.define(:version => 20130211083259) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -62,14 +62,12 @@ ActiveRecord::Schema.define(:version => 20130208184327) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "locategory_id"
     t.integer  "ext_id"
     t.integer  "population"
     t.string   "type"
     t.string   "continent_code"
   end
 
-  add_index "pins", ["locategory_id"], :name => "index_pins_on_locategory_id"
   add_index "pins", ["type"], :name => "index_pins_on_type"
   add_index "pins", ["user_id"], :name => "index_pins_on_user_id"
 
