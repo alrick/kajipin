@@ -52,11 +52,6 @@ class User < ActiveRecord::Base
     friends.where(:id => user.id).exists?
   end
 
-  # Is user passed in params a sharer of this user
-  def isSharerOf(user)
-    Friendship.exists?(:user_id => user.id, :friend_id => id)
-  end
-
   # Search func for users
   def self.search(q)
     if q
