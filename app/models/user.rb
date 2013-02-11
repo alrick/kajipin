@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
   has_many :pins, dependent: :destroy, :order => "title"
-  has_many :comments
+  has_many :comments, dependent: :nullify
   has_many :friendships, dependent: :destroy
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
