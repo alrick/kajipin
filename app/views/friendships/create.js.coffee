@@ -1,8 +1,11 @@
 <% if @friendship.new_record? %>
+  # Calling from friendships page
   if $("#friendships").length > 0 || $("#users").length > 0
     $("#<%= dom_id(@friendship.friend) %>").fadeOut ->
       $(this).fadeIn()
-  else
+
+  # Calling from map page, usermodal
+  else if $("#userModal").length > 0
     $("#userModal .btn-social").fadeOut ->
       $(this).fadeIn()
       

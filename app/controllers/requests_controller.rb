@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+
   def index
     @requests = current_user.requests
 
@@ -25,6 +26,21 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.destroy
     
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def approve
+    @request = Request.find(params[:id])
+    @friendship = Friendship.new
+    @friendship.user_id = @request.user_id
+    @friendship.friend_id = @request.requester_id
+
+    if @friendship.save
+      @request.destroy
+    end
+
     respond_to do |format|
       format.js
     end

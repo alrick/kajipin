@@ -2,12 +2,14 @@
   <td><%= image_tag gravatar_url(request.requester, 20), :class => "img-polaroid" %></td>
   <td>
     <strong><%= link_to request.requester.full_name, user_path(request.requester) %></strong>
+  </td>
+  <td>
     <% if request.requester.isSharingWith(current_user) %>
       <span class="label label-social">Sharer</span>
     <% end %>
   </td>
   <td>
-    <a class="btn btn-social btn-small">Share</a>
-    <%= link_to content_tag("i", "", :class => "icon-remove-sign"), request_path(request), :method => :delete, :remote => true, :class => "btn btn-social btn-remove btn-small" %>
+    <%= link_to content_tag("i", "", :class => "icon-ok-sign"), approve_request_path(request), :method => :post, :remote => true, :class => "btn btn-social btn-small" %>
+    <%= link_to content_tag("i", "", :class => "icon-minus-sign"), request_path(request), :method => :delete, :remote => true, :class => "btn btn-social btn-small" %>
   </td>
 </tr>

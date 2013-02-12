@@ -14,9 +14,7 @@ Kajipin::Application.routes.draw do
   end
 
   resources :pins, :only => [:index, :new, :update, :create, :destroy] do
-    collection do
-      get 'list'
-    end
+    get 'list', :on => :collection
     resources :comments, :only => [:index, :create, :destroy]
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
       collection do
@@ -28,6 +26,8 @@ Kajipin::Application.routes.draw do
 
   resources :friendships, :only => [:index, :create, :destroy]
 
-  resources :requests, :only => [:index, :create, :destroy]
+  resources :requests, :only => [:index, :create, :destroy] do
+    post 'approve', :on => :member
+  end
 
 end

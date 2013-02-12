@@ -23,7 +23,9 @@ class FriendshipsController < ApplicationController
 
   def create
     friend = User.find(params[:friend])
-    @friendship = current_user.friendships.build(:friend_id => friend.id)
+    @friendship = Friendship.new
+    @friendship.user_id = current_user.id
+    @friendship.friend_id = friend.id
     @friendship.save
 
     respond_to do |format|
