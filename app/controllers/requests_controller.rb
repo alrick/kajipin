@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @requests = current_user.requests
+    @requests = current_user.requests.page(params[:page]).per(6)
 
     respond_to do |format|
       format.js
