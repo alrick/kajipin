@@ -23,10 +23,8 @@ class FriendshipsController < ApplicationController
 
   def create
     friend = User.find(params[:friend])
-    if !current_user.isSharingWith(friend)
-      @friendship = current_user.friendships.build(:friend_id => friend.id)
-      @friendship.save
-    end
+    @friendship = current_user.friendships.build(:friend_id => friend.id)
+    @friendship.save
 
     respond_to do |format|
       format.js
