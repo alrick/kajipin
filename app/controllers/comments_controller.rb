@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 
   def index
     @comment = @pin.comments.build
-    @comments = @pin.comments.page(params[:page]) #default to 25
+    @page = params[:page]
+    @comments = @pin.comments.page(@page).per(10)
 
     respond_to do |format|
       format.js
@@ -20,8 +21,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      num_pages = @pin.comments.page(1).num_pages
-      redirect_to pin_comments_url(@pin, :page => num_pages)
+      last_page = @pin.comments.page(1).per(10).num_pages
+      redirect_to pin_comments_url(@pin, :page => last_page)
     else
       respond_to do |format|
         format.js
@@ -31,12 +32,20 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.pin.user == current_user
-      @comment.destroy
-    end
+    page = params[:page]
 
-    respond_to do |format|
-      format.js
+    if @comment.destroy
+      last_page = @pin.comments.page(1).per(10).num_pages
+      # Determine page to display, current or last if current is empty
+      if page.to_i > last_page.to_i
+        page = last_page
+      end
+      
+      redirect_to pin_comments_url(@pin, :page => page)
+    else
+      respond_to do |format|
+        format.js
+      end
     end
   end
 end
