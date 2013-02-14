@@ -23,8 +23,6 @@ class UsersController < GeoController
 
       get_countries
       init_pins
-      focus_pin
-      focus_bounds
     else
       render :noshow
     end
@@ -43,25 +41,6 @@ class UsersController < GeoController
   # Init JSON pins via rabl
   def init_pins
     gon.watch.rabl "app/views/pins/index.json.rabl", as: "pins"
-  end
-
-  # Focus on a pin if set (MAP)
-  def focus_pin
-    if !params[:p].nil?
-      p = Pin.find(params[:p])
-      gon.plat = p.latitude
-      gon.plon = p.longitude
-    end
-  end
-
-  # Focus bounds if country selected (MAP)
-  def focus_bounds
-    if (!params[:w].nil? and !params[:n].nil? and !params[:e].nil? and !params[:s].nil?)
-      gon.west = params[:w]
-      gon.north = params[:n]
-      gon.east = params[:e]
-      gon.south = params[:s]
-    end
   end
   
 end
