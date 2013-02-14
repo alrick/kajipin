@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def index
     @comment = @pin.comments.build
-    @page = params[:page]
+    @page = params[:page] # required to pass current page to destroy action
     @comments = @pin.comments.page(@page).per(10)
 
     respond_to do |format|
