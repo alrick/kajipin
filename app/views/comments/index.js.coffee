@@ -10,3 +10,6 @@ $("#pinModal .modal-header").html("<%= j(render('users/pin_modal_header')) %>")
 $("#pinModal .modal-footer").html("<%= j(render('users/pin_modal_footer')) %>")
 $(btn).button("toggle")
 $("#pinModal").modal()
+
+# Init delete tooltips
+$("a[rel=delete-tooltip]").tooltip(html: true, placement: "left", trigger: "click")
