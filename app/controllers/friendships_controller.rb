@@ -5,6 +5,9 @@ class FriendshipsController < ApplicationController
   # Devise authentication
   before_filter :authenticate_user!
 
+  # Delete related requests
+  after_filter :remove_request, :only => :create
+
   def index
     sharings = current_user.friends
     sharers = current_user.inverse_friends
@@ -39,8 +42,14 @@ class FriendshipsController < ApplicationController
 
     # Allow js format for remote call
     respond_to do |format|
-      format.html { redirect_to friendships_path, notice: "You do not share with #{@friendship.friend.first_name} anymore." }
       format.js
+    end
+  end
+
+  # When a friendship is created, delete eventual related requests
+  def remove_request
+    if Request.exists?(:user_id => @friendship.user_id, :requester_id => @friendship.friend_id) && !@friendship.new_record?
+      Request.where(:user_id => @friendship.user_id, :requester_id => @friendship.friend_id).delete_all
     end
   end
 end

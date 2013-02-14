@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
 
   def index
     @requests = current_user.requests.page(params[:page]).per(6)
+    @page = params[:page] # required to pass current page to destroy action
 
     respond_to do |format|
       format.js
@@ -29,10 +30,20 @@ class RequestsController < ApplicationController
 
   def destroy
     @request = Request.find(params[:id])
-    @request.destroy
-    
-    respond_to do |format|
-      format.js
+    page = params[:page]
+
+    if @request.destroy
+      last_page = current_user.requests.page(1).per(6).num_pages
+      # Determine page to display, current or last if current is empty
+      if page.to_i > last_page.to_i
+        page = last_page
+      end
+      
+      redirect_to requests_url(:page => page)
+    else
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -41,13 +52,21 @@ class RequestsController < ApplicationController
     @friendship = Friendship.new
     @friendship.user_id = @request.user_id
     @friendship.friend_id = @request.requester_id
+    page = params[:page]
 
-    if @friendship.save
-      @request.destroy
-    end
-
-    respond_to do |format|
-      format.js
+    if @request.destroy
+      @friendship.save
+      last_page = current_user.requests.page(1).per(6).num_pages
+      # Determine page to display, current or last if current is empty
+      if page.to_i > last_page.to_i
+        page = last_page
+      end
+      
+      redirect_to requests_url(:page => page)
+    else
+      respond_to do |format|
+        format.js { render :action => "destroy" }
+      end
     end
   end
 end
