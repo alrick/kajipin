@@ -1,5 +1,5 @@
 <% if @friendship.new_record? %>
-  # Calling from friendships page
+  # Calling from friendships or users page
   if $("#friendships").length > 0 || $("#users").length > 0
     $("#<%= dom_id(@friendship.friend) %>").fadeOut ->
       $(this).fadeIn()
@@ -10,7 +10,7 @@
       $(this).fadeIn()
       
 <% else %>
-  # Calling from friendships page
+  # Calling from friendships or users page
   if $("#friendships").length > 0 || $("#users").length > 0
 
     # Reload the friend div and add the hoverIntent effect to the btn
