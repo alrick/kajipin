@@ -1,4 +1,5 @@
-<div class="tabbable"> <!-- Only required for left/right tabs -->
+<!-- Called by the listModal of user profile -->
+<div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Bigcity.marker_path, :width => "20") %> Big City (<%= @big_cities.count %>)</b></a></li>
     <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Smallcity.marker_path, :width => "20") %> Small City (<%= @small_cities.count %>)</b></a></li>

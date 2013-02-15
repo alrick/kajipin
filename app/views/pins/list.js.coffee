@@ -2,9 +2,9 @@
 path = "<%= j(render('tabs')) %>"
 
 # Update content
-$("#pinslistModal .modal-body").html(path)
-$("#pinslistModal").modal()
+$("#listModal .modal-body").html(path)
+$("#listModal").modal()
 
 # Hide modal when btn clicked
-$(".btn-pinslist").click ->
-  $("#pinslistModal").modal("hide")
+$(".btn-list").click ->
+  $("#listModal").modal("hide")

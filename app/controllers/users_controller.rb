@@ -20,11 +20,7 @@ class UsersController < GeoController
   def show
     if can? :read, @user
       @pins = @user.pins
-
-      get_countries
       init_pins
-    else
-      render :noshow
     end
   end
 

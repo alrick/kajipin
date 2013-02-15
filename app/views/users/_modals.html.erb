@@ -1,0 +1,24 @@
+<% if can? :read, @user %>
+  <div id="pinModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="pinModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h2 id="pinModalLabel"><%= @user.first_name %>'s Nowhere</h2>
+    </div>
+    <div class="modal-body">
+      <p class="lead">Are you lost?</p>
+    </div>
+    <div class="modal-footer">
+      <p>You look like it!</p>
+    </div>
+  </div>
+
+  <div id="listModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="listModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h2 id="listModalLabel"><i class="icon-map-marker"></i> <%= @user.first_name %>'s Pins</h2>
+    </div>
+    <div class="modal-body">
+      <p class="lead">Stop looking at me, I'm pretty naked!</p>
+    </div>
+  </div>
+<% end %>

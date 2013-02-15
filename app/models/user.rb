@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     pins.select("distinct(country_code)").count
   end
 
+  def number_continents
+    pins.select("distinct(continent_code)").count
+  end
+
   def number_sharing
     friends.count
   end

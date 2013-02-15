@@ -1,37 +1,17 @@
-<%= render "shall_show" %>
+<% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
-<!-- Left UI -->
-<a id="map-world" class="map-nav map-navleft" rel="tooltip" title="Fit World" data-placement="right">
-  <i class="icon-globe"></i>
-</a>
-<a id="map-markers" class="map-nav map-navleft" rel="tooltip" title="Fit Pins" data-placement="right">
-  <i class="icon-map-marker"></i>
-</a>
-<a id="map-countries" class="map-nav map-navleft" rel="tooltip" title="Fit Country" data-placement="right">
-  <i class="icon-list-alt"></i>
-</a>
+<!-- Map main element -->
+<div id="map"></div>
 
-<!-- Right UI -->
-<a id="map-refresh" class="map-nav map-navright" rel="tooltip" title="Update Pins and Counters" data-placement="left">
-  <i class="icon-refresh"></i>
-</a>
-<a id="map-bigcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Big city' Pins" data-placement="left">
-  <i class="icon-eye-open"></i>
-</a>
-<a id="map-smallcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Small city' Pins" data-placement="left">
-  <i class="icon-eye-open"></i>
-</a>
-<a id="map-pointofinterest" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Point of interest' Pins" data-placement="left">
-  <i class="icon-eye-open"></i>
-</a>
-<%= link_to content_tag("i", "", class: "icon-list-alt"), list_pins_path(:user => @user.id), :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :remote => true %>
+<!-- User box at bottom right -->
+<h1 id="map-infouser" class="map-info">
+  <%= link_to @user.full_name, "#userModal", :class => "modal-open", :role => "link", "data-toggle" => "modal" %>
+</h1>
 
-<!-- Center information -->
-<div id="map-infocenter" class="map-info">
-  <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
-</div>
+<!-- Include all user intefaces -->
+<%= render "ui_left" %>
+<%= render "ui_right" %>
+<%= render "ui_center" %>
 
-<!-- Include modals -->
+<%= render "modals" %>
 <%= render "user_modal" %>
-<%= render "pinslist_modal" %>
-<%= render "pin_modal" %>

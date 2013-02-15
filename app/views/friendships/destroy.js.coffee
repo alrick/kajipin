@@ -29,11 +29,11 @@
   else if $("#userModal").length > 0
 
     # Reload the sharing counter and update sharers plurialize
-    $("#map-user-numbersharers").html "<%= @friendship.friend.number_sharers %>"
-    $("#map-user-labelsharers").html "<%= 'Sharer'.pluralize(@friendship.friend.number_sharers) %>"
+    $("#userModal #number-sharers").html "<%= @friendship.friend.number_sharers %>"
+    $("#userModal #label-sharers").html "<%= 'Sharer'.pluralize(@friendship.friend.number_sharers) %>"
 
     # Reload the footer div
-    $("#map-user-modalfoot").load location.href + " #map-user-modalfoot > *"
+    $("#userModal .modal-footer").load location.href + " #userModal .modal-footer > *"
 
 <% else %>
   if $("#friendships").length > 0 || $("#users").length > 0

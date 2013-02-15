@@ -1,0 +1,15 @@
+<% if can? :read, @user %>
+  <a id="map-refresh" class="map-nav map-navright" rel="tooltip" title="Update Pins and Counters" data-placement="left">
+    <i class="icon-refresh"></i>
+  </a>
+  <a id="map-bigcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Big city' Pins" data-placement="left">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="map-smallcity" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Small city' Pins" data-placement="left">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="map-pointofinterest" class="map-nav map-navright" rel="tooltip" title="Show/hide 'Point of interest' Pins" data-placement="left">
+    <i class="icon-eye-open"></i>
+  </a>
+  <%= link_to content_tag("i", "", class: "icon-list-alt"), list_pins_path(:user => @user.id), :id => "map-pinslist", :class => "modal-open map-nav map-navright", :rel => "tooltip", :title => "Show a list of Pins", "data-placement" => "left", :remote => true %>
+<% end %>
