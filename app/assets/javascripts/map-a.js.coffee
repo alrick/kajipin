@@ -4,7 +4,7 @@ jQuery ->
 
     # Map init
     map = mapbox.map("map")
-    map.addLayer(mapbox.layer().id("alrick.map-y17w9hkl", () ->
+    map.addLayer(mapbox.layer().id(gon.mapbox_id, () ->
       map.ui.refresh()))
 
     # Map config
