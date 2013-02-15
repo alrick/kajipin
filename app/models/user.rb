@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  MADMIMI_EMAIL = "hey@kajipin.com"
+  MADMIMI_KEY = "d0de3647f7d78cd634e43e716bb6d531"
+  MADMIMI_LIST = "Registered"
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -70,5 +74,12 @@ class User < ActiveRecord::Base
     else
       find(:all)
     end
+  end
+
+  # Overriding confirm to add user to Madmimi
+  def confirm!
+    mimi = MadMimi.new(MADMIMI_EMAIL, MADMIMI_KEY)
+    mimi.add_to_list(email, MADMIMI_LIST)
+    super
   end
 end

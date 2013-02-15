@@ -27,6 +27,7 @@ gem 'less-rails' #required for twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' #bootstrap for better interface
 gem 'kaminari' #pagination system
 gem 'cancan' #authorization library
+gem 'madmimi' #interaction with madmimi email marketing
 
 group :development do
   gem 'rails-erd' #create schema of entities
