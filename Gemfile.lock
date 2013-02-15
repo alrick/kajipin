@@ -67,6 +67,8 @@ GEM
       multi_json (~> 1.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    figaro (0.5.3)
+      rails (~> 3.0)
     gon (4.0.2)
       actionpack (>= 2.3.0)
       json
@@ -181,6 +183,7 @@ DEPENDENCIES
   devise
   dropbox-api
   faker
+  figaro
   gon
   hirb
   jquery-rails
