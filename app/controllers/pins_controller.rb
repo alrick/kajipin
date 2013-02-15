@@ -10,11 +10,8 @@ class PinsController < ApplicationController
   before_filter :check_limit, :only => [:create]
 
   # Global vars
-  GEONAMES_SEARCH_URL = "http://api.geonames.org/searchJSON?q="
-  GEONAMES_GET_URL = "http://api.geonames.org/getJSON?geonameId="
-  GEONAMES_USERNAME = "&username=curlyb"
-  GEONAMES_MAXROWS = "&maxRows=20"
-  GEONAMES_FUZZY = "&fuzzy=0.8"
+  MAXROWS = "20"
+  FUZZY = "0.8"
   PIN_LIMIT = 50
 
   def index
@@ -40,7 +37,7 @@ class PinsController < ApplicationController
       q = CGI.escape(params[:q])
     end
 
-    url = GEONAMES_SEARCH_URL+q+GEONAMES_MAXROWS+GEONAMES_FUZZY+GEONAMES_USERNAME
+    url = ENV["GEONAMES_SEARCH_URL"]+q+"&maxRows="+MAXROWS+"&fuzzy="+FUZZY+"&username="+ENV["GEONAMES_USERNAME"]
     @geos = JSON.parse(open(url).read)
 
     if @geos["status"]
@@ -97,7 +94,7 @@ class PinsController < ApplicationController
   # Init pin with geonames data
   def init_pin(id,type)
     # Get data from Geonames
-    url = GEONAMES_GET_URL+id+GEONAMES_USERNAME
+    url = ENV["GEONAMES_GET_URL"]+id+"&username="+ENV["GEONAMES_USERNAME"]
     result = JSON.parse(open(url).read)
 
     # Can communicate with Geonames?
