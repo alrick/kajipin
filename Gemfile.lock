@@ -57,10 +57,6 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    dropbox-api (0.3.2)
-      hashie
-      multi_json
-      oauth
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -72,7 +68,6 @@ GEM
     gon (4.0.2)
       actionpack (>= 2.3.0)
       json
-    hashie (1.2.0)
     hike (1.2.1)
     hirb (0.7.0)
     i18n (0.6.1)
@@ -103,7 +98,6 @@ GEM
     multi_json (1.5.0)
     nifty-generators (0.4.6)
     nokogiri (1.5.6)
-    oauth (0.4.7)
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -181,7 +175,6 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   devise
-  dropbox-api
   faker
   figaro
   gon
