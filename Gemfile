@@ -22,7 +22,6 @@ gem 'simple_form' #better forms
 gem 'rabl' #manage json formating, MUST BE before gon
 gem 'gon' #passing data to javascript
 gem 'nokogiri' #xml parsing
-gem 'dropbox-api' #dropbox API access
 gem 'less-rails' #required for twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' #bootstrap for better interface
 gem 'kaminari' #pagination system
