@@ -1,8 +1,15 @@
 <% if can? :read, @user %>
-  <!-- Center information -->
-  <div id="map-infocenter" class="map-info">
-    <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
-  </div>
+  <% if @user.pins.empty? %>
+    <!-- Center information -->
+    <div id="map-infocenter" class="map-info">
+      <% if @user == current_user %>
+        <p class="lead">You have no pin!</p>
+        <%= link_to "Add some", pins_url, :class => "btn btn-map" %>
+      <% else %>
+        <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
   <!-- Center information -->
   <div id="map-infocenter" class="map-info">

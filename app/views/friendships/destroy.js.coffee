@@ -14,8 +14,6 @@
       # The friend disapear only on friendships page
       $("#<%= dom_id(@friendship.friend) %>").fadeOut ->
         $(this).remove()
-        if $("#friendships .userbox").length < 1
-          $("#friendships").html "<p class=\"lead\">No user found.</p>"
       # Reload the sharing counter
       $("#friendships-numbersharing").html "<%= @friendship.user.number_sharing %>"
 
@@ -25,21 +23,7 @@
     # Reload the friend div
     $("#<%= dom_id(@friendship.friend) %>").load location.href + " #<%= dom_id(@friendship.friend) %> > *"
 
-  # Calling from map page, usermodal
-  else if $("#userModal").length > 0
-
-    # Reload the sharing counter and update sharers plurialize
-    $("#userModal #number-sharers").html "<%= @friendship.friend.number_sharers %>"
-    $("#userModal #label-sharers").html "<%= 'Sharer'.pluralize(@friendship.friend.number_sharers) %>"
-
-    # Reload the footer div
-    $("#userModal .modal-footer").load location.href + " #userModal .modal-footer > *"
-
 <% else %>
-  if $("#friendships").length > 0 || $("#users").length > 0
-    $("#<%= dom_id(@friendship.friend) %>").fadeOut ->
-      $(this).fadeIn()
-  else
-    $("#userModal .btn-social").fadeOut ->
-      $(this).fadeIn()
+  $("#<%= dom_id(@friendship.friend) %>").fadeOut ->
+    $(this).fadeIn()
 <% end %>

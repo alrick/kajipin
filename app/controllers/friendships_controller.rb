@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
   def index
     sharings = current_user.friends
     sharers = current_user.inverse_friends
+    @empty = (sharings+sharers).uniq.sort_by(&:first_name).empty?
     if params[:filter] == "sharing"
       bmates = sharings
       @filter = "sharing"
@@ -31,8 +32,12 @@ class FriendshipsController < ApplicationController
     @friendship.friend_id = friend.id
     @friendship.save
 
-    respond_to do |format|
-      format.js
+    if params[:page] == "user"
+      redirect_to modal_user_url(friend)
+    else
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -40,9 +45,12 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
 
-    # Allow js format for remote call
-    respond_to do |format|
-      format.js
+    if params[:page] == "user"
+      redirect_to modal_user_url(@friendship.friend)
+    else
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

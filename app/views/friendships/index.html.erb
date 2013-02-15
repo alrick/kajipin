@@ -14,37 +14,39 @@
     </p>
   </div>
   <div class="span2">
-    <div class="dropdown">
-      <button class="btn btn-crud" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <li>
-          <% if @filter == "sharing" %>
-            <%= link_to "Only Sharing ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharing"), "tabindex" => "-1" %>
-          <% else %>
-            <%= link_to "Only Sharing", friendships_path(:filter => "sharing"), "tabindex" => "-1" %>
-          <% end %>
-        </li>
-        <li>
-          <% if @filter == "sharers" %>
-            <%= link_to "Only Sharers ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharers"), "tabindex" => "-1" %>
-          <% else %>
-            <%= link_to "Only Sharers", friendships_path(:filter => "sharers"), "tabindex" => "-1" %>
-          <% end %>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <% if @filter == "both" %>
-            <%= link_to "Both ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path, "tabindex" => "-1" %>
-          <% else %>
-            <%= link_to "Both", friendships_path, "tabindex" => "-1" %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
+    <% if !@empty %>
+      <div id="friendship-filter" class="dropdown">
+        <button class="btn btn-crud" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li>
+            <% if @filter == "sharing" %>
+              <%= link_to "Only Sharing ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharing"), "tabindex" => "-1" %>
+            <% else %>
+              <%= link_to "Only Sharing", friendships_path(:filter => "sharing"), "tabindex" => "-1" %>
+            <% end %>
+          </li>
+          <li>
+            <% if @filter == "sharers" %>
+              <%= link_to "Only Sharers ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharers"), "tabindex" => "-1" %>
+            <% else %>
+              <%= link_to "Only Sharers", friendships_path(:filter => "sharers"), "tabindex" => "-1" %>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <% if @filter == "both" %>
+              <%= link_to "Both ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path, "tabindex" => "-1" %>
+            <% else %>
+              <%= link_to "Both", friendships_path, "tabindex" => "-1" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
   </div>
 
-<div id="friendships">
-  <%= render(:partial => "shared/user_box", :collection => @mates, :as => :mate) %>
-</div>
+  <div id="friendships">
+    <%= render(:partial => "shared/user_box", :collection => @mates, :as => :mate) %>
+  </div>
 
-<%= paginate @mates %>
+  <%= paginate @mates %>

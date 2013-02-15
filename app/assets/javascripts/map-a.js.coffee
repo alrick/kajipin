@@ -40,10 +40,6 @@ jQuery ->
 
       # By default, the map extent markers
       map.extent(pinsLayer.extent())
-      
-    # Else display a little message
-    else
-      $("#map-infocenter").css("display", "block")
 
     # Set intent if pin selected
     if (gon.plat && gon.plon)

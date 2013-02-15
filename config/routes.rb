@@ -2,7 +2,9 @@ Kajipin::Application.routes.draw do
 
   devise_for :users, :path => "", path_names: {sign_in: "login", sign_out: "logout", sign_up: "join"}
 
-  resources :users, :only => [:index, :show]
+  resources :users, :only => [:index, :show] do
+    get 'modal', :on => :member
+  end
 
   authenticated :user do
     root :to => "users#show"

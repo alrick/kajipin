@@ -1,0 +1,23 @@
+<div><%= image_tag gravatar_url(@user, 165), :class => "img-polaroid" %></div>
+<div>
+  <h4><i class="icon-signal"></i> Social</h4>
+  <dl class="dl-horizontal">
+    <dt><span class="badge badge-social"><%= @user.number_sharing %></span></dt>
+    <dd><strong>Sharing</strong></dd>
+    <dt><span id="number-sharers" class="badge badge-social"><%= @user.number_sharers %></span></dt>
+    <dd><strong id="label-sharers"><%= "Sharer".pluralize(@user.number_sharers) %></strong></dd>
+    <dt>&nbsp;</dt>
+    <dd>&nbsp;</dd>
+  </dl>
+</div>
+<div>
+  <h4><i class="icon-signal"></i> Travel</h4>
+  <dl class="dl-horizontal">
+    <dt><span class="badge badge-map"><%= @user.number_pins %></span></dt>
+    <dd><strong><%= "Pin".pluralize(@user.number_pins) %></strong></dd>
+    <dt><span class="badge badge-map"><%= @user.number_countries %></span></dt>
+    <dd><strong><%= "Country".pluralize(@user.number_countries) %></strong></dd>
+    <dt><span class="badge badge-map"><%= @user.number_continents %></span></dt>
+    <dd><strong><%= "Continent".pluralize(@user.number_continents) %></strong></dd>
+  </dl>
+</div>
