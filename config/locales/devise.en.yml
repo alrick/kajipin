@@ -23,7 +23,7 @@ en:
       inactive: '<strong>Oh snap!</strong> Your account was not activated yet.'
     sessions:
       signed_in: ''
-      signed_out: '<strong>Well done!</strong> Logged out successfully.'
+      signed_out: ''
     passwords:
       send_instructions: '<strong>Heads up!</strong> You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: '<strong>Well done!</strong> Your password was changed successfully. You are now logged in.'

@@ -1,25 +1,32 @@
 <% content_for :page_title do %>Log in<% end %>
 
-<div class="hero-unit">
-  <h1>Welcome, traveler!</h1>
-  <p>
-    <%= Appetizer.appname %> is a social network for people that loves traveling and sharing it with others. If you like to journey and want to show it with galleries, logbooks, comments and so, <%= Appetizer.appname %> is for you!
-  </p>
-  <p>
-    <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-inverse btn-large" %>
-  </p>
-</div>
+<div id="home-map"></div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "well form-inline"}) do |f| %>
-  <%= f.email_field :email, :class => "input-large", :placeholder => "Email" %>
-  <%= f.password_field :password, :class => "input-large", :placeholder => "Password" %>
-  <%= f.submit "Log in", :class => "btn btn-map" %>
-  <% if devise_mapping.rememberable? -%>
-    <p>
-      <label class="checkbox">
-        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-      </label>
+<div class="home-info">
+  <div>
+    <h2><%= Appetizer.appname %>, quesako?</h2>
+    <p class="lead">
+      <%= Appetizer.appname %> is a social network for people who like to travel and share with friends!
     </p>
-  <% end -%>
-  <%= render "devise/shared/links" %>
-<% end %>
+    <p class="lead">
+      <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-map btn-large" %>
+    </p>
+  </div>
+
+  <div>
+    <h3>Sign in <small>Welcome home</small></h3>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-inline"}) do |f| %>
+      <%= f.email_field :email, :class => "input-large", :placeholder => "Email" %>
+      <%= f.password_field :password, :class => "input-large", :placeholder => "Password" %>
+      <%= f.submit "Sign in", :class => "btn btn-map" %>
+      <% if devise_mapping.rememberable? -%>
+        <p>
+          <label class="checkbox">
+            <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+          </label>
+        </p>
+      <% end -%>
+    <% end %>
+    <p><%= render "devise/shared/links" %></p>
+  </div>
+</div>
