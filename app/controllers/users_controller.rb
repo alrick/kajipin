@@ -18,9 +18,9 @@ class UsersController < GeoController
   end
 
   def show
+    gon.mapbox_id = ENV["MAPBOX_ID"]
     if can? :read, @user
       @pins = @user.pins
-      gon.mapbox_id = ENV["MAPBOX_ID"]
       gon.watch.rabl "app/views/pins/index.json.rabl", as: "pins"
     end
   end
