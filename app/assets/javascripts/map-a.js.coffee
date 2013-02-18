@@ -41,10 +41,6 @@ jQuery ->
       # By default, the map extent markers
       map.extent(pinsLayer.extent())
 
-    # Set intent if pin selected
-    if (gon.plat && gon.plon)
-      map.centerzoom({ lat: gon.plat, lon: gon.plon }, 12)
-
     # Export map and pinsLayer for subsequent treatments
     gon.map = map
     gon.pinsLayer = pinsLayer
