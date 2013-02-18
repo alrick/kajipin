@@ -1,0 +1,17 @@
+#advertising {
+  position: absolute;
+  right: 20px;
+  width: 200px;
+  top: 70px;
+  display: none;
+  li {
+    width: 200px;
+    height: 90px;
+    margin-bottom: 30px;
+    padding: 10px;
+    strong { display: block; margin-bottom: 4px; }
+    img { float: left; margin-right: 5px; }
+    p { font-size: 11px; line-height: 14px; }
+    hr { margin-top: 5px; }
+  }
+}

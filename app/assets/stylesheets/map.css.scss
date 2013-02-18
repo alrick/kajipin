@@ -65,7 +65,7 @@
 }
 
 // Positioning left UI
-.map-navleft { 
+.map-controls { 
   left: 10px; color: #3C4E5A;
   &:hover { color: #3C4E5A; }
 }
@@ -74,15 +74,15 @@
 #map-countries { top: 160px; }
 
 // Positioning+styling right UI
-.map-navright { 
-  right: 10px; width: 28px !important; text-align: center; color: #FFF;
+.map-pinsactions { 
+  top: 63px; width: 28px !important; text-align: center; color: #FFF;
   &:hover { color: #FFF; }
 }
-#map-refresh { top: 63px; background: #403730 !important; }
-#map-bigcity { top: 94px; background: #4A4459 !important; }
-#map-smallcity { top: 125px; background: #887D75 !important; }
-#map-pointofinterest { top: 156px; background: #7FA4B1 !important; }
-#map-pinslist { top: 187px; background: #403730 !important; }
+#map-refresh { left: 83px; background: #403730 !important; }
+#map-bigcity { left: 114px; background: #4A4459 !important; }
+#map-smallcity { left: 145px; background: #887D75 !important; }
+#map-pointofinterest { left: 176px; background: #7FA4B1 !important; }
+#map-pinslist { left: 207px; background: #403730 !important; }
 
 // Element that display the list of all countries
 #map-countrieslist {
