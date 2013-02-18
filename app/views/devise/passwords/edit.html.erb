@@ -1,16 +1,23 @@
-<h2>Change your password</h2>
+<% content_for :page_title do %>Password reset<% end %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+<div class="hero-unit">
+  <h1>Bad things can be fixed!</h1>
+  <p>
+    You can now choose a new password with the form below.
+  </p>
+</div>
+
+<div>
   <%= devise_error_messages! %>
+</div>
+
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "well form-inline" }) do |f| %>
+  
   <%= f.hidden_field :reset_password_token %>
+  <%= f.password_field :password, :class => "input-large", :placeholder => "New password" %>
+  <%= f.password_field :password_confirmation, :class => "input-large", :placeholder => "Confirm new password" %>
+  <%= f.submit "Change my password", :class => "btn btn-map" %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
