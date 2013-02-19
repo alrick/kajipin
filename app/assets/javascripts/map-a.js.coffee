@@ -4,8 +4,7 @@ jQuery ->
 
     # Map init
     map = mapbox.map("map")
-    map.addLayer(mapbox.layer().id(gon.mapbox_id, () ->
-      map.ui.refresh()))
+    map.addLayer(mapbox.layer().id(gon.mapbox_id))
 
     # Map config
     map.zoom(3)

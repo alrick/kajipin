@@ -32,4 +32,6 @@ Kajipin::Application.routes.draw do
     post 'approve', :on => :member
   end
 
+  match 'tos' => 'static#terms'
+
 end

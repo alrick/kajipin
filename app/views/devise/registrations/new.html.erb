@@ -21,8 +21,8 @@
     <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password" %>
     <%= f.submit "Join", :class => "btn btn-social" %>
     <p>
-      <label class="checkbox terms">
-        <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - Alpha Terms of Service
+      <label class="checkbox home-terms">
+        <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - <a href="/tos" target="_blank" >Alpha Terms of Service</a>
       </label>
     </p>
   <% end %>
