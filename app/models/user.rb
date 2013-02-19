@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  before_validation :alpha_invited? # Check if user is invited
+
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
 
   has_many :pins, dependent: :destroy, :order => "title"
@@ -78,4 +80,11 @@ class User < ActiveRecord::Base
     mimi.add_to_list(email, ENV["MADMIMI_LIST"])
     super
   end
+
+  # Check if user is in alpha list
+  def alpha_invited?
+    unless Token.exists?(:value => email)
+      errors.add :email, "is not on our alpha list"  
+    end
+  end 
 end
