@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211131110) do
+ActiveRecord::Schema.define(:version => 20130219155633) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(:version => 20130211131110) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tokens", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
