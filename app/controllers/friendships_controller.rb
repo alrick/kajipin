@@ -22,7 +22,7 @@ class FriendshipsController < ApplicationController
       bmates = (sharings+sharers).uniq.sort_by(&:first_name)
       @filter = "both"
     end
-    @mates = Kaminari.paginate_array(bmates).page(params[:page]).per(48)
+    @mates = Kaminari.paginate_array(bmates).page(params[:page]).per(20)
   end
 
   def create
