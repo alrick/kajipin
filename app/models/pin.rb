@@ -1,4 +1,7 @@
 class Pin < ActiveRecord::Base
+  PINS_LIMIT = 50
+  HIGH_POPULATED_LIMIT = 10
+
   attr_accessible :title, :user_id, :latitude, :longitude, :country_name, :country_code, :continent_code, :ext_id, :population, :type
 
   belongs_to :user
@@ -9,9 +12,15 @@ class Pin < ActiveRecord::Base
   validates :latitude, :longitude, :numericality => true
   validates :user_id, :ext_id, :numericality => { :greater_than => 0}
 
+  validates_each :user do |pin, attr, value|
+    pin.errors.add attr, "Pins limit reached" if pin.user.pins.size >= PINS_LIMIT
+    pin.errors.add attr, "High populated pins limit reached" if pin.high_populated? && pin.user.pins.high_populated.size >= HIGH_POPULATED_LIMIT
+  end
+
   scope :bigcity, where(:type => "Bigcity")
   scope :smallcity, where(:type => "Smallcity")
   scope :poi, where(:type => "Poi")
+  scope :high_populated, where("population >= 1000000")
 
   # Fix problem with child path in sti
   def self.inherited(child)

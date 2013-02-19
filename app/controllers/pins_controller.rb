@@ -4,8 +4,6 @@ require 'json'
 class PinsController < ApplicationController
   # Devise authentication
   before_filter :authenticate_user!
-  
-  before_filter :check_limit, :only => [:create]
 
   # Cancan authorize
   load_and_authorize_resource 
@@ -13,7 +11,6 @@ class PinsController < ApplicationController
   # Global vars
   MAXROWS = "20"
   FUZZY = "0.8"
-  PIN_LIMIT = 50
 
   def index
     @user = current_user
@@ -73,7 +70,7 @@ class PinsController < ApplicationController
     if @pin.save
       redirect_to pins_url(:tab => @pin.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully added to your pins."
     else
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin. #{@pin.errors.get(:user)}"
     end
   end
 
@@ -89,7 +86,7 @@ class PinsController < ApplicationController
     @big_cities = @user.pins.bigcity
     @small_cities = @user.pins.smallcity
     @points_of_interest = @user.pins.poi
-    @overall_count = @user.pins.count
+    @overall = @user.pins
   end
 
   # Init pin with geonames data
@@ -127,13 +124,6 @@ class PinsController < ApplicationController
   def open_tab
     if params[:tab] == "s" or params[:tab] == "p"
       gon.tab = params[:tab]
-    end
-  end
-
-  # Check the limit for category is not reached
-  def check_limit
-    if current_user.pins.count >= PIN_LIMIT
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> You have reached the limit of pins you're allowed to add."
     end
   end
 end
