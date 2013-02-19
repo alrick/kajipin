@@ -1,11 +1,11 @@
 class LogpagesController < ApplicationController
-  # Cancan authorize
-  load_and_authorize_resource :pin
-  load_and_authorize_resource :logpage, :through => :pin
-
   # Devise authenticate
   before_filter :authenticate_user!
 
+  # Cancan authorize
+  load_and_authorize_resource :pin
+  load_and_authorize_resource :logpage, :through => :pin
+  
   def index
     @logpages = @pin.logpages.page(params[:page]).per(10)
 

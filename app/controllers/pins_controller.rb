@@ -2,12 +2,13 @@ require 'open-uri'
 require 'json'
 
 class PinsController < ApplicationController
-  # Cancan authorize
-  load_and_authorize_resource 
-
   # Devise authentication
   before_filter :authenticate_user!
+  
   before_filter :check_limit, :only => [:create]
+
+  # Cancan authorize
+  load_and_authorize_resource 
 
   # Global vars
   MAXROWS = "20"

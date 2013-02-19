@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
+  # Devise authentication
+  before_filter :authenticate_user!
+
   # Cancan authorize
   load_and_authorize_resource :pin
   load_and_authorize_resource :comment, :through => :pin
-
-  # Devise authentication
-  before_filter :authenticate_user!
 
   def index
     @comment = @pin.comments.build

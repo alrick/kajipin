@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
-  # Cancan authorize
-  load_and_authorize_resource 
-
   # Devise authentication
   before_filter :authenticate_user!
+
+  # Cancan authorize
+  load_and_authorize_resource
 
   def index
     @requests = current_user.requests.page(params[:page]).per(6)

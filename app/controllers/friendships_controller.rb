@@ -1,9 +1,9 @@
-class FriendshipsController < ApplicationController
-  # Cancan authorize
-  load_and_authorize_resource 
-
+class FriendshipsController < ApplicationController 
   # Devise authentication
   before_filter :authenticate_user!
+
+  # Cancan authorize
+  load_and_authorize_resource
 
   # Delete related requests
   after_filter :remove_request, :only => :create
