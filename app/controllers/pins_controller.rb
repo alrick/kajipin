@@ -44,19 +44,13 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
+    @pin.type = params[:type]
 
-    # Can't edit high populated pins
-    if @pin.high_populated?
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> You can't edit high populated pins."
+    if @pin.save
+      tab = Pin.find(params[:id]).get_tab
+      redirect_to pins_url(:tab => tab), notice: "<strong>#{@pin.title}</strong> was successfully updated."
     else
-      @pin.type = params[:type]
-
-      if @pin.save
-        tab = Pin.find(params[:id]).get_tab
-        redirect_to pins_url(:tab => tab), notice: "<strong>#{@pin.title}</strong> was successfully updated."
-      else
-        redirect_to pins_url(:tab => @pin.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating #{@pin.title}."
-      end
+      redirect_to pins_url(:tab => @pin.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating #{@pin.title}."
     end
   end
 
@@ -97,11 +91,6 @@ class PinsController < ApplicationController
     # Can communicate with Geonames?
     if result["status"]
       redirect_to pins_url, alert: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
-    end
-
-    # Force high populated pins to big city
-    if result["population"] >= 1000000
-      type = Bigcity.sti_name
     end
 
     # Set datas
