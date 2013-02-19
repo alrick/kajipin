@@ -13,8 +13,9 @@ jQuery ->
       $("#inbox").addClass("active-inbox")
 
   # Auto fade alert-success alert after a delay
-  $(".alert-success").delay(3000).fadeOut "slow", ->
-    $(this).remove()
+  if $(".notlogged-title").length < 1
+    $(".alert-success").delay(3000).fadeOut "slow", ->
+      $(this).remove()
 
   # Check that we're on correct page (user profile or friendships)
   if $(".userbox").length > 0
