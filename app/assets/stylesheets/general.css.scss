@@ -1,3 +1,13 @@
+// Title for not logged in pages
+.notlogged-title {
+  text-align: center;
+  font-weight: 100;
+  font-size: 60px;
+  margin-bottom: 50px;
+  color: #fff;
+  small { font-weight: 100; color: #fff; }
+}
+
 // Style main menu
 #global-menufirst {
   img { float: left; margin-right: 9px; } // Style for the avatar of the main menu

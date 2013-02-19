@@ -1,34 +1,30 @@
 <% content_for :page_title do %>Sign up<% end %>
 
-<div id="home-map"></div>
+<div class="home-info">
+  <% if resource.errors.empty? %>
+    <h2><%= Appetizer.appname %>, quesako?</h2>
+    <p class="lead">
+      <%= Appetizer.appname %> is a social network for people who like to travel and share with friends!
+    </p>
+  <% else %>
+    <%= devise_error_messages! %>
+  <% end %>
+</div>
 
 <div class="home-info">
-  <div>
-    <% if resource.errors.empty? %>
-      <h2><%= Appetizer.appname %>, quesako?</h2>
-      <p class="lead">
-        <%= Appetizer.appname %> is a social network for people who like to travel and share with friends!
-      </p>
-    <% else %>
-      <%= devise_error_messages! %>
-    <% end %>
-  </div>
-
-  <div>
-    <h3>Sign up <small>We look forward to welcome you.</small></h3>
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-inline"}) do |f| %>
-      <%= f.input_field :first_name, :class => "input-small", :placeholder => "First name" %>
-      <%= f.input_field :last_name, :class => "input-small", :placeholder => "Last name" %>
-      <%= f.input_field :email, :class => "input-small", :placeholder => "Email" %>
-      <%= f.input_field :password, :class => "input-small", :placeholder => "Password" %>
-      <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password" %>
-      <%= f.submit "Join", :class => "btn btn-map" %>
-      <p>
-        <label class="checkbox terms">
-          <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - Alpha Terms of Service
-        </label>
-      </p>
-    <% end %>
-    <p><%= render "devise/shared/links" %></p>
-  </div>
+  <h3>Sign up <small>We look forward to welcome you.</small></h3>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-inline"}) do |f| %>
+    <%= f.input_field :first_name, :class => "input-small", :placeholder => "First name" %>
+    <%= f.input_field :last_name, :class => "input-small", :placeholder => "Last name" %>
+    <%= f.input_field :email, :class => "input-small", :placeholder => "Email" %>
+    <%= f.input_field :password, :class => "input-small", :placeholder => "Password" %>
+    <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password" %>
+    <%= f.submit "Join", :class => "btn btn-social" %>
+    <p>
+      <label class="checkbox terms">
+        <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - Alpha Terms of Service
+      </label>
+    </p>
+  <% end %>
+  <p><%= render "devise/shared/links" %></p>
 </div>

@@ -2,24 +2,4 @@
 <html lang="en">
 <%= render "shared/head" %>
 <body>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <% if user_signed_in? %>
-          <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), user_path(current_user), :class => "brand" %>
-        <% else %>
-          <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), root_path, :class => "brand" %>
-        <% end %>
-        <ul class="nav">
-          <li class="divider-vertical"></li>
-        </ul>
-        <% if user_signed_in? %>
-          <%= render "shared/user_menu" %>
-          <%= render "shared/inbox" %>
-          <%= render "shared/search_bar" %>
-        <% else %>
-          <%= render "shared/not_logged_menu" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render "shared/navbar" %>

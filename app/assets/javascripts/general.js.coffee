@@ -1,5 +1,9 @@
 jQuery ->
 
+  # Updage background on not looged in pages
+  if $(".notlogged-title").length > 0
+    $("body").css("background", "#4A4356")
+
   # Update inbox when modal is closed
   $("#reqModal").on "hide", ->
     if ($("#requests .request").length < 1)

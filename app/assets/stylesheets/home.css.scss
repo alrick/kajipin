@@ -1,18 +1,8 @@
-// Main container for the map pages
-#home-map { position: absolute; top: 53px; bottom: 0; width: 100%; }
-.home-info { 
-  width: 740px;
-  z-index: 1000;
-  position: absolute;
-  display: block;
-  left: 50%;
-  margin-left: -370px;
-  top: 135px;
-  div { 
-    background: #fff;
-    padding: 35px;
-    margin-bottom: 30px;
-    div#error_explanation { padding: 0 !important; }
-  }
+.home-info {
+  width: 700px;
+  background: #fff;
+  padding: 35px;
+  margin: 0 auto 30px auto;
+  div#error_explanation { padding: 0 !important; }
 }
 .terms { font-size: 11px; }
