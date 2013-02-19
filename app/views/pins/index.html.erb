@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="alert alert-tip">
-  <strong>Heads up!</strong> You're limited to <%= @pin_limit %> pins in overall and a maximum of 10 high populated cities (<i class="icon-upload"></i>).
+  <strong>Heads up!</strong> You're limited to <%= Pin.pins_limit %> pins in overall and a maximum of <%= Pin.high_populated_limit %> high populated cities (<i class="icon-upload"></i>).
 </div>
 
 <h2>Current pins <small><%= @overall.count %> in overall (<%= @overall.high_populated.count %> <i class="icon-upload"></i>)</small></h2>

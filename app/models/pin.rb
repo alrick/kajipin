@@ -61,4 +61,14 @@ class Pin < ActiveRecord::Base
     end
   end
 
+  # Pins limit getter
+  def self.pins_limit
+    PINS_LIMIT
+  end
+
+  # High populated limit getter
+  def self.high_populated_limit
+    HIGH_POPULATED_LIMIT
+  end
+
 end

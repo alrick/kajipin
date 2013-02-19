@@ -16,7 +16,6 @@ class PinsController < ApplicationController
     @user = current_user
     get_pins
     open_tab
-    @pin_limit = PIN_LIMIT
   end
 
   def list
