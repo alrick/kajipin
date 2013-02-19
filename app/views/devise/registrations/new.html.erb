@@ -12,6 +12,9 @@
 </div>
 
 <div class="home-info">
+  <div class="alert alert-tip">
+    <strong>Alpha note:</strong> You've to register with the email you have provided during Alpha registrations. Use the <%= link_to "support center", "http://support.kajipin.com" %> if you encounter any problem during the sign up process.
+  </div>
   <h3>Sign up <small>We look forward to welcome you.</small></h3>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-inline"}) do |f| %>
     <%= f.input_field :first_name, :class => "input-small", :placeholder => "First name" %>
