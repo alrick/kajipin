@@ -11,6 +11,8 @@ class PinsController < ApplicationController
   # Global vars
   MAXROWS = "20"
   FUZZY = "0.8"
+  GEONAMES_SEARCH_URL = "http://api.geonames.org/searchJSON?q="
+  GEONAMES_GET_URL = "http://api.geonames.org/getJSON?geonameId="
 
   def index
     @user = current_user
@@ -34,7 +36,7 @@ class PinsController < ApplicationController
       q = CGI.escape(params[:q])
     end
 
-    url = ENV["GEONAMES_SEARCH_URL"]+q+"&maxRows="+MAXROWS+"&fuzzy="+FUZZY+"&username="+ENV["GEONAMES_USERNAME"]
+    url = GEONAMES_SEARCH_URL+q+"&maxRows="+MAXROWS+"&fuzzy="+FUZZY+"&username="+ENV["GEONAMES_USERNAME"]
     @geos = JSON.parse(open(url).read)
 
     if @geos["status"]
@@ -85,7 +87,7 @@ class PinsController < ApplicationController
   # Init pin with geonames data
   def init_pin(id,type)
     # Get data from Geonames
-    url = ENV["GEONAMES_GET_URL"]+id+"&username="+ENV["GEONAMES_USERNAME"]
+    url = GEONAMES_GET_URL+id+"&username="+ENV["GEONAMES_USERNAME"]
     result = JSON.parse(open(url).read)
 
     # Can communicate with Geonames?
