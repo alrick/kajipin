@@ -8,7 +8,6 @@ gem 'rails', '3.2.11'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3' #sass for better css
-  gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
   gem 'uglifier', '>= 1.0.3' # for javascript
   gem "therubyracer" #required for twitter-bootstrap-rails
 end
@@ -28,6 +27,7 @@ gem 'kaminari' #pagination system
 gem 'cancan' #authorization library
 gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
+gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
 
 group :development do
   gem 'rails-erd' #create schema of entities
