@@ -17,8 +17,15 @@
 }
 
 // Style the logbook on the map
-#logpages {
+.logpage {
   blockquote { 
     p { text-align: justify; font-size: 14px; }
+  }
+}
+
+// Style the logbook when captain
+.captain-logpage {
+  blockquote {
+    p { text-align: justify; }
   }
 }
