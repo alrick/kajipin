@@ -41,6 +41,7 @@
   font-size: 20px !important;
   -webkit-border-radius: 3px;
           border-radius: 3px;
+  word-wrap: break-word; // Auto return if long name
 }
 
 // Center Information block
