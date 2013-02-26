@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      pin:
+        user_id: ""
+        user: ""
