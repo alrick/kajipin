@@ -12,6 +12,7 @@ group :assets do
   gem "therubyracer" #required for twitter-bootstrap-rails
 end
 
+gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
 gem 'jquery-rails' #jquery integration
 gem 'pg' #postgres database
 gem 'json' #self explained
@@ -27,7 +28,6 @@ gem 'kaminari' #pagination system
 gem 'cancan' #authorization library
 gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
-gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
 
 group :development do
   gem 'rails-erd' #create schema of entities

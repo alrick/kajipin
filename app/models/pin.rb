@@ -5,6 +5,7 @@ class Pin < ActiveRecord::Base
   attr_accessible :title, :user_id, :latitude, :longitude, :country_name, :country_code, :continent_code, :ext_id, :population, :type
 
   belongs_to :user
+  has_many :photos, dependent: :destroy, :order => "created_at ASC"
   has_many :comments, dependent: :destroy, :order => "created_at ASC"
   has_many :logpages, dependent: :destroy, :order => "created_at ASC"
 
