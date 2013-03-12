@@ -16,8 +16,8 @@
   <div class="span2">
     <% if !@empty %>
       <div id="friendship-filter" class="dropdown">
-        <button class="btn btn-crud" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <button id="friendship-filter-btn" class="btn btn-crud" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="friendship-filter-btn">
           <li>
             <% if @filter == "sharing" %>
               <%= link_to "Only Sharing ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharing"), "tabindex" => "-1" %>
