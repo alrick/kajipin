@@ -43,6 +43,10 @@ class Pin < ActiveRecord::Base
     "%.3f" % longitude
   end
 
+  def photos_count
+    photos.count.to_s.html_safe
+  end
+
   def logpages_count
     logpages.count.to_s.html_safe
   end
