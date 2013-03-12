@@ -2,6 +2,6 @@
   
   <%= render "shared/show_flash", :layout => "map" %>
   <%= yield %>
-  <p class="map-copyright">&copy; 2013 <%= Appetizer.appname %> + <%= link_to "Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank" %></p>
+  <p class="map-copyright"><%= link_to "Map Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank" %></p>
 
 <%= render "layouts/global_bottom" %>
