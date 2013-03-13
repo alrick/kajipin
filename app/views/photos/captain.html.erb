@@ -1,0 +1,18 @@
+<% content_for :page_title do %><%= @pin.title %>'s Photos<% end %>
+
+<div class="page-header">
+  <h1 style="display:inline">Photos <small><%= @pin.title %></small></h1>&nbsp;
+  <%= link_to "Return to pins", pins_path(:tab => @pin.get_tab), :class => "btn btn-map btn-small" %>
+</div>
+
+<p class="well">
+  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add some photos", new_pin_photo_path(@pin), :remote => true, :class => "btn btn-large btn-block btn-tool" %>
+</p>
+
+<ul class="photos thumbnails">
+  <% @photos.each do |photo| %>
+    <li class="span3">
+      <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="img-polaroid">
+    </li>
+  <% end %>
+</ul>

@@ -17,7 +17,10 @@ Kajipin::Application.routes.draw do
 
   resources :pins, :only => [:index, :new, :update, :create, :destroy] do
     get 'list', :on => :collection
-    resources :photos, :only => [:index, :create, :destroy]
+    resources :photos, :only => [:index, :new, :destroy] do
+      get 'captain', :on => :collection
+      post 'create_all', :on => :collection
+    end
     resources :comments, :only => [:index, :create, :destroy]
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
       collection do

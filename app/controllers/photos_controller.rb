@@ -1,8 +1,13 @@
 class PhotosController < ApplicationController
-  # GET /photos
-  # GET /photos.json
+  # Devise authenticate
+  before_filter :authenticate_user!
+
+  # Cancan authorize
+  load_and_authorize_resource :pin
+  load_and_authorize_resource :photo, :through => :pin
+
   def index
-    @photos = Photo.all
+    @photos = @pin.photos.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,74 +15,40 @@ class PhotosController < ApplicationController
     end
   end
 
-  # GET /photos/1
-  # GET /photos/1.json
-  def show
-    @photo = Photo.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @photo }
-    end
-  end
-
-  # GET /photos/new
-  # GET /photos/new.json
   def new
-    @photo = Photo.new
-
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @photo }
+      format.js
     end
   end
 
-  # GET /photos/1/edit
-  def edit
-    @photo = Photo.find(params[:id])
+  def captain
+    @photos = @pin.photos.all
   end
 
-  # POST /photos
-  # POST /photos.json
-  def create
-    @photo = Photo.new(params[:photo])
+  # Func to create photos coming from Filepicker.io
+  def create_all
 
-    respond_to do |format|
+    # Init counts
+    count = params[:photos].count
+    success_count = 0
+
+    # Iterate over each photos
+    params[:photos].each do |photo|
+      @photo = @pin.photos.build(photo)
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render json: @photo, status: :created, location: @photo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        success_count+=1
       end
     end
-  end
 
-  # PUT /photos/1
-  # PUT /photos/1.json
-  def update
-    @photo = Photo.find(params[:id])
-
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    # Compare counts to know if ALL photos have been created
+    if count == success_count
+      flash[:notice] = "<strong>Photos</strong> were successfully added."
+    else
+      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
     end
-  end
-
-  # DELETE /photos/1
-  # DELETE /photos/1.json
-  def destroy
-    @photo = Photo.find(params[:id])
-    @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
-      format.json { head :no_content }
+      format.json { render json: flash }
     end
   end
 end

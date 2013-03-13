@@ -18,6 +18,15 @@ class Ability
     can :read, Pin do |p|
       p.user.isSharingWith(user)
     end
+
+    ##### PHOTO
+    # User can manage and create photos he owns
+    can :manage, Photo do |p|
+      p.pin.user == user
+    end
+    can :create_all, Photo do |p|
+      p.pin.user == user
+    end
     
     ##### LOGPAGE
     # User can manage logpages he owns
