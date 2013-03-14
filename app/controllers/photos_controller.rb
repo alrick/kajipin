@@ -21,6 +21,15 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def captain
     @photos = @pin.photos.all
   end
@@ -29,22 +38,21 @@ class PhotosController < ApplicationController
   def create_all
 
     # Init counts
-    count = params[:photos].count
-    success_count = 0
+    count = 0
 
     # Iterate over each photos
     params[:photos].each do |photo|
       @photo = @pin.photos.build(photo)
-      if @photo.save
-        success_count+=1
+      if !@photo.save
+        count+=1
       end
     end
 
     # Compare counts to know if ALL photos have been created
-    if count == success_count
-      flash[:notice] = "<strong>Photos</strong> were successfully added."
-    else
+    if count > 0
       flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
+    else
+      flash[:notice] = "<strong>Photos</strong> were successfully added."
     end
 
     respond_to do |format|

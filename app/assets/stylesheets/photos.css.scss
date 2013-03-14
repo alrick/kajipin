@@ -1,3 +1,10 @@
-// Place all the styles related to the photos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.captain-photo {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  .photo-remove {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}

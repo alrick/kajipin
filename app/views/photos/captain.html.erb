@@ -5,14 +5,25 @@
   <%= link_to "Return to pins", pins_path(:tab => @pin.get_tab), :class => "btn btn-map btn-small" %>
 </div>
 
+<div class="alert alert-tip">
+  <strong>Heads up!</strong> You're limited to <%= Photo.limit %> photos for each pin.
+</div>
+
 <p class="well">
-  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add some photos", new_pin_photo_path(@pin), :remote => true, :class => "btn btn-large btn-block btn-tool" %>
+  <% if @pin.photos.count >= Photo.limit %>
+    <button class="btn btn-large btn-block btn-tool disabled">Limit of photos reached</button>
+  <% else %>
+    <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add some photos", new_pin_photo_path(@pin), :remote => true, :class => "btn btn-large btn-block btn-tool" %>
+  <% end %>
 </p>
 
-<ul class="photos thumbnails">
+<ul id="captain-photos" class="thumbnails">
   <% @photos.each do |photo| %>
-    <li class="span3">
-      <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="img-polaroid">
+    <li id="<%= dom_id(photo) %>" class="span3">
+      <div class="captain-photo">
+        <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="img-polaroid">
+        <%= link_to content_tag("i", "", class: "icon-trash"), "#", :class => "btn btn-tool btn-mini photo-remove", :rel => "delete-tooltip", "data-title" => "#{ link_to "Remove", pin_photo_path(@pin, photo), :class => "btn btn-confirm", :method => :delete, :remote => true }" %>
+      </div>
     </li>
   <% end %>
 </ul>
