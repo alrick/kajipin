@@ -28,6 +28,7 @@ gem 'kaminari' #pagination system
 gem 'cancan' #authorization library
 gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
+gem 'httparty' #http request with fun :D
 
 group :development do
   gem 'rails-erd' #create schema of entities
