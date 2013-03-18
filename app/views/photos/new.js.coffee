@@ -9,7 +9,7 @@ filepicker.pickAndStore {multiple: true, services: ['DROPBOX', 'FACEBOOK', 'INST
     i++
   # Ajax request to add the photos
   $.ajax(
-    url: "<%= create_all_pin_photos_url(@pin) %>"
+    url: "<%= create_many_pin_photos_url(@pin) %>"
     type: "POST"
     contentType: "application/json"
     data: JSON.stringify(photos: photos)

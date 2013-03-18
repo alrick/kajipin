@@ -36,6 +36,7 @@ class PhotosController < ApplicationController
 
   # Func to create photos coming from Filepicker.io
   def create_all
+  def create_many
 
     # Init counts
     count = 0
