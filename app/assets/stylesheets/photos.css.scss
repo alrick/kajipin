@@ -2,11 +2,12 @@
 #cphotos {
   margin-bottom: 140px;
   .cphoto {
-    width: 200px;
-    height: 200px;
     &:hover { cursor: pointer; }
   }
-  .selected { background-color: #7fa4b1; }
+  .selected {
+    background-color: #7fa4b1;
+    opacity: 0.5;
+  }
 }
 
 // Box to remove photos
