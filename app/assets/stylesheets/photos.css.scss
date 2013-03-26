@@ -1,10 +1,18 @@
-.captain-photo {
-  width: 200px;
-  height: 200px;
-  position: relative;
-  .photo-remove {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+// Main photos container
+#cphotos {
+  margin-bottom: 140px;
+  .cphoto {
+    width: 200px;
+    height: 200px;
+    &:hover { cursor: pointer; }
   }
+  .selected { background-color: #7fa4b1; }
 }
+
+// Box to remove photos
+#selected-box {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  form { margin: 0; }
+} 
