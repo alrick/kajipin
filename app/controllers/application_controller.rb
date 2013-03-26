@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     new_session_path(resource_name)
   end
+
+  def beautiful_errors(object)
+    message = object.errors.full_messages.to_sentence
+    message[1] = message[1].capitalize
+    message
+  end
 end
