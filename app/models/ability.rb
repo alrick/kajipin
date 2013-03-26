@@ -24,9 +24,6 @@ class Ability
     can :manage, Photo do |p|
       p.pin.user == user
     end
-    can :create_all, Photo do |p|
-      p.pin.user == user
-    end
     
     ##### LOGPAGE
     # User can manage logpages he owns

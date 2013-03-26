@@ -31,9 +31,10 @@ class PhotosController < ApplicationController
     @photos = params[:photos]
     @all_success = true
 
-    # Iterate over each photos
+    # Iterate over each photos and create it
     @photos.each do |photo|
       @photo = @pin.photos.build(photo)
+      authorize! :create, @photo # Use cancan to check authorization
       if !@photo.save
         @photo.delete_s3
         @all_success = false
@@ -44,7 +45,11 @@ class PhotosController < ApplicationController
     if @all_success
       flash[:notice] = "<strong>Photos</strong> were successfully added."
     else
-      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
+      if @pin.photos.size >= Photo.limit
+        flash[:warning] = "<strong>Beware!</strong> You've reached the limit of photos for this pin, some could not be added."
+      else
+        flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
+      end
     end
 
     # Respond with javascript because it's ajax request
@@ -61,6 +66,7 @@ class PhotosController < ApplicationController
 
     # Destroy each photo separately
     @photos.each do |photo|
+      authorize! :destroy, photo # Use cancan to check authorization
       if !photo.destroy
         @all_success = false
       end
