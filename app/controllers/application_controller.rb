@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   # Handle access denied
   rescue_from CanCan::AccessDenied do |exception|
-    exception.default_message = "You're trying to see something you're not allowed to, <strong>Little Wrongdoer!</strong>"
+    exception.default_message = "You're trying to do something you're not allowed to, <strong>Little Wrongdoer!</strong>"
     redirect_to edit_user_registration_url, :alert => exception.message
   end
 
