@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def gravatar_url(user, size)
     if user.nil?
       email = "no_user@kajipin.com"
