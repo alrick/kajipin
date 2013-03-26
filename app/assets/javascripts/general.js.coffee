@@ -13,8 +13,7 @@ jQuery ->
 
   # Auto fade alert-success alert after a delay
   if $(".notlogged-title").length < 1
-    $(".alert-success").delay(3000).fadeOut "slow", ->
-      $(this).remove()
+    $(".alert-success").delay(3000).fadeOut "slow"
 
   # Check that we're on correct page (user profile or friendships)
   if $(".userbox").length > 0
