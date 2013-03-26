@@ -1,12 +1,17 @@
 <% content_for :page_title do %><%= @pin.title %>'s Photos<% end %>
 
+<div class="alert alert-error phantom">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oh snap!</strong> Something went wrong while adding your photos, no photo added. <br><em>Please try again later</em>.
+</div>
+
 <div class="page-header">
   <h1 style="display:inline">Photos <small><%= @pin.title %></small></h1>&nbsp;
   <%= link_to "Return to pins", pins_path(:tab => @pin.get_tab), :class => "btn btn-map btn-small" %>
 </div>
 
 <div class="alert alert-tip">
-  <strong>Heads up!</strong> You're limited to <%= Photo.limit %> photos for each pin.
+  <strong>Heads up!</strong> You currently have <strong><%= @pin.photos.count %>/<%= Photo.limit %></strong> authorized photos for this pin.
 </div>
 
 <p class="well">
@@ -17,13 +22,15 @@
   <% end %>
 </p>
 
-<ul id="captain-photos" class="thumbnails">
-  <% @photos.each do |photo| %>
-    <li id="<%= dom_id(photo) %>" class="span3">
-      <div class="captain-photo">
-        <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="img-polaroid">
-        <%= link_to content_tag("i", "", class: "icon-trash"), "#", :class => "btn btn-tool btn-mini photo-remove", :rel => "delete-tooltip", "data-title" => "#{ link_to "Remove", pin_photo_path(@pin, photo), :class => "btn btn-confirm", :method => :delete, :remote => true }" %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<%= form_tag destroy_many_pin_photos_path(@pin), :method => :delete do %>
+  <ul id="cphotos" class="thumbnails" data-destroy-url="<%= destroy_many_pin_photos_url(@pin) %>">
+    <%= render(:partial => "captain_photo", :collection => @photos, :as => :photo) %>
+  </ul>
+
+  <div id="selected-box" class="well phantom">
+    <%= button_tag(:type => "submit", :id => "remove-selected", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
+      Remove selected
+      (<%= content_tag(:span, "0") %>)
+    <% end %>
+  </div>
+<% end %>
