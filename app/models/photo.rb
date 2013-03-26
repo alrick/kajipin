@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   include HTTParty # Used to access filepicker.io
 
-  LIMIT = 15
+  LIMIT = 50
 
   attr_accessible :pin_id, :url
 
