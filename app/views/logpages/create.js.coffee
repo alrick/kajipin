@@ -18,6 +18,6 @@
 
   # Scroll to bottom. add page and highlight
   $("html, body").animate { scrollTop: $(document).height() }, "slow"
-  $("#logpages").append("<%= j(render('captain_logpage', :logpage => @logpage)) %>")
+  $("#captain-logpages").append("<%= j(render('captain_logpage', :logpage => @logpage)) %>")
   $("#<%= dom_id(@logpage) %>").delay(100).effect("highlight", { color: "#5F1818" })
 <% end %>

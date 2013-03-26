@@ -9,7 +9,7 @@
   <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add a page", "#addLogpageModal", :class => "btn btn-large btn-block btn-tool modal-open", "data-toggle" => "modal", :role => "button" %>
 </p>
 
-<div id="logpages" class="captain-logpages">
+<div id="captain-logpages">
   <%= render(:partial => "captain_logpage", :collection => @logpages, :as => :logpage) %>
 </div>
  
