@@ -21,43 +21,56 @@ class PhotosController < ApplicationController
     end
   end
 
-  def destroy
-    @photo = Photo.find(params[:id])
-    @photo.destroy
+  def captain
+    @photos = @pin.photos.all
+  end
 
+  # Func to create multiple photos
+  def create_many
+    # Init success
+    @photos = params[:photos]
+    @all_success = true
+
+    # Iterate over each photos
+    @photos.each do |photo|
+      @photo = @pin.photos.build(photo)
+      if !@photo.save
+        @photo.delete_s3
+        @all_success = false
+      end
+    end
+
+    # Display right message
+    if @all_success
+      flash[:notice] = "<strong>Photos</strong> were successfully added."
+    else
+      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
+    end
+
+    # Respond with javascript because it's ajax request
     respond_to do |format|
       format.js
     end
   end
 
-  def captain
-    @photos = @pin.photos.all
-  end
+  # Func to destroy multiple photos
+  def destroy_many
+    # Get photos and init success
+    @photos = Photo.find(params[:photo_ids])
+    @all_success = true
 
-  # Func to create photos coming from Filepicker.io
-  def create_all
-  def create_many
-
-    # Init counts
-    count = 0
-
-    # Iterate over each photos
-    params[:photos].each do |photo|
-      @photo = @pin.photos.build(photo)
-      if !@photo.save
-        count+=1
+    # Destroy each photo separately
+    @photos.each do |photo|
+      if !photo.destroy
+        @all_success = false
       end
     end
 
-    # Compare counts to know if ALL photos have been created
-    if count > 0
-      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
+    # Redirect to captain photos and display right message
+    if @all_success
+      redirect_to captain_pin_photos_url(@pin), notice: "<strong>Photos</strong> were successfully removed."
     else
-      flash[:notice] = "<strong>Photos</strong> were successfully added."
-    end
-
-    respond_to do |format|
-      format.json { render json: flash }
+      redirect_to captain_pin_photos_url(@pin), alert: "<strong>Oh snap!</strong> Something went wrong while removing your photos, some could not be removed."
     end
   end
 end
