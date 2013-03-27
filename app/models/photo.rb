@@ -34,4 +34,11 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  # Get filepicker policy
+  def get_policy(expiration)
+    expiry = Time.now.to_i + expiration
+    json_policy = {:handle => handle, :expiry => expiry}.to_json
+    policy = Base64.urlsafe_encode64(json_policy)
+  end
+
 end
