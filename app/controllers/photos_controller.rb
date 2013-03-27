@@ -34,9 +34,10 @@ class PhotosController < ApplicationController
     # Iterate over each photos and create it
     @photos.each do |photo|
       @photo = @pin.photos.build(photo)
+      @photo.handle = @photo.url.split("/").last
       authorize! :create, @photo # Use cancan to check authorization
       if !@photo.save
-        @photo.delete_s3
+        @photo.delete_remote
         @all_success = false
       end
     end

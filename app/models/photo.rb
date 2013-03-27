@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :pin
 
-  before_destroy :delete_s3
+  before_destroy :delete_remote
   
   validates :url, :format => URI::regexp(%w(https))
   validates :pin_id, :numericality => { :greater_than => 0 }
@@ -22,7 +22,7 @@ class Photo < ActiveRecord::Base
   end
 
   # Delete S3 file
-  def delete_s3
+  def delete_remote
     try = self.class.delete(url)
 
     # If file not found in filepicker, destroy anyway, else only if success
