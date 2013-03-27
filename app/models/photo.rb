@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
 
   LIMIT = 50
 
-  attr_accessible :pin_id, :url
+  attr_accessible :pin_id, :url, :key, :handle, :size
 
   belongs_to :pin
 
@@ -11,6 +11,7 @@ class Photo < ActiveRecord::Base
   
   validates :url, :format => URI::regexp(%w(https))
   validates :pin_id, :numericality => { :greater_than => 0 }
+  validates :key, :handle, :presence => true
 
   validates_each :pin do |photo, attr, value|
     photo.errors.add attr, "you've reached your photos limit for this pin" if photo.pin.photos.size >= LIMIT

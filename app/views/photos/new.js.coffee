@@ -6,6 +6,8 @@ filepicker.pickAndStore({multiple: true, services: ['DROPBOX', 'FACEBOOK', 'INST
   while i < fpfiles.length
     photos[i] = new Object()
     photos[i].url = fpfiles[i].url
+    photos[i].key = fpfiles[i].key
+    photos[i].size = fpfiles[i].size
     i++
   # Ajax request to add the photos
   $.ajax

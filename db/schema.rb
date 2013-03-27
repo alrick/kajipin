@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311134818) do
+ActiveRecord::Schema.define(:version => 20130327153516) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20130311134818) do
     t.integer  "pin_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "key"
+    t.string   "handle"
+    t.integer  "size"
   end
 
   create_table "pins", :force => true do |t|
