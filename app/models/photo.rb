@@ -24,7 +24,13 @@ class Photo < ActiveRecord::Base
   # Delete S3 file
   def delete_s3
     try = self.class.delete(url)
-    try.success?
+
+    # If file not found in filepicker, destroy anyway, else only if success
+    if try.not_found?
+      return true
+    else
+      return try.success?
+    end
   end
 
 end
