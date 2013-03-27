@@ -22,13 +22,13 @@
   <% end %>
 </p>
 
-<%= form_tag destroy_many_pin_photos_path(@pin), :method => :delete do %>
+<%= form_tag destroy_many_pin_photos_path(@pin), :id => "cphotos-form", :method => :delete do %>
   <ul id="cphotos" class="thumbnails" data-destroy-url="<%= destroy_many_pin_photos_url(@pin) %>">
     <%= render(:partial => "captain_photo", :collection => @photos, :as => :photo) %>
   </ul>
 
   <div id="selected-box" class="well phantom">
-    <%= button_tag(:type => "submit", :id => "remove-selected", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
+    <%= button_tag(:type => "submit", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
       Remove selected
       (<%= content_tag(:span, "0") %>)
     <% end %>
