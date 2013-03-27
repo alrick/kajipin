@@ -17,3 +17,7 @@ jQuery ->
       selected_box.fadeOut()
 
     selected_box.find("span").html(number_selected) # Update number of selected
+
+  # Trigger form submit
+  $("#remove-selected").on "click", ->
+    $("#remove-selected").button ("loading")
