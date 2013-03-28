@@ -1,5 +1,5 @@
-filepicker.setKey 'AJ2xVaRuBRF4Cp1vbZukAz'
-filepicker.pickAndStore({multiple: true, services: ['DROPBOX', 'FACEBOOK', 'INSTAGRAM', 'FLICKR', 'GOOGLE_DRIVE', 'BOX', 'PICASA']}, {}, (fpfiles) ->
+filepicker.setKey "<%= @key %>"
+filepicker.pickAndStore({multiple: true, services: ["DROPBOX", "FACEBOOK", "INSTAGRAM", "FLICKR", "GOOGLE_DRIVE", "BOX", "PICASA"]}, {}, (fpfiles) ->
   # Create photo objects
   photos = new Array()
   i = 0

@@ -16,6 +16,8 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @key = ENV["FILEPICKER_KEY"]
+
     respond_to do |format|
       format.js
     end
