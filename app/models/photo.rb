@@ -24,21 +24,36 @@ class Photo < ActiveRecord::Base
 
   # Delete S3 file
   def delete_remote
-    try = self.class.delete(url)
+    policy = get_policy("remove")
+    signature = get_signature(policy)
+    remote = url+"?signature="+signature+"&policy="+policy
+    try = self.class.delete(remote)
 
     # If file not found in filepicker, destroy anyway, else only if success
     if try.not_found?
-      return true
+      true
     else
-      return try.success?
+      try.success?
     end
   end
 
+  #private
+
   # Get filepicker policy
-  def get_policy(expiration)
-    expiry = Time.now.to_i + expiration
-    json_policy = {:handle => handle, :expiry => expiry}.to_json
-    policy = Base64.urlsafe_encode64(json_policy)
+  def get_policy(call)
+    if !["pick", "read", "stat", "write", "writeUrl", "store", "convert", "remove"].include? call
+      raise "Incorrect call"
+    else
+      expiry = Time.now.to_i + 60*60
+      json_policy = {:call => call, :handle => handle, :expiry => expiry}.to_json
+      policy = Base64.urlsafe_encode64(json_policy)
+    end
+  end
+
+  # Get filepicker signature
+  def get_signature(policy)
+    secret = ENV["FILEPICKER_SECRET"]
+    signature = OpenSSL::HMAC.hexdigest("sha256", secret, policy)
   end
 
 end
