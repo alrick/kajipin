@@ -10,8 +10,7 @@ class PhotosController < ApplicationController
     @photos = @pin.photos.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @photos }
+      format.js
     end
   end
 
