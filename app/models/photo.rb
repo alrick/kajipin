@@ -37,7 +37,7 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  #private
+  private
 
   # Get filepicker policy
   def get_policy(call)
