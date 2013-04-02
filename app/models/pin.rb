@@ -12,13 +12,9 @@ class Pin < ActiveRecord::Base
   validates :title, :country_name, :country_code, :continent_code, :type, :presence => true
   validates :latitude, :longitude, :numericality => true
   validates :user_id, :ext_id, :numericality => { :greater_than => 0}
-
   validates :user_id, :uniqueness => { :scope => [:latitude, :longitude], :message => "Pins can't have same latitude and longitude" }
-
-  validates_each :user do |pin, attr, value|
-    pin.errors.add attr, "Pins limit reached" if pin.user.pins.count >= LIMIT
-    pin.errors.add attr, "High populated pins limit reached" if pin.high_populated? && pin.user.pins.high_populated.count >= HIGH_POPULATED_LIMIT
-  end
+  validate :check_limit, :on => :create
+  validate :check_high_populated_limit, :on => :create
 
   scope :bigcity, where(:type => "Bigcity")
   scope :smallcity, where(:type => "Smallcity")
@@ -76,6 +72,22 @@ class Pin < ActiveRecord::Base
   # High populated limit getter
   def self.high_populated_limit
     HIGH_POPULATED_LIMIT
+  end
+
+  private
+
+  # Check limit isn't reached
+  def check_limit
+    if user.pins.count >= LIMIT
+      errors[:base] << "Pins limit reached"
+    end
+  end
+
+  # Check high populated limit isn't reached
+  def check_high_populated_limit
+    if high_populated? && user.pins.high_populated.count >= HIGH_POPULATED_LIMIT
+      errors[:base] << "High populated limit reached"
+    end
   end
 
 end
