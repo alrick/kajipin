@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       "."
     else
       errors = object.errors.full_messages
-      message = " :<ul>"
+      message = " :<ul class=\"no-bottom-margin\">"
         errors.each do |e|
           message = message + "<li>" + e + "</li>"
         end
