@@ -16,8 +16,15 @@ class ApplicationController < ActionController::Base
   end
 
   def beautiful_errors(object)
-    message = object.errors.full_messages.to_sentence
-    message[1] = message[1].capitalize
-    message
+    if object.errors.nil?
+      "."
+    else
+      errors = object.errors.full_messages
+      message = " :<ul>"
+        errors.each do |e|
+          message = message + "<li>" + e + "</li>"
+        end
+      message = message + "</ul>"
+    end
   end
 end
