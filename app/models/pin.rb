@@ -16,8 +16,8 @@ class Pin < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => [:latitude, :longitude], :message => "Your pin can't have same latitude and longitude than another pin" }
 
   validates_each :user do |pin, attr, value|
-    pin.errors.add attr, "you've reached your pins limit" if pin.user.pins.size >= LIMIT
-    pin.errors.add attr, "you've reached your high populated pins limit" if pin.high_populated? && pin.user.pins.high_populated.size >= HIGH_POPULATED_LIMIT
+    pin.errors.add attr, "you've reached your pins limit" if pin.user.pins.count >= LIMIT
+    pin.errors.add attr, "you've reached your high populated pins limit" if pin.high_populated? && pin.user.pins.high_populated.count >= HIGH_POPULATED_LIMIT
   end
 
   scope :bigcity, where(:type => "Bigcity")
