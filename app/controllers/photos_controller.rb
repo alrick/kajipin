@@ -47,11 +47,7 @@ class PhotosController < ApplicationController
     if @all_success
       flash[:notice] = "<strong>Photos</strong> were successfully added."
     else
-      if @pin.photos.size >= Photo.limit
-        flash[:warning] = "<strong>Beware!</strong> You've reached the limit of photos for this pin, some could not be added."
-      else
-        flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added."
-      end
+      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added#{beautiful_errors(@photo)}"
     end
 
     # Respond with javascript because it's ajax request
