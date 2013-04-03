@@ -1,6 +1,6 @@
 jQuery ->
 
-  # Trigger clicks on photos
+  # Trigger clicks on photos (captain)
   $("#cphotos").on "click", ".cphoto", ->
 
     $(this).find(".img-polaroid").toggleClass("selected") # Toggle img class
