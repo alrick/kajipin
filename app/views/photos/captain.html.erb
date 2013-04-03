@@ -23,7 +23,7 @@
 </p>
 
 <%= form_tag destroy_many_pin_photos_path(@pin), :id => "cphotos-form", :method => :delete do %>
-  <ul id="cphotos" class="thumbnails" data-destroy-url="<%= destroy_many_pin_photos_url(@pin) %>">
+  <ul id="cphotos" class="thumbnails">
     <%= render(:partial => "captain_photo", :collection => @photos, :as => :photo) %>
   </ul>
 
