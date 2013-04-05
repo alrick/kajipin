@@ -1,5 +1,8 @@
 Kajipin::Application.routes.draw do
 
+  resources :avatars
+
+
   devise_for :users, :path => ""
 
   resources :users, :only => [:index, :show] do
