@@ -16,4 +16,4 @@ filepicker.pickAndStore({multiple: true, services: ["DROPBOX", "FACEBOOK", "INST
     contentType: "application/json"
     data: JSON.stringify(photos: photos)
 ).fail ->
-  $(".alert-error").fadeIn()
+  $(".fp-fail").fadeIn()
