@@ -10,4 +10,9 @@ module ApplicationHelper
     # s = size, d = default avatar, r = rating (g for any audience type)
     "http://gravatar.com/avatar/#{gravatar_hash}?s=#{size}&d=mm&r=g"
   end
+
+  def fp_url(url, width, height, fit)
+    "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
+  end
+
 end
