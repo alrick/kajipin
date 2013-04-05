@@ -22,24 +22,32 @@
 #photos {
   .photo { 
     margin: 10px;
-    float: left;
-  }
-  .big { 
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    margin-left: -450px;
+    cursor: pointer;
   }
 }
 
 // Modal for fullscreen photos
 #photoModal {
-  width: 900px;
   position: fixed;
   top: 10%;
   left: 50%;
-  margin-left: -450px;
   display: none;
   z-index: 1050;
-  .progress { width: 400px; }
+  text-align: center;
+  .active { display: inline; }
+  i { 
+    position: absolute;
+    cursor: pointer;
+    color: #fff;
+  }
+  .icon-angle-left {
+    top: 50%;
+    left: -80px;
+    font-size: 60px;
+  }
+  .icon-angle-right {
+    top: 50%;
+    right: -80px;
+    font-size: 60px;
+  }
 }
