@@ -36,3 +36,6 @@
 
 // Helper to hide content
 .phantom { display: none; }
+
+// Helper to put element behind bootstrap backdrop
+.behind-backdrop { z-index: 1000; }
