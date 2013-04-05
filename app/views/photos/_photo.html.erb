@@ -1,3 +1,1 @@
-<div class="photo">
-  <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="mini img-polaroid" data-big="<%= photo.url %>/convert?w=900&h=700&fit=max">
-</div>
+<%= image_tag fp_url(photo.url, 190, 190, "crop"), :class => "photo mini img-polaroid", "data-id" => photo.id %>
