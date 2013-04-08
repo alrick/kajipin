@@ -39,10 +39,12 @@
   </div>
   <div class="span3">
     <h3 id="profile-photo">Profile photo <small><i class="icon-globe"></i></small></h3>
-    <%= image_tag avatar_url(current_user, 205), :class => "img-polaroid" %>
-    <div class="avatar-buttons">
-      <%= link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-tool btn-block" %>
-      <%= link_to content_tag("i", "", :class => "icon-off")+" Use Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-tool btn-block", :rel => "tooltip", :title => "Gravatar allows you to bind your email address with an avatar / profile photo, more infos at www.gravatar.com", "data-placement" => "right" if !current_user.avatar.nil? %>
+    <div class="avatar">
+      <%= image_tag avatar_url(current_user, 205), :class => "img-polaroid" %>
+      <div class="phantom">
+        <%= link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-tool btn-block" %>
+      <%= link_to content_tag("i", "", :class => "icon-off")+" Use Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-tool btn-block" if !current_user.avatar.nil? %>
+      </div>
     </div>
 
     <h3 class="side-title">Account deletion</h3>
