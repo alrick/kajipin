@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def beautiful_errors(object)
-    if object.errors.nil?
+    if object.errors.empty?
       "."
     else
       errors = object.errors.full_messages
