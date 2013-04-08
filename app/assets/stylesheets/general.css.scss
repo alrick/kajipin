@@ -39,3 +39,6 @@
 
 // Helper to put element behind bootstrap backdrop
 .behind-backdrop { z-index: 1000; }
+
+// Side title need extra top margins
+.side-title { margin-top: 50px; }
