@@ -58,5 +58,9 @@ class Ability
     # User can destroy and approve a request if he is the owner
     can :destroy, Request, :user_id => user.id
     can :approve, Request, :user_id => user.id
+
+    ##### AVATAR
+    # User can manage his avatar
+    can :manage, Avatar, :user_id => user.id
   end
 end
