@@ -15,4 +15,12 @@ module ApplicationHelper
     "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
   end
 
+  def avatar_url(user, size)
+    if user.avatar.nil?
+      gravatar_url(user, size)
+    else
+      fp_url(user.avatar.url, size, size, "crop")
+    end
+  end
+
 end
