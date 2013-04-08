@@ -1,8 +1,5 @@
 Kajipin::Application.routes.draw do
 
-  resources :avatars
-
-
   devise_for :users, :path => ""
 
   resources :users, :only => [:index, :show] do
@@ -39,6 +36,8 @@ Kajipin::Application.routes.draw do
   resources :requests, :only => [:index, :create, :destroy] do
     post 'approve', :on => :member
   end
+
+  resources :avatars, :only => [:new, :create, :destroy]
 
   match 'tos' => 'static#terms'
 
