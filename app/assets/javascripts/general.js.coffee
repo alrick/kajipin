@@ -66,7 +66,7 @@ jQuery ->
                   """
     modal_html = modal_html + """
                    <div class="modal-footer">
-                     <a data-dismiss="modal" class="btn btn-crud">Cancel</a>
+                     <a data-dismiss="modal" class="btn btn-tool">Cancel</a>
                    </div>
                  </div>
                  """
