@@ -1,6 +1,5 @@
 // Main photos container
 #cphotos {
-  margin-bottom: 140px;
   .cphoto {
     &:hover { cursor: pointer; }
   }
@@ -12,6 +11,7 @@
 
 // Box to remove photos
 #selected-box {
+  background-color: rgba(215,204,194,0.5) !important;
   position: fixed;
   bottom: 10px;
   right: 20px;

@@ -29,8 +29,14 @@
 
   <div id="selected-box" class="well phantom">
     <%= button_tag(:type => "submit", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
-      Remove selected
+      <i class="icon-trash"></i> Remove selected
       (<%= content_tag(:span, "0") %>)
     <% end %>
   </div>
+<% end %>
+
+<% if @pin.photos.count > 0 %>
+  <p class="well">
+    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :confirm => "Are you sure you want to remove all the photos for #{@pin.title}?", :method => :delete, :class => "btn btn-large btn-block btn-tool" %>
+  </p>
 <% end %>

@@ -21,6 +21,7 @@ Kajipin::Application.routes.draw do
       get 'captain', :on => :collection
       post 'create_many', :on => :collection
       delete 'destroy_many', :on => :collection
+      delete 'destroy_all', :on => :collection
     end
     resources :comments, :only => [:index, :create, :destroy]
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
