@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405122625) do
+ActiveRecord::Schema.define(:version => 20130409083913) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20130405122625) do
     t.string   "handle"
     t.integer  "size"
   end
+
+  add_index "photos", ["pin_id"], :name => "index_photos_on_pin_id"
 
   create_table "pins", :force => true do |t|
     t.string   "title"
