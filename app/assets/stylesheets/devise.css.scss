@@ -1,19 +1,10 @@
-// Avatars buttons appearing on the edit profile page
-.avatar-buttons {
-  width: 100%;
-  text-align: center;
-  padding-top: 8px;
-}
-
 // Avatar box, phantom box over it to display buttons
 .avatar {
   position: relative;
   div {
     position: absolute;
-    width: 150px;
     bottom: 15px;
     left: 50%;
-    margin-left: -75px;
   }
 }
 

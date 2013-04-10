@@ -5,6 +5,8 @@ $(document).ready ->
 
   # Trigger clicks on avatar
   $(".avatar").hoverIntent (->
-    $(this).find("div").fadeIn()
+    buttons = $(this).find("div")
+    width = buttons.width()
+    buttons.css("margin-left", -(width/2)).fadeIn()
   ), ->
     $(this).find("div").fadeOut()
