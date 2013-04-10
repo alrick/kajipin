@@ -3,12 +3,14 @@
   a.btn { width: 50px; }
   input.btn { width: 70px; }
 }
+
 // Style edit form
 .logpage-form {
   display: none;
   input[type=text] { font-size: 20px; }
   textarea { width: 750px; height: 270px; resize: none; } 
 }
+
 // Style create form
 #addLogpageModal {
   form { margin: 0; }

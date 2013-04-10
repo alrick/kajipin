@@ -4,14 +4,14 @@
     &:hover { cursor: pointer; }
   }
   .selected {
-    background-color: #7fa4b1;
+    background-color: $extra-color;
     opacity: 0.5;
   }
 }
 
 // Box to remove photos
 #selected-box {
-  background-color: rgba(215,204,194,0.5) !important;
+  background-color: rgba(lighten($main-color, 30%), 0.5) !important;
   position: fixed;
   bottom: 10px;
   right: 20px;
@@ -38,7 +38,7 @@
   i { 
     position: absolute;
     cursor: pointer;
-    color: #fff;
+    color: $lighter;
   }
   .icon-angle-left {
     top: 50%;

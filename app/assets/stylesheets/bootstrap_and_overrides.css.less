@@ -7,13 +7,7 @@ body {
   padding-top: 90px;
 }
 
-// Set the correct sprite paths
-@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
-@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
-
-// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
-//       have the proper paths. So for now we use the absolute path.
+// Set the Font Awesome
 @fontAwesomeEotPath: asset-path("fontawesome-webfont.eot");
 @fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot#iefix");
 @fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff");
@@ -23,25 +17,34 @@ body {
 // Font Awesome
 @import "fontawesome";
 
-// Glyphicons
-//@import "twitter/bootstrap/sprites.less";
+// Define colors
+@tool-color: #433731; // dark brown
+@map-color: #4b4658; // purple
+@social-color: #e69930; // orange
+@extra-color: #7fa4b1; // cyan
+@main-color: #8d7d75; // light brown
+
+@content-color: #333; // dark grey
+@lighter: #fff; // white
 
 // Your custom LESS stylesheets goes here
-@bodyBackground: #F2F1E4;
-@linkColor: #7FA4B1;
+@bodyBackground: lighten(@main-color, 42%);
+@linkColor: @main-color;
+@dropdownBorder: @lighter;
+@textColor: @content-color;
 
-@heroUnitBackground : #7FA4B1;
-@heroUnitHeadingColor: #FFFFFF;
-@heroUnitLeadColor: #FFFFFF;
+@heroUnitBackground : @extra-color;
+@heroUnitHeadingColor: @lighter;
+@heroUnitLeadColor: @lighter;
 
 @navbarHeight: 50px;
-@navbarBackground: #403730;
-@navbarBackgroundHighlight: #524338;
-@navbarBrandColor: #EFEFEF;
-@navbarLinkColor: #887D75;
-@navbarLinkColorHover: #B0A297;
+@navbarBackground: @tool-color;
+@navbarBackgroundHighlight: lighten(@tool-color, 9%);
+@navbarBrandColor: @lighter;
+@navbarLinkColor: @main-color;
+@navbarLinkColorHover: lighten(@main-color, 20%);
 
-@tableBackgroundAccent: #FFFEF0;
-@tableBackgroundHover: #C8C7BC;
+@tableBackgroundAccent: lighten(@main-color, 47%);
+@tableBackgroundHover: lighten(@main-color, 30%);
 
-@formActionsBackground: #E1D6CC;
+@formActionsBackground: lighten(@main-color, 35%);

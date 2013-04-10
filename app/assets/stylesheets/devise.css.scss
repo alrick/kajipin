@@ -16,3 +16,8 @@
     margin-left: -75px;
   }
 }
+
+// Set public icon the same color as others
+.avatar-title {
+  small { color: $content-color; }
+}

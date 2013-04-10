@@ -4,15 +4,24 @@
   font-weight: 100;
   font-size: 60px;
   margin-bottom: 50px;
-  color: #fff;
-  small { font-weight: 100; color: #fff; }
+  color: $lighter;
+  small {
+    font-weight: 100;
+    color: $lighter;
+  }
 }
 
 // Style main menu
 #global-menufirst {
-  img { float: left; margin-right: 9px; } // Style for the avatar of the main menu
+  img {
+    float: left;
+    margin-right: 9px;
+  } // Style for the avatar of the main menu
   strong { font-size: 14px; } // Style for the username of the main menu
-  p { font-size: 11px; height: 7px; } // Style for the View profile info of the main menu
+  p {
+    font-size: 11px;
+    height: 7px;
+  } // Style for the View profile info of the main menu
 }
 
 // For the beta information
@@ -32,13 +41,21 @@
 .usermenu-item i { display: inline-block !important; }
 
 // Highlight inbox if requests pending
-.active-inbox { color: #E69922 !important; }
+.active-inbox { color: $social-color !important; }
 
 // Helper to hide content
 .phantom { display: none; }
 
 // Helper to put element behind bootstrap backdrop
-.behind-backdrop { z-index: 1000; }
+.behind-backdrop { z-index: 1000 !important; }
 
 // Side title need extra top margins
 .side-title { margin-top: 50px; }
+
+// Define text selection color
+::selection {
+  background: lighten($extra-color, 20%);
+}
+::-moz-selection {
+  background: lighten($extra-color, 20%);
+}

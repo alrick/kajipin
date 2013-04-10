@@ -4,8 +4,11 @@
   margin-bottom: 40px;
 
   a { // Descriptions of sharers and sharing
-    border-bottom: 1px dotted #333; 
-    color: #333 !important;
-    &:hover { text-decoration: none; cursor: default; }
+    border-bottom: 1px dotted $content-color !important; 
+    color: $content-color !important;
+    &:hover {
+      text-decoration: none;
+      cursor: default;
+    }
   }
 }

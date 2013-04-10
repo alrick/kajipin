@@ -28,7 +28,7 @@
       <%= f.input :current_password, :hint => "We need your current password to confirm your changes." %>
       
       <div class="form-actions">
-        <%= f.submit "Modify", :class => "btn btn-map btn-block" %>
+        <%= f.submit "Modify", :class => "btn btn-other btn-block" %>
       </div>
     <% end %>
 
@@ -38,12 +38,12 @@
     </dl>
   </div>
   <div class="span3">
-    <h3 id="profile-photo">Profile photo <small><i class="icon-globe"></i></small></h3>
+    <h3 class="avatar-title">Profile photo <small><i class="icon-globe"></i></small></h3>
     <div class="avatar">
       <%= image_tag avatar_url(current_user, 205), :class => "img-polaroid" %>
       <div class="phantom">
-        <%= link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-tool btn-block" %>
-      <%= link_to content_tag("i", "", :class => "icon-off")+" Use Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-tool btn-block" if !current_user.avatar.nil? %>
+        <%= link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-other btn-block" %>
+      <%= link_to content_tag("i", "", :class => "icon-off")+" Use Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-other btn-block" if !current_user.avatar.nil? %>
       </div>
     </div>
 
