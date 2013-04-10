@@ -17,8 +17,8 @@
 .pins-dropdown {
   display: inline;
   b.caret { 
-    border-top-color: $lighter !important;
-    border-bottom-color: $lighter !important; 
+    border-top-color: $lighter-color !important;
+    border-bottom-color: $lighter-color !important; 
   }
   .dropdown-menu { font-size: 14px; }
 }

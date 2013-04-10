@@ -9,8 +9,8 @@
   z-index: 1000;
   display: none;
   div {
-    border: 1px solid darken($lighter, 20%);
-    background: $lighter;
+    border: 1px solid darken($lighter-color, 20%);
+    background: $lighter-color;
     position: relative;
     left: -50%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -25,7 +25,7 @@
 
 // Copyright block
 .map-copyright {
-  background: $lighter;
+  background: $lighter-color;
   position: absolute;
   z-index: 1000;
   display: block;
@@ -42,13 +42,13 @@
 .map-info {
   font-weight: normal;
   line-height: 20px;
-  background: $lighter;
+  background: $lighter-color;
   position: absolute;
   margin-left: -80px;
   z-index: 1000;
   text-align: center;
   display: block;
-  border: 1px solid darken($lighter, 20%);
+  border: 1px solid darken($lighter-color, 20%);
 }
 
 // User Information block
@@ -85,10 +85,10 @@
   padding: 4px 0px;
   width: 56px;
   height: 20px;
-  background: $lighter;
+  background: $lighter-color;
   position: absolute;
   display: block;
-  border: 1px solid darken($lighter, 20%);
+  border: 1px solid darken($lighter-color, 20%);
   -webkit-border-radius: 3px;
           border-radius: 3px;
   -webkit-touch-callout: none;
@@ -115,8 +115,8 @@
   top: 63px;
   width: 28px !important;
   text-align: center;
-  color: $lighter;
-  &:hover { color: darken($lighter, 10%); }
+  color: $lighter-color;
+  &:hover { color: darken($lighter-color, 10%); }
 }
 #map-refresh { left: 83px; background: $tool-color !important; }
 #map-bigcity { left: 114px; background: $map-color !important; }
@@ -126,7 +126,7 @@
 
 // Element that display the list of all countries
 #map-countrieslist {
-  background: $lighter;
+  background: $lighter-color;
   z-index: 3;
   width: 180px;
   height: 270px;
@@ -135,7 +135,7 @@
   position: absolute;
   top: 160px;
   left: 45px;
-  border: 1px solid darken($lighter, 20%);
+  border: 1px solid darken($lighter-color, 20%);
   opacity: 0.8;
   -webkit-border-radius: 3px;
           border-radius: 3px;
@@ -144,7 +144,7 @@
     padding: 5px 5px 5px 7px;
     &:hover {
       background: $extra-color;
-      color: $lighter;
+      color: $lighter-color;
       cursor: pointer;
     }
   }

@@ -12,7 +12,7 @@ blockquote {
     background: lighten($main-color, 22%) !important;
 }
 .nav-tabs > li.active > a {
-    background: $lighter !important;
+    background: $lighter-color !important;
 }
 .modal {
   background: lighten($main-color, 42%) !important;
@@ -34,19 +34,19 @@ blockquote {
 }
 .pagination li.active a {
   background-color: $extra-color !important;
-  color: $lighter !important;
+  color: $lighter-color !important;
 }
 hr {
   border-bottom-color: $tool-color !important;
   border-top-color: $tool-color !important;
 }
 .nav .dropdown-toggle .caret {
-  border-top-color: $lighter !important;
-  border-bottom-color: $lighter !important;
+  border-top-color: $lighter-color !important;
+  border-bottom-color: $lighter-color !important;
 }
 .caret {
-  border-top-color: $lighter !important;
-  border-bottom-color: $lighter !important;
+  border-top-color: $lighter-color !important;
+  border-bottom-color: $lighter-color !important;
 }
 .alert-info {
   color: darken($extra-color, 10%) !important;
