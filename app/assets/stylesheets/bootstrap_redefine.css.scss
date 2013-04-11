@@ -53,6 +53,9 @@ hr {
   border-color: lighten($extra-color, 13%) !important;
   background: lighten($extra-color, 20%) !important;
 }
+.bar-info {
+  background-color: $extra-color !important;
+}
 
 /* Custom bootstrap elements */
 .badge-map, .label-map {
