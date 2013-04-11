@@ -8,9 +8,9 @@
   <div class="span10">
     <p id="friendships-stats">
       You currently have <span id="friendships-numbersharing" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
-      <a rel="tooltip" title="A person who can see your worldmap."><strong>Sharing</strong></a>&nbsp;
+      <a rel="tooltip" title="A person who can see your pins."><strong>Sharing</strong></a>&nbsp;
       and <span id="friendships-numbersharers" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
-      <a rel="tooltip" title="A person sharing his worldmap with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
+      <a rel="tooltip" title="A person sharing his pins with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
     </p>
   </div>
   <div class="span2">
