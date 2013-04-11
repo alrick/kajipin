@@ -37,6 +37,17 @@
 
 <% if @pin.photos.count > 0 %>
   <p class="well">
-    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :confirm => "Are you sure you want to remove all the photos for #{@pin.title}?", :method => :delete, :class => "btn btn-large btn-block btn-tool" %>
+    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :confirm => "Are you sure you want to remove all the photos for #{@pin.title}?", :method => :delete, :class => "btn btn-large btn-block btn-tool removing-modal" %>
   </p>
 <% end %>
+
+<div id="removingModal" class="modal hide fade" data-backdrop="static">
+  <div class="modal-header">
+    <h3>Removing..</h3>
+  </div>
+  <div class="modal-body">
+    <div class="progress progress-striped active">
+      <div class="bar bar-info" style="width: 100%;"></div>
+    </div>
+  </div>
+</div>
