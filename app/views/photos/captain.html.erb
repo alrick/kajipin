@@ -1,6 +1,6 @@
 <% content_for :page_title do %><%= @pin.title %>'s Photos<% end %>
 
-<div class="alert alert-error fp-fail phantom">
+<div class="alert alert-error fp-fail hide">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Oh snap!</strong> Something went wrong while adding your photos, no photo added. <br><em>Please try again later</em>.
 </div>
@@ -27,7 +27,7 @@
     <%= render(:partial => "captain_photo", :collection => @photos, :as => :photo) %>
   </ul>
 
-  <div id="selected-box" class="well phantom">
+  <div id="selected-box" class="well hide">
     <%= button_tag(:type => "submit", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
       <i class="icon-trash"></i> Remove selected
       (<%= content_tag(:span, "0") %>)

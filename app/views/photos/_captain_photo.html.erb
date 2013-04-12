@@ -1,6 +1,6 @@
 <li class="cphoto span3" data-id="<%= photo.id %>">
   <div>
     <img src="<%= photo.url %>/convert?w=190&h=190&fit=crop" alt="" class="img-polaroid">
-    <%= check_box_tag "photo_ids[]", photo.id, false, :class => "phantom" %>
+    <%= check_box_tag "photo_ids[]", photo.id, false, :class => "hide" %>
   </div>
 </li>

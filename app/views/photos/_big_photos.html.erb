@@ -1,5 +1,5 @@
 <i class="icon-angle-left"></i>
 <i class="icon-angle-right"></i>
 <% @photos.each do |photo| %>
-  <%= image_tag fp_url(photo.url, 900, 650, "max"), :alt => "", :class => "photo phantom img-polaroid", "data-id" => photo.id %>
+  <%= image_tag fp_url(photo.url, 900, 650, "max"), :alt => "", :class => "photo hide img-polaroid", "data-id" => photo.id %>
 <% end %>
