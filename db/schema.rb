@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219155633) do
+ActiveRecord::Schema.define(:version => 20130409083913) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "logpage_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20130219155633) do
 
   add_index "assignments", ["logpage_id"], :name => "index_assignments_on_logpage_id"
   add_index "assignments", ["tag_id"], :name => "index_assignments_on_tag_id"
+
+  create_table "avatars", :force => true do |t|
+    t.string   "url"
+    t.string   "key"
+    t.string   "handle"
+    t.integer  "size"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "avatars", ["user_id"], :name => "index_avatars_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.text     "value"
@@ -52,6 +64,18 @@ ActiveRecord::Schema.define(:version => 20130219155633) do
   end
 
   add_index "logpages", ["pin_id"], :name => "index_logpages_on_pin_id"
+
+  create_table "photos", :force => true do |t|
+    t.string   "url"
+    t.integer  "pin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "key"
+    t.string   "handle"
+    t.integer  "size"
+  end
+
+  add_index "photos", ["pin_id"], :name => "index_photos_on_pin_id"
 
   create_table "pins", :force => true do |t|
     t.string   "title"

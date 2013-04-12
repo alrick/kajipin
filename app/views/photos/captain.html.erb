@@ -1,0 +1,42 @@
+<% content_for :page_title do %><%= @pin.title %>'s Photos<% end %>
+
+<div class="alert alert-error fp-fail hide">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oh snap!</strong> Something went wrong while adding your photos, no photo added. <br><em>Please try again later</em>.
+</div>
+
+<div class="page-header">
+  <h1 style="display:inline">Photos <small><%= @pin.title %></small></h1>&nbsp;
+  <%= link_to "Return to pins", pins_path(:tab => @pin.get_tab), :class => "btn btn-map btn-small" %>
+</div>
+
+<div class="alert alert-info">
+  <strong>Heads up!</strong> You currently have <strong><%= @pin.photos.count %>/<%= Photo.limit %></strong> authorized photos for this pin.
+</div>
+
+<p class="well">
+  <% if @pin.photos.count >= Photo.limit %>
+    <button class="btn btn-large btn-block btn-tool disabled">Limit of photos reached</button>
+  <% else %>
+    <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add some photos", new_pin_photo_path(@pin), :remote => true, :class => "btn btn-large btn-block btn-tool" %>
+  <% end %>
+</p>
+
+<%= form_tag destroy_many_pin_photos_path(@pin), :id => "cphotos-form", :method => :delete do %>
+  <ul id="cphotos" class="thumbnails">
+    <%= render(:partial => "captain_photo", :collection => @photos, :as => :photo) %>
+  </ul>
+
+  <div id="selected-box" class="well hide">
+    <%= button_tag(:type => "submit", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do %>
+      <i class="icon-trash"></i> Remove selected
+      (<%= content_tag(:span, "0") %>)
+    <% end %>
+  </div>
+<% end %>
+
+<% if @pin.photos.count > 0 %>
+  <p class="well">
+    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :data => { :confirm => "Are you sure you want to remove all the photos for #{@pin.title}?", :loading => "Removing.." }, :method => :delete, :class => "btn btn-large btn-block btn-tool removing-modal" %>
+  </p>
+<% end %>

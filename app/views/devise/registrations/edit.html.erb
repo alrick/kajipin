@@ -1,5 +1,10 @@
 <% content_for :page_title do %><%= current_user.first_name %>'s Settings<% end %>
 
+<div class="alert alert-error fp-fail hide">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oh snap!</strong> Something went wrong while adding your profile photo. <br><em>Please try again later</em>.
+</div>
+
 <div class="page-header">
   <h1>Settings <small>Everything you can tweak.</small></h1>
 </div>
@@ -23,7 +28,7 @@
       <%= f.input :current_password, :hint => "We need your current password to confirm your changes." %>
       
       <div class="form-actions">
-        <%= f.submit "Modify", :class => "btn btn-crud" %>
+        <%= f.submit "Modify", :class => "btn btn-other btn-block" %>
       </div>
     <% end %>
 
@@ -33,13 +38,19 @@
     </dl>
   </div>
   <div class="span3">
-    <h3 id="profile-photo">Profile photo <small><i class="icon-globe"></i></small></h3>
-    <%= image_tag gravatar_url(current_user, 205), :class => "img-polaroid" %>
-    <p>
-      <b><%= Appetizer.appname %></b> uses <a href="#" rel="tooltip" title="Gravatar allows you to bind your email address with an avatar / profile photo.">Gravatar</a> to display your profile photo, more informations <%= link_to "here", "http://en.gravatar.com" %>.
-    </p>
+    <h3 class="avatar-title">Profile photo <small><i class="icon-globe"></i></small></h3>
+    <div class="avatar">
+      <%= image_tag avatar_url(current_user, 205), :class => "img-polaroid" %>
+      <div class="hide btn-group">
+        <%= link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-other" %>
+        <%= link_to content_tag("i", "", :class => "icon-off")+" Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-other" if !current_user.avatar.nil? %>
+      </div>
+    </div>
 
-    <h3>Account deletion</h3>
-    <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on the pins of your friends will remain as &laquo;Deleted author&raquo;.</li>" }, :method => :delete %>.</p>
+    <h3 class="side-title">Account deletion</h3>
+    <p>
+      We hope you go away only so that you can come back later.
+      <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on the pins of your friends will remain as &laquo;Castaway&raquo;.</li>" }, :method => :delete, :class => "btn btn-confirm btn-block btn-mini" %>
+    </p>
   </div>
 </div>

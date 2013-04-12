@@ -1,0 +1,70 @@
+// Redefine some bootstrap elements
+.well {
+  background: lighten($main-color, 30%) !important;
+}
+.page-header {
+  border-bottom: 1px solid $tool-color !important;
+}
+blockquote {
+  border-left: 5px solid lighten($tool-color, 20%) !important;
+}
+.nav-tabs > li > a:hover {
+    background: lighten($main-color, 22%) !important;
+}
+.nav-tabs > li.active > a {
+    background: $lighter-color !important;
+}
+.modal {
+  background: lighten($main-color, 42%) !important;
+}
+.modal-header {
+  border-bottom: 1px solid $tool-color !important;
+}
+.modal-footer {
+  background: lighten($main-color, 37%) !important;
+}
+.brand {
+  font-size: 25px !important;
+}
+.map-attribution {
+  z-index: 10 !important;
+}
+.table {
+  font-size: 16px !important;
+}
+.pagination li.active a {
+  background-color: $extra-color !important;
+  color: $lighter-color !important;
+}
+hr {
+  border-bottom-color: $tool-color !important;
+  border-top-color: $tool-color !important;
+}
+.nav .dropdown-toggle .caret {
+  border-top-color: $lighter-color !important;
+  border-bottom-color: $lighter-color !important;
+}
+.caret {
+  border-top-color: $lighter-color !important;
+  border-bottom-color: $lighter-color !important;
+}
+.alert-info {
+  color: darken($extra-color, 10%) !important;
+  border-color: lighten($extra-color, 13%) !important;
+  background: lighten($extra-color, 20%) !important;
+}
+.bar-info {
+  background-color: $extra-color !important;
+}
+
+/* Custom bootstrap elements */
+.badge-map, .label-map {
+  background: $map-color !important;
+}
+.badge-social, .label-social {
+  background: $social-color !important;
+  color: $content-color !important;
+}
+.badge-tool, .label-tool {
+  background: $tool-color !important;
+}

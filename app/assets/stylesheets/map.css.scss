@@ -9,8 +9,8 @@
   z-index: 1000;
   display: none;
   div {
-    border: 1px solid #BBB;
-    background: #fff;
+    border: 1px solid darken($lighter-color, 20%);
+    background: $lighter-color;
     position: relative;
     left: -50%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -25,7 +25,7 @@
 
 // Copyright block
 .map-copyright {
-  background: #fff;
+  background: $lighter-color;
   position: absolute;
   z-index: 1000;
   display: block;
@@ -42,15 +42,13 @@
 .map-info {
   font-weight: normal;
   line-height: 20px;
-  background: #FFF;
+  background: $lighter-color;
   position: absolute;
   margin-left: -80px;
   z-index: 1000;
   text-align: center;
-  background: #FFF;
-  color: #3C4E5A;
   display: block;
-  border: 1px solid #BBB;
+  border: 1px solid darken($lighter-color, 20%);
 }
 
 // User Information block
@@ -87,10 +85,10 @@
   padding: 4px 0px;
   width: 56px;
   height: 20px;
-  background: #FFF;
+  background: $lighter-color;
   position: absolute;
   display: block;
-  border: 1px solid #BBB;
+  border: 1px solid darken($lighter-color, 20%);
   -webkit-border-radius: 3px;
           border-radius: 3px;
   -webkit-touch-callout: none;
@@ -104,27 +102,31 @@
 
 // Positioning left UI
 .map-controls { 
-  left: 10px; color: #3C4E5A;
-  &:hover { color: #3C4E5A; }
+  left: 10px;
+  color: $content-color;
+  &:hover { color: lighten($content-color, 20%); }
 }
 #map-world { top: 98px; }
 #map-markers { top: 129px; }
 #map-countries { top: 160px; }
 
-// Positioning+styling right UI
+// Positioning+styling top UI
 .map-pinsactions { 
-  top: 63px; width: 28px !important; text-align: center; color: #FFF;
-  &:hover { color: #FFF; }
+  top: 63px;
+  width: 28px !important;
+  text-align: center;
+  color: $lighter-color;
+  &:hover { color: darken($lighter-color, 10%); }
 }
-#map-refresh { left: 83px; background: #403730 !important; }
-#map-bigcity { left: 114px; background: #4A4459 !important; }
-#map-smallcity { left: 145px; background: #887D75 !important; }
-#map-pointofinterest { left: 176px; background: #7FA4B1 !important; }
-#map-pinslist { left: 207px; background: #403730 !important; }
+#map-refresh { left: 83px; background: $tool-color !important; }
+#map-bigcity { left: 114px; background: $map-color !important; }
+#map-smallcity { left: 145px; background: $main-color !important; }
+#map-pointofinterest { left: 176px; background: $extra-color !important; }
+#map-pinslist { left: 207px; background: $tool-color !important; }
 
 // Element that display the list of all countries
 #map-countrieslist {
-  background: #FFF;
+  background: $lighter-color;
   z-index: 3;
   width: 180px;
   height: 270px;
@@ -133,21 +135,24 @@
   position: absolute;
   top: 160px;
   left: 45px;
-  border: 1px solid #BBB;
+  border: 1px solid darken($lighter-color, 20%);
   opacity: 0.8;
   -webkit-border-radius: 3px;
           border-radius: 3px;
   display: none;
   li { 
     padding: 5px 5px 5px 7px;
-    &:hover { background: #7196A3; color: #FFF; cursor: pointer; }
+    &:hover {
+      background: $extra-color;
+      color: $lighter-color;
+      cursor: pointer;
+    }
   }
 }
 
 // Tooltips of pins
-.map-tooltiptitle { font-size: 24px; line-height: 10px; color: #403730; }
-.map-tooltipcountry { font-size: 14px; line-height: 10px; color: #403730; }
-.map-tooltipsubtitle { font-size: 12px; line-height: 10px; color: #403730; font-style: italic; padding-top: 5px; }
+.map-tooltiptitle { font-size: 24px; line-height: 10px; color: $content-color; }
+.map-tooltipcountry { font-size: 14px; line-height: 10px; color: $content-color; }
 .map-tooltipbtn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
 
 // Unify buttons width

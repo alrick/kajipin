@@ -1,0 +1,1 @@
+window.location = "<%= captain_pin_photos_url(@pin) %>"

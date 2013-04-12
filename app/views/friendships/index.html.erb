@@ -8,16 +8,16 @@
   <div class="span10">
     <p id="friendships-stats">
       You currently have <span id="friendships-numbersharing" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
-      <a rel="tooltip" title="A person who can see your worldmap."><strong>Sharing</strong></a>&nbsp;
+      <a rel="tooltip" title="A person who can see your pins."><strong>Sharing</strong></a>&nbsp;
       and <span id="friendships-numbersharers" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
-      <a rel="tooltip" title="A person sharing his worldmap with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
+      <a rel="tooltip" title="A person sharing his pins with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
     </p>
   </div>
   <div class="span2">
     <% if !@empty %>
       <div id="friendship-filter" class="dropdown">
-        <button class="btn btn-crud" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <button id="friendship-filter-btn" class="btn btn-other" type="button" data-toggle="dropdown"><i class="icon-filter"></i> Filter <b class="caret"></b></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="friendship-filter-btn">
           <li>
             <% if @filter == "sharing" %>
               <%= link_to "Only Sharing ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharing"), "tabindex" => "-1" %>

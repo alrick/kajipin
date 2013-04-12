@@ -65,7 +65,7 @@ class PinsController < ApplicationController
     if @pin.save
       redirect_to pins_url(:tab => @pin.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully added to your pins."
     else
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin.<br>#{@pin.errors.full_messages.to_sentence}"
+      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin#{beautiful_errors(@pin)}"
     end
   end
 

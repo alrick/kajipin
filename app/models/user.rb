@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_one :avatar, dependent: :destroy
 
   validates :first_name, :length => { :minimum => 2 }
   validates :last_name, :length => { :minimum => 2 }

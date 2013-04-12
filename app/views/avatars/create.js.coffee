@@ -1,0 +1,1 @@
+window.location = "<%= edit_user_registration_url %>"

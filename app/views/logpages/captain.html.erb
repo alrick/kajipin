@@ -6,11 +6,11 @@
 </div>
 
 <p class="well">
-  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add a page", "#addLogpageModal", :class => "btn btn-tool modal-open", "data-toggle" => "modal", :role => "button" %>
+  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add a page", "#addLogpageModal", :class => "btn btn-large btn-block btn-tool modal-open", "data-toggle" => "modal", :role => "button" %>
 </p>
 
-<div id="logpages" class="captain-logpages">
-  <%= render(:partial => "captain_logpage", :collection => @logpages, :as => :logpage) || content_tag("p", "You have not yet added pages.", :class => "lead empty-set") %>
+<div id="captain-logpages">
+  <%= render(:partial => "captain_logpage", :collection => @logpages, :as => :logpage) %>
 </div>
  
 <!-- Include modals -->

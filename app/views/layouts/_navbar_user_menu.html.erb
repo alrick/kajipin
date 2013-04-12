@@ -1,13 +1,13 @@
 <ul class="nav pull-right">
   <div class="btn-group">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    <a class="btn btn-map dropdown-toggle" data-toggle="dropdown" href="#">
       <i class="icon-user"></i>
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu pull-right">
       <li id="global-menufirst">
         <%= link_to(user_path(current_user)) do %>
-          <%= image_tag gravatar_url(current_user, 28), :class => "img-polaroid" %>
+          <%= image_tag avatar_url(current_user, 28), :class => "img-polaroid" %>
             <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
             <p>View my profile</p>
         <% end %>
@@ -19,4 +19,5 @@
       <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
     </ul>
   </div>
+  <%= link_to content_tag("i", "", class: "icon-ambulance"), "http://support.kajipin.com", :class => "btn btn-map", :rel => "tooltip", :title => "Go to Support Center", "data-placement" => "bottom" %>
 </ul>

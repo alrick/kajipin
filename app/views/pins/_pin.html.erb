@@ -10,19 +10,28 @@
     <%= pin.short_lon %>&deg; <strong>&lambda;</strong>
   </td>
   <td>
+    <span class="label label-tool pins-unify-stats"><%= pin.photos_count %> <i class="icon-camera-retro"></i></span>
     <span class="label label-tool pins-unify-stats"><%= pin.comments_count %> <i class="icon-comments"></i></span>
     <span class="label label-tool pins-unify-stats"><%= pin.logpages_count %> <i class="icon-book"></i></span>
+
+    <div class="dropdown pins-dropdown">
+      <a class="dropdown-toggle btn btn-mini btn-tool" id="pins-manage-btn" role="button" data-toggle="dropdown" data-target="#">
+        <i class="icon-pencil"></i>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-manage-btn">
+        <li><%= link_to content_tag("i", "", class: "icon-camera-retro")+" Photos", captain_pin_photos_path(pin) %></li>
+        <li><%= link_to content_tag("i", "", class: "icon-book")+" Logbook", captain_pin_logpages_path(pin) %></li>
+      </ul>
+    </div>
   </td>
   <td>
-    <%= link_to "Manage ".html_safe+content_tag("i", "", class: "icon-book"), captain_pin_logpages_path(pin), :class => "btn btn-mini btn-tool" %>
-  </td>
-  <td>
-    <div class="dropdown pins-type_dropdown">
-      <a class="dropdown-toggle btn btn-mini btn-map" id="dLabel" role="button" data-toggle="dropdown" data-target="#">
+    <div class="dropdown pins-dropdown">
+      <a class="dropdown-toggle btn btn-mini btn-map" id="pins-type-btn" role="button" data-toggle="dropdown" data-target="#">
         <i class="icon-map-marker"></i> Type
         <b class="caret"></b>
       </a>
-      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="dLabel">
+      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-type-btn">
         <% unless pin.type == Bigcity.sti_name %>
           <li>
             <%= link_to Bigcity.fancy_name, pin_path(pin, :type => Bigcity.sti_name), :method => :put, "tabindex" => "-1" %>

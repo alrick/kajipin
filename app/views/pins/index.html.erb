@@ -10,8 +10,8 @@
   <%= button_tag content_tag("i", "", class: "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
 <% end %>
 
-<div class="alert alert-tip">
-  <strong>Heads up!</strong> You're limited to <%= Pin.pins_limit %> pins in overall and a maximum of <%= Pin.high_populated_limit %> high populated cities (<i class="icon-upload"></i>).
+<div class="alert alert-info">
+  <strong>Heads up!</strong> You're limited to <%= Pin.limit %> pins in overall and a maximum of <%= Pin.high_populated_limit %> high populated cities (<i class="icon-upload"></i>).
 </div>
 
 <h2>Current pins <small><%= @overall.count %> in overall (<%= @overall.high_populated.count %> <i class="icon-upload"></i>)</small></h2>

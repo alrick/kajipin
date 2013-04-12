@@ -1,15 +1,8 @@
 <%= render "layouts/global_top" %>
 
   <div class="container">
-    <%= render "shared/show_flash", :layout => "application" %>
+    <%= render "layouts/show_flash", :layout => "application" %>
     <%= yield %>
-
-    <ul class="inline copyright">
-      <li>&copy; 2013 <%= Appetizer.appname %></li>
-      <li><%= link_to "Home", "/" %></li>
-      <li><%= link_to "Terms", "/tos" %></li>
-      <li><%= link_to "Support", "http://support.kajipin.com" %></li>
-    </ul>
   </div>
 
 <%= render "layouts/global_bottom" %>

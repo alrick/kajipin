@@ -1,0 +1,17 @@
+<% flash.each do |name, msg| %>
+  <% if !msg.blank? %>
+    <% 
+    if name == :notice
+      type = " alert-success"
+    elsif name == :alert
+      type = " alert-error"
+    else
+      type = ""
+    end 
+    %>
+    <div class="alert<%= type %><% if layout == "map"%> alert-map<% end %>">
+      <a class="close" data-dismiss="alert" href="#">×</a>
+      <%= raw(msg) %>
+    </div>
+  <% end %>
+<% end %>

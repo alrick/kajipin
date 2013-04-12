@@ -14,11 +14,11 @@
 }
 
 // Style the dropdown for pin's type
-.pins-type_dropdown {
+.pins-dropdown {
   display: inline;
   b.caret { 
-    border-top-color: #fff !important;
-    border-bottom-color: #fff !important; 
+    border-top-color: $lighter-color !important;
+    border-bottom-color: $lighter-color !important; 
   }
   .dropdown-menu { font-size: 14px; }
 }

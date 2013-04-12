@@ -1,0 +1,53 @@
+// Main photos container
+#cphotos {
+  .cphoto {
+    &:hover { cursor: pointer; }
+  }
+  .selected {
+    background-color: $extra-color;
+    opacity: 0.5;
+  }
+}
+
+// Box to remove photos
+#selected-box {
+  background-color: rgba(lighten($main-color, 30%), 0.5) !important;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  form { margin: 0; }
+}
+
+// Photos on map page
+#photos {
+  .photo { 
+    margin: 10px;
+    cursor: pointer;
+  }
+}
+
+// Modal for fullscreen photos
+#photoModal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  display: none;
+  z-index: 1050;
+  text-align: center;
+  .active { display: inline; }
+  i { 
+    position: absolute;
+    cursor: pointer;
+    color: $lighter-color;
+  }
+  .icon-angle-left {
+    top: 50%;
+    left: -80px;
+    font-size: 60px;
+  }
+  .icon-angle-right {
+    top: 50%;
+    right: -80px;
+    font-size: 60px;
+  }
+}

@@ -1,0 +1,14 @@
+// Avatar box, hidded box over it to display buttons
+.avatar {
+  position: relative;
+  div {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+  }
+}
+
+// Set public icon the same color as others
+.avatar-title {
+  small { color: $content-color; }
+}

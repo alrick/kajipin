@@ -1,8 +1,0 @@
-<% flash.each do |name, msg| %>
-  <% if !msg.blank? %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %><% if layout == "map"%> alert-map<% end %>">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <%= raw(msg) %>
-    </div>
-  <% end %>
-<% end %>
