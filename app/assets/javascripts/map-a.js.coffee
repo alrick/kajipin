@@ -3,16 +3,14 @@ jQuery ->
   if ($("#map").length > 0)
 
     # Map init
-    map = mapbox.map("map")
-    map.addLayer(mapbox.layer().id(gon.mapbox_id))
-
-    # Map config
-    map.zoom(3)
-    map.center({ lat: 24.06, lon: 13.33 })
-    map.ui.attribution.add()
-    map.ui.zoombox.add()
-    map.ui.zoomer.add()
-    map.setZoomRange(3, 17)
+    map = L.mapbox.map("map", gon.mapbox_id,
+      center: [24.06, 13.33]
+      zoom: 3
+      minZoom: 3
+      maxZoom: 17
+      worldCopyJump: true
+      attributionControl: false
+    )
 
     # Only if user has pins to diplay
     if gon.pins and gon.pins.length > 0

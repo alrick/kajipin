@@ -14,6 +14,5 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require mapbox/mapbox
 //= require hoverintent/jquery.hoverIntent.minified
 //= require_tree .
