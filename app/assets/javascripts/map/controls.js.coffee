@@ -4,7 +4,7 @@ jQuery ->
 
     # Set worldmap zoom func
     $("#map-world").click ->
-      gon.map.centerzoom({ lat: 24.06, lon: 13.33 }, 3, false);
+      gon.map.fitWorld()
 
     # Cinch the map display to show all markers
     $("#map-markers").click ->

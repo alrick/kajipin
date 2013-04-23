@@ -15,4 +15,13 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require hoverintent/jquery.hoverIntent.minified
-//= require_tree .
+//
+//= require devise
+//= require general
+//= require logpages
+//= require map/main
+//= require map/actions
+//= require map/controls
+//= require map/ui
+//= require photos
+//= require pins
