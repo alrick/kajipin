@@ -83,7 +83,6 @@
   font-size: 16px;
   text-align: center;
   padding: 4px 0px;
-  width: 56px;
   height: 20px;
   background: $lighter-color;
   position: absolute;
@@ -100,17 +99,20 @@
   &:hover { text-decoration: none; cursor: pointer; }
 }
 
-// Positioning left UI
-.map-controls { 
+// Positioning controls UI
+.map-controls {
+  width: 26px;
+  height: 18px;
   left: 10px;
   color: $content-color;
+  font-size: 14px;
   &:hover { color: lighten($content-color, 20%); }
 }
-#map-world { top: 98px; }
-#map-markers { top: 129px; }
-#map-countries { top: 160px; }
+#map-world { top: 122px; }
+#map-markers { top: 151px; }
+#map-countries { top: 180px; }
 
-// Positioning+styling top UI
+// Positioning+styling pins actions UI
 .map-pinsactions { 
   top: 63px;
   width: 28px !important;
@@ -118,11 +120,11 @@
   color: $lighter-color;
   &:hover { color: darken($lighter-color, 10%); }
 }
-#map-refresh { left: 83px; background: $tool-color !important; }
-#map-bigcity { left: 114px; background: $map-color !important; }
-#map-smallcity { left: 145px; background: $main-color !important; }
-#map-pointofinterest { left: 176px; background: $extra-color !important; }
-#map-pinslist { left: 207px; background: $tool-color !important; }
+#map-refresh { left: 53px; background: $tool-color !important; }
+#map-bigcity { left: 84px; background: $map-color !important; }
+#map-smallcity { left: 115px; background: $main-color !important; }
+#map-pointofinterest { left: 146px; background: $extra-color !important; }
+#map-pinslist { left: 177px; background: $tool-color !important; }
 
 // Element that display the list of all countries
 #map-countrieslist {
