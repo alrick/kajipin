@@ -1,8 +1,15 @@
 collection @pins
 attributes :id
 
+node :type do
+  "Feature"
+end
+
 node :geometry do |p|
-  { :coordinates => [p.longitude, p.latitude] }
+  { 
+    :type => "Point",
+    :coordinates => [p.longitude, p.latitude]
+  }
 end
 
 node :properties do |p|
