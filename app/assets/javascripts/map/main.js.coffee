@@ -1,6 +1,6 @@
 jQuery ->
   # Check that we're on correct page
-  if ($("#map").length > 0)
+  if $("#map").length > 0
 
     # Map init
     map = L.mapbox.map("map", gon.mapbox_id,
