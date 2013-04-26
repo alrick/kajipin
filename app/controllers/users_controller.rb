@@ -20,8 +20,17 @@ class UsersController < GeoController
   def show
     gon.mapbox_id = ENV["MAPBOX_ID"]
     if can? :read, @user
-      @pins = @user.pins
-      gon.watch.rabl "app/views/pins/index.json.rabl", as: "pins"
+
+      # Check user has added pins
+      gon.hasPins = !@user.pins.empty?
+
+      # Generate geojson for each type of pins
+      @pins = @user.pins.bigcity
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "bctPins"
+      @pins = @user.pins.smallcity
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "sctPins"
+      @pins = @user.pins.poi
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poiPins"
     end
   end
 
