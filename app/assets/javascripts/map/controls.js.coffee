@@ -2,18 +2,10 @@ jQuery ->
   # Check that we're on correct page
   if ($("#map").length > 0)
 
-    # Set worldmap zoom func
-    $("#map-world").click ->
-      gon.map.fitWorld()
-
     # Cinch the map display to show all markers
     $("#map-markers").click ->
       if gon.pinsLayer
         gon.map.setExtent(gon.pinsLayer.extent())
-
-    # Set countries bounds func
-    $(".map-countryitem").click ->
-      gon.map.setExtent(new MM.Extent($(this).attr("data-north"), $(this).attr("data-west"), $(this).attr("data-south"), $(this).attr("data-east")))
 
     # Display list of countries when button clicked
     $("#map-countries").click (event) ->

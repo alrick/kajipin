@@ -1,27 +1,57 @@
-jQuery ->
+$(document).ready ->
   # Check that we're on correct page
   if $("#map").length > 0
 
+    #################
+    # FLOW
+    #################
+
     # Map init
     map = L.mapbox.map("map", gon.mapbox_id,
-      zoom: 3
-      minZoom: 3
-      maxZoom: 17
-      worldCopyJump: true
       attributionControl: false
+      maxBounds: [[-90,-180.0],[90,180.0]]
     ).fitWorld()
 
-    # Only if user has pins to diplay
-    if gon.pins and gon.pins.length > 0
-      # Create all empty markers layer & group vars
-      map.markerLayer.setGeoJSON(gon.pins)
+    # Only if user has pins to display
+    if gon.hasPins
 
-      blu = new Array
-      blu[0] = "Smallcity"
-      map.markerLayer.setFilter (f) ->
-        blu.indexOf(f.properties["type"]) isnt -1
+      # Create markerLayers for each type of pins
+      bctLayer = L.mapbox.markerLayer(gon.bctPins).addTo map
+      sctLayer = L.mapbox.markerLayer(gon.sctPins).addTo map
+      poiLayer = L.mapbox.markerLayer(gon.poiPins).addTo map
 
-      # Add interaction to this marker layers (title and description)
+    #################
+    # TRIGGERS
+    #################
+
+    # Set worldmap zoom func
+    $("#map-world").click ->
+      map.fitWorld()
+
+    # Set countries bounds func
+    $(".map-countryitem").click ->
+      map.fitBounds([
+        [$(this).attr("data-south"), $(this).attr("data-west")],
+        [$(this).attr("data-north"), $(this).attr("data-east")]
+      ])
+
+    # Only if user has pins to display
+    if gon.hasPins
+
+      # Show and hide bigcity pins
+      $("#map-bigcity").click ->
+        gon.toggle_action.call(this, bctLayer)
+
+      # Show and hide smallcity pins
+      $("#map-smallcity").click ->
+        gon.toggle_action.call(this, sctLayer)
+
+      # Show and hide bigcity pins
+      $("#map-pointofinterest").click ->
+        gon.toggle_action.call(this, poiLayer)
+
+
+# Add interaction to this marker layers (title and description)
       #interaction = mapbox.markers.interaction(pinsLayer)
 
       # Add layers to the map
@@ -39,7 +69,3 @@ jQuery ->
 
       # By default, the map extent markers
       #map.extent(pinsLayer.extent())
-
-    # Export map and pinsLayer for subsequent treatments
-    gon.map = map
-    #gon.pinsLayer = pinsLayer

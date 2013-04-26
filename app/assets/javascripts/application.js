@@ -19,8 +19,8 @@
 //= require devise
 //= require general
 //= require logpages
-//= require map/main
 //= require map/actions
+//= require map/main
 //= require map/controls
 //= require map/ui
 //= require photos
