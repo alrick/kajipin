@@ -10,10 +10,9 @@
 </div>
 
 
-<h2>General settings</h2>
 <div class="row">
   <div class="span9">
-    <h3>Informations</h3>
+    <h2>Informations</h2>
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "well form-horizontal"}) do |f| %>
       
       <%= f.input :first_name, :label => 'First name <i class="icon-globe"></i>' %>
@@ -36,6 +35,7 @@
       <dt>Public (<i class="icon-globe"></i>)</dt>
       <dd>Everyone can see this information.</dd>
     </dl>
+
   </div>
   <div class="span3">
     <h3 class="avatar-title">Profile photo <small><i class="icon-globe"></i></small></h3>
@@ -46,11 +46,9 @@
         <%= link_to content_tag("i", "", :class => "icon-off")+" Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-other" if !current_user.avatar.nil? %>
       </div>
     </div>
-
-    <h3 class="side-title">Account deletion</h3>
-    <p>
-      We hope you go away only so that you can come back later.
-      <%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on the pins of your friends will remain as &laquo;Castaway&raquo;.</li>" }, :method => :delete, :class => "btn btn-confirm btn-block btn-mini" %>
-    </p>
   </div>
 </div>
+
+<hr>
+<h4>Want a bad idea?</h4>
+<%= link_to "Delete my account", registration_path(resource_name), :data => { :confirm => "Are you sure?", :beware => "<li>All your pins will be removed.</li><li>All informations associated with your pins will be removed.</li><li>Your comments on the pins of your friends will remain as &laquo;Castaway&raquo;.</li>" }, :method => :delete, :class => "btn btn-confirm" %>
