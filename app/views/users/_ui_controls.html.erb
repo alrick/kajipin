@@ -1,8 +1,5 @@
 <% if can? :read, @user %>
-  <a id="map-markers" class="map-nav map-controls" rel="tooltip" title="Fit Pins" data-placement="right">
-    <i class="icon-map-marker"></i>
-  </a>
-  <a id="map-countries" class="map-nav map-controls" rel="tooltip" title="Fit Country" data-placement="right">
+  <a id="map-countries" class="map-nav map-zoom" rel="tooltip" title="Fit Country" data-placement="right">
     <i class="icon-list-alt"></i>
   </a>
   <ul id="map-countrieslist">
@@ -19,6 +16,6 @@
     </div>
   </div>
 <% end %>
-<a id="map-world" class="map-nav map-controls" rel="tooltip" title="Fit World" data-placement="right">
+<a id="map-world" class="map-nav map-zoom" rel="tooltip" title="Fit World" data-placement="right">
   <i class="icon-globe"></i>
 </a>

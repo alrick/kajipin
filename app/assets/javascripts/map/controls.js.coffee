@@ -2,11 +2,6 @@ jQuery ->
   # Check that we're on correct page
   if ($("#map").length > 0)
 
-    # Cinch the map display to show all markers
-    $("#map-markers").click ->
-      if gon.pinsLayer
-        gon.map.setExtent(gon.pinsLayer.extent())
-
     # Display list of countries when button clicked
     $("#map-countries").click (event) ->
       if ($("#map-countrieslist").css("display") == "none")

@@ -83,6 +83,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    leaflet-markercluster (0.4.2)
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
@@ -187,6 +188,7 @@ DEPENDENCIES
   jquery-rails
   json
   kaminari
+  leaflet-markercluster
   less-rails
   madmimi
   mocha

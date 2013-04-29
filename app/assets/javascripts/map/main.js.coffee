@@ -9,16 +9,24 @@ $(document).ready ->
     # Map init
     map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
-      maxBounds: [[-90,-180.0],[90,180.0]]
+      worldCopyJump: true
+      minZoom: 3
+      #maxBounds: [[-90,-180.0],[90,180.0]] seems buggy for now
     ).fitWorld()
 
     # Only if user has pins to display
     if gon.hasPins
 
       # Create markerLayers for each type of pins
-      bctLayer = L.mapbox.markerLayer(gon.bctPins).addTo map
-      sctLayer = L.mapbox.markerLayer(gon.sctPins).addTo map
-      poiLayer = L.mapbox.markerLayer(gon.poiPins).addTo map
+      bctLayer = L.mapbox.markerLayer(gon.bctPins)
+      sctLayer = L.mapbox.markerLayer(gon.sctPins)
+      poiLayer = L.mapbox.markerLayer(gon.poiPins)
+
+      markers = new L.MarkerClusterGroup({ showCoverageOnHover:false })
+      markers.addLayer bctLayer
+      markers.addLayer sctLayer
+      markers.addLayer poiLayer
+      map.addLayer markers
 
     #################
     # TRIGGERS

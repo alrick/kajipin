@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require hoverintent/jquery.hoverIntent.minified
 //
+//= require leaflet.markercluster
 //= require devise
 //= require general
 //= require logpages

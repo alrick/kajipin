@@ -11,6 +11,7 @@
  *= require_self
  *= require bootstrap_and_overrides
  *= require buttons
+ *= require markercluster
 */
 @import "init.css.scss";
 @import "bootstrap_redefine.css.scss";
@@ -28,3 +29,5 @@
 @import "static.css.scss";
 @import "users.css.scss";
 @import "users_grid.css.scss";
+@import "map/clusters.css.scss";
+@import "map/controls.css.scss";
