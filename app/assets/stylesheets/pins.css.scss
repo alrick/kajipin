@@ -25,3 +25,12 @@
 
 // Fix bug with dropdown cut
 .pins-table { margin-bottom: 55px; }
+
+// Styling pinModal
+#pinModal .modal-footer { text-align: center; }
+
+#listModal {
+  .btn-group {
+    .btn { min-width: 31px; }
+  }
+}

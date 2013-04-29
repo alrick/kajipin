@@ -1,5 +1,9 @@
-// Map container use water color as bg
+// Main container for the map pages
 #map {
+  position: absolute;
+  top: 53px;
+  bottom: 0;
+  width: 100%;
   background-color: $water-color;
 }
 

@@ -62,3 +62,8 @@
     }
   }
 }
+
+// Adjust leaflet zoom control
+.leaflet-control-zoom a:hover {
+  text-decoration: none;
+}
