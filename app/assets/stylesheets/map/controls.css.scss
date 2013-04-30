@@ -18,25 +18,26 @@
   width: 26px;
   height: 18px;
   left: 10px;
-  color: $content-color;
+  color: $content-color !important;
   font-size: 14px;
   &:hover { color: lighten($content-color, 20%); }
 }
-#map-world { top: 121px; }
-#map-countries { top: 152px; }
+#map-world { top: 68px; }
+#map-countries { top: 99px; }
 
 // Filter controls
-.map-filter { 
-  top: 63px;
-  width: 28px !important;
-  text-align: center;
-  color: $lighter-color;
+.map-filter {
+  width: 26px;
+  height: 18px;
+  top: 9px;
+  color: $lighter-color !important;
+  font-size: 14px;
   &:hover { color: darken($lighter-color, 10%); }
 }
-#map-bigcity { left: 53px; background: $map-color !important; }
-#map-smallcity { left: 84px; background: $main-color !important; }
-#map-pointofinterest { left: 115px; background: $extra-color !important; }
-#map-pinslist { left: 177px; background: $tool-color !important; }
+#map-bigcity { left: 53px; background: $map-color; }
+#map-smallcity { left: 84px; background: $main-color; }
+#map-pointofinterest { left: 115px; background: $extra-color; }
+#map-pinslist { left: 177px; background: $tool-color; }
 
 // List of all countries
 #map-countrieslist {
@@ -47,7 +48,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   position: absolute;
-  top: 152px;
+  top: 99px;
   left: 12px;
   border: 1px solid darken($lighter-color, 20%);
   opacity: 0.8;

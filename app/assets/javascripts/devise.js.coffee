@@ -1,7 +1,8 @@
-#################
-# TRIGGERS
-#################
-$(document).ready ->
+jQuery ->
+
+  #################
+  # TRIGGERS
+  #################
 
   # Trigger clicks on avatar
   $(".avatar").hoverIntent (->

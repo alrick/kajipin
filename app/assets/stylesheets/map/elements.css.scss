@@ -9,6 +9,8 @@
   text-align: center;
   display: block;
   border: 1px solid darken($lighter-color, 20%);
+  color: $main-color !important;
+  a { color: $main-color !important; }
 }
 
 // User Information block, display user's name

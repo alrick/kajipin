@@ -18,6 +18,7 @@
 //
 //= require leaflet.markercluster
 //= require devise
+//= require bootstrap_redefine
 //= require general
 //= require logpages
 //= require map/actions
@@ -26,3 +27,4 @@
 //= require map/ui
 //= require photos
 //= require pins
+//= require requests

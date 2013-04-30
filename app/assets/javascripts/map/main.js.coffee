@@ -1,4 +1,5 @@
-$(document).ready ->
+jQuery ->
+
   # Check that we're on correct page
   if $("#map").length > 0
 
@@ -28,6 +29,7 @@ $(document).ready ->
       markers.addLayer poiLayer
       map.addLayer markers
 
+
     #################
     # TRIGGERS
     #################
@@ -42,6 +44,18 @@ $(document).ready ->
         [$(this).attr("data-south"), $(this).attr("data-west")],
         [$(this).attr("data-north"), $(this).attr("data-east")]
       ])
+
+    # Set the countries list button trigger
+    $("#map-countries").click ->
+      gon.show_countries_list(map)
+
+    # Hide the countries list on click if visible
+    $("html").click ->
+      gon.hide_countries_list(map)
+
+    # Click on the list doesn't hide it
+    $("#map-countrieslist").click (event) ->
+      event.stopPropagation()
 
     # Only if user has pins to display
     if gon.hasPins

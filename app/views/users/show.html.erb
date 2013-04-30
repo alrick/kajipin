@@ -1,7 +1,24 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
-<!-- Map main element -->
-<div id="map"></div>
+<% content_for :side do %>
+  <table class="table table-striped table-hover">
+    <% @pins.each do |pin| %>
+      <tr>
+        <td>
+          <%= image_tag("flags/"+pin.country_code.downcase+".png", :width => 12) %>
+          <strong><%= pin.title %></strong>
+          <br>
+          <div class="btn-group">
+            <button style="min-width:45px" class="btn btn-tool btn-mini"><%= pin.photos_count %> <i class="icon-camera-retro"></i></button>
+            <button style="min-width:45px" class="btn btn-tool btn-mini"><%= pin.comments_count %> <i class="icon-comments"></i></button>
+            <button style="min-width:45px" class="btn btn-tool btn-mini"><%= pin.logpages_count %> <i class="icon-book"></i></button>
+            <button style="min-width:45px" class="btn btn-map btn-mini"><i class="icon-map-marker"></i></button>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 
 <!-- User box at bottom right -->
 <h1 id="info-user" class="map-info">
@@ -12,6 +29,5 @@
 <%= render "ui_controls" %>
 <%= render "ui_pinsactions" %>
 <%= render "ui_center" %>
-<%= render "advertising" %>
 
 <%= render "modals" %>

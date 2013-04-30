@@ -31,6 +31,7 @@ class UsersController < GeoController
       gon.watch.rabl "app/views/pins/geo.json.rabl", as: "sctPins"
       @pins = @user.pins.poi
       gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poiPins"
+      @pins = @user.pins
     end
   end
 
