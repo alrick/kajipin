@@ -1,6 +1,6 @@
 <% if can? :read, @user %>
-  <% if @user.pins.empty? %>
-    <!-- Center information -->
+
+  <% if @pins.empty? %>
     <div id="info-center" class="map-info">
       <% if @user == current_user %>
         <p class="lead">You have no pin!</p>
@@ -9,11 +9,17 @@
         <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
       <% end %>
     </div>
+  <% else %>
+    <% content_for :side do %>
+      <table class="table table-striped table-hover">
+        <%= render :partial => "pins/side_pin", :collection => @pins, :as => :pin %>
+      </table>
+    <% end %>
   <% end %>
 <% else %>
-  <!-- Center information -->
   <div id="info-center" class="map-info">
     <p class="lead"><%= @user.first_name %> does not share with you.</p>
+
     <% if Request.where(:user_id => @user.id, :requester_id => current_user.id).exists? %>
       <a class="btn btn-social disabled">Share request already sent</a>
     <% else %>

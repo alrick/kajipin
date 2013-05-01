@@ -1,26 +1,5 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
-<% content_for :side do %>
-  <table class="table table-striped table-hover">
-    <% @pins.each do |pin| %>
-      <tr>
-        <td>
-          <p>
-            <%= flag_tag(pin, "14x14") %>
-            <strong style="font-size:18px;"><%= pin.title %></strong>
-          </p>
-          <div class="btn-group">
-            <%= link_to pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro"), pin_photos_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
-            <%= link_to pin.comments_count+" "+content_tag("i", "", class: "icon-comments"), pin_comments_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
-            <%= link_to pin.logpages_count+" "+content_tag("i", "", class: "icon-book"), pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
-            <button style="min-width:45px" class="btn btn-map btn-mini"><i class="icon-map-marker"></i></button>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
-
 <!-- User box at bottom right -->
 <h1 id="info-user" class="map-info">
   <%= link_to @user.full_name, modal_user_path(@user), :class => "modal-open", :remote => true %>

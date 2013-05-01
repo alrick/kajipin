@@ -10,7 +10,6 @@
   display: block;
   border: 1px solid darken($lighter-color, 20%);
   color: $main-color !important;
-  a { color: $main-color !important; }
 }
 
 // User Information block, display user's name
@@ -23,6 +22,7 @@
   font-size: 20px !important;
   border-radius: 3px;
   word-wrap: break-word; // Auto return if long name
+  a { color: $main-color !important; }
 }
 
 // Center Information block
