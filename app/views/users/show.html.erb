@@ -5,9 +5,10 @@
     <% @pins.each do |pin| %>
       <tr>
         <td>
-          <%= image_tag("flags/"+pin.country_code.downcase+".png", :width => 12) %>
-          <strong><%= pin.title %></strong>
-          <br>
+          <p>
+            <%= flag_tag(pin) %>
+            <strong style="font-size:18px;"><%= pin.title %></strong>
+          </p>
           <div class="btn-group">
             <button style="min-width:45px" class="btn btn-tool btn-mini"><%= pin.photos_count %> <i class="icon-camera-retro"></i></button>
             <button style="min-width:45px" class="btn btn-tool btn-mini"><%= pin.comments_count %> <i class="icon-comments"></i></button>

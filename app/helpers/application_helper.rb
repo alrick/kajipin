@@ -23,4 +23,8 @@ module ApplicationHelper
     end
   end
 
+  def flag_tag(pin)
+    image_tag("countries/#{pin.country_code.downcase}.png", :size => "16x16")
+  end
+
 end
