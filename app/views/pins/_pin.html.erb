@@ -1,7 +1,7 @@
 <!-- Called by the pin index (manage) -->
 <tr id="<%= dom_id(pin) %>">
   <td>
-    <%= link_to flag_tag(pin), "", :rel => "tooltip", :title => pin.country_name %>&nbsp;
+    <%= link_to flag_tag(pin, "16x16"), "", :rel => "tooltip", :title => pin.country_name %>&nbsp;
     <strong><%= pin.title %></strong>&nbsp;
     <small><%= content_tag("i", "", :class => "icon-upload") if pin.population >= 1000000 %></small>
   </td>
