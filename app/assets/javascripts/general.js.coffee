@@ -11,9 +11,9 @@ jQuery ->
     $(this).toggleClass "active"
     if $(this).hasClass "active"
       map.width main.width()-300
-      side.fadeIn()
+      side.show()
     else
-      side.fadeOut()
+      side.hide()
       map.css "width", "100%"
 
 
