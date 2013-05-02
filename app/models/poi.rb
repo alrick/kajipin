@@ -30,7 +30,6 @@ class Poi < Pin
   def self.description
     "A castle, a national park or a beautiful landscape."
   end
-
   def self.marker_size
     "medium"
   end

@@ -40,7 +40,7 @@ class Bigcity < Pin
     "#4b4658"
   end
   def self.marker_path
-    dir ="markers/"
+    dir = "markers/"
     color = Bigcity.marker_color[1..-1]
     symbol = Bigcity.marker_symbol
     ext = ".png"
