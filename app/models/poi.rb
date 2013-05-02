@@ -19,6 +19,9 @@ class Poi < Pin
   def get_tab
     "p"
   end
+  def get_btn
+    "btn-poi"
+  end
 
   # Class methods
   def self.fancy_name

@@ -15,6 +15,11 @@
     .in-side {
       padding: 20px;
       .btn { min-width: 45px; }
+      h2 {
+        font-size: 18px;
+        line-height: 12px;
+        small { font-size: 12px; }
+      }
     }
   }
   #map {

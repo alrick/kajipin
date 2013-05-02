@@ -19,6 +19,9 @@ class Bigcity < Pin
   def get_tab
     "b"
   end
+  def get_btn
+    "btn-city"
+  end
 
   # Class methods
   def self.fancy_name
@@ -34,7 +37,7 @@ class Bigcity < Pin
     "town-hall"
   end
   def self.marker_color
-    "#4A4459"
+    "#4b4658"
   end
   def self.marker_path
     dir ="markers/"

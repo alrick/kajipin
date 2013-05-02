@@ -18,7 +18,7 @@
 }
 
 /* Button map for all buttons related to map + signup buttons */
-.btn-map {
+.btn-map, .btn-city {
   background-color: hsl(257, 23%, 24%) !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#65568a", endColorstr="#372f4b");
@@ -51,6 +51,44 @@
   border-color: #2f251d #2f251d hsl(26, 24%, 10%);
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Specific town button */
+.btn-town {
+  background-color: hsl(20, 10%, 41%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a59891", endColorstr="#73655e");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a59891), to(#73655e));
+  background-image: -moz-linear-gradient(top, #a59891, #73655e);
+  background-image: -ms-linear-gradient(top, #a59891, #73655e);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a59891), color-stop(100%, #73655e));
+  background-image: -webkit-linear-gradient(top, #a59891, #73655e);
+  background-image: -o-linear-gradient(top, #a59891, #73655e);
+  background-image: linear-gradient(#a59891, #73655e);
+  border-color: #73655e #73655e hsl(20, 10%, 36%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Specific poi button */
+.btn-poi {
+  background-color: hsl(196, 24%, 50%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a0bbc4", endColorstr="#608d9e");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a0bbc4), to(#608d9e));
+  background-image: -moz-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -ms-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a0bbc4), color-stop(100%, #608d9e));
+  background-image: -webkit-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -o-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: linear-gradient(#a0bbc4, #608d9e);
+  border-color: #608d9e #608d9e hsl(196, 24%, 45%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
 }

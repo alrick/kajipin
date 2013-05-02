@@ -19,6 +19,9 @@ class Smallcity < Pin
   def get_tab
     "s"
   end
+  def get_btn
+    "btn-town"
+  end
 
   # Class methods
   def self.fancy_name
@@ -27,12 +30,11 @@ class Smallcity < Pin
   def self.description
     "A less famous city."
   end
-
   def self.marker_size
     "medium"
   end
   def self.marker_symbol
-    "town-hall"
+    "warehouse"
   end
   def self.marker_color
     "#887D75"

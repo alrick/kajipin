@@ -57,20 +57,24 @@ jQuery ->
     $("#map-countrieslist").click (event) ->
       event.stopPropagation()
 
+    # Locate a pin when click from side
+    $("#side").on "click", ".btn-locate", ->
+      gon.setview_from_button.call(this, map)
+
     # Only if user has pins to display
     if gon.hasPins
 
       # Show and hide bigcity pins
       $("#map-bigcity").click ->
-        gon.toggle_action.call(this, bctLayer)
+        gon.filter_pins.call this
 
       # Show and hide smallcity pins
       $("#map-smallcity").click ->
-        gon.toggle_action.call(this, sctLayer)
+        gon.filter_pins.call this
 
       # Show and hide bigcity pins
       $("#map-pointofinterest").click ->
-        gon.toggle_action.call(this, poiLayer)
+        gon.filter_pins.call this
 
 
 # Add interaction to this marker layers (title and description)

@@ -1,14 +1,13 @@
-<tr>
+<tr class="<%= pin.type %>">
   <td>
     <p>
-      <%= flag_tag(pin, "14x14") %>
-      <strong style="font-size:18px;"><%= pin.title %></strong>
+      <h2><%= pin.title %> <small><%= pin.country_name %></small></h2>
     </p>
     <div class="btn-group">
       <%= link_to pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro"), pin_photos_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
       <%= link_to pin.comments_count+" "+content_tag("i", "", class: "icon-comments"), pin_comments_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
       <%= link_to pin.logpages_count+" "+content_tag("i", "", class: "icon-book"), pin_logpages_path(pin), :class => "btn btn-mini btn-tool", :remote => true %>
-      <button style="min-width:45px" class="btn btn-map btn-mini"><i class="icon-map-marker"></i></button>
+      <button style="min-width:45px" class="btn btn-locate <%= pin.get_btn %> btn-mini" data-lat="<%= pin.latitude %>" data-lon="<%= pin.longitude %>" data-zoom="12"><i class="icon-map-marker"></i></button>
     </div>
   </td>
 </tr>
