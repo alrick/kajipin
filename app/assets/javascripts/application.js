@@ -21,9 +21,8 @@
 //= require bootstrap_redefine
 //= require general
 //= require logpages
-//= require map/actions
-//= require map/main
 //= require map/controls
+//= require map/main
 //= require map/ui
 //= require photos
 //= require pins
