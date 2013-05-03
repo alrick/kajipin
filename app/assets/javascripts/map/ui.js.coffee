@@ -3,8 +3,8 @@ jQuery ->
   if ($("#map").length > 0)
 
     # Center information block if present
-    if ($("#info-center").length > 0)
-      info_center = $("#info-center")
+    if ($(".info-center").length > 0)
+      info_center = $(".info-center")
       padding = info_center.css("padding-top").replace("px", "")
       padding = padding*2
       height = info_center.height()

@@ -1,12 +1,13 @@
 <div id="info-user" class="img-circle">
-  <%= image_tag avatar_url(@user, 120), :class => "img-circle" %>
+  <%= image_tag avatar_url(@user, 120), :class => "img-circle", :data => { :placement => "left", :trigger => "hover", :html => "true", :title => "<strong>Achievements</strong>", :content => "<ul class='unstyled'><li><span class='badge badge-map info-user-badge'>#{@user.number_pins}</span> <strong>Locations</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_countries}</span> <strong>Countries</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_continents}</span> <strong>Continents</strong></li></ul>" } %>
   <h1><%= @user.full_name %></h1>
+  <%= sharing_btn() %>
 </div>
 
 <% if can? :read, @user %>
 
   <% if @pins.empty? %>
-    <div id="info-center" class="map-info">
+    <div class="info-center">
       <% if @user == current_user %>
         <p class="lead">You have no pin!</p>
         <%= link_to "Add some", pins_url, :class => "btn btn-map" %>
@@ -30,7 +31,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <div id="info-center" class="map-info">
+  <div class="info-center">
     <p class="lead"><%= @user.first_name %> does not share with you.</p>
 
     <% if Request.where(:user_id => @user.id, :requester_id => current_user.id).exists? %>

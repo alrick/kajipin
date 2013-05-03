@@ -61,6 +61,9 @@ jQuery ->
     $("#side").on "click", ".btn-locate", ->
       gon.setview_from_button.call(this, map)
 
+    # Init achievements popover of user
+    $("#info-user img").popover()
+
     # Only if user has pins to display
     if gon.hasPins
 

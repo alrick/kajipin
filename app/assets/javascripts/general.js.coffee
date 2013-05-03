@@ -23,6 +23,7 @@ jQuery ->
 
   # Set tooltip integration
   $("a[rel~=tooltip]").tooltip()
+  $("button[rel~=tooltip]").tooltip()
 
   # Updage background on not looged in pages
   if $(".notlogged-title").length > 0

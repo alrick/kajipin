@@ -23,8 +23,8 @@ module ApplicationHelper
     end
   end
 
-  def flag_tag(pin, size)
-    image_tag("countries/#{pin.country_code.downcase}.png", :size => size)
+  def sharing_btn()
+    content_tag(:button, "That's you!", :class => "btn btn-social btn-mini", :rel => "tooltip", :data => { :title => "Yeah really..", :placement => "left" })
   end
 
 end
