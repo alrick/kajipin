@@ -1,6 +1,7 @@
-<h1 id="info-user" class="map-info">
-  <%= link_to @user.full_name, modal_user_path(@user), :class => "modal-open", :remote => true %>
-</h1>
+<div id="info-user" class="img-circle">
+  <%= image_tag avatar_url(@user, 120), :class => "img-circle" %>
+  <h1><%= @user.full_name %></h1>
+</div>
 
 <% if can? :read, @user %>
 
