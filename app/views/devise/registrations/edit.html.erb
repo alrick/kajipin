@@ -17,11 +17,6 @@
       
       <%= f.input :first_name, :label => 'First name <i class="icon-globe"></i>' %>
       <%= f.input :last_name, :label => 'Last name <i class="icon-globe"></i>' %>
-      <%= f.input :birth, :label => 'Birth <i class="icon-globe"></i>', :as => :date, 
-                                  :start_year => Date.today.year - 100,
-                                  :end_year => Date.today.year - 12,
-                                  :order => [:day, :month, :year],
-                                  :input_html => { :style => "width: 120px" } %>
       <%= f.input :password, :label => 'New password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it." %>
       <%= f.input :password_confirmation, :label => 'Confirm new password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it." %>
       <%= f.input :current_password, :hint => "We need your current password to confirm your changes." %>

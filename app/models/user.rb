@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   before_validation :alpha_invited? # Check if user is invited
 
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms, :birth, :sex
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms
 
   has_many :pins, dependent: :destroy, :order => "title"
   has_many :comments, dependent: :nullify
@@ -24,13 +24,6 @@ class User < ActiveRecord::Base
   validates :terms, :acceptance => true
 
   default_scope order("first_name", "last_name")
-
-  def age
-    if(!birth.nil?)
-      age = Time.now.utc.to_date
-      age.year - birth.year - ((age.month > birth.month || (age.month == birth.month && age.day >= birth.day)) ? 0 : 1)
-    end
-  end
 
   def full_name
     first_name+" "+last_name
