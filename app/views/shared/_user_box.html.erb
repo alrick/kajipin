@@ -10,6 +10,10 @@
       <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
       <td><strong><%= "Country".pluralize(mate.number_pins) %></strong></td>
     </tr>
+    <tr>
+      <td><span class="badge badge-map"><%= mate.number_continents %></span></td>
+      <td><strong><%= "Continent".pluralize(mate.number_continents) %></strong></td>
+    </tr>
   </table>
   <p>
     <% if current_user.isSharingWith(mate) %>
