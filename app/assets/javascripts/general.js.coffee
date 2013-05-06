@@ -41,14 +41,8 @@ jQuery ->
   # Toggler allow to activate the left sidebar
   $("#toggler").click toggler
 
-  
-
-  
-
-  # Check that we're on correct page (user profile or friendships)
-  if $(".userbox").length > 0
-    #replace text for sharing/unshare
-    $(".btn-unsocial").hoverIntent(
-      -> $(this).html("Unshare").addClass("btn-remove"),
-      -> $(this).html("<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing").removeClass("btn-remove")
-    )
+  # Set unsocial behaviour
+  $(".btn-unsocial").hoverIntent(
+    -> $(this).html("Unshare").addClass("btn-remove"),
+    -> $(this).html("<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing").removeClass("btn-remove")
+  )

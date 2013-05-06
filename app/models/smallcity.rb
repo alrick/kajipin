@@ -34,7 +34,7 @@ class Smallcity < Pin
     "medium"
   end
   def self.marker_symbol
-    "warehouse"
+    "town-hall"
   end
   def self.marker_color
     "#887D75"

@@ -1,5 +1,5 @@
 // User Information block, display user's name
-#info-user {
+.info-user {
   position: absolute;
   bottom: 52px;
   right: 40px;
@@ -31,7 +31,7 @@
     position: absolute;
     bottom: -42px;
     left: -20px;
-    width: 172px;
+    width: 160px;
   }
 }
 .info-user-badge { min-width: 20px; text-align: center; }
