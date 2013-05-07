@@ -1,5 +1,21 @@
 jQuery ->
 
+  #################
+  # FUNCTIONS
+  #################
+  modal_resize = ->
+    doc_height = $(document).height()
+    if doc_height > 800
+      max_height = doc_height - 350 + "px"
+      $(this).children(".modal-body").css "max-height", max_height
+    else
+      $(this).children(".modal-body").css "max-height", "400px"
+
+
+  #################
+  # FLOW
+  #################
+
   # Check that we're on correct page (index pin page)
   if ($("#pins-toolstabs").length > 0)
     # Display correct tab
@@ -20,3 +36,12 @@ jQuery ->
       else
         href = href + "?type=" + addi
       $(this).attr("href", href)
+
+
+  #################
+  # TRIGGERS
+  #################
+
+  # Adjust modal height with size of document for big resolutions
+  $("#pinModal").on "show", ->
+    modal_resize.call(this)

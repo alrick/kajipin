@@ -1,13 +1,13 @@
 jQuery ->
 
   # Check that we're on correct page
-  if $("#map").length > 0
+  if $("#map").length
 
     #################
-    # FLOW
+    # MAP INIT
     #################
 
-    # Map init
+    # Create map
     map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
       worldCopyJump: true
@@ -15,66 +15,27 @@ jQuery ->
       #maxBounds: [[-90,-180.0],[90,180.0]] seems buggy for now
     ).fitWorld()
 
+    # Map public accessor
+    gon.map = map
+
     # Only if user has pins to display
     if gon.hasPins
 
       # Create markerLayers for each type of pins
-      pinsLayer = L.mapbox.markerLayer(gon.pins)
+
+      pinsLayer = L.geoJson gon.pins,
+        pointToLayer: L.mapbox.marker.style,
+        onEachFeature: (feature, layer) ->
+          layer.bindPopup "hello"#feature.properties.description
+
+      #pinsLayer = L.mapbox.markerLayer(gon.pins)
+
       # Create cluster
       cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false })
       cluster.addLayer pinsLayer
+
       # Add cluster to map
       map.addLayer cluster
-
-
-    #################
-    # TRIGGERS
-    #################
-
-    # Set worldmap zoom func
-    $("#world-zoom").click ->
-      map.fitWorld()
-
-    # Set countries bounds func
-    $(".map-countryitem").click ->
-      map.fitBounds([
-        [$(this).attr("data-south"), $(this).attr("data-west")],
-        [$(this).attr("data-north"), $(this).attr("data-east")]
-      ])
-
-    # Set the countries list button trigger
-    $("#countries-zoom").click ->
-      gon.show_countries_list(map)
-
-    # Hide the countries list on click if visible
-    $("html").click ->
-      gon.hide_countries_list(map)
-
-    # Click on the list doesn't hide it
-    $("#countries-list").click (event) ->
-      event.stopPropagation()
-
-    # Locate a pin when click from side
-    $("#side").on "click", ".btn-locate", ->
-      gon.setview_from_button.call(this, map)
-
-    # Init achievements popover of user
-    $(".info-user img").popover()
-
-    # Only if user has pins to display
-    if gon.hasPins
-
-      # Show and hide city pins
-      $("#city-filter").click ->
-        gon.filter_pins.call this
-
-      # Show and hide town pins
-      $("#town-filter").click ->
-        gon.filter_pins.call this
-
-      # Show and hide poi pins
-      $("#poi-filter").click ->
-        gon.filter_pins.call this
 
 
 # Add interaction to this marker layers (title and description)

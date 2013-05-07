@@ -17,13 +17,15 @@
 //= require hoverintent/jquery.hoverIntent.minified
 //
 //= require leaflet.markercluster
-//= require devise
 //= require bootstrap_redefine
 //= require general
-//= require logpages
+//
+//= require map/init
 //= require map/controls
-//= require map/main
-//= require map/ui
+//= require map/elements
+//
+//= require devise
+//= require logpages
 //= require photos
 //= require pins
 //= require requests
