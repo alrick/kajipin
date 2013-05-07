@@ -24,14 +24,9 @@ class UsersController < GeoController
       # Check user has added pins
       gon.hasPins = !@user.pins.empty?
 
-      # Generate geojson for each type of pins
-      @pins = @user.pins.city
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "bctPins"
-      @pins = @user.pins.town
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "townPins"
-      @pins = @user.pins.poi
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poiPins"
+      # Generate geojson
       @pins = @user.pins
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "pins"
     end
   end
 

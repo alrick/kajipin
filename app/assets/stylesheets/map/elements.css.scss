@@ -31,10 +31,10 @@
     position: absolute;
     bottom: -42px;
     left: -20px;
-    width: 160px;
+    width: 158px;
   }
+  .badge { min-width: 20px; text-align: center; }
 }
-.info-user-badge { min-width: 20px; text-align: center; }
 
 // Center Information block
 .info-center {
@@ -56,7 +56,7 @@
 }
 
 // Copyright block
-.map-copyright {
+#copyright {
   background: $lighter-color;
   position: absolute;
   z-index: 1000;

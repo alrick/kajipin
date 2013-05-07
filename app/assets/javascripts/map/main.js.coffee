@@ -19,15 +19,12 @@ jQuery ->
     if gon.hasPins
 
       # Create markerLayers for each type of pins
-      bctLayer = L.mapbox.markerLayer(gon.bctPins)
-      townLayer = L.mapbox.markerLayer(gon.townPins)
-      poiLayer = L.mapbox.markerLayer(gon.poiPins)
-
-      markers = new L.MarkerClusterGroup({ showCoverageOnHover:false })
-      markers.addLayer bctLayer
-      markers.addLayer townLayer
-      markers.addLayer poiLayer
-      map.addLayer markers
+      pinsLayer = L.mapbox.markerLayer(gon.pins)
+      # Create cluster
+      cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false })
+      cluster.addLayer pinsLayer
+      # Add cluster to map
+      map.addLayer cluster
 
 
     #################
@@ -35,7 +32,7 @@ jQuery ->
     #################
 
     # Set worldmap zoom func
-    $("#map-world").click ->
+    $("#world-zoom").click ->
       map.fitWorld()
 
     # Set countries bounds func
@@ -46,7 +43,7 @@ jQuery ->
       ])
 
     # Set the countries list button trigger
-    $("#map-countries").click ->
+    $("#countries-zoom").click ->
       gon.show_countries_list(map)
 
     # Hide the countries list on click if visible
@@ -54,7 +51,7 @@ jQuery ->
       gon.hide_countries_list(map)
 
     # Click on the list doesn't hide it
-    $("#map-countrieslist").click (event) ->
+    $("#countries-list").click (event) ->
       event.stopPropagation()
 
     # Locate a pin when click from side
@@ -68,15 +65,15 @@ jQuery ->
     if gon.hasPins
 
       # Show and hide city pins
-      $("#map-city").click ->
+      $("#city-filter").click ->
         gon.filter_pins.call this
 
       # Show and hide town pins
-      $("#map-town").click ->
+      $("#town-filter").click ->
         gon.filter_pins.call this
 
       # Show and hide poi pins
-      $("#map-pointofinterest").click ->
+      $("#poi-filter").click ->
         gon.filter_pins.call this
 
 

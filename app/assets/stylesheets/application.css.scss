@@ -9,13 +9,20 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap_and_overrides
- *= require buttons
+ *= require boringstuff/bootstrap_and_overrides
+ *= require boringstuff/buttons
  *= require markercluster
 */
-@import "init.css.scss";
-@import "bootstrap_redefine.css.scss";
-@import "general.css.scss";
+
+@import "boringstuff/init.css.scss";
+@import "boringstuff/bootstrap_redefine.css.scss";
+@import "boringstuff/general.css.scss";
+
+@import "map/clusters.css.scss";
+@import "map/controls.css.scss";
+@import "map/elements.css.scss";
+@import "map/tooltips.css.scss";
+
 @import "comments.css.scss";
 @import "devise.css.scss";
 @import "friendships.css.scss";
@@ -26,7 +33,3 @@
 @import "requests.css.scss";
 @import "static.css.scss";
 @import "users.css.scss";
-@import "map/clusters.css.scss";
-@import "map/controls.css.scss";
-@import "map/elements.css.scss";
-@import "map/tooltips.css.scss";

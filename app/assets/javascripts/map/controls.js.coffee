@@ -38,7 +38,7 @@ jQuery ->
 
   # Display countries list
   gon.show_countries_list = (map) ->
-    countriesList = $("#map-countrieslist")
+    countriesList = $("#countries-list")
     if countriesList.is ":hidden"
       event.stopPropagation()
       countriesList.show()
@@ -46,7 +46,7 @@ jQuery ->
 
   # Hide countries list
   gon.hide_countries_list = (map) ->
-    countriesList = $("#map-countrieslist")
+    countriesList = $("#countries-list")
     if countriesList.is ":visible"
       countriesList.hide()
       enable_interaction(map)

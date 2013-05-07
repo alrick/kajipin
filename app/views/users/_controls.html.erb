@@ -1,0 +1,26 @@
+<a id="world-zoom" class="control zoom" rel="tooltip" title="Fit World" data-placement="right">
+  <i class="icon-globe"></i>
+</a>
+<a id="countries-zoom" class="control zoom" rel="tooltip" title="Fit Country" data-placement="right">
+  <i class="icon-list-alt"></i>
+</a>
+
+<ul id="countries-list">
+  <% @countries.each do |country| %>
+    <li class="map-countryitem" data-north="<%= country["north"]%>" data-east="<%= country["east"]%>" data-south="<%= country["south"]%>" data-west="<%= country["west"]%>">
+      <%= country["name"] %>
+    </li>
+  <% end %>
+</ul>
+
+<% if can? :read, @user %>
+  <a id="city-filter" class="control pins-filter" rel="tooltip" title="Filter Cities" data-placement="bottom" data-type="<%= City.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="town-filter" class="control pins-filter" rel="tooltip" title="Filter Towns" data-placement="bottom" data-type="<%= Town.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="poi-filter" class="control pins-filter" rel="tooltip" title="Filter Point of interest" data-placement="bottom" data-type="<%= Poi.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+<% end %>
