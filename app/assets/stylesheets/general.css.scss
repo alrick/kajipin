@@ -22,8 +22,8 @@
       }
       .stats {
         font-size: 20px;
-        .bigcity { color: $map-color; }
-        .smallcity { color: $main-color; }
+        .city { color: $map-color; }
+        .town { color: $main-color; }
         .poi { color: $extra-color; }
       }
     }

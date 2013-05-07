@@ -1,20 +1,20 @@
-class Bigcity < Pin
+class City < Pin
 
   # Instance methods
   def fancy_name
-    Bigcity.fancy_name
+    City.fancy_name
   end
   def description
-    Bigcity.description
+    City.description
   end
   def marker_size
-    Bigcity.marker_size
+    City.marker_size
   end
   def marker_symbol
-    Bigcity.marker_symbol
+    City.marker_symbol
   end
   def marker_color
-    Bigcity.marker_color
+    City.marker_color
   end
   def get_tab
     "b"
@@ -25,10 +25,7 @@ class Bigcity < Pin
 
   # Class methods
   def self.fancy_name
-    "Big city"
-  end
-  def self.description
-    "This is a big city for you!"
+    "City"
   end
   def self.marker_size
     "large"
@@ -41,8 +38,8 @@ class Bigcity < Pin
   end
   def self.marker_path
     dir = "markers/"
-    color = Bigcity.marker_color[1..-1]
-    symbol = Bigcity.marker_symbol
+    color = City.marker_color[1..-1]
+    symbol = City.marker_symbol
     ext = ".png"
     marker_path = dir+symbol+"+"+color+ext
   end

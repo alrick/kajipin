@@ -4,7 +4,7 @@ jQuery ->
   if ($("#pins-toolstabs").length > 0)
     # Display correct tab
     if (gon.tab == "s")
-      $("#pins-toolstabs a[href=\"#smallcity\"]").tab("show")
+      $("#pins-toolstabs a[href=\"#town\"]").tab("show")
     else if (gon.tab == "p")
       $("#pins-toolstabs a[href=\"#pointofinterest\"]").tab("show")
 

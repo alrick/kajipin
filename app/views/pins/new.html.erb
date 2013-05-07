@@ -12,11 +12,11 @@
     <p><strong>First, you've to choose a category for your pin :</strong></p>
     <div id="pins-types">
       <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" class="btn active" value="<%= Bigcity.sti_name %>">
-          <%= image_tag(Bigcity.marker_path, :width => "20") %> <strong>Big city</strong>
+        <button type="button" class="btn active" value="<%= City.sti_name %>">
+          <%= image_tag(City.marker_path, :width => "20") %> <strong>City</strong>
         </button>
-        <button type="button" class="btn" value="<%= Smallcity.sti_name %>">
-          <%= image_tag(Smallcity.marker_path, :width => "20") %> <strong>Small city</strong>
+        <button type="button" class="btn" value="<%= Town.sti_name %>">
+          <%= image_tag(Town.marker_path, :width => "20") %> <strong>Town</strong>
         </button>
         <button type="button" class="btn" value="<%= Poi.sti_name %>">
           <%= image_tag(Poi.marker_path, :width => "20") %> <strong>Point of interest</strong>

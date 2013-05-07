@@ -31,14 +31,14 @@
         <b class="caret"></b>
       </a>
       <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-type-btn">
-        <% unless pin.type == Bigcity.sti_name %>
+        <% unless pin.type == City.sti_name %>
           <li>
-            <%= link_to Bigcity.fancy_name, pin_path(pin, :type => Bigcity.sti_name), :method => :put, "tabindex" => "-1" %>
+            <%= link_to City.fancy_name, pin_path(pin, :type => City.sti_name), :method => :put, "tabindex" => "-1" %>
           </li>
         <% end %>
-        <% unless pin.type == Smallcity.sti_name %>
+        <% unless pin.type == Town.sti_name %>
           <li>
-            <%= link_to Smallcity.fancy_name, pin_path(pin, :type => Smallcity.sti_name), :method => :put, "tabindex" => "-1" %>
+            <%= link_to Town.fancy_name, pin_path(pin, :type => Town.sti_name), :method => :put, "tabindex" => "-1" %>
           </li>
         <% end %>
         <% unless pin.type == Poi.sti_name %>

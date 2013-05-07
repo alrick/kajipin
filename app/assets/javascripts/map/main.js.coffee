@@ -20,12 +20,12 @@ jQuery ->
 
       # Create markerLayers for each type of pins
       bctLayer = L.mapbox.markerLayer(gon.bctPins)
-      sctLayer = L.mapbox.markerLayer(gon.sctPins)
+      townLayer = L.mapbox.markerLayer(gon.townPins)
       poiLayer = L.mapbox.markerLayer(gon.poiPins)
 
       markers = new L.MarkerClusterGroup({ showCoverageOnHover:false })
       markers.addLayer bctLayer
-      markers.addLayer sctLayer
+      markers.addLayer townLayer
       markers.addLayer poiLayer
       map.addLayer markers
 
@@ -67,15 +67,15 @@ jQuery ->
     # Only if user has pins to display
     if gon.hasPins
 
-      # Show and hide bigcity pins
-      $("#map-bigcity").click ->
+      # Show and hide city pins
+      $("#map-city").click ->
         gon.filter_pins.call this
 
-      # Show and hide smallcity pins
-      $("#map-smallcity").click ->
+      # Show and hide town pins
+      $("#map-town").click ->
         gon.filter_pins.call this
 
-      # Show and hide bigcity pins
+      # Show and hide poi pins
       $("#map-pointofinterest").click ->
         gon.filter_pins.call this
 

@@ -34,8 +34,8 @@
   font-size: 14px;
   &:hover { color: darken($lighter-color, 10%); }
 }
-#map-bigcity { left: 53px; background: $map-color; }
-#map-smallcity { left: 84px; background: $main-color; }
+#map-city { left: 53px; background: $map-color; }
+#map-town { left: 84px; background: $main-color; }
 #map-pointofinterest { left: 115px; background: $extra-color; }
 
 // List of all countries
