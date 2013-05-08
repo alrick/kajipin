@@ -45,3 +45,7 @@ jQuery ->
   # Adjust modal height with size of document for big resolutions
   $("#pinModal").on "show", ->
     modal_resize.call(this)
+    gon.disable_interaction gon.map
+
+  $("#pinModal").on "hide", ->
+    gon.enable_interaction gon.map

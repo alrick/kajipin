@@ -25,8 +25,15 @@ class UsersController < GeoController
       gon.hasPins = !@user.pins.empty?
 
       # Generate geojson
+      @pins = @user.pins.city
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "cities"
+      @pins = @user.pins.town
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "towns"
+      @pins = @user.pins.poi
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poi"
+
+      # Reset pins to all pins for side
       @pins = @user.pins
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "pins"
     end
   end
 

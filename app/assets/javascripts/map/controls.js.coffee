@@ -4,8 +4,8 @@ jQuery ->
   # FUNCTIONS
   #################
 
-  # Allow to enable all zooming and paning
-  enable_interaction = (map) ->
+  # PUBLIC : Allow to enable all zooming and paning
+  gon.enable_interaction = (map) ->
     map.dragging.enable()
     map.touchZoom.enable()
     map.scrollWheelZoom.enable()
@@ -13,8 +13,8 @@ jQuery ->
     map.boxZoom.enable()
     map.keyboard.enable()
 
-  # Allow to disable all zooming and paning
-  disable_interaction = (map) ->
+  # PUBLIC : Allow to disable all zooming and paning
+  gon.disable_interaction = (map) ->
     map.dragging.disable()
     map.touchZoom.disable()
     map.scrollWheelZoom.disable()
