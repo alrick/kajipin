@@ -12,7 +12,6 @@ jQuery ->
       attributionControl: false
       worldCopyJump: true
       minZoom: 3
-      #maxBounds: [[-90,-180.0],[90,180.0]] seems buggy for now
     ).fitWorld()
 
     # Map public accessor
