@@ -1,5 +1,8 @@
 // Tooltips of pins
-//.map-tooltiptitle { font-size: 24px; line-height: 10px; color: $content-color; }
-//.map-tooltipcountry { font-size: 14px; line-height: 10px; color: $content-color; }
-//.map-tooltipbtn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
-//.map-tooltipzoom { margin-top: 2px; }
+.pin-tooltip {
+  text-align: center;
+  padding: 5px;
+  h2 { font-size: 24px; line-height: 10px; color: $content-color; }
+  h3 { font-size: 14px; line-height: 10px; color: $content-color; }
+  .btn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
+}
