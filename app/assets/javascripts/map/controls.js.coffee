@@ -31,6 +31,19 @@ jQuery ->
     else
       side.find(type).fadeOut()
 
+  # Filter map pins
+  filter_map_pins = (type, state) ->
+    if type == "City"
+      layer = gon.citiesList
+    else if type == "Town"
+      layer = gon.townsList
+    else if type == "Poi"
+      layer = gon.poiList
+    if state
+      gon.cluster.addLayers(layer)
+    else
+      gon.cluster.removeLayers(layer)
+
   # Display countries list
   show_countries_list = (map) ->
     countriesList = $("#countries-list")
@@ -59,6 +72,7 @@ jQuery ->
     type = $(this).data "type"
     state = icon.hasClass "icon-eye-open"
     filter_side_pins(type, state)
+    filter_map_pins(type, state)
 
 
   #################

@@ -15,9 +15,6 @@ jQuery ->
       keyboard: false # disable for now because re-enable is buggy
     ).fitWorld()
 
-    # Map public accessor
-    gon.map = map
-
     # Only if user has pins to display
     if gon.hasPins
 
@@ -45,12 +42,17 @@ jQuery ->
           layer.bindPopup gon.build_tooltip(feature)
           poiList.push(layer)
 
-      # Create cluster and add to map
+      # Create cluster, add markers and add to map
       cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false })
       cluster.addLayers citiesList
       cluster.addLayers townsList
       cluster.addLayers poiList
       map.addLayer cluster
 
-      $("#city-filter").click ->
-        cluster.removeLayers citiesList
+    # Set public accessors
+    gon.map = map
+    if gon.hasPins
+      gon.citiesList = citiesList
+      gon.townsList = townsList
+      gon.poiList = poiList
+      gon.cluster = cluster
