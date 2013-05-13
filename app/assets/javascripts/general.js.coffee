@@ -25,7 +25,7 @@ jQuery ->
   $("a[rel~=tooltip]").tooltip()
   $("button[rel~=tooltip]").tooltip()
 
-  # Updage background on not looged in pages
+  # Update background on not logged in pages
   if $(".notlogged-title").length > 0
     $("body").css("background", "#4A4356")
 

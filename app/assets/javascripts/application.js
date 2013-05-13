@@ -21,9 +21,9 @@
 //= require general
 //
 //= require map/tooltips
-//= require map/init
 //= require map/controls
 //= require map/elements
+//= require map/init
 //
 //= require devise
 //= require logpages
