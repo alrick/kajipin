@@ -50,14 +50,14 @@ jQuery ->
     if countriesList.is ":hidden"
       event.stopPropagation()
       countriesList.show()
-      disable_interaction(map)
+      gon.disable_interaction(map)
 
   # Hide countries list
   hide_countries_list = (map) ->
     countriesList = $("#countries-list")
     if countriesList.is ":visible"
       countriesList.hide()
-      enable_interaction(map)
+      gon.enable_interaction(map)
 
   # Get data from button and setview
   setview_from_button = (map) ->
