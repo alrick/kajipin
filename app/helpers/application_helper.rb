@@ -1,11 +1,6 @@
 module ApplicationHelper
 
-  def gravatar_url(user, size)
-    if user.nil?
-      email = "no_user@kajipin.com"
-    else
-      email = user.email.downcase
-    end
+  def gravatar_url(email, size)
     gravatar_hash = Digest::MD5.hexdigest(email)
     # s = size, d = default avatar, r = rating (g for any audience type)
     "http://gravatar.com/avatar/#{gravatar_hash}?s=#{size}&d=mm&r=g"
@@ -16,8 +11,12 @@ module ApplicationHelper
   end
 
   def avatar_url(user, size)
-    if user.avatar.nil?
-      gravatar_url(user, size)
+    if user.nil?
+      email = "no_user@kajipin.com"
+      gravatar_url(email, size)
+    elsif user.avatar.nil?
+      email = user.email.downcase
+      gravatar_url(email, size)
     else
       fp_url(user.avatar.url, size, size, "crop")
     end
