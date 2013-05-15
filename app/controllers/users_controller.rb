@@ -15,11 +15,18 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
+
+    # Get a list of all countries
+    @countries_list = Country.list
+    @visited_countries = Hash.new
+
+    # Only if current user can read the profile
     if can? :read, @user
-      
-      # Get a list of all countries
-      @countries_list = Country.list
+
+      # Countries the @user has pins to
+      @visited_countries = @user.visited_countries
 
       # Check user has added pins
       gon.hasPins = !@user.pins.empty?
