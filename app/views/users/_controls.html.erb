@@ -6,9 +6,15 @@
 </a>
 
 <ul id="countries-list">
-  <% @countries.each do |country| %>
-    <li class="map-countryitem" data-north="<%= country["north"]%>" data-east="<%= country["east"]%>" data-south="<%= country["south"]%>" data-west="<%= country["west"]%>">
-      <%= country["name"] %>
+  <% @user.visited_countries.each do |c| %>
+    <li class="country-item" data-north="<%= c["north"]%>" data-east="<%= c["east"]%>" data-south="<%= c["south"]%>" data-west="<%= c["west"]%>">
+      <i class="icon-map-marker"></i> <%= c["name"] %>
+    </li>
+  <% end %>
+  <li>------</li>
+  <% @countries_list.each do |c| %>
+    <li class="country-item" data-north="<%= c["north"]%>" data-east="<%= c["east"]%>" data-south="<%= c["south"]%>" data-west="<%= c["west"]%>">
+      <%= c["name"] %>
     </li>
   <% end %>
 </ul>

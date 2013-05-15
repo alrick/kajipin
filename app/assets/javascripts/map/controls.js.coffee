@@ -84,7 +84,7 @@ jQuery ->
     gon.map.fitWorld()
 
   # Set countries bounds func
-  $(".map-countryitem").click ->
+  $(".country-item").click ->
     gon.map.fitBounds([
       [$(this).attr("data-south"), $(this).attr("data-west")],
       [$(this).attr("data-north"), $(this).attr("data-east")]

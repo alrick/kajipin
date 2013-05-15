@@ -68,6 +68,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Get list of countries
+  def visited_countries
+    countries = Country.list
+    visited_codes = pins.map(&:country_code).uniq
+    countries.select! { |c| visited_codes.include? c["countryCode"] }
+    countries.sort! { |a,b| a["name"].downcase <=> b["name"].downcase }
+  end
+
   # Overriding confirm to add user to Madmimi
   def confirm!
     mimi = MadMimi.new(ENV["MADMIMI_EMAIL"], ENV["MADMIMI_KEY"])
