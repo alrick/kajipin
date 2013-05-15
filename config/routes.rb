@@ -1,6 +1,6 @@
 Kajipin::Application.routes.draw do
 
-  devise_for :users, :path => ""
+  devise_for :users, :path => "", :controllers => { :registrations => :registrations }
 
   resources :users, :only => [:index, :show] do
     get 'modal', :on => :member
