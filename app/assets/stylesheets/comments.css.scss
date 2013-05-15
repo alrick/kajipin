@@ -1,6 +1,7 @@
 // Space comments
 #comments-container {
   margin-left: 20px;
+  a { color: $main-color; }
 }
 
 // Style comments of a pin
@@ -14,6 +15,7 @@
         &:hover { opacity: 1; }
       }
     }
+    small { font-size: 12px; }
   }
 }
 

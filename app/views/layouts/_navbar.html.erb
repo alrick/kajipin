@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
+      <% if layout == "map" %><button id="toggler" class="btn btn-map" type="button" style="float:left; margin-left:20px;"><i class="icon-list"></i></button><% end %>
       <div class="container">
         <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), user_path(current_user), :class => "brand" %>
         <ul class="nav">

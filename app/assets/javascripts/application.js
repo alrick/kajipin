@@ -14,6 +14,19 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require mapbox/mapbox
 //= require hoverintent/jquery.hoverIntent.minified
-//= require_tree .
+//
+//= require leaflet.markercluster
+//= require bootstrap_redefine
+//= require general
+//
+//= require map/tooltips
+//= require map/controls
+//= require map/elements
+//= require map/init
+//
+//= require devise
+//= require logpages
+//= require photos
+//= require pins
+//= require requests

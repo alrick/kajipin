@@ -12,26 +12,5 @@
     </div>
   </div>
 
-  <div id="listModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="listModalLabel" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h2 id="listModalLabel"><i class="icon-map-marker"></i> <%= @user.first_name %>'s Pins</h2>
-    </div>
-    <div class="modal-body">
-      <p class="lead">Stop looking at me, I'm pretty naked!</p>
-    </div>
-  </div>
-
   <div id="photoModal"></div>
 <% end %>
-
-<div id="userModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h1 id="userModalLabel"><%= @user.full_name %> <small><%= "("+@user.age.to_s+" years old)" unless @user.age.nil? %></small></h1>
-  </div>
-  <div class="modal-body">
-    <p class="lead">Stop looking at me, I'm pretty naked!</p>
-  </div>
-  <div class="modal-footer"></div>
-</div>

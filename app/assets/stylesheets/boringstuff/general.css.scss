@@ -1,0 +1,98 @@
+// Main container for the map pages
+#main {
+  position: absolute;
+  top: 53px;
+  bottom: 0;
+  width: 100%;
+  background-color: $water-color;
+  #side {
+    width: 300px;
+    height: 100%;
+    background: lighten($main-color, 46%);
+    margin: 0;
+    overflow: auto;
+    float: left;
+    .in-side {
+      padding: 20px;
+      .btn { min-width: 45px; }
+      h2 {
+        font-size: 18px;
+        line-height: 12px;
+        small { font-size: 12px; }
+      }
+      .stats {
+        font-size: 20px;
+        .city { color: $map-color; }
+        .town { color: $main-color; }
+        .poi { color: $extra-color; }
+      }
+    }
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    background-color: $water-color;
+  }
+}
+
+// Title for not logged in pages
+.notlogged-title {
+  text-align: center;
+  font-weight: 100;
+  font-size: 60px;
+  margin-bottom: 50px;
+  color: $lighter-color;
+  small {
+    font-weight: 100;
+    color: $lighter-color;
+  }
+}
+
+// Style main menu
+#global-menufirst {
+  img {
+    float: left;
+    margin-right: 9px;
+  } // Style for the avatar of the main menu
+  strong { font-size: 14px; } // Style for the username of the main menu
+  p {
+    font-size: 11px;
+    height: 7px;
+  } // Style for the View profile info of the main menu
+}
+
+// For the beta information
+#betasig { font-size: 0.6em; }
+
+// No margin effects
+.no-margin { margin: 0 !important; }
+.no-bottom-margin { margin-bottom: 0 !important; }
+
+// Standard margin bottom
+.s-margin-bottom { margin-bottom: 20px !important; }
+
+// Remove the focus on modal link
+.modal-open { outline: none !important; }
+
+// Unify user menu items
+.usermenu-item i { display: inline-block !important; }
+
+// Highlight inbox if requests pending
+.active-inbox { color: $social-color !important; }
+
+// Helper to put element behind bootstrap backdrop
+.behind-backdrop { z-index: 1000 !important; }
+
+// Side title need extra top margins
+.side-title { margin-top: 50px; }
+
+// Define text selection color
+::selection {
+  background: lighten($extra-color, 20%);
+}
+::-moz-selection {
+  background: lighten($extra-color, 20%);
+}

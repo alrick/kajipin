@@ -16,8 +16,8 @@ class Pin < ActiveRecord::Base
   validate :check_limit, :on => :create
   validate :check_high_populated_limit, :on => :create
 
-  scope :bigcity, where(:type => "Bigcity")
-  scope :smallcity, where(:type => "Smallcity")
+  scope :city, where(:type => "City")
+  scope :town, where(:type => "Town")
   scope :poi, where(:type => "Poi")
   scope :high_populated, where("population >= 1000000")
 

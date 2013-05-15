@@ -11,6 +11,12 @@ class CommentsController < ApplicationController
     @page = params[:page] # required to pass current page to destroy action
     @comments = @pin.comments.page(@page).per(10)
 
+    # Display last page if no more message in page set
+    last = @comments.num_pages
+    if @page.to_i > last
+      @comments = @pin.comments.page(last).per(10)
+    end
+
     respond_to do |format|
       format.js
     end
@@ -21,8 +27,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      last_page = @pin.comments.page(1).per(10).num_pages
-      redirect_to pin_comments_url(@pin, :page => last_page)
+      redirect_to pin_comments_url(@pin, :page => params[:last])
     else
       respond_to do |format|
         format.js
@@ -34,18 +39,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     page = params[:page]
 
-    if @comment.destroy
-      last_page = @pin.comments.page(1).per(10).num_pages
-      # Determine page to display, current or last if current is empty
-      if page.to_i > last_page.to_i
-        page = last_page
-      end
-      
-      redirect_to pin_comments_url(@pin, :page => page)
-    else
-      respond_to do |format|
-        format.js
-      end
+    @comment.destroy
+    respond_to do |format|
+      format.js
     end
   end
 end

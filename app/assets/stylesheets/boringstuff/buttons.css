@@ -1,0 +1,151 @@
+/* Button crud for all common actions */
+.btn-other {
+  background-color: hsl(20, 10%, 43%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a0928b", endColorstr="#786962");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a0928b), to(#786962));
+  background-image: -moz-linear-gradient(top, #a0928b, #786962);
+  background-image: -ms-linear-gradient(top, #a0928b, #786962);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a0928b), color-stop(100%, #786962));
+  background-image: -webkit-linear-gradient(top, #a0928b, #786962);
+  background-image: -o-linear-gradient(top, #a0928b, #786962);
+  background-image: linear-gradient(#a0928b, #786962);
+  border-color: #786962 #786962 hsl(20, 10%, 39%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.26);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Button map for all buttons related to map + signup buttons */
+.btn-map, .btn-city {
+  background-color: hsl(257, 23%, 24%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#65568a", endColorstr="#372f4b");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#65568a), to(#372f4b));
+  background-image: -moz-linear-gradient(top, #65568a, #372f4b);
+  background-image: -ms-linear-gradient(top, #65568a, #372f4b);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #65568a), color-stop(100%, #372f4b));
+  background-image: -webkit-linear-gradient(top, #65568a, #372f4b);
+  background-image: -o-linear-gradient(top, #65568a, #372f4b);
+  background-image: linear-gradient(#65568a, #372f4b);
+  border-color: #372f4b #372f4b hsl(257, 23%, 19%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Button tool for all buttons related to tools */
+.btn-tool {
+  background-color: hsl(26, 24%, 15%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6e5643", endColorstr="#2f251d");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#6e5643), to(#2f251d));
+  background-image: -moz-linear-gradient(top, #6e5643, #2f251d);
+  background-image: -ms-linear-gradient(top, #6e5643, #2f251d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6e5643), color-stop(100%, #2f251d));
+  background-image: -webkit-linear-gradient(top, #6e5643, #2f251d);
+  background-image: -o-linear-gradient(top, #6e5643, #2f251d);
+  background-image: linear-gradient(#6e5643, #2f251d);
+  border-color: #2f251d #2f251d hsl(26, 24%, 10%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Specific town button */
+.btn-town {
+  background-color: hsl(20, 10%, 41%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a59891", endColorstr="#73655e");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a59891), to(#73655e));
+  background-image: -moz-linear-gradient(top, #a59891, #73655e);
+  background-image: -ms-linear-gradient(top, #a59891, #73655e);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a59891), color-stop(100%, #73655e));
+  background-image: -webkit-linear-gradient(top, #a59891, #73655e);
+  background-image: -o-linear-gradient(top, #a59891, #73655e);
+  background-image: linear-gradient(#a59891, #73655e);
+  border-color: #73655e #73655e hsl(20, 10%, 36%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Specific poi button */
+.btn-poi {
+  background-color: hsl(196, 24%, 50%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a0bbc4", endColorstr="#608d9e");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#a0bbc4), to(#608d9e));
+  background-image: -moz-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -ms-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a0bbc4), color-stop(100%, #608d9e));
+  background-image: -webkit-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: -o-linear-gradient(top, #a0bbc4, #608d9e);
+  background-image: linear-gradient(#a0bbc4, #608d9e);
+  border-color: #608d9e #608d9e hsl(196, 24%, 45%);
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Button social for all buttons related to social like add a friend, comment a pin.. */
+.btn-social {
+  background-color: hsl(36, 100%, 40%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffad32", endColorstr="#cc7a00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffad32), to(#cc7a00));
+  background-image: -moz-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -ms-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffad32), color-stop(100%, #cc7a00));
+  background-image: -webkit-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -o-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: linear-gradient(#ffad32, #cc7a00);
+  border-color: #cc7a00 #cc7a00 hsl(36, 100%, 35%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Button remove change color for delete button */
+.btn-remove:hover {
+  background-color: hsl(0, 69%, 22%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111));
+  background-image: -moz-linear-gradient(top, #b42121, #5e1111);
+  background-image: -ms-linear-gradient(top, #b42121, #5e1111);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111));
+  background-image: -webkit-linear-gradient(top, #b42121, #5e1111);
+  background-image: -o-linear-gradient(top, #b42121, #5e1111);
+  background-image: linear-gradient(#b42121, #5e1111);
+  border-color: #5e1111 #5e1111 hsl(0, 69%, 17%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+/* Button confirm is the button to confirm deletion */
+.btn-confirm {
+  background-color: hsl(0, 69%, 22%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b42121", endColorstr="#5e1111");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#b42121), to(#5e1111));
+  background-image: -moz-linear-gradient(top, #b42121, #5e1111);
+  background-image: -ms-linear-gradient(top, #b42121, #5e1111);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b42121), color-stop(100%, #5e1111));
+  background-image: -webkit-linear-gradient(top, #b42121, #5e1111);
+  background-image: -o-linear-gradient(top, #b42121, #5e1111);
+  background-image: linear-gradient(#b42121, #5e1111);
+  border-color: #5e1111 #5e1111 hsl(0, 69%, 17%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}

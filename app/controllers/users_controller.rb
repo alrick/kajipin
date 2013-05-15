@@ -1,12 +1,9 @@
-require 'nokogiri'
-
-class UsersController < GeoController
+class UsersController < ApplicationController
   
   # Devise authentication
   before_filter :authenticate_user!
   
   before_filter :get_user, :only => [:show]
-  before_filter :get_countries, :only => [:show]
 
   layout "map", :only => [:show]
 
@@ -18,10 +15,32 @@ class UsersController < GeoController
   end
 
   def show
+    # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
+
+    # Get a list of all countries
+    @countries_list = Country.list
+    @visited_countries = Hash.new
+
+    # Only if current user can read the profile
     if can? :read, @user
+
+      # Countries the @user has pins to
+      @visited_countries = @user.visited_countries
+
+      # Check user has added pins
+      gon.hasPins = !@user.pins.empty?
+
+      # Generate geojson
+      @pins = @user.pins.city
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "cities"
+      @pins = @user.pins.town
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "towns"
+      @pins = @user.pins.poi
+      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poi"
+
+      # Reset pins to all pins for side
       @pins = @user.pins
-      gon.watch.rabl "app/views/pins/index.json.rabl", as: "pins"
     end
   end
 

@@ -1,0 +1,82 @@
+// User Information block, display user's name
+.info-user {
+  position: absolute;
+  bottom: 52px;
+  right: 40px;
+  background: #eee;
+  padding: 5px;
+  z-index: 1000;
+  width: 120px;
+  opacity: 0.8;
+  box-shadow: rgba(0, 0, 0, 0.199219) 0px 5px 10px 0px;
+  h1 {
+    background: $lighter-color;
+    font-size: 20px !important;
+    border-radius: 5px;
+    word-wrap: break-word; // Auto return if long name
+    margin: 0;
+    font-weight: normal;
+    border: 1px solid darken($lighter-color, 20%);
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 160px;
+    text-align: center;
+    color: $main-color;
+    line-height: 20px;
+    padding: 7px 5px;
+    box-shadow: rgba(0, 0, 0, 0.199219) 0px 5px 10px 0px;
+  }
+  .btn-social {
+    position: absolute;
+    bottom: -42px;
+    left: -20px;
+    width: 158px;
+  }
+  .badge { min-width: 20px; text-align: center; }
+}
+
+// Center Information block
+.info-center {
+  line-height: 20px;
+  background: $lighter-color;
+  position: absolute;
+  z-index: 1000;
+  text-align: center;
+  border: 1px solid darken($lighter-color, 20%);
+  color: $main-color !important;
+  width: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -240px;
+  padding: 40px;
+  opacity: 0.8;
+  border-radius: 10px;
+  .lead { font-size: 30px; }
+}
+
+// Copyright block
+#copyright {
+  background: $lighter-color;
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  font-size: 11px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0 5px;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.6;
+  a { color: $main-color; }
+}
+
+// Custom alert for map
+.alert-map {
+  position: absolute;
+  width: 888px;
+  z-index: 999;
+  left: 50%;
+  margin-left: -444px;
+  box-shadow: 0 1px 5px #888;
+}

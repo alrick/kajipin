@@ -29,6 +29,7 @@ gem 'cancan' #authorization library
 gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
 gem 'httparty' #http request with fun :D
+gem 'leaflet-markercluster' #clusters for leaflet/mapbox
 
 group :development do
   gem 'rails-erd' #create schema of entities

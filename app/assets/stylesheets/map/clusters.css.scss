@@ -1,0 +1,20 @@
+// Redefine clusters styling
+$cluster-alpha: 0.7;
+.marker-cluster {
+  background-color: rgba(lighten($map-color, 10%), $cluster-alpha);
+  background-clip: padding-box;
+  border-radius: 20px;
+  div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: rgba($map-color, $cluster-alpha);
+    color: $lighter-color;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold !important;
+    text-align: center;
+    border-radius: 15px;
+  }
+  span { line-height: 30px; }
+}

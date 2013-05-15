@@ -1,17 +1,7 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
-<!-- Map main element -->
-<div id="map"></div>
-
-<!-- User box at bottom right -->
-<h1 id="map-infouser" class="map-info">
-  <%= link_to @user.full_name, modal_user_path(@user), :class => "modal-open", :remote => true %>
-</h1>
-
 <!-- Include all user intefaces -->
-<%= render "ui_controls" %>
-<%= render "ui_pinsactions" %>
-<%= render "ui_center" %>
-<%= render "advertising" %>
+<%= render "controls" %>
+<%= render "elements" %>
 
 <%= render "modals" %>

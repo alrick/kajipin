@@ -1,45 +1,45 @@
-class Poi < Pin
+class City < Pin
 
   # Instance methods
   def fancy_name
-    Poi.fancy_name
+    City.fancy_name
   end
   def description
-    Poi.description
+    City.description
   end
   def marker_size
-    Poi.marker_size
+    City.marker_size
   end
   def marker_symbol
-    Poi.marker_symbol
+    City.marker_symbol
   end
   def marker_color
-    Poi.marker_color
+    City.marker_color
   end
   def get_tab
-    "p"
+    "b"
   end
   def get_btn
-    "btn-poi"
+    "btn-city"
   end
 
   # Class methods
   def self.fancy_name
-    "Point of interest"
+    "City"
   end
   def self.marker_size
-    "medium"
+    "large"
   end
   def self.marker_symbol
-    "star"
+    "town-hall"
   end
   def self.marker_color
-    "#7FA4B1"
+    "#4b4658"
   end
   def self.marker_path
-    dir ="markers/"
-    color = Poi.marker_color[1..-1]
-    symbol = Poi.marker_symbol
+    dir = "markers/"
+    color = City.marker_color[1..-1]
+    symbol = City.marker_symbol
     ext = ".png"
     marker_path = dir+symbol+"+"+color+ext
   end

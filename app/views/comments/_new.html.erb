@@ -4,6 +4,7 @@
     <%= simple_form_for [@pin, @comment], :remote => true do |c| %>
       <%= c.input :value, :label => false %>
       <%= c.button :submit, 'Comment', :class => 'btn btn-small btn-social map-btncomment' %>
+      <%= hidden_field_tag 'last', @comments.num_pages+1 %>
     <% end %>
   </div>
   <div class="span1"><%= image_tag avatar_url(current_user, 40), :class => 'img-polaroid' %></div>

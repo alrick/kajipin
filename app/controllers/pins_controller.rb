@@ -59,7 +59,7 @@ class PinsController < ApplicationController
   def create
     # Init getters for pin
     id = params[:ext_id]
-    type = params[:type] if [Bigcity.sti_name, Smallcity.sti_name, Poi.sti_name].include? params[:type]
+    type = params[:type] if [City.sti_name, Town.sti_name, Poi.sti_name].include? params[:type]
     @pin = init_pin(id,type)
 
     if @pin.save
@@ -78,8 +78,8 @@ class PinsController < ApplicationController
 
   # Generic method to get pins
   def get_pins
-    @big_cities = @user.pins.bigcity
-    @small_cities = @user.pins.smallcity
+    @cities = @user.pins.city
+    @towns = @user.pins.town
     @points_of_interest = @user.pins.poi
     @overall = @user.pins
   end

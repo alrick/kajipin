@@ -1,0 +1,34 @@
+<a id="world-zoom" class="control zoom" rel="tooltip" title="Fit World" data-placement="right">
+  <i class="icon-globe"></i>
+</a>
+<a id="countries-zoom" class="control zoom" rel="tooltip" title="Fit Country" data-placement="right">
+  <i class="icon-list-alt"></i>
+</a>
+
+<ul id="countries-list">
+  <% if !@visited_countries.empty? %>
+    <% @visited_countries.each do |c| %>
+      <li class="country-item" data-north="<%= c["north"]%>" data-east="<%= c["east"]%>" data-south="<%= c["south"]%>" data-west="<%= c["west"]%>">
+        <i class="icon-map-marker"></i> <%= c["name"] %>
+      </li>
+    <% end %>
+    <li>------</li>
+  <% end %>
+  <% @countries_list.each do |c| %>
+    <li class="country-item" data-north="<%= c["north"]%>" data-east="<%= c["east"]%>" data-south="<%= c["south"]%>" data-west="<%= c["west"]%>">
+      <%= c["name"] %>
+    </li>
+  <% end %>
+</ul>
+
+<% if can? :read, @user %>
+  <a id="city-filter" class="control pins-filter" rel="tooltip" title="Filter Cities" data-placement="bottom" data-type="<%= City.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="town-filter" class="control pins-filter" rel="tooltip" title="Filter Towns" data-placement="bottom" data-type="<%= Town.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+  <a id="poi-filter" class="control pins-filter" rel="tooltip" title="Filter Point of interest" data-placement="bottom" data-type="<%= Poi.sti_name %>">
+    <i class="icon-eye-open"></i>
+  </a>
+<% end %>

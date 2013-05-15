@@ -10,20 +10,15 @@
       <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
       <td><strong><%= "Country".pluralize(mate.number_pins) %></strong></td>
     </tr>
+    <tr>
+      <td><span class="badge badge-map"><%= mate.number_continents %></span></td>
+      <td><strong><%= "Continent".pluralize(mate.number_continents) %></strong></td>
+    </tr>
   </table>
   <p>
-    <% if current_user.isSharingWith(mate) %>
-      <% friendship = current_user.friendships.where(:friend_id => mate.id).first %>
-      <%= link_to content_tag("i", "", class: "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial" %>
-    <% else %>
-      <%= link_to "Share", friendships_path(:friend => mate), :method => :post, :remote => true, :class => "btn btn-social" %>
-    <% end %>
+    <%= sharing_btn(mate, "") %>
   </p>
   <p>
-    <% if mate.isSharingWith(current_user) %>
-      <span class="label label-social is-sharer">Sharer</span>
-    <% else %>
-      <span>&nbsp;</span>
-    <% end %>
+    <%= sharer_label(mate) %>
   </p>
 </div>

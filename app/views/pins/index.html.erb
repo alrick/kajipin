@@ -18,24 +18,24 @@
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul id ="pins-toolstabs" class="nav nav-tabs">
-    <li class="active"><a href="#bigcity" data-toggle="tab"><b><%= image_tag(Bigcity.marker_path, :width => "20") %> Big City (<%= @big_cities.count %>)</b></a></li>
-    <li><a href="#smallcity" data-toggle="tab"><b><%= image_tag(Smallcity.marker_path, :width => "20") %> Small City (<%= @small_cities.count %>)</b></a></li>
-    <li><a href="#pointofinterest" data-toggle="tab"><b><%= image_tag(Poi.marker_path, :width => "20") %> Point of Interest (<%= @points_of_interest.count %>)</b></a></li>
+    <li class="active"><a href="#city" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= City.marker_color %>"></i> <%= City.fancy_name %> (<%= @cities.count %>)</b></a></li>
+    <li><a href="#town" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Town.marker_color %>"></i> <%= Town.fancy_name %> (<%= @towns.count %>)</b></a></li>
+    <li><a href="#pointofinterest" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Poi.marker_color %>"></i> <%= Poi.fancy_name %> (<%= @points_of_interest.count %>)</b></a></li>
   </ul>
   <div id="pins" class="tab-content">
-    <div class="tab-pane active" id="bigcity">
+    <div class="tab-pane active" id="city">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @big_cities, :as => :pin) || content_tag("p", "No big cities added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @cities, :as => :pin) || content_tag("p", "No city added.", class: "lead empty-set") %>
       </table>
     </div>
-    <div class="tab-pane" id="smallcity">
+    <div class="tab-pane" id="town">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @small_cities, :as => :pin) || content_tag("p", "No small cities added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @towns, :as => :pin) || content_tag("p", "No town added.", class: "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="pointofinterest">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No points of interest added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No point of interest added.", class: "lead empty-set") %>
       </table>
     </div>
   </div>
