@@ -7,9 +7,15 @@
     <ul class="dropdown-menu pull-right">
       <li id="global-menufirst">
         <%= link_to(user_path(current_user)) do %>
-          <%= image_tag avatar_url(current_user, 28), :class => "img-polaroid" %>
-            <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
-            <p>View my profile</p>
+          <table>
+            <tr>
+              <td rowspan="2"><%= image_tag avatar_url(current_user, 28), :class => "img-polaroid" %></td>
+              <td><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></td>
+            </tr>
+            <tr>
+              <td><p>View profile</p></td>
+            </tr>
+          </table>
         <% end %>
       </li>
       <li class="divider"></li>
