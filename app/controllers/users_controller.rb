@@ -44,14 +44,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def modal
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   # Get user to display the map
   def get_user
     # If no id provided, auto redirect to the logged user profile
