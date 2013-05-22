@@ -90,3 +90,8 @@
 ::-moz-selection {
   background: lighten($extra-color, 20%);
 }
+
+// Utilities are inbox and heralt
+.utility {
+  a { padding-left: 0 !important; }
+}
