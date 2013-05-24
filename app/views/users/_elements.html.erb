@@ -4,6 +4,7 @@
   <div id="<%= dom_id(@user) %>"><%= sharing_btn(@user, "btn-mini") %></div>
 </div>
 
+<!-- Only if via herald or if user is a friend -->
 <% if can? :read, @user %>
 
   <% if @pins.empty? %>

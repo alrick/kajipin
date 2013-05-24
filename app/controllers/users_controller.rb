@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   before_filter :get_user, :only => [:show]
+  before_filter :clear_herald, :only => [:show]
 
   layout "map", :only => [:show]
 
@@ -52,6 +53,10 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
+  end
+
+  def clear_herald
+    session[:herald] = nil
   end
   
 end

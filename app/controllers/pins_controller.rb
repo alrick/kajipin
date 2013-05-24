@@ -6,7 +6,7 @@ class PinsController < ApplicationController
   before_filter :authenticate_user!
 
   # Cancan authorize
-  load_and_authorize_resource 
+  load_and_authorize_resource
 
   # Global vars
   MAXROWS = "20"
@@ -18,15 +18,6 @@ class PinsController < ApplicationController
     @user = current_user
     get_pins
     open_tab
-  end
-
-  def list
-    @user = User.find(params[:user])
-    get_pins
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def new

@@ -27,4 +27,16 @@ class ApplicationController < ActionController::Base
       message = message + "</ul>"
     end
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  private
+
+  # Redefine the ability
+  def current_ability
+    herald = Herald.find_by_key(session[:herald])
+    @current_ability ||= Ability.new(current_user, herald)
+  end
 end
