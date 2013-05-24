@@ -5,7 +5,7 @@
       <div class="container">
 
         <!-- BRAND -->
-        <%= link_to Appetizer.appname+" "+content_tag("span", "Alpha", id: "betasig"), user_path(current_user), :class => "brand" %>
+        <%= link_to Appetizer.appname+" "+content_tag("span", "Beta", id: "betasig"), user_path(current_user), :class => "brand" %>
 
         <!-- SEPARATOR -->
         <ul class="nav">
@@ -68,5 +68,5 @@
     </div>
   </div>
 <% else %>
-  <h1 class="notlogged-title"><%= Appetizer.appname %> <small>Alpha</small></h1>
+  <h1 class="notlogged-title"><%= Appetizer.appname %> <small>Beta</small></h1>
 <% end %>
