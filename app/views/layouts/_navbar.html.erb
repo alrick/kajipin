@@ -23,8 +23,9 @@
 
         <!-- USER MENU -->
         <ul class="nav pull-right">
+          <!-- UTILITIES -->
           <li class="utility">
-            <a><i class="icon-link"></i></a>
+            <%= link_to content_tag("i", "", :class => "icon-link"), heralds_path, :class => "modal-open", :remote => true %>
           </li>
           <li class="utility">
             <% if current_user.hasRequest? %>

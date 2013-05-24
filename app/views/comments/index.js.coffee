@@ -11,7 +11,7 @@ $("#pinModal .modal-footer").html("<%= j(render('pins/footer')) %>")
 $(btn).button("toggle")
 $("#pinModal").modal()
 
-# Init delete tooltips
+# Init delete tooltip
 $("a[rel=delete-tooltip]").tooltip(
   html: true
   placement: "left"

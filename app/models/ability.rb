@@ -62,5 +62,9 @@ class Ability
     ##### AVATAR
     # User can manage his avatar
     can :manage, Avatar, :user_id => user.id
+
+    ##### HERALD
+    # User can manage his herald
+    can :manage, Herald, :user_id => user.id
   end
 end

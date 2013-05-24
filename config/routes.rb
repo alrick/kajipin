@@ -1,5 +1,6 @@
 Kajipin::Application.routes.draw do
 
+  # USERS
   devise_for :users, :path => "", :controllers => { :registrations => :registrations }
 
   resources :users, :only => [:index, :show]
@@ -13,6 +14,7 @@ Kajipin::Application.routes.draw do
     end
   end
 
+  # PINS
   resources :pins, :only => [:index, :new, :update, :create, :destroy] do
     resources :photos, :only => [:index, :new] do
       get 'captain', :on => :collection
@@ -22,20 +24,26 @@ Kajipin::Application.routes.draw do
     end
     resources :comments, :only => [:index, :create, :destroy]
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
-      collection do
-        get 'captain'
-        get 'cancel'
-      end
+      get 'captain', :on => :collection
+      get 'cancel', :on => :collection
     end
   end
 
+  # FRIENDSHIPS
   resources :friendships, :only => [:index, :create, :destroy]
 
   resources :requests, :only => [:index, :create, :destroy] do
     post 'approve', :on => :member
   end
 
+  # AVATARS
   resources :avatars, :only => [:new, :create, :destroy]
+
+  # HERALDS
+  resources :heralds, :only => [:index, :create] do
+    delete 'destroy', :on => :collection
+  end
+  match "/:key" => "heralds#show"
 
   match 'tos' => 'static#terms'
 
