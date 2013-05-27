@@ -5,16 +5,11 @@
 </div>
 
 <!-- Only if via herald or if user is a friend -->
-<% if can? :read, @user %>
+<% if can? :show, @master %>
 
   <% if @pins.empty? %>
     <div class="info-center">
-      <% if @user == current_user %>
-        <p class="lead">You have no pin!</p>
-        <%= link_to "Add some", pins_url, :class => "btn btn-map" %>
-      <% else %>
-        <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
-      <% end %>
+      <%= no_pin_element %>
     </div>
   <% else %>
     <% content_for :side do %>

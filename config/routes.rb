@@ -41,6 +41,9 @@ Kajipin::Application.routes.draw do
 
   # HERALDS
   resources :heralds, :only => [:index, :create] do
+    get 'photos', :on => :member
+    get 'comments', :on => :member
+    get 'logpages', :on => :member
     delete 'destroy', :on => :collection
   end
   match "/:key" => "heralds#show"

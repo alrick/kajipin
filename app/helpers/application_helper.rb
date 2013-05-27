@@ -37,6 +37,36 @@ module ApplicationHelper
     end
   end
 
+  def no_pin_element
+    if @herald.nil? && @user == current_user
+      content_tag(:p, "You have no pin!", class: "lead")
+      link_to "Add some", pins_url, :class => "btn btn-map"
+    else
+      content_tag(:p, @user.first_name + " has no pin", class: "lead no-margin")
+    end
+  end
+
+  def tools_btn(pin, size, label)
+    if @herald.nil?
+      p_path = pin_photos_path(pin)
+      c_path = pin_comments_path(pin)
+      l_path = pin_logpages_path(pin)
+    else
+      p_path = photos_herald_path(@herald, :pin => pin)
+      c_path =
+      l_path =
+    end
+    if @herald.nil?
+      link_to(pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro")+(" Photos" if label), pin_photos_path(pin), :class => "photos btn btn-tool "+size, :remote => true)+
+      link_to(pin.comments_count+" "+content_tag("i", "", class: "icon-comments")+(" Comments" if label), pin_comments_path(pin), :class => "comments btn btn-tool "+size, :remote => true)+
+      link_to(pin.logpages_count+" "+content_tag("i", "", class: "icon-book")+(" Logbook" if label), pin_logpages_path(pin), :class => "logpages btn btn-tool "+size, :remote => true)
+    else
+      link_to(pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro")+(" Photos" if label), photos_herald_path(@herald, :pin => pin), :class => "photos btn btn-tool "+size, :remote => true)+
+      link_to(pin.comments_count+" "+content_tag("i", "", class: "icon-comments")+(" Comments" if label), pin_comments_path(pin), :class => "comments btn btn-tool "+size, :remote => true)+
+      link_to(pin.logpages_count+" "+content_tag("i", "", class: "icon-book")+(" Logbook" if label), logpages_herald_path(@herald, :pin => pin), :class => "logpages btn btn-tool "+size, :remote => true)
+    end
+  end
+
   def sharer_label(user)
     if user.isSharingWith(current_user)
       content_tag(:span, "Sharer", :class => "label label-social is-sharer")

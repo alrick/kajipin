@@ -1,10 +1,12 @@
 class HeraldsController < ApplicationController
   # Devise authentication
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :only => [:index, :create, :destroy]
 
-  # Cancan authorize, Herald must be init before authorization
-  before_filter :init_herald, :only => [:show]
+  # Cancan authorize
   load_and_authorize_resource
+
+  # Setup accessors
+  before_filter :init_accessor, :only => [:photos, :comments, :logpages]
 
   # Layout
   layout "map", :only => [:show]
@@ -19,35 +21,34 @@ class HeraldsController < ApplicationController
 
   def show
     # Get related user
+    @herald = Herald.find_by_key(params[:key]) || not_found
     @user = @herald.user
+
+    # Master is used to check permissions
+    @master = @herald
 
     # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
 
     # Get a list of all countries
     @countries_list = Country.list
-    @visited_countries = Hash.new
 
-    # Only if current user can read the profile
-    if can? :read, @user
+    # Countries the @user has pins to
+    @visited_countries = @user.visited_countries
 
-      # Countries the @user has pins to
-      @visited_countries = @user.visited_countries
+    # Check user has added pins
+    gon.hasPins = !@user.pins.empty?
 
-      # Check user has added pins
-      gon.hasPins = !@user.pins.empty?
+    # Generate geojson
+    @pins = @user.pins.city
+    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "cities"
+    @pins = @user.pins.town
+    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "towns"
+    @pins = @user.pins.poi
+    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "poi"
 
-      # Generate geojson
-      @pins = @user.pins.city
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "cities"
-      @pins = @user.pins.town
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "towns"
-      @pins = @user.pins.poi
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poi"
-
-      # Reset pins to all pins for side
-      @pins = @user.pins
-    end
+    # Reset pins to all pins for side
+    @pins = @user.pins
 
     # Render the user
     render "users/show"
@@ -70,9 +71,32 @@ class HeraldsController < ApplicationController
     end
   end
 
-  def init_herald
-    @herald = Herald.find_by_key(params[:key]) || not_found
-    session[:herald] = @herald.key
+  # Accessors
+
+  def photos
+    @photos = @pin.photos.all
+
+    respond_to do |format|
+      format.js { render 'photos/index' }
+    end
+  end
+
+  def logpages
+    @logpages = @pin.logpages.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.js { render 'logpages/index' }
+    end
+  end
+
+  def init_accessor
+    @herald = Herald.find(params[:id])
+    @pin = Pin.find(params[:pin])
+
+    # Check pin accessed is really related to herald
+    if @herald.user != @pin.user
+      raise CanCan::AccessDenied.new("Not authorized!")
+    end
   end
 
 end

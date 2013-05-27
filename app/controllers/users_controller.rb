@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Master is used to check permissions
+    @master = @user
+
     # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
 
@@ -55,6 +58,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # Clear herald ensure current user use not herald accesses
   def clear_herald
     session[:herald] = nil
   end

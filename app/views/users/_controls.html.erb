@@ -22,7 +22,7 @@
 </ul>
 
 <!-- Only if via herald or if user is a friend -->
-<% if can? :read, @user %>
+<% if can? :show, @master %>
   <a id="city-filter" class="control pins-filter" rel="tooltip" title="Filter Cities" data-placement="bottom" data-type="<%= City.sti_name %>">
     <i class="icon-eye-open"></i>
   </a>

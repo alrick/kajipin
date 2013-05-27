@@ -1,17 +1,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user, herald)
+  def initialize(user)
 
     user ||= User.new # guest user (not logged in)
-    herald ||= nil
 
     ##### USER
     # User can manage himself
     can :manage, User, :id => user.id
     # User can read users(profile) that are sharing with him
     can :read, User do |u|
-      u.isSharingWith(user) || (u.herald == herald && !herald.nil?)
+      u.isSharingWith(user)
     end
 
     ##### PIN
@@ -19,7 +18,7 @@ class Ability
     can :manage, Pin, :user_id => user.id
     # User can read pins of users that are sharing with him (includes photos, logpage and comments)
     can :read, Pin do |p|
-      p.user.isSharingWith(user) || (p.user.herald == herald && !herald.nil?)
+      p.user.isSharingWith(user)
     end
 
     ##### PHOTO
@@ -69,5 +68,9 @@ class Ability
     ##### HERALD
     # User can manage his herald
     can :manage, Herald, :user_id => user.id
+    can :show, Herald
+    can :photos, Herald
+    can :logpages, Herald
+    can :comments, Herald
   end
 end

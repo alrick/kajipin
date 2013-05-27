@@ -1,20 +1,21 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # Handle access denied
+  # Cancan custom access denied
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = "You're trying to do something you're not allowed to, <strong>Little Wrongdoer!</strong>"
     redirect_to edit_user_registration_url, :alert => exception.message
   end
 
+  # Custom devise paths
   def after_sign_in_path_for(resource)
    user_path(resource)
   end
-
   def after_sign_out_path_for(resource_or_scope)
     new_session_path(resource_name)
   end
 
+  # Used to render beautifully formatted errors
   def beautiful_errors(object)
     if object.errors.empty?
       "."
@@ -28,15 +29,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Easily return a 404 page
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
 
   private
-
-  # Redefine the ability
-  def current_ability
-    herald = Herald.find_by_key(session[:herald])
-    @current_ability ||= Ability.new(current_user, herald)
-  end
 end
