@@ -5,7 +5,9 @@
 
   <%= paginate @comments, :remote => true, :theme => "small" %>
 
-  <div id="comments-new">
-    <%= render "new" %>
-  </div>
+  <% if @herald.nil? %>
+    <div id="comments-new">
+      <%= render "new" %>
+    </div>
+  <% end %>
 </div>

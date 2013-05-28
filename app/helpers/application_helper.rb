@@ -52,19 +52,22 @@ module ApplicationHelper
       c_path = pin_comments_path(pin)
       l_path = pin_logpages_path(pin)
     else
-      p_path = photos_herald_path(@herald, :pin => pin)
-      c_path =
-      l_path =
+      p_path = photos_heralds_path(:key => @herald.key, :pin => pin)
+      c_path = comments_heralds_path(:key => @herald.key, :pin => pin)
+      l_path = logpages_heralds_path(:key => @herald.key, :pin => pin)
     end
-    if @herald.nil?
-      link_to(pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro")+(" Photos" if label), pin_photos_path(pin), :class => "photos btn btn-tool "+size, :remote => true)+
-      link_to(pin.comments_count+" "+content_tag("i", "", class: "icon-comments")+(" Comments" if label), pin_comments_path(pin), :class => "comments btn btn-tool "+size, :remote => true)+
-      link_to(pin.logpages_count+" "+content_tag("i", "", class: "icon-book")+(" Logbook" if label), pin_logpages_path(pin), :class => "logpages btn btn-tool "+size, :remote => true)
+    if label
+      p_text = content_tag(:i, "", class: "icon-camera-retro") + " Photos (" + pin.photos_count + ")"
+      c_text = content_tag(:i, "", class: "icon-comments") + " Comments (" + pin.comments_count + ")"
+      l_text = content_tag(:i, "", class: "icon-book") + " Logbook (" + pin.logpages_count + ")"
     else
-      link_to(pin.photos_count+" "+content_tag("i", "", class: "icon-camera-retro")+(" Photos" if label), photos_herald_path(@herald, :pin => pin), :class => "photos btn btn-tool "+size, :remote => true)+
-      link_to(pin.comments_count+" "+content_tag("i", "", class: "icon-comments")+(" Comments" if label), pin_comments_path(pin), :class => "comments btn btn-tool "+size, :remote => true)+
-      link_to(pin.logpages_count+" "+content_tag("i", "", class: "icon-book")+(" Logbook" if label), logpages_herald_path(@herald, :pin => pin), :class => "logpages btn btn-tool "+size, :remote => true)
+      p_text = pin.photos_count + " " + content_tag("i", "", class: "icon-camera-retro")
+      c_text = pin.comments_count + " " + content_tag("i", "", class: "icon-comments")
+      l_text = pin.logpages_count + " " + content_tag("i", "", class: "icon-book")
     end
+    link_to(p_text, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
+    link_to(c_text, c_path, :class => "comments btn btn-tool "+size, :remote => true)+
+    link_to(l_text, l_path, :class => "logpages btn btn-tool "+size, :remote => true)
   end
 
   def sharer_label(user)

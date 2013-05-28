@@ -9,7 +9,7 @@ Kajipin::Application.routes.draw do
     root :to => "users#show"
   end
   unauthenticated :user do
-    devise_scope :user do 
+    devise_scope :user do
       get "/" => "devise/sessions#new"
     end
   end
@@ -41,9 +41,9 @@ Kajipin::Application.routes.draw do
 
   # HERALDS
   resources :heralds, :only => [:index, :create] do
-    get 'photos', :on => :member
-    get 'comments', :on => :member
-    get 'logpages', :on => :member
+    get 'photos', :on => :collection
+    get 'comments', :on => :collection
+    get 'logpages', :on => :collection
     delete 'destroy', :on => :collection
   end
   match "/:key" => "heralds#show"

@@ -23,9 +23,9 @@ node :properties do |p|
     :photos_count => p.photos_count,
     :logpages_count => p.logpages_count,
     :comments_count => p.comments_count,
-    'photos_path' => photos_herald_path(@herald, :pin => p),
-    'comments_path' => pin_comments_path(p),
-    'logpages_path' => logpages_herald_path(@herald, :pin => p),
+    'photos_path' => photos_heralds_path(:key => @herald.key, :pin => p),
+    'comments_path' => comments_heralds_path(:key => @herald.key, :pin => p),
+    'logpages_path' => logpages_heralds_path(:key => @herald.key, :pin => p),
     :type => p.type
   }
 end

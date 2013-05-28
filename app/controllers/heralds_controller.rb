@@ -41,11 +41,11 @@ class HeraldsController < ApplicationController
 
     # Generate geojson
     @pins = @user.pins.city
-    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "cities"
+    gon.watch.rabl "app/views/heralds/geo.json.rabl", as: "cities"
     @pins = @user.pins.town
-    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "towns"
+    gon.watch.rabl "app/views/heralds/geo.json.rabl", as: "towns"
     @pins = @user.pins.poi
-    gon.watch.rabl "app/views/pins/geo_herald.json.rabl", as: "poi"
+    gon.watch.rabl "app/views/heralds/geo.json.rabl", as: "poi"
 
     # Reset pins to all pins for side
     @pins = @user.pins
@@ -81,6 +81,21 @@ class HeraldsController < ApplicationController
     end
   end
 
+  def comments
+    @page = params[:page] # required to pass current page to destroy action
+    @comments = @pin.comments.page(@page).per(10)
+
+    # Display last page if no more message in page set
+    last = @comments.num_pages
+    if @page.to_i > last
+      @comments = @pin.comments.page(last).per(10)
+    end
+
+    respond_to do |format|
+      format.js { render 'comments/index' }
+    end
+  end
+
   def logpages
     @logpages = @pin.logpages.page(params[:page]).per(10)
 
@@ -90,7 +105,7 @@ class HeraldsController < ApplicationController
   end
 
   def init_accessor
-    @herald = Herald.find(params[:id])
+    @herald = Herald.find_by_key(params[:key])
     @pin = Pin.find(params[:pin])
 
     # Check pin accessed is really related to herald

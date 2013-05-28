@@ -55,6 +55,11 @@ class User < ActiveRecord::Base
     !requests.empty?
   end
 
+  # Has this user generated an herald?
+  def hasHerald?
+    !herald.nil?
+  end
+
   # Is this user is sharing with user passed?
   def isSharingWith(user)
     friends.where(:id => user.id).exists?

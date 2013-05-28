@@ -74,9 +74,6 @@
 // Unify user menu items
 .usermenu-item i { display: inline-block !important; }
 
-// Highlight inbox if requests pending
-.active-inbox { color: $social-color !important; }
-
 // Helper to put element behind bootstrap backdrop
 .behind-backdrop { z-index: 1000 !important; }
 
@@ -91,9 +88,10 @@
   background: lighten($extra-color, 20%);
 }
 
-// Utilities are inbox and heralt
+// Utilities are requests and heralt box
 .utility {
   a { padding-left: 0 !important; }
+  .active { color: $social-color !important; }
 }
 
 // Description in general modal

@@ -30,3 +30,4 @@
 //= require photos
 //= require pins
 //= require requests
+//= require heralds
