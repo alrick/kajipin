@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
 
   # Cancan custom access denied
   rescue_from CanCan::AccessDenied do |exception|
-    exception.default_message = "You're trying to do something you're not allowed to, <strong>Little Wrongdoer!</strong>"
-    redirect_to edit_user_registration_url, :alert => exception.message
+    render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
   end
 
   # Custom devise paths
