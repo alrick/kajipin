@@ -25,13 +25,8 @@ jQuery ->
   $("a[rel~=tooltip]").tooltip()
   $("button[rel~=tooltip]").tooltip()
 
-  # Update background on not logged in pages
-  if $(".notlogged-title").length > 0
-    $("body").css("background", "#4A4356")
-
   # Auto fade alert-success alert after a delay
-  if $(".notlogged-title").length < 1
-    $(".alert-success").delay(3000).fadeOut "slow"
+  $(".alert-success").delay(3000).fadeOut "slow"
 
 
   #################

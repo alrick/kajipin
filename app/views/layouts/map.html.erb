@@ -1,18 +1,43 @@
-<%= render "layouts/global_top", :layout => "map" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= Appetizer.appname %> / <%= yield :page_title %></title>
+
+    <!-- GON -->
+    <%= include_gon(:init => true, :watch => true) %>
+
+    <%= render "layouts/mapbox" %>
+
+    <!-- DEFAULT -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
   
-  <%= render "layouts/show_flash", :layout => "map" %>
-  
-  <!-- Main element -->
-  <div id="main">
-    <div id="side" class="hide">
-      <div class="in-side">
-        <%= yield :side %>
+    <%= render "layouts/show_flash", :layout => "map" %>
+    
+    <!-- Main element -->
+    <div id="main">
+      <div id="side" class="hide">
+        <div class="in-side">
+          <%= yield :side %>
+        </div>
+      </div>
+      <div id="map">
+        <%= yield %>
+        <p id="copyright"><%= link_to "Map Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank" %></p>
       </div>
     </div>
-    <div id="map">
-      <%= yield %>
-      <p id="copyright"><%= link_to "Map Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank" %></p>
-    </div>
-  </div>
 
-<%= render "layouts/global_bottom", :layout => "map" %>
+    <%= render "layouts/navbar", :layout => "map" %>
+    <%= render "layouts/modals" %>
+    <%= render "layouts/filepicker" %>
+    <%= render "layouts/uservoice" %>
+  </body>
+</html>

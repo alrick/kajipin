@@ -38,19 +38,6 @@
   }
 }
 
-// Title for not logged in pages
-.notlogged-title {
-  text-align: center;
-  font-weight: 100;
-  font-size: 60px;
-  margin-bottom: 50px;
-  color: $lighter-color;
-  small {
-    font-weight: 100;
-    color: $lighter-color;
-  }
-}
-
 // Style main menu
 #global-menufirst {
   img { margin-right: 9px; } // Style for the avatar of the main menu
