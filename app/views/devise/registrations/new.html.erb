@@ -7,18 +7,23 @@
   <p><%= Appetizer.appname %> is a social network for people who love to travel and share with friends!</p>
 </div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "well form-inline"}) do |f| %>
-  <%= f.input_field :first_name, :class => "input-small", :placeholder => "First name" %>
-  <%= f.input_field :last_name, :class => "input-small", :placeholder => "Last name" %>
-  <%= f.input_field :email, :class => "input-small", :placeholder => "Email" %>
-  <%= f.input_field :password, :class => "input-small", :placeholder => "Password" %>
-  <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password" %>
-  <%= f.submit "Sign up", :class => "btn btn-social" %>
-  <p>
-    <label class="checkbox home-terms">
-      <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - <a href="/tos" target="_blank" >Terms of Service</a>
-    </label>
-  </p>
+<% if User.count >= User.beta_limit %>
+  <p class="well"><span class="badge badge-social">Closed</span> <strong>Sorry registrations are now closed.</strong></p>
+<% else %>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "well form-inline"}) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.input_field :first_name, :class => "input-small", :placeholder => "First name" %>
+    <%= f.input_field :last_name, :class => "input-small", :placeholder => "Last name" %>
+    <%= f.input_field :email, :class => "input-small", :placeholder => "Email" %>
+    <%= f.input_field :password, :class => "input-small", :placeholder => "Password" %>
+    <%= f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password" %>
+    <%= f.submit "Sign up", :class => "btn btn-social" %>
+    <p>
+      <label class="checkbox home-terms">
+        <%= check_box(:user, "terms") %> I accept the <%= Appetizer.appname %> - <a href="/tos" target="_blank" >Terms of Service</a>
+      </label>
+    </p>
+  <% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>

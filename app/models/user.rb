@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  BETA_LIMIT = 100
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  before_validation :alpha_invited? # Check if user is invited
+  #before_validation :alpha_invited? # Check if user is invited
+  before_validation :beta_limit_reached?
 
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms
 
@@ -94,5 +96,17 @@ class User < ActiveRecord::Base
     unless Token.exists?(:value => email)
       errors.add :email, "is not on our alpha list"  
     end
-  end 
+  end
+
+  # Check the limit isn't reached
+  def beta_limit_reached?
+    if User.count >= BETA_LIMIT
+      errors[:base] << "We do not accept more users at this time."
+    end
+  end
+
+  # Beta limit getter
+  def self.beta_limit
+    BETA_LIMIT
+  end
 end
