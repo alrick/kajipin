@@ -48,6 +48,4 @@ Kajipin::Application.routes.draw do
   end
   match "/:key" => "heralds#show"
 
-  match 'tos' => 'static#terms'
-
 end
