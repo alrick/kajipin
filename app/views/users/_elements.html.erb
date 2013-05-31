@@ -1,19 +1,15 @@
 <div class="info-user img-circle">
-  <%= image_tag avatar_url(@user, 120), :class => "img-circle", :data => { :placement => "left", :trigger => "hover", :html => "true", :title => "<strong>Achievements</strong>", :content => "<ul class='unstyled'><li><span class='badge badge-map info-user-badge'>#{@user.number_pins}</span> <strong>Pins</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_countries}</span> <strong>Countries</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_continents}</span> <strong>Continents</strong></li></ul>" } %>
+  <%= image_tag avatar_url(@user, 120), :class => "img-circle", :data => { :placement => "left", :trigger => "hover", :html => "true", :title => "<strong><i class='icon-trophy'></i> Achievements</strong>", :content => "<ul class='unstyled'><li><span class='badge badge-map info-user-badge'>#{@user.number_pins}</span> <strong>Pins</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_countries}</span> <strong>Countries</strong></li> <li><span class='badge badge-map info-user-badge'>#{@user.number_continents}</span> <strong>Continents</strong></li></ul>" } %>
   <h1><%= @user.full_name %></h1>
   <div id="<%= dom_id(@user) %>"><%= sharing_btn(@user, "btn-mini") %></div>
 </div>
 
-<% if can? :read, @user %>
+<!-- Only if via herald or if user is a friend -->
+<% if can? :show, @master %>
 
   <% if @pins.empty? %>
     <div class="info-center">
-      <% if @user == current_user %>
-        <p class="lead">You have no pin!</p>
-        <%= link_to "Add some", pins_url, :class => "btn btn-map" %>
-      <% else %>
-        <p class="lead no-margin"><%= @user.first_name %> has no pin.</p>
-      <% end %>
+      <%= no_pin_element %>
     </div>
   <% else %>
     <% content_for :side do %>

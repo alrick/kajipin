@@ -1,20 +1,20 @@
 Kajipin::Application.routes.draw do
 
+  # USERS
   devise_for :users, :path => "", :controllers => { :registrations => :registrations }
 
-  resources :users, :only => [:index, :show] do
-    get 'modal', :on => :member
-  end
+  resources :users, :only => [:index, :show]
 
   authenticated :user do
     root :to => "users#show"
   end
   unauthenticated :user do
-    devise_scope :user do 
+    devise_scope :user do
       get "/" => "devise/sessions#new"
     end
   end
 
+  # PINS
   resources :pins, :only => [:index, :new, :update, :create, :destroy] do
     resources :photos, :only => [:index, :new] do
       get 'captain', :on => :collection
@@ -24,21 +24,28 @@ Kajipin::Application.routes.draw do
     end
     resources :comments, :only => [:index, :create, :destroy]
     resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
-      collection do
-        get 'captain'
-        get 'cancel'
-      end
+      get 'captain', :on => :collection
+      get 'cancel', :on => :collection
     end
   end
 
+  # FRIENDSHIPS
   resources :friendships, :only => [:index, :create, :destroy]
 
   resources :requests, :only => [:index, :create, :destroy] do
     post 'approve', :on => :member
   end
 
+  # AVATARS
   resources :avatars, :only => [:new, :create, :destroy]
 
-  match 'tos' => 'static#terms'
+  # HERALDS
+  resources :heralds, :only => [:index, :create] do
+    get 'photos', :on => :collection
+    get 'comments', :on => :collection
+    get 'logpages', :on => :collection
+    delete 'destroy', :on => :collection
+  end
+  match "/:key" => "heralds#show"
 
 end

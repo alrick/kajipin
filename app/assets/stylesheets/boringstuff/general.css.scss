@@ -38,19 +38,6 @@
   }
 }
 
-// Title for not logged in pages
-.notlogged-title {
-  text-align: center;
-  font-weight: 100;
-  font-size: 60px;
-  margin-bottom: 50px;
-  color: $lighter-color;
-  small {
-    font-weight: 100;
-    color: $lighter-color;
-  }
-}
-
 // Style main menu
 #global-menufirst {
   img { margin-right: 9px; } // Style for the avatar of the main menu
@@ -74,9 +61,6 @@
 // Unify user menu items
 .usermenu-item i { display: inline-block !important; }
 
-// Highlight inbox if requests pending
-.active-inbox { color: $social-color !important; }
-
 // Helper to put element behind bootstrap backdrop
 .behind-backdrop { z-index: 1000 !important; }
 
@@ -90,3 +74,17 @@
 ::-moz-selection {
   background: lighten($extra-color, 20%);
 }
+
+// Utilities are requests and heralt box
+.utility {
+  a { padding-left: 0 !important; }
+  .active { color: $social-color !important; }
+}
+
+// Description in general modal
+.modal-footer {
+  .description { font-size: 17px; }
+}
+
+// Button allowing to toggle the list of pins
+#toggler { float:left; margin-left:20px; }

@@ -93,7 +93,7 @@ pinModal.animate({ width: WIDTH+"px", marginLeft: "-"+(WIDTH/2)+"px" })
 pinModal.find(".modal-body").html PHOTOS_PATH
 pinModal.find(".modal-header").html "<%= j(render('pins/header')) %>"
 pinModal.find(".modal-footer").html "<%= j(render('pins/footer')) %>"
-pinModal.find("#map-photosmodalbtn").button "toggle"
+pinModal.find(".modal-footer").find(".photos").button "toggle"
 $("#pinModal").modal()
 
 # Load big photos in background

@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  BETA_LIMIT = 100
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  before_validation :alpha_invited? # Check if user is invited
+  #before_validation :alpha_invited? # Check if user is invited
+  before_validation :beta_limit_reached?
 
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :terms
 
@@ -18,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", dependent: :destroy
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_one :avatar, dependent: :destroy
+  has_one :herald, dependent: :destroy
 
   validates :first_name, :length => { :minimum => 2 }
   validates :last_name, :length => { :minimum => 2 }
@@ -54,6 +57,11 @@ class User < ActiveRecord::Base
     !requests.empty?
   end
 
+  # Has this user generated an herald?
+  def hasHerald?
+    !herald.nil?
+  end
+
   # Is this user is sharing with user passed?
   def isSharingWith(user)
     friends.where(:id => user.id).exists?
@@ -88,5 +96,17 @@ class User < ActiveRecord::Base
     unless Token.exists?(:value => email)
       errors.add :email, "is not on our alpha list"  
     end
-  end 
+  end
+
+  # Check the limit isn't reached
+  def beta_limit_reached?
+    if User.count >= BETA_LIMIT
+      errors[:base] << "We do not accept more users at this time."
+    end
+  end
+
+  # Beta limit getter
+  def self.beta_limit
+    BETA_LIMIT
+  end
 end

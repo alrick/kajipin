@@ -1,3 +1,4 @@
+/* DIRECTLY USED BY WELCOME TEMPLATE */
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -16,19 +17,5 @@
 
 @import "boringstuff/init.css.scss";
 @import "boringstuff/bootstrap_redefine.css.scss";
-@import "boringstuff/general.css.scss";
 
-@import "map/clusters.css.scss";
-@import "map/controls.css.scss";
-@import "map/elements.css.scss";
-@import "map/tooltips.css.scss";
-
-@import "comments.css.scss";
-@import "devise.css.scss";
-@import "friendships.css.scss";
-@import "logpages.css.scss";
-@import "photos.css.scss";
-@import "pins.css.scss";
-@import "requests.css.scss";
-@import "static.css.scss";
-@import "users.css.scss";
+body { background-color: $map-color !important; }

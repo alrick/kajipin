@@ -64,5 +64,14 @@ module Kajipin
 
     # Heroku requirement
     config.assets.initialize_on_precompile = false
+
+    # Define Devise layouts
+    config.to_prepare do
+      Devise::SessionsController.layout "welcome"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "welcome" }
+      Devise::ConfirmationsController.layout "welcome"
+      Devise::UnlocksController.layout "welcome"            
+      Devise::PasswordsController.layout "welcome"        
+    end
   end
 end

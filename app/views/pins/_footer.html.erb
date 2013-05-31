@@ -1,18 +1,4 @@
 <!-- Called by the pinModal of user profile -->
 <div class="btn-group" data-toggle="buttons-radio">
-  <%= link_to pin_photos_path(@pin), :id => "map-photosmodalbtn", :class => "btn btn-tool", :remote => true do
-    content_tag "b" do
-      content_tag("i", "", class: "icon-camera-retro")+" Photos"
-    end
-  end %>
-  <%= link_to pin_comments_path(@pin), :id => "map-commentsmodalbtn", :class => "btn btn-tool", :remote => true do
-    content_tag "b" do
-      content_tag("i", "", class: "icon-comments")+" Comments"
-    end
-  end %>
-  <%= link_to pin_logpages_path(@pin), :id => "map-logbookmodalbtn", :class => "btn btn-tool", :remote => true do
-    content_tag "b" do
-      content_tag("i", "", class: "icon-book")+" Logbook"
-    end
-  end %>
+  <%= tools_btn(@pin, "", true) %>
 </div>

@@ -1,4 +1,5 @@
-<% if can? :read, @user %>
+<!-- Only if via herald or if user is a friend -->
+<% if can? :show, @master %>
   <div id="pinModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="pinModalLabel" aria-hidden="true" data-keyboard="false">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

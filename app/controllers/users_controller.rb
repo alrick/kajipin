@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   before_filter :get_user, :only => [:show]
+  before_filter :clear_herald, :only => [:show]
 
   layout "map", :only => [:show]
 
@@ -15,6 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Master is used to check permissions
+    @master = @user
+
     # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
 
@@ -44,14 +48,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def modal
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   # Get user to display the map
   def get_user
     # If no id provided, auto redirect to the logged user profile
@@ -60,6 +56,11 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
+  end
+
+  # Clear herald ensure current user use not herald accesses
+  def clear_herald
+    session[:herald] = nil
   end
   
 end

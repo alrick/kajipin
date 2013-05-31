@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
 
+    user ||= User.new # guest user (not logged in)
+
     ##### USER
     # User can manage himself
     can :manage, User, :id => user.id
@@ -14,7 +16,7 @@ class Ability
     ##### PIN
     # User can manage pins he owns
     can :manage, Pin, :user_id => user.id
-    # User can read pins of users that are sharing with him (includes logpage and comments)
+    # User can read pins of users that are sharing with him (includes photos, logpage and comments)
     can :read, Pin do |p|
       p.user.isSharingWith(user)
     end
@@ -32,7 +34,7 @@ class Ability
     end
 
     ##### COMMENT
-    # User can manage comments he owns
+    # User can manage comments in pins he owns
     can :manage, Comment do |c|
       c.pin.user == user
     end
@@ -62,5 +64,13 @@ class Ability
     ##### AVATAR
     # User can manage his avatar
     can :manage, Avatar, :user_id => user.id
+
+    ##### HERALD
+    # User can manage his herald
+    can :manage, Herald, :user_id => user.id
+    can :show, Herald
+    can :photos, Herald
+    can :logpages, Herald
+    can :comments, Herald
   end
 end
