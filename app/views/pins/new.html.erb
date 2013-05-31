@@ -13,13 +13,13 @@
     <div id="pins-types">
       <div class="btn-group" data-toggle="buttons-radio">
         <button type="button" class="btn active" value="<%= City.sti_name %>">
-          <%= image_tag(City.marker_path, :width => "20") %> <strong>City</strong>
+          <i class="icon-map-marker" style="color:<%= City.marker_color %>"></i> <strong>City</strong>
         </button>
         <button type="button" class="btn" value="<%= Town.sti_name %>">
-          <%= image_tag(Town.marker_path, :width => "20") %> <strong>Town</strong>
+          <i class="icon-map-marker" style="color:<%= Town.marker_color %>"></i> <strong>Town</strong>
         </button>
         <button type="button" class="btn" value="<%= Poi.sti_name %>">
-          <%= image_tag(Poi.marker_path, :width => "20") %> <strong>Point of interest</strong>
+          <i class="icon-map-marker" style="color:<%= Poi.marker_color %>"></i> <strong>Point of interest</strong>
         </button>
       </div>
     </div>
@@ -48,7 +48,7 @@
             <% unless (geo["fcl"] == "A" && geo["population"] > 500000) %>
               <tr>
                 <td><%= geo["toponymName"] %></td>
-                <td><a rel="tooltip" title="<%= geo["countryName"] %>"><%= image_tag("flags/"+geo["countryCode"].to_s.downcase+".png") %></a></td>
+                <td><a rel="tooltip" title="<%= geo["countryName"] %>"><%= geo["countryCode"] %></a></td>
                 <td>
                   <% if geo["adminName1"].length > 20 %>
                     <a rel="tooltip" title="<%= geo["adminName1"] %>"><%= truncate(geo["adminName1"], :length => 20) %></a>
