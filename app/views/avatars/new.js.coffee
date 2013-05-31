@@ -1,5 +1,5 @@
 filepicker.setKey "<%= @key %>"
-filepicker.pickAndStore({services: ["DROPBOX", "FACEBOOK", "INSTAGRAM", "FLICKR", "GOOGLE_DRIVE", "BOX", "PICASA"]}, {}, (fpfile) ->
+filepicker.pickAndStore({mimetype: 'image/*', services: ["DROPBOX", "FACEBOOK", "INSTAGRAM", "FLICKR", "GOOGLE_DRIVE", "BOX", "PICASA"]}, {}, (fpfile) ->
   # Create avatar object
   avatar = new Object()
   avatar.url = fpfile[0].url
