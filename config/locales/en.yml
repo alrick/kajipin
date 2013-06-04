@@ -3,8 +3,30 @@
 
 en:
   hello: "Hello world"
-  activerecord:
-    attributes:
-      pin:
-        user_id: ""
-        user: ""
+  avatars:
+    create:
+      success: "<strong>New profile photo</strong> was successfully added."
+      fail: "<strong>Oh snap!</strong> Something went wrong while adding your new profile photo"
+    destroy:
+      success: "<strong>Gravatar</strong> correctly restored."
+  photos:
+    create:
+      success: "<strong>Photos</strong> were successfully added."
+      fail: "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added"
+    destroy:
+      success: "<strong>Photos</strong> were successfully removed."
+      fail: "<strong>Oh snap!</strong> Something went wrong while removing your photos, some could not be removed."
+  pins:
+    geonames_error: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
+    update:
+      success: "<strong>%{title}</strong> was successfully updated."
+      fail: "<strong>Oh snap!</strong> Something went wrong while updating %{title}."
+    create:
+      success: "<strong>%{title}</strong> was successfully added to your pins."
+      fail: "<strong>Oh snap!</strong> Something went wrong while creating your pin"
+    destroy:
+      success: "<strong>%{title}</strong> was successfully removed from your pins."
+  requests:
+    create:
+      success: "Successfully created request."
+      fail: "<strong>Oh Snap!</strong> Something went wrong with your request, please retry."

@@ -31,7 +31,7 @@ class PinsController < ApplicationController
     @geos = JSON.parse(open(url).read)
 
     if @geos["status"]
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
+      redirect_to pins_url, alert: t('pins.geonames_error')
     end
   end
 
@@ -41,9 +41,9 @@ class PinsController < ApplicationController
 
     if @pin.save
       tab = Pin.find(params[:id]).get_tab
-      redirect_to pins_url(:tab => tab), notice: "<strong>#{@pin.title}</strong> was successfully updated."
+      redirect_to pins_url(:tab => tab), notice: t('pins.update.success', title: @pin.title)
     else
-      redirect_to pins_url(:tab => @pin.get_tab), alert: "<strong>Oh snap!</strong> Something went wrong while updating #{@pin.title}."
+      redirect_to pins_url(:tab => @pin.get_tab), alert: t('pins.update.fail', title: @pin.title)
     end
   end
 
@@ -54,9 +54,9 @@ class PinsController < ApplicationController
     @pin = init_pin(id,type)
 
     if @pin.save
-      redirect_to pins_url(:tab => @pin.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully added to your pins."
+      redirect_to pins_url(:tab => @pin.get_tab), notice: t('pins.create.success', title: @pin.title)
     else
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Something went wrong while creating your pin#{beautiful_errors(@pin)}"
+      redirect_to pins_url, alert: t('pins.create.fail')+beautiful_errors(@pin)
     end
   end
 
@@ -64,7 +64,7 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     @pin.destroy
 
-    redirect_to pins_url(:tab => @pin.get_tab), notice: "<strong>#{@pin.title}</strong> was successfully removed from your pins."
+    redirect_to pins_url(:tab => @pin.get_tab), notice: t('pins.destroy.success')
   end
 
   # Generic method to get pins
@@ -83,7 +83,7 @@ class PinsController < ApplicationController
 
     # Can communicate with Geonames?
     if result["status"]
-      redirect_to pins_url, alert: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
+      redirect_to pins_url, alert: t('pins.geonames_error')
     end
 
     # Set datas

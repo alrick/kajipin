@@ -22,9 +22,9 @@ class RequestsController < ApplicationController
     @request.requester_id = requester
 
     if @request.save
-      redirect_to user_url(user), :notice => "Successfully created request."
+      redirect_to user_url(user), :notice => t('requests.create.success')
     else
-      redirect_to user_url(user), :alert => "<strong>Oh Snap!</strong> Something went wrong with your request, please retry."
+      redirect_to user_url(user), :alert => t('requests.create.fail')
     end
   end
 

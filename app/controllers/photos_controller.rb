@@ -45,9 +45,9 @@ class PhotosController < ApplicationController
 
     # Display right message
     if @all_success
-      flash[:notice] = "<strong>Photos</strong> were successfully added."
+      flash[:notice] = t('photos.create.success')
     else
-      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your photos, some could not be added#{beautiful_errors(@photo)}"
+      flash[:alert] = t('photos.create.fail')+beautiful_errors(@photo)}
     end
 
     # Respond with javascript because it's ajax request
@@ -72,9 +72,9 @@ class PhotosController < ApplicationController
 
     # Redirect to captain photos and display right message
     if @all_success
-      redirect_to captain_pin_photos_url(@pin), notice: "<strong>Photos</strong> were successfully removed."
+      redirect_to captain_pin_photos_url(@pin), notice: t('photos.destroy.success')
     else
-      redirect_to captain_pin_photos_url(@pin), alert: "<strong>Oh snap!</strong> Something went wrong while removing your photos, some could not be removed."
+      redirect_to captain_pin_photos_url(@pin), alert: t('photos.destroy.fail')
     end
   end
 
@@ -94,9 +94,9 @@ class PhotosController < ApplicationController
 
     # Redirect to captain photos and display right message
     if @all_success
-      redirect_to captain_pin_photos_url(@pin), notice: "<strong>Photos</strong> were successfully removed."
+      redirect_to captain_pin_photos_url(@pin), notice: t('photos.destroy.success')
     else
-      redirect_to captain_pin_photos_url(@pin), alert: "<strong>Oh snap!</strong> Something went wrong while removing your photos, some could not be removed."
+      redirect_to captain_pin_photos_url(@pin), alert: t('photos.destroy.fail')
     end
   end
 end

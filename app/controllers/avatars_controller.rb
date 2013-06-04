@@ -21,12 +21,12 @@ class AvatarsController < ApplicationController
       @avatar.user_id = current_user.id
 
       if @avatar.save
-        flash[:notice] = "<strong>New profile photo</strong> was successfully added."
+        flash[:notice] = t('avatars.create.success')
       else
-        flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your new profile photo#{beautiful_errors(@avatar)}"
+        flash[:alert] = t('avatars.create.fail')+beautiful_errors(@avatar)
       end
     else
-      flash[:alert] = "<strong>Oh snap!</strong> Something went wrong while adding your new profile photo#{beautiful_errors(@avatar)}"
+      flash[:alert] = t('avatars.create.fail')+beautiful_errors(@avatar)
     end
 
     # Respond with javascript because it's ajax request
@@ -39,7 +39,7 @@ class AvatarsController < ApplicationController
     @avatar = Avatar.find(params[:id])
     @avatar.destroy
 
-    redirect_to edit_user_registration_url, notice: "<strong>Gravatar</strong> correctly restored."
+    redirect_to edit_user_registration_url, notice: t('avatars.destroy.success')
   end
 
   # Destroy current avatar before setting a new one
