@@ -1,15 +1,19 @@
+# encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # Cancan custom access denied
   rescue_from CanCan::AccessDenied do |exception|
-    render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
+    render file: "#{Rails.root}/public/403", formats: [:html], status: 403,
+      layout: false
   end
 
-  # Custom devise paths
+  # Custom devise sign in path
   def after_sign_in_path_for(resource)
    user_path(resource)
   end
+
+  # Custom devise sign out path
   def after_sign_out_path_for(resource_or_scope)
     new_session_path(resource_name)
   end
@@ -34,4 +38,5 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
 end

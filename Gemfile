@@ -36,6 +36,7 @@ group :development do
   gem 'hirb' #better visualisation in rails console
   gem 'faker' #used to create fake resources easily
   gem 'nifty-generators' #better scaffold generators
+  gem 'rubocop' #a Ruby code style checker
 end
 
 # To use debugger

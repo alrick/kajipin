@@ -13,9 +13,7 @@ class CommentsController < ApplicationController
 
     # Display last page if no more message in page set
     last = @comments.num_pages
-    if @page.to_i > last
-      @comments = @pin.comments.page(last).per(10)
-    end
+    @comments = @pin.comments.page(last).per(10) if @page.to_i > last
 
     respond_to do |format|
       format.js

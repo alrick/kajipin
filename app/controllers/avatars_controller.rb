@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AvatarsController < ApplicationController
   # Devise authenticate
   before_filter :authenticate_user!
@@ -49,5 +50,5 @@ class AvatarsController < ApplicationController
       true
     end
   end
-  
+
 end
