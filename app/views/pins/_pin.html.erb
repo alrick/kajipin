@@ -19,8 +19,8 @@
         <b class="caret"></b>
       </a>
       <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-manage-btn">
-        <li><%= link_to content_tag("i", "", class: "icon-camera-retro")+" Photos", captain_pin_photos_path(pin) %></li>
-        <li><%= link_to content_tag("i", "", class: "icon-book")+" Logbook", captain_pin_logpages_path(pin) %></li>
+        <li><%= link_to content_tag("i", "", :class => "icon-camera-retro")+" Photos", captain_pin_photos_path(pin) %></li>
+        <li><%= link_to content_tag("i", "", :class => "icon-book")+" Logbook", captain_pin_logpages_path(pin) %></li>
       </ul>
     </div>
   </td>
@@ -48,6 +48,6 @@
         <% end %>
       </ul>
     </div>
-    <%= link_to content_tag("i", "", class: "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
+    <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
   </td>
 </tr>

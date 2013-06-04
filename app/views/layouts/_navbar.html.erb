@@ -54,10 +54,10 @@
                     <% end %>
                   </li>
                   <li class="divider"></li>
-                  <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-map-marker")+" Pins", pins_path %></li>
-                  <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-heart")+" Friendships", friendships_path %></li>
-                  <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-cog")+" Settings", edit_user_registration_path %></li>
-                  <li class="usermenu-item"><%= link_to content_tag("i", "", class: "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
+                  <li class="usermenu-item"><%= link_to content_tag("i", "", :class => "icon-map-marker")+" Pins", pins_path %></li>
+                  <li class="usermenu-item"><%= link_to content_tag("i", "", :class => "icon-heart")+" Friendships", friendships_path %></li>
+                  <li class="usermenu-item"><%= link_to content_tag("i", "", :class => "icon-cog")+" Settings", edit_user_registration_path %></li>
+                  <li class="usermenu-item"><%= link_to content_tag("i", "", :class => "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
                 </ul>
               </div>
             </li>

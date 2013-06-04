@@ -29,7 +29,7 @@ module ApplicationHelper
       else
         if current_user.isSharingWith(user)
           friendship = current_user.friendships.where(:friend_id => user.id).first
-          link_to content_tag("i", "", class: "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial #{size}"
+          link_to content_tag("i", "", :class => "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial #{size}"
         else
           link_to "Share", friendships_path(:friend => user), :method => :post, :remote => true, :class => "btn btn-social #{size}"
         end
@@ -39,10 +39,10 @@ module ApplicationHelper
 
   def no_pin_element
     if @herald.nil? && @user == current_user
-      content_tag(:p, "You have no pin!", class: "lead")
+      content_tag(:p, "You have no pin!", :class => "lead")
       link_to "Add some", pins_url, :class => "btn btn-map"
     else
-      content_tag(:p, @user.first_name + " has no pin", class: "lead no-margin")
+      content_tag(:p, @user.first_name + " has no pin", :class => "lead no-margin")
     end
   end
 
@@ -57,13 +57,13 @@ module ApplicationHelper
       l_path = logpages_heralds_path(:key => @herald.key, :pin => pin)
     end
     if label
-      p_text = content_tag(:i, "", class: "icon-camera-retro") + " Photos (" + pin.photos_count + ")"
-      c_text = content_tag(:i, "", class: "icon-comments") + " Comments (" + pin.comments_count + ")"
-      l_text = content_tag(:i, "", class: "icon-book") + " Logbook (" + pin.logpages_count + ")"
+      p_text = content_tag(:i, "", :class => "icon-camera-retro") + " Photos (" + pin.photos_count + ")"
+      c_text = content_tag(:i, "", :class => "icon-comments") + " Comments (" + pin.comments_count + ")"
+      l_text = content_tag(:i, "", :class => "icon-book") + " Logbook (" + pin.logpages_count + ")"
     else
-      p_text = pin.photos_count + " " + content_tag("i", "", class: "icon-camera-retro")
-      c_text = pin.comments_count + " " + content_tag("i", "", class: "icon-comments")
-      l_text = pin.logpages_count + " " + content_tag("i", "", class: "icon-book")
+      p_text = pin.photos_count + " " + content_tag("i", "", :class => "icon-camera-retro")
+      c_text = pin.comments_count + " " + content_tag("i", "", :class => "icon-comments")
+      l_text = pin.logpages_count + " " + content_tag("i", "", :class => "icon-book")
     end
     link_to(p_text, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
     link_to(c_text, c_path, :class => "comments btn btn-tool "+size, :remote => true)+
@@ -81,7 +81,7 @@ module ApplicationHelper
   def toggler(layout)
     if layout == "map" && !@pins.nil?
       if !@pins.empty?
-        content_tag(:button, content_tag(:i, "", class: "icon-list"), :id => "toggler", :class => "btn btn-map", :type => "button")
+        content_tag(:button, content_tag(:i, "", :class => "icon-list"), :id => "toggler", :class => "btn btn-map", :type => "button")
       end
     end
   end

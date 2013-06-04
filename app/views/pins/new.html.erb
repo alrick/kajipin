@@ -67,7 +67,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to content_tag("i", "", class: "icon-plus-sign")+" Add this", pins_path(:ext_id => geo["geonameId"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %>
+                  <%= link_to content_tag("i", "", :class => "icon-plus-sign")+" Add this", pins_path(:ext_id => geo["geonameId"]), :method => :post, :class => "btn btn-mini btn-map pins-addthis" %>
                 </td>
               </tr>
             <% end %>

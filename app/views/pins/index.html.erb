@@ -7,7 +7,7 @@
 <%= form_tag("pins/new", :method => "get", :class => "well form-inline") do %>
   <p><strong>Simply specify location's name to add a pin.</strong></p>
   <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
-  <%= button_tag content_tag("i", "", class: "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
+  <%= button_tag content_tag("i", "", :class => "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
 <% end %>
 
 <div class="alert alert-info">
@@ -25,17 +25,17 @@
   <div id="pins" class="tab-content">
     <div class="tab-pane active" id="city">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @cities, :as => :pin) || content_tag("p", "No city added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @cities, :as => :pin) || content_tag("p", "No city added.", :class => "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="town">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @towns, :as => :pin) || content_tag("p", "No town added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @towns, :as => :pin) || content_tag("p", "No town added.", :class => "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="pointofinterest">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No point of interest added.", class: "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @points_of_interest, :as => :pin) || content_tag("p", "No point of interest added.", :class => "lead empty-set") %>
       </table>
     </div>
   </div>
