@@ -1,36 +1,36 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
 <div class="page-header">
-  <h1>Your Pins <small>Captain them all!</small></h1>
+  <h1><%= t 'pins.index.title' %> <small><%= t 'pins.index.small' %></small></h1>
 </div>
 
 <%= form_tag("pins/new", :method => "get", :class => "well form-inline") do %>
-  <p><strong>Simply specify location's name to add a pin.</strong></p>
-  <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => "Name") %>
-  <%= button_tag content_tag("i", "", :class => "icon-plus-sign")+" Add", :class => "btn btn-map", :value => "add" %>
+  <p><strong><%= t 'pins.index.add_explanation' %></strong></p>
+  <%= text_field_tag(:q, nil, :class => "input-large", :placeholder => t('pins.index.search_field')) %>
+  <%= button_tag content_tag("i", "", :class => "icon-plus-sign")+" "+t('add').capitalize, :class => "btn btn-map" %>
 <% end %>
 
 <div class="alert alert-info">
-  <strong>Heads up!</strong> You're limited to <%= Pin.limit %> pins in overall and a maximum of <%= Pin.high_populated_limit %> high populated cities (<i class="icon-upload"></i>).
+  <strong><%= t 'headsup' %></strong> <%= t 'pins.index.limits', :limit => Pin.limit, :high_populated_limit => Pin.high_populated_limit %> (<i class="icon-upload"></i>).
 </div>
 
-<h2>Current pins <small><%= @overall.count %> in overall (<%= @overall.high_populated.count %> <i class="icon-upload"></i>)</small></h2>
+<h2><%= t 'pins.index.current_title' %> <small><%= @overall.count %> <%= t 'pins.index.current_small' %> (<%= @overall.high_populated.count %> <i class="icon-upload"></i>)</small></h2>
 
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul id ="pins-toolstabs" class="nav nav-tabs">
-    <li class="active"><a href="#city" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= City.marker_color %>"></i> <%= City.fancy_name %> (<%= @cities.count %>)</b></a></li>
-    <li><a href="#town" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Town.marker_color %>"></i> <%= Town.fancy_name %> (<%= @towns.count %>)</b></a></li>
-    <li><a href="#pointofinterest" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Poi.marker_color %>"></i> <%= Poi.fancy_name %> (<%= @points_of_interest.count %>)</b></a></li>
+    <li class="active"><a href="#city" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= City.marker_color %>"></i> <%= City.model_name.human %> (<%= @cities.count %>)</b></a></li>
+    <li><a href="#town" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Town.marker_color %>"></i> <%= Town.model_name.human %> (<%= @towns.count %>)</b></a></li>
+    <li><a href="#pointofinterest" data-toggle="tab"><b><i class="icon-map-marker" style="color:<%= Poi.marker_color %>"></i> <%= Poi.model_name.human %> (<%= @points_of_interest.count %>)</b></a></li>
   </ul>
   <div id="pins" class="tab-content">
     <div class="tab-pane active" id="city">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @cities, :as => :pin) || content_tag("p", "No city added.", :class => "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @cities, :as => :pin) || content_tag("p", t('pins.index.no_city'), :class => "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="town">
       <table class="pins-table table table-hover table-striped">
-        <%= render(:partial => "pins/pin", :collection => @towns, :as => :pin) || content_tag("p", "No town added.", :class => "lead empty-set") %>
+        <%= render(:partial => "pins/pin", :collection => @towns, :as => :pin) || content_tag("p", t('pins.index.no_town'), :class => "lead empty-set") %>
       </table>
     </div>
     <div class="tab-pane" id="pointofinterest">
@@ -42,10 +42,6 @@
 </div>
 <hr>
 <dl class="dl-horizontal">
-  <dt>Latitude (&phi;)</dt>
-  <dd>Geographic coordinate that specifies the north-south position of a point on the Earth's surface.</dd>
-  <dt>Longitude (&lambda;)</dt>
-  <dd>Geographic coordinate that specifies the east-west position of a point on the Earth's surface.</dd>
   <dt>High populated (<i class="icon-upload"></i>)</dt>
   <dd>One million or more population.</dd>
 </dl>

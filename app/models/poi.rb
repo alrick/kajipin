@@ -1,12 +1,6 @@
 class Poi < Pin
 
   # Instance methods
-  def fancy_name
-    Poi.fancy_name
-  end
-  def description
-    Poi.description
-  end
   def marker_size
     Poi.marker_size
   end
@@ -24,9 +18,6 @@ class Poi < Pin
   end
 
   # Class methods
-  def self.fancy_name
-    "Point of interest"
-  end
   def self.marker_size
     "medium"
   end

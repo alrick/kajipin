@@ -33,17 +33,17 @@
       <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-type-btn">
         <% unless pin.type == City.sti_name %>
           <li>
-            <%= link_to City.fancy_name, pin_path(pin, :type => City.sti_name), :method => :put, "tabindex" => "-1" %>
+            <%= link_to City.model_name.human, pin_path(pin, :type => City.sti_name), :method => :put, "tabindex" => "-1" %>
           </li>
         <% end %>
         <% unless pin.type == Town.sti_name %>
           <li>
-            <%= link_to Town.fancy_name, pin_path(pin, :type => Town.sti_name), :method => :put, "tabindex" => "-1" %>
+            <%= link_to Town.model_name.human, pin_path(pin, :type => Town.sti_name), :method => :put, "tabindex" => "-1" %>
           </li>
         <% end %>
         <% unless pin.type == Poi.sti_name %>
           <li>
-            <%= link_to Poi.fancy_name, pin_path(pin, :type => Poi.sti_name), :method => :put, "tabindex" => "-1" %>
+            <%= link_to Poi.model_name.human, pin_path(pin, :type => Poi.sti_name), :method => :put, "tabindex" => "-1" %>
           </li>
         <% end %>
       </ul>

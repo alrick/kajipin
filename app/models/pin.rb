@@ -22,14 +22,14 @@ class Pin < ActiveRecord::Base
   scope :high_populated, where("population >= 1000000")
 
   # Fix problem with child path in sti
-  def self.inherited(child)
-    child.instance_eval do
-      def model_name
-        Pin.model_name
-      end
-    end
-    super
-  end
+  #def self.inherited(child)
+  #  child.instance_eval do
+  #    def model_name
+  #      Pin.model_name
+  #    end
+  #  end
+  #  super
+  #end
 
   def short_lat
     "%.3f" % latitude

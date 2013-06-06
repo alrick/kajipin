@@ -1,12 +1,6 @@
 class Town < Pin
 
   # Instance methods
-  def fancy_name
-    Town.fancy_name
-  end
-  def description
-    Town.description
-  end
   def marker_size
     Town.marker_size
   end
@@ -24,9 +18,6 @@ class Town < Pin
   end
 
   # Class methods
-  def self.fancy_name
-    "Town"
-  end
   def self.marker_size
     "medium"
   end

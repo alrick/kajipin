@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      city: "City"
+      town: "Town"
+      poi: "Point of interest"
+    attributes:
+      user:
+        name: "Full name"

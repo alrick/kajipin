@@ -1,12 +1,6 @@
 class City < Pin
 
   # Instance methods
-  def fancy_name
-    City.fancy_name
-  end
-  def description
-    City.description
-  end
   def marker_size
     City.marker_size
   end
@@ -24,9 +18,6 @@ class City < Pin
   end
 
   # Class methods
-  def self.fancy_name
-    "City"
-  end
   def self.marker_size
     "large"
   end

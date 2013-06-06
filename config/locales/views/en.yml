@@ -1,0 +1,13 @@
+en:
+  pins:
+    index:
+      title: "Your Pins"
+      small: "Captain them all!"
+      search_field: "Name"
+      add_explanation: "Simply specify location's name to add a pin."
+      limits: "You're limited to %{limit} pins in overall and a maximum of %{high_populated_limit} high populated cities"
+      current_title: "Current pins"
+      current_small: "in overall"
+      no_city: "No city added."
+      no_town: "No town added."
+      no_poi: "No point of interest added."
