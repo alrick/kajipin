@@ -39,8 +39,8 @@ module ApplicationHelper
 
   def no_pin_element
     if @herald.nil? && @user == current_user
-      content_tag(:p, "You have no pin!", :class => "lead")
-      link_to "Add some", pins_url, :class => "btn btn-map"
+      content_tag(:p, "You have no pin!", :class => "lead")+
+      link_to("Add some", pins_url, :class => "btn btn-map")
     else
       content_tag(:p, @user.first_name + " has no pin", :class => "lead no-margin")
     end

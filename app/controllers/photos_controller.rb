@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
     if @all_success
       flash[:notice] = t('controllers.photos.create.success')
     else
-      flash[:alert] = t('controllers.photos.create.fail')+beautiful_errors(@photo)}
+      flash[:alert] = t('controllers.photos.create.fail')+beautiful_errors(@photo)
     end
 
     # Respond with javascript because it's ajax request

@@ -6,7 +6,7 @@
   width: 100%;
   background-color: $water-color;
   #side {
-    width: 300px;
+    width: 344px;
     height: 100%;
     background: lighten($main-color, 46%);
     margin: 0;
@@ -14,7 +14,9 @@
     float: left;
     .in-side {
       padding: 20px;
-      .btn { min-width: 45px; }
+      .accessors {
+        .btn { min-width: 45px; }
+      }
       h2 {
         font-size: 18px;
         line-height: 12px;
