@@ -1,0 +1,29 @@
+fr:
+  controllers:
+    avatars:
+      create:
+        success: "<strong>Nouvelle photo de profil</strong> correctement ajoutée."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé durant l'ajout de votre photo de profil."
+      destroy:
+        success: "<strong>Gravatar</strong> correctement restauré."
+    photos:
+      create:
+        success: "<strong>Vos photos</strong> ont correctement été ajoutées."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé durant l'ajout de vos photos, quelques unes pourraient ne pas avoir été ajoutées."
+      destroy:
+        success: "<strong>Vos photos</strong> ont correctement été supprimées."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé durant la suppression de vos photos, quelques unes pourraient ne pas avoir été supprimées."
+    pins:
+      geonames_error: "<strong>Diantre!</strong> Communication avec Geonames impossible, veuillez réessayer plus tard."
+      update:
+        success: "<strong>%{title}</strong> a correctement été mis à jour."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé durant la mise à jour de %{title}."
+      create:
+        success: "<strong>%{title}</strong> a correctement été ajouté à vos pins."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé durant la création de votre pin."
+      destroy:
+        success: "<strong>%{title}</strong> a correctement été supprimé de vos pins."
+    requests:
+      create:
+        success: "Requête créée avec succès."
+        fail: "<strong>Diantre!</strong> Quelque chose s'est mal passé avec votre requête, veuillez réessayer."

@@ -45,9 +45,9 @@ class PhotosController < ApplicationController
 
     # Display right message
     if @all_success
-      flash[:notice] = t('photos.create.success')
+      flash[:notice] = t('controllers.photos.create.success')
     else
-      flash[:alert] = t('photos.create.fail')+beautiful_errors(@photo)}
+      flash[:alert] = t('controllers.photos.create.fail')+beautiful_errors(@photo)}
     end
 
     # Respond with javascript because it's ajax request
@@ -72,9 +72,9 @@ class PhotosController < ApplicationController
 
     # Redirect to captain photos and display right message
     if @all_success
-      redirect_to captain_pin_photos_url(@pin), notice: t('photos.destroy.success')
+      redirect_to captain_pin_photos_url(@pin), notice: t('controllers.photos.destroy.success')
     else
-      redirect_to captain_pin_photos_url(@pin), alert: t('photos.destroy.fail')
+      redirect_to captain_pin_photos_url(@pin), alert: t('controllers.photos.destroy.fail')
     end
   end
 
@@ -94,9 +94,9 @@ class PhotosController < ApplicationController
 
     # Redirect to captain photos and display right message
     if @all_success
-      redirect_to captain_pin_photos_url(@pin), notice: t('photos.destroy.success')
+      redirect_to captain_pin_photos_url(@pin), notice: t('controllers.photos.destroy.success')
     else
-      redirect_to captain_pin_photos_url(@pin), alert: t('photos.destroy.fail')
+      redirect_to captain_pin_photos_url(@pin), alert: t('controllers.photos.destroy.fail')
     end
   end
 end
