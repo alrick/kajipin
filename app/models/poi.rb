@@ -10,9 +10,6 @@ class Poi < Pin
   def marker_color
     Poi.marker_color
   end
-  def get_tab
-    "p"
-  end
   def get_btn
     "btn-poi"
   end

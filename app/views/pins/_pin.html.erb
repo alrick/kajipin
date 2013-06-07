@@ -1,53 +1,14 @@
-<!-- Called by the pin index (manage) -->
-<tr id="<%= dom_id(pin) %>">
+<%= content_tag_for(:tr, pin, :class => pin.type) do %>
   <td>
-    <strong><%= pin.title %> (<small><%= pin.country_name %></small>)</strong>&nbsp;
-    <small><%= content_tag("i", "", :class => "icon-upload") if pin.population >= 1000000 %></small>
-  </td>
-  <td>
-    <%= pin.short_lat %>&deg; <strong>&phi;</strong>, 
-    <%= pin.short_lon %>&deg; <strong>&lambda;</strong>
-  </td>
-  <td>
-    <span class="label label-tool pins-unify-stats"><%= pin.photos_count %> <i class="icon-camera-retro"></i></span>
-    <span class="label label-tool pins-unify-stats"><%= pin.comments_count %> <i class="icon-comments"></i></span>
-    <span class="label label-tool pins-unify-stats"><%= pin.logpages_count %> <i class="icon-book"></i></span>
-
-    <div class="dropdown pins-dropdown">
-      <a class="dropdown-toggle btn btn-mini btn-tool" id="pins-manage-btn" role="button" data-toggle="dropdown" data-target="#">
-        <i class="icon-pencil"></i>
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-manage-btn">
-        <li><%= link_to content_tag("i", "", :class => "icon-camera-retro")+" Photos", captain_pin_photos_path(pin) %></li>
-        <li><%= link_to content_tag("i", "", :class => "icon-book")+" Logbook", captain_pin_logpages_path(pin) %></li>
-      </ul>
+    <h2><%= pin.title %> <small><%= pin.country_name %></small> <%= content_tag(:i, "", :class => "icon-upload") if pin.high_populated? %></h2>
+    <div class="btn-group accessors">
+      <%= tools_btn(pin, "btn-mini", false) %>
+      <button class="btn btn-locate <%= pin.get_btn %> btn-mini" data-lat="<%= pin.latitude %>" data-lon="<%= pin.longitude %>" data-zoom="12"><i class="icon-map-marker"></i></button>
     </div>
   </td>
   <td>
-    <div class="dropdown pins-dropdown">
-      <a class="dropdown-toggle btn btn-mini btn-map" id="pins-type-btn" role="button" data-toggle="dropdown" data-target="#">
-        <i class="icon-map-marker"></i> Type
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu bottom-up" role="menu" aria-labelledby="pins-type-btn">
-        <% unless pin.type == City.sti_name %>
-          <li>
-            <%= link_to City.model_name.human, pin_path(pin, :type => City.sti_name), :method => :put, "tabindex" => "-1" %>
-          </li>
-        <% end %>
-        <% unless pin.type == Town.sti_name %>
-          <li>
-            <%= link_to Town.model_name.human, pin_path(pin, :type => Town.sti_name), :method => :put, "tabindex" => "-1" %>
-          </li>
-        <% end %>
-        <% unless pin.type == Poi.sti_name %>
-          <li>
-            <%= link_to Poi.model_name.human, pin_path(pin, :type => Poi.sti_name), :method => :put, "tabindex" => "-1" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :class => "btn btn-mini btn-map btn-remove", :data => { :confirm => "Are you sure you want to remove #{pin.title}?", :beware => "<li>#{pin.title}'s logbook will be removed</li><li>#{pin.title}'s comments will be removed</li>" } %>
+    <% if (can? :manage, pin) && (@herald.nil?) %>
+      <%= render "pins/captain", :pin => pin %>
+    <% end %>
   </td>
-</tr>
+<% end %>

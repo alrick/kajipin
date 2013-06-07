@@ -12,7 +12,10 @@ class Pin < ActiveRecord::Base
   validates :title, :country_name, :country_code, :continent_code, :type, :presence => true
   validates :latitude, :longitude, :numericality => true
   validates :user_id, :ext_id, :numericality => { :greater_than => 0}
-  validates :user_id, :uniqueness => { :scope => [:latitude, :longitude], :message => "Pins can't have same latitude and longitude" }
+  validates :user_id, :uniqueness => { :scope => [:latitude, :longitude],
+    :message => "Pins can't have same latitude and longitude" }
+  validates :type, :inclusion => { :in => %w(City Town Poi),
+    :message => "%{value} is not a valid type" }
   validate :check_limit, :on => :create
   validate :check_high_populated_limit, :on => :create
 

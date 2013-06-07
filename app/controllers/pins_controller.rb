@@ -14,12 +14,6 @@ class PinsController < ApplicationController
   GEONAMES_SEARCH_URL = "http://api.geonames.org/searchJSON?q="
   GEONAMES_GET_URL = "http://api.geonames.org/getJSON?geonameId="
 
-  def index
-    @user = current_user
-    get_pins
-    open_tab
-  end
-
   def new
     if params[:q].blank?
       q = "london"
@@ -37,13 +31,11 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
-    @pin.type = params[:type]
+    @pin.update_attributes(:type => params[:type])
+    @pin = @pin.becomes(params[:type].constantize)
 
-    if @pin.save
-      tab = Pin.find(params[:id]).get_tab
-      redirect_to pins_url(:tab => tab), notice: t('controllers.pins.update.success', title: @pin.title)
-    else
-      redirect_to pins_url(:tab => @pin.get_tab), alert: t('controllers.pins.update.fail', title: @pin.title)
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -64,15 +56,9 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     @pin.destroy
 
-    redirect_to pins_url(:tab => @pin.get_tab), notice: t('controllers.pins.destroy.success')
-  end
-
-  # Generic method to get pins
-  def get_pins
-    @cities = @user.pins.city
-    @towns = @user.pins.town
-    @points_of_interest = @user.pins.poi
-    @overall = @user.pins
+    respond_to do |format|
+      format.js
+    end
   end
 
   # Init pin with geonames data
@@ -99,12 +85,5 @@ class PinsController < ApplicationController
     pin.population = result["population"]
 
     return pin
-  end
-
-  # Open right tab regarding params (SHOW)
-  def open_tab
-    if params[:tab] == "s" or params[:tab] == "p"
-      gon.tab = params[:tab]
-    end
   end
 end

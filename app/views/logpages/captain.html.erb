@@ -2,7 +2,7 @@
 
 <div class="page-header">
   <h1 style="display:inline">Logbook <small><%= @pin.title %></small></h1>&nbsp;
-  <%= link_to "Return to pins", pins_path(:tab => @pin.get_tab), :class => "btn btn-map btn-small" %>
+  <%= link_to "Return to profile", user_path(current_user), :class => "btn btn-map btn-small" %>
 </div>
 
 <p class="well">

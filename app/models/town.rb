@@ -10,9 +10,6 @@ class Town < Pin
   def marker_color
     Town.marker_color
   end
-  def get_tab
-    "s"
-  end
   def get_btn
     "btn-town"
   end

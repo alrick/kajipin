@@ -12,23 +12,7 @@
     margin: 0;
     overflow: auto;
     float: left;
-    .in-side {
-      padding: 20px;
-      .accessors {
-        .btn { min-width: 45px; }
-      }
-      h2 {
-        font-size: 18px;
-        line-height: 12px;
-        small { font-size: 12px; }
-      }
-      .stats {
-        font-size: 20px;
-        .city { color: $map-color; }
-        .town { color: $main-color; }
-        .poi { color: $extra-color; }
-      }
-    }
+    .in-side { padding: 20px; }
   }
   #map {
     width: 100%;

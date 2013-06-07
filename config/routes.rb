@@ -15,7 +15,7 @@ Kajipin::Application.routes.draw do
   end
 
   # PINS
-  resources :pins, :only => [:index, :new, :update, :create, :destroy] do
+  resources :pins, :only => [:new, :update, :create, :destroy] do
     resources :photos, :only => [:index, :new] do
       get 'captain', :on => :collection
       post 'create_many', :on => :collection

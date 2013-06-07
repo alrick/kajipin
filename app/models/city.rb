@@ -10,9 +10,6 @@ class City < Pin
   def marker_color
     City.marker_color
   end
-  def get_tab
-    "b"
-  end
   def get_btn
     "btn-city"
   end

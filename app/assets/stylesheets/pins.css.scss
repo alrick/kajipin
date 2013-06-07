@@ -4,33 +4,29 @@
 // Align Geonames ccby license to right
 #pins-ccby { text-align: right; }
 
-// Unify stats btn
-.pins-unify-stats { min-width: 31px; text-align: center; }
-
 // Style the types for pin
 #pins-types { 
   text-align: center;
   strong { font-size: 16px; }
 }
 
-// Style the dropdown for pin's type
-.pins-dropdown {
-  display: inline;
-  b.caret { 
-    border-top-color: $lighter-color !important;
-    border-bottom-color: $lighter-color !important; 
-  }
-  .dropdown-menu { font-size: 14px; }
-}
-
-// Fix bug with dropdown cut
-.pins-table { margin-bottom: 55px; }
-
 // Styling pinModal
 #pinModal .modal-footer { text-align: center; }
 
-#listModal {
-  .btn-group {
-    .btn { min-width: 31px; }
+// Styling pins, displayed in side element
+#pins {
+  .accessors {
+    .btn { min-width: 45px; }
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 12px;
+    small { font-size: 12px; }
+  }
+  .stats {
+    font-size: 20px;
+    .city { color: $map-color; }
+    .town { color: $main-color; }
+    .poi { color: $extra-color; }
   }
 }
