@@ -1,46 +1,32 @@
 jQuery ->
 
-  # Use bootstrap modal for confirmations
+  # http://rors.org/demos/custom-confirm-in-rails
   $.rails.allowAction = (link) ->
-    return true unless link.attr("data-confirm")
+    return true unless link.attr('data-confirm')
     $.rails.showConfirmDialog(link) # look bellow for implementations
     false # always stops the action since code runs asynchronously
 
   $.rails.confirmed = (link) ->
-    # Display loading modal if set
-    loading = link.data "loading"
-    if loading
-      loadingModal = $("#loadingModal")
-      loadingModal.find("h3").html(loading)
-      loadingModal.modal()
-    link.removeAttr("data-confirm")
-    link.trigger("click.rails")
+    link.removeAttr('data-confirm')
+    link.trigger('click.rails')
 
+  # Boostrap
   $.rails.showConfirmDialog = (link) ->
-    message = link.data "confirm"
-    beware = link.data "beware"
+    message = link.attr 'data-confirm'
     html = """
-            <div class="modal" id="confirmationDialog">
-              <div class="modal-header">
-                <h3>#{message}</h3>
-              </div>
-            """
-    if beware
-      html = html + """
-             <div class="modal-body">
-                <strong>Beware :</strong>
-                <ul>
-                  #{beware}
-                </ul>
+           <div class="modal" id="confirmationDialog">
+             <div class="modal-header">
+               <a class="close" data-dismiss="modal">×</a>
+               <h3>Are you sure?</h3>
              </div>
-             """
-    html = html + """
-              <div class="modal-footer">
-                <a data-dismiss="modal" class="btn btn-other">Cancel</a>
-                <a data-dismiss="modal" class="btn btn-confirm confirm">Yes, I'm positively certain.</a>
-              </div>
-            </div>
-            """
+             <div class="modal-body">
+               <div class="lead"><strong>Beware:</strong> #{message}</div>
+             </div>
+             <div class="modal-footer">
+               <a data-dismiss="modal" class="btn btn-other">Cancel</a>
+               <a data-dismiss="modal" class="btn btn-confirm confirm">Delete</a>
+             </div>
+           </div>
+           """
     $(html).modal()
-    $("#confirmationDialog").on "click", ".confirm", ->
-      $.rails.confirmed(link)
+    $('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)
