@@ -1,10 +1,10 @@
 <div id="pins">
   <table class="table stats">
     <tr>
-      <td><b><%= @pins.count %> <i class="icon-map-marker"></i></b></td>
-      <td><b><%= @pins.city.count %> <i class="icon-map-marker city"></i></b></td>
-      <td><b><%= @pins.town.count %> <i class="icon-map-marker town"></i></b></td>
-      <td><b><%= @pins.poi.count %> <i class="icon-map-marker poi"></i></b></td>
+      <td><b><span class="pins-count"><%= @pins.count %></span> <i class="icon-map-marker"></i></b></td>
+      <td><b><span class="city-count"><%= @pins.city.count %></span> <i class="icon-map-marker city"></i></b></td>
+      <td><b><span class="town-count"><%= @pins.town.count %></span> <i class="icon-map-marker town"></i></b></td>
+      <td><b><span class="poi-count"><%= @pins.poi.count %></span> <i class="icon-map-marker poi"></i></b></td>
     </tr>
   </table>
   <table class="table table-striped">

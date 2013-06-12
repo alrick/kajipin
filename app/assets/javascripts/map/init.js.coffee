@@ -1,58 +1,72 @@
 jQuery ->
 
-  # Check that we're on correct page
-  if $("#map").length
+  #################
+  # FUNCTIONS
+  #################
 
-    #################
-    # MAP INIT
-    #################
+  # PUBLIC : Update pins data
+  gon.refresh_pins = ->
+    gon.watch "cities", setup_cities, true
 
-    # Create map
-    map = L.mapbox.map("map", gon.mapbox_id,
+  # Setup cities pin
+  setup_cities = (cities, cascade) ->
+    gon.citiesList = []
+    populate_list gon.citiesList, cities
+    gon.watch "towns", setup_towns, true if cascade
+
+  # Setup towns pin
+  setup_towns = (towns, cascade) ->
+    gon.townsList = []
+    populate_list gon.townsList, towns
+    gon.watch "poi", setup_poi, true if cascade
+
+  # Setup poi pin
+  setup_poi = (poi, cascade) ->
+    gon.poiList = []
+    populate_list gon.poiList, poi
+    if cascade
+      gon.clusterGroup.clearLayers()
+      add_pins()
+
+  # Init map, only called once
+  init_map = ->
+    gon.map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
       worldCopyJump: true
       minZoom: 3
       keyboard: false # disable for now because re-enable is buggy
     ).fitWorld()
+    gon.clusterGroup = new L.MarkerClusterGroup({ showCoverageOnHover:false })
+    gon.map.addLayer gon.clusterGroup
 
-    # Only if user has pins to display
-    if gon.hasPins
+  # Populate a list with pins
+  populate_list = (list, pins) ->
+    L.geoJson pins,
+      pointToLayer: L.mapbox.marker.style,
+      onEachFeature: (feature, layer) ->
+        layer.bindPopup gon.build_tooltip feature
+        list.push layer
 
-      # Create cities layer with all markers
-      citiesList = []
-      citiesLayer = L.geoJson gon.cities,
-        pointToLayer: L.mapbox.marker.style,
-        onEachFeature: (feature, layer) ->
-          layer.bindPopup gon.build_tooltip(feature)
-          citiesList.push(layer)
+  # Set and add clusters to map
+  add_pins = ->
+    gon.clusterGroup.addLayers gon.citiesList
+    gon.clusterGroup.addLayers gon.townsList
+    gon.clusterGroup.addLayers gon.poiList
 
-      # Create towns layer with all markers
-      townsList = []
-      townsLayer = L.geoJson gon.towns,
-        pointToLayer: L.mapbox.marker.style,
-        onEachFeature: (feature, layer) ->
-          layer.bindPopup gon.build_tooltip(feature)
-          townsList.push(layer)
+  # Set all the pins stuff
+  init_pins = ->
+    setup_cities gon.cities, false
+    setup_towns gon.towns, false
+    setup_poi gon.poi, false
+    add_pins()
 
-      # Create poi layer with all markers
-      poiList = []
-      poiLayer = L.geoJson gon.poi,
-        pointToLayer: L.mapbox.marker.style,
-        onEachFeature: (feature, layer) ->
-          layer.bindPopup gon.build_tooltip(feature)
-          poiList.push(layer)
 
-      # Create cluster, add markers and add to map
-      cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false })
-      cluster.addLayers citiesList
-      cluster.addLayers townsList
-      cluster.addLayers poiList
-      map.addLayer cluster
+  #################
+  # FLOW
+  #################
 
-    # Set public accessors
-    gon.map = map
-    if gon.hasPins
-      gon.citiesList = citiesList
-      gon.townsList = townsList
-      gon.poiList = poiList
-      gon.cluster = cluster
+  # Check that we're on correct page
+  if $("#map").length
+    init_map()
+    init_pins() if gon.hasPins
+      

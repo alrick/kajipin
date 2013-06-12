@@ -40,9 +40,9 @@ jQuery ->
     else if type == "Poi"
       layer = gon.poiList
     if state
-      gon.cluster.addLayers(layer)
+      gon.clusterGroup.addLayers(layer)
     else
-      gon.cluster.removeLayers(layer)
+      gon.clusterGroup.removeLayers(layer)
 
   # Display countries list
   show_countries_list = (map) ->
