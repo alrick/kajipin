@@ -36,7 +36,7 @@ jQuery ->
       minZoom: 3
       keyboard: false # disable for now because re-enable is buggy
     ).fitWorld()
-    gon.clusterGroup = new L.MarkerClusterGroup({ showCoverageOnHover:false })
+    gon.clusterGroup = new L.MarkerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:30 })
     gon.map.addLayer gon.clusterGroup
 
   # Populate a list with pins
