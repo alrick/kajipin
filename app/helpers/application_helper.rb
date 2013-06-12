@@ -81,7 +81,7 @@ module ApplicationHelper
   def toggler(layout)
     if layout == "map" && !@pins.nil?
       if !@pins.empty?
-        content_tag(:button, content_tag(:i, "", :class => "icon-list"), :id => "toggler", :class => "btn btn-map", :type => "button")
+        content_tag(:button, content_tag(:i, "", :class => "icon-list"), :id => "toggler", :class => "btn btn-tool", :type => "button")
       end
     end
   end
