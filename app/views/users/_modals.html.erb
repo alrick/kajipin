@@ -15,3 +15,8 @@
 
   <div id="photoModal"></div>
 <% end %>
+
+<!-- Only if current user's profile -->
+<% if @master == current_user %>
+  <div id="creatorModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="creatorModalLabel" aria-hidden="true"></div>
+<% end %>

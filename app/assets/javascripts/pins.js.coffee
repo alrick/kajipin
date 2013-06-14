@@ -67,10 +67,16 @@ jQuery ->
   # TRIGGERS
   #################
 
-  # Adjust modal height with size of document for big resolutions
+  # Adjust modal height with size of document for big resolutions and switch interaction
   $("#pinModal").on "show", ->
     modal_resize.call(this)
     gon.disable_interaction gon.map
-
   $("#pinModal").on "hide", ->
+    gon.enable_interaction gon.map
+
+  # Switch interaction
+  $("#creatorModal").on "show", ->
+    gon.disable_interaction gon.map
+
+  $("#creatorModal").on "hide", ->
     gon.enable_interaction gon.map

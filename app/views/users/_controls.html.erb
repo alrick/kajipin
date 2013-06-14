@@ -35,3 +35,6 @@
 <% end %>
 
 <!-- Only if current user's profile -->
+<% if @master == current_user %>
+  <%= link_to content_tag(:i, "", :class => "icon-plus"), setup_pins_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true, :rel => "tooltip", :title => "Add a pin", "data-placement" => "left" %>
+<% end %>

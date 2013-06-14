@@ -14,6 +14,12 @@ class PinsController < ApplicationController
   GEONAMES_SEARCH_URL = "http://api.geonames.org/searchJSON?q="
   GEONAMES_GET_URL = "http://api.geonames.org/getJSON?geonameId="
 
+  def setup
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     if params[:q].blank?
       q = "london"
