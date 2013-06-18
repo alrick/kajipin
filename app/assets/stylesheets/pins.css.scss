@@ -28,6 +28,7 @@
     .city { color: $map-color; }
     .town { color: $main-color; }
     .poi { color: $extra-color; }
+    a { border-bottom: 1px dotted; }
   }
 }
 

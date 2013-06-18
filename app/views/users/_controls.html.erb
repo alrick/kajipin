@@ -1,7 +1,7 @@
-<a id="world-zoom" class="control zoom" rel="tooltip" title="Fit World" data-placement="right">
+<a id="world-zoom" class="control zoom">
   <i class="icon-globe"></i>
 </a>
-<a id="countries-zoom" class="control zoom" rel="tooltip" title="Fit Country" data-placement="right">
+<a id="countries-zoom" class="control zoom">
   <i class="icon-list-alt"></i>
 </a>
 
@@ -23,18 +23,18 @@
 
 <!-- Only if via herald or if user is a friend -->
 <% if can? :show, @master %>
-  <a id="city-filter" class="control pins-filter" rel="tooltip" title="Filter Cities" data-placement="bottom" data-type="<%= City.sti_name %>">
+  <a id="city-filter" class="control pins-filter" data-type="<%= City.sti_name %>">
     <i class="icon-eye-open"></i>
   </a>
-  <a id="town-filter" class="control pins-filter" rel="tooltip" title="Filter Towns" data-placement="bottom" data-type="<%= Town.sti_name %>">
+  <a id="town-filter" class="control pins-filter" data-type="<%= Town.sti_name %>">
     <i class="icon-eye-open"></i>
   </a>
-  <a id="poi-filter" class="control pins-filter" rel="tooltip" title="Filter Point of interest" data-placement="bottom" data-type="<%= Poi.sti_name %>">
+  <a id="poi-filter" class="control pins-filter" data-type="<%= Poi.sti_name %>">
     <i class="icon-eye-open"></i>
   </a>
 <% end %>
 
 <!-- Only if current user's profile -->
 <% if @master == current_user %>
-  <%= link_to content_tag(:i, "", :class => "icon-plus"), setup_pins_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true, :rel => "tooltip", :title => "Add a pin", "data-placement" => "left" %>
+  <%= link_to content_tag(:i, "", :class => "icon-plus"), setup_pins_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true %>
 <% end %>
