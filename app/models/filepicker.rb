@@ -1,6 +1,5 @@
 class Filepicker < ActiveRecord::Base
   self.abstract_class = true
-  
   include HTTParty # Used for http requests
 
   # Delete S3 file
