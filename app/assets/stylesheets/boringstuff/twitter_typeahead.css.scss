@@ -1,0 +1,47 @@
+.twitter-typeahead {
+  input {
+    width: 500px !important;
+    font-size: 35px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+  .tt-dropdown-menu {
+    width: 500px;
+    max-height: 400px;
+    overflow-y: scroll;
+    background: $lighter-color;
+    padding: 8px 0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    .geo-cc {
+      padding-left: 15px;
+      padding-bottom: 5px;
+      font-size: 12px;
+      border-bottom: 1px solid #efefef;
+    }
+    .geo-report {
+      padding-left: 15px;
+      padding-top: 5px;
+      font-size: 12px;
+      border-top: 1px solid #efefef;
+      margin-bottom: 0;
+    }
+    .tt-suggestion {
+      padding: 8px 20px;
+      p { margin: 0; }
+      .geo-name { font-size: 18px; }
+      .geo-type {
+        float: right;
+        font-style: italic;
+      }
+    }
+    .tt-is-under-cursor {
+      background: $main-color;
+      color: $lighter-color;
+    }
+  }
+}

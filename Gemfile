@@ -10,6 +10,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3' #sass for better css
   gem 'uglifier', '>= 1.0.3' # for javascript
   gem "therubyracer" #required for twitter-bootstrap-rails
+  gem 'hogan_assets' #used to render html template, typeahead
 end
 
 gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
@@ -30,6 +31,7 @@ gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
 gem 'httparty' #http request with fun :D
 gem 'leaflet-markercluster' #clusters for leaflet/mapbox
+gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
 
 group :development do
   gem 'rails-erd' #create schema of entities

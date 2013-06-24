@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require hoverintent/jquery.hoverIntent.minified
+//= require hogan.js
+//= require twitter/typeahead
 //
 //= require leaflet.markercluster
 //= require bootstrap_redefine
