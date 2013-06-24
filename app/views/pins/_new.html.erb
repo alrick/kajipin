@@ -1,0 +1,15 @@
+<div id="new-pin">
+  <div class="fields">
+    <div class="alert alert-info">
+      <strong>Heads up!</strong> You can still add <strong><%= Pin.limit - current_user.pins.count %></strong> pins
+       and <strong><%= Pin.high_populated_limit - current_user.pins.high_populated.count %></strong> high populated (<i class="icon-upload"></i>).
+    </div>
+    <div class="btn-group" data-toggle="buttons-radio">
+      <button class="btn btn-map active"><i class="icon-map-marker"></i> City</button>
+      <button class="btn btn-town"><i class="icon-map-marker"></i> Town</button>
+      <button class="btn btn-poi"><i class="icon-map-marker"></i> Poi</button>
+    </div>
+    <input class="name" type="text" placeholder="eg: London, Eiffel Tower, &amp;c">
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
