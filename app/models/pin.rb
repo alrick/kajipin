@@ -34,30 +34,6 @@ class Pin < ActiveRecord::Base
     super
   end
 
-  def short_lat
-    "%.3f" % latitude
-  end
-
-  def short_lon
-    "%.3f" % longitude
-  end
-
-  def photos_count
-    photos.count.to_s.html_safe
-  end
-
-  def logpages_count
-    logpages.count.to_s.html_safe
-  end
-
-  def comments_count
-    comments.count.to_s.html_safe
-  end
-
-  def normalized
-    title.gsub(/[^0-9A-Za-z]/, '') + "-" + id.to_s
-  end
-
   # Check if pin is a high populated
   def high_populated?
     if population >= 1000000
