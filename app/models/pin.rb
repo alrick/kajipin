@@ -93,4 +93,18 @@ class Pin < ActiveRecord::Base
     end
   end
 
+  # Init a pin with geodata
+  def init(geoname_id, user_id)
+    geoname = Geoname.find(geoname_id)
+    user_id = user_id
+    title = geoname.name
+    latitude = geoname.lat
+    longitude = geoname.lon
+    country_name = geoname.country
+    country_code = geoname.country_code
+    continent_code = geoname.continent_code
+    ext_id = geoname.geoname_id
+    population = geoname.population
+  end
+
 end
