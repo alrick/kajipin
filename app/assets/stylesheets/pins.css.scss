@@ -32,11 +32,20 @@
   }
 }
 
-// CreatorModal allow to add a pin
-#creatorModal {
-  .modal-body {
-    margin-bottom: 0;
-    p:nth-of-type(2) { margin-top: 30px; }
+// Container allowing user to add a pin to map
+#new-pin {
+  .fields {
+    .alert { margin-bottom: 0; }
+    position: absolute;
+    top: 20%;
+    z-index: 1050;
+    left: 50%;
+    margin-left: -391px;
+    .btn {
+      width: 89px;
+      height: 50px;
+      margin-top: 25px;
+      font-size: 18px;
+    }
   }
-  form { margin-bottom: 0; }
 }

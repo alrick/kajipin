@@ -73,10 +73,3 @@ jQuery ->
     gon.disable_interaction gon.map
   $("#pinModal").on "hide", ->
     gon.enable_interaction gon.map
-
-  # Switch interaction
-  $("#creatorModal").on "show", ->
-    gon.disable_interaction gon.map
-
-  $("#creatorModal").on "hide", ->
-    gon.enable_interaction gon.map

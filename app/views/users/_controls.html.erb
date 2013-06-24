@@ -36,5 +36,5 @@
 
 <!-- Only if current user's profile -->
 <% if @master == current_user %>
-  <%= link_to content_tag(:i, "", :class => "icon-plus"), setup_pins_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true %>
+  <%= link_to content_tag(:i, "", :class => "icon-plus"), new_pin_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true %>
 <% end %>
