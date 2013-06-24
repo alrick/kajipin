@@ -39,6 +39,9 @@ Kajipin::Application.routes.draw do
   # AVATARS
   resources :avatars, :only => [:new, :create, :destroy]
 
+  # GEONAMES
+  resources :geonames, :only => [:index], :defaults => { :format => 'json' }
+
   # HERALDS
   resources :heralds, :only => [:index, :create] do
     get 'photos', :on => :collection
