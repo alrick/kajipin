@@ -57,13 +57,13 @@ module ApplicationHelper
       l_path = logpages_heralds_path(:key => @herald.key, :pin => pin)
     end
     if label
-      p_text = content_tag(:i, "", :class => "icon-camera-retro") + " Photos (" + pin.photos.count + ")"
-      c_text = content_tag(:i, "", :class => "icon-comments") + " Comments (" + pin.comments.count + ")"
-      l_text = content_tag(:i, "", :class => "icon-book") + " Logbook (" + pin.logpages.count + ")"
+      p_text = content_tag(:i, "", :class => "icon-camera-retro") + " Photos (" + pin.photos.count.to_s + ")"
+      c_text = content_tag(:i, "", :class => "icon-comments") + " Comments (" + pin.comments.count.to_s + ")"
+      l_text = content_tag(:i, "", :class => "icon-book") + " Logbook (" + pin.logpages.count.to_s + ")"
     else
-      p_text = pin.photos.count + " " + content_tag("i", "", :class => "icon-camera-retro")
-      c_text = pin.comments.count + " " + content_tag("i", "", :class => "icon-comments")
-      l_text = pin.logpages.count + " " + content_tag("i", "", :class => "icon-book")
+      p_text = pin.photos.count.to_s + " " + content_tag("i", "", :class => "icon-camera-retro")
+      c_text = pin.comments.count.to_s + " " + content_tag("i", "", :class => "icon-comments")
+      l_text = pin.logpages.count.to_s + " " + content_tag("i", "", :class => "icon-book")
     end
     link_to(p_text, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
     link_to(c_text, c_path, :class => "comments btn btn-tool "+size, :remote => true)+
