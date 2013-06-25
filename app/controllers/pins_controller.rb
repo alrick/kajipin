@@ -22,8 +22,7 @@ class PinsController < ApplicationController
   end
 
   def create
-    @pin = params[:type].constantize.new
-    @pin.init(params[:geoname_id], current_user.id)
+    @pin = Pin.new({ ext_id: params[:geoname_id], type: params[:type], user_id: current_user.id})
 
     if @pin.save
       redirect_to user_url(current_user), notice: t('controllers.pins.create.success', title: @pin.title)

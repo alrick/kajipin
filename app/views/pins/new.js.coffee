@@ -1,7 +1,7 @@
 #################
 # FUNCTIONS
 #################
-hide_both = ->
+hide_this = ->
   $("#new-pin").remove()
 
 
@@ -12,12 +12,13 @@ hide_both = ->
 # Add backdrop and form to body
 $("<%= j(render('pins/new')) %>").appendTo(document.body)
 
-# Bind the hider to backdrop
-$(".modal-backdrop").click hide_both
+
+#################
+# TRIGGERS
+#################
 
 # Bind the typeahead to form's input
-typeA = $("#new-pin").find(".name")
-typeA.typeahead
+typeA = $("#new-pin").find(".name").typeahead
   name: "geonames"
   remote: "/geonames?q=%QUERY"
   valueKey: "name"
@@ -32,11 +33,14 @@ typeA.typeahead
   ].join("")
   engine: Hogan
 
-
-#################
-# TRIGGERS
-#################
+# Bind the hider to backdrop
+$(".modal-backdrop").click hide_this
 
 # Register event on item selection
 typeA.on "typeahead:selected", (evt, data) ->
-  console.log "data==>" + data.geoname_id #selected datum object
+  $("#geoname_id").val(data.geoname_id)
+  $("#new-pin-form").submit()
+
+# Change type in hidden field when bootstrap buttons are clicked
+$("#new-pin").on "click", ".type", ->
+  $("#type").val($(this).val())

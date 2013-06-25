@@ -9,6 +9,8 @@ class Pin < ActiveRecord::Base
   has_many :comments, dependent: :destroy, :order => "created_at ASC"
   has_many :logpages, dependent: :destroy, :order => "created_at ASC"
 
+  before_validation :init_datas
+
   validates :title, :country_name, :country_code, :continent_code, :type, :presence => true
   validates :latitude, :longitude, :numericality => true
   validates :user_id, :ext_id, :numericality => { :greater_than => 0}
@@ -23,6 +25,10 @@ class Pin < ActiveRecord::Base
   scope :town, where(:type => "Town")
   scope :poi, where(:type => "Poi")
   scope :high_populated, where("population >= 1000000")
+
+  def initialize(attributes = {})
+    super
+  end
 
   # Fix problem with child path in sti
   def self.inherited(child)
@@ -55,6 +61,18 @@ class Pin < ActiveRecord::Base
 
   private
 
+  def init_datas
+    geoname = Geoname.find(ext_id)
+    self.title = geoname.name
+    self.latitude = geoname.lat
+    self.longitude = geoname.lon
+    self.country_name = geoname.country
+    self.country_code = geoname.country_code
+    self.continent_code = geoname.continent_code
+    self.ext_id = geoname.geoname_id
+    self.population = geoname.population
+  end
+
   # Check limit isn't reached
   def check_limit
     if user.pins.count >= LIMIT
@@ -67,20 +85,6 @@ class Pin < ActiveRecord::Base
     if high_populated? && user.pins.high_populated.count >= HIGH_POPULATED_LIMIT
       errors[:base] << "High populated limit reached"
     end
-  end
-
-  # Init a pin with geodata
-  def init(geoname_id, user_id)
-    geoname = Geoname.find(geoname_id)
-    user_id = user_id
-    title = geoname.name
-    latitude = geoname.lat
-    longitude = geoname.lon
-    country_name = geoname.country
-    country_code = geoname.country_code
-    continent_code = geoname.continent_code
-    ext_id = geoname.geoname_id
-    population = geoname.population
   end
 
 end
