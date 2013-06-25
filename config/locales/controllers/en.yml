@@ -17,7 +17,7 @@ en:
       geonames_error: "<strong>Oh snap!</strong> Can't communicate with Geonames, please try again later."
       create:
         success: "<strong>%{title}</strong> was successfully added to your pins."
-        fail: "<strong>Oh snap!</strong> Something went wrong while creating your pin."
+        fail: "<strong>Oh snap!</strong> Something went wrong while creating your pin"
     requests:
       create:
         success: "Successfully created request."
