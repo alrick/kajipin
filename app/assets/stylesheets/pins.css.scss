@@ -1,19 +1,7 @@
-// Button to add the pin
-.pins-addthis { width: 60px }
-
-// Align Geonames ccby license to right
-#pins-ccby { text-align: right; }
-
-// Style the types for pin
-#pins-types { 
-  text-align: center;
-  strong { font-size: 16px; }
-}
-
-// Styling pinModal
+// PinModal is where all information about the pin is displayed
 #pinModal .modal-footer { text-align: center; }
 
-// Styling pins, displayed in side element
+// Pins displayed in side element
 #pins {
   .accessors {
     .btn { min-width: 45px; }
@@ -32,7 +20,7 @@
   }
 }
 
-// Container allowing user to add a pin to map
+// Container allowing user to add a pin to the map
 #new-pin {
   .fields {
     .alert { margin-bottom: 0; }
