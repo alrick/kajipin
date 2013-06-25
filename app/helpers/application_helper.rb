@@ -1,27 +1,5 @@
 module ApplicationHelper
 
-  def gravatar_url(email, size)
-    gravatar_hash = Digest::MD5.hexdigest(email)
-    # s = size, d = default avatar, r = rating (g for any audience type)
-    "http://gravatar.com/avatar/#{gravatar_hash}?s=#{size}&d=mm&r=g"
-  end
-
-  def fp_url(url, width, height, fit)
-    "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
-  end
-
-  def avatar_url(user, size)
-    if user.nil?
-      email = "no_user@kajipin.com"
-      gravatar_url(email, size)
-    elsif user.avatar.nil?
-      email = user.email.downcase
-      gravatar_url(email, size)
-    else
-      fp_url(user.avatar.url, size, size, "crop")
-    end
-  end
-
   def sharing_btn(user, size)
     if @herald.nil? # if isn't accessed via herald
       if user == current_user
@@ -65,9 +43,9 @@ module ApplicationHelper
       c_text = pin.comments.count.to_s + " " + content_tag("i", "", :class => "icon-comments")
       l_text = pin.logpages.count.to_s + " " + content_tag("i", "", :class => "icon-book")
     end
-    link_to(p_text, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
-    link_to(c_text, c_path, :class => "comments btn btn-tool "+size, :remote => true)+
-    link_to(l_text, l_path, :class => "logpages btn btn-tool "+size, :remote => true)
+    link_to(p_text.html_safe, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
+    link_to(c_text.html_safe, c_path, :class => "comments btn btn-tool "+size, :remote => true)+
+    link_to(l_text.html_safe, l_path, :class => "logpages btn btn-tool "+size, :remote => true)
   end
 
   def sharer_label(user)
