@@ -18,7 +18,8 @@ $("<%= j(render('pins/new')) %>").appendTo(document.body)
 #################
 
 # Bind the typeahead to form's input
-typeA = $("#new-pin").find(".name").typeahead
+typeA = $("#new-pin").find(".name")
+typeA.typeahead
   name: "geonames"
   remote: "/geonames?q=%QUERY"
   valueKey: "name"
