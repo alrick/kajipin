@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     # Master is used to check permissions
     @master = @user
 
+    # Define if current user
+    gon.is_current_user = (@user == current_user)
+
     # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
 

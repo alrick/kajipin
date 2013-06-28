@@ -7,11 +7,7 @@
 <!-- Only if via herald or if user is a friend -->
 <% if can? :show, @master %>
 
-  <% if @pins.empty? %>
-    <div class="info-center">
-      <%= no_pin_element %>
-    </div>
-  <% else %>
+  <% if !@pins.empty? %>
     <% content_for :side do %>
       <%= render "pins/pins" %>
     <% end %>

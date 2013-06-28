@@ -74,6 +74,20 @@ jQuery ->
     filter_side_pins(type, state)
     filter_map_pins(type, state)
 
+  # Display add pins tip
+  add_pins_tip = ->
+    if gon.pinsCount <= 0
+      $("#pin-initiator").tooltip "show"
+      $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "auto", "right": "43px"})
+
+
+  #################
+  # FLOW
+  #################
+
+  # Add pins tip if needed
+  add_pins_tip()
+
 
   #################
   # TRIGGERS
