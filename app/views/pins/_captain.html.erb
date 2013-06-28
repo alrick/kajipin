@@ -11,9 +11,9 @@
       <%= link_to content_tag(:i, "", :class => "icon-edit")+" Logbook", captain_pin_logpages_path(pin), "tabindex" => "-1" %>
     </li>
     <li class="divider"></li>
-    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Set City", pin_path(pin, :type => City.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == City.sti_name) %>
-    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Set Town", pin_path(pin, :type => Town.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Town.sti_name) %>
-    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Set Point of interest", pin_path(pin, :type => Poi.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Poi.sti_name) %>
+    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to City", pin_path(pin, :type => City.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == City.sti_name) %>
+    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Town", pin_path(pin, :type => Town.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Town.sti_name) %>
+    <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Poi", pin_path(pin, :type => Poi.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Poi.sti_name) %>
     <li class="divider"></li>
     <li>
       <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :remote => true, :confirm => "All related data will be lost (Photos, Comments and Logbook).", "tabindex" => "-1" %>
