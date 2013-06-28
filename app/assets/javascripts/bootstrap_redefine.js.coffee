@@ -8,6 +8,7 @@ jQuery ->
 
   $.rails.confirmed = (link) ->
     link.removeAttr('data-confirm')
+    gon.loading()
     link.trigger('click.rails')
 
   # Boostrap

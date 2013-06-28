@@ -37,6 +37,6 @@
 
 <% if @pin.photos.count > 0 %>
   <p class="well">
-    <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :data => { :confirm => "Do you want to remove all the photos for #{@pin.title}?", :loading => "Removing.." }, :method => :delete, :class => "btn btn-large btn-block btn-tool removing-modal" %>
+    <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :confirm => "Do you want to remove all the photos of #{@pin.title}?", :method => :delete, :class => "btn btn-large btn-block btn-tool removing-modal" %>
   </p>
 <% end %>
