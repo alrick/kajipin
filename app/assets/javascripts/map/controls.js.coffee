@@ -78,7 +78,7 @@ jQuery ->
   add_pins_tip = ->
     if gon.pinsCount <= 0
       $("#pin-initiator").tooltip "show"
-      $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "auto", "right": "43px"})
+      $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})
 
 
   #################
