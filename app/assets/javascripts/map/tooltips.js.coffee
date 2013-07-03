@@ -14,8 +14,5 @@ jQuery ->
     commentsBtn = $('<button class="btn btn-small btn-tool modal-open">' + feature.properties.comments_count + ' <i class="icon-comments"></i></button>').click(->
       $.get(feature.properties.comments_path)
     )
-    logpagesBtn = $('<button class="btn btn-small btn-tool modal-open">' + feature.properties.logpages_count + ' <i class="icon-book"></i></button>').click(->
-      $.get(feature.properties.logpages_path)
-    )
-    btnGroup = $('<div class="btn-group"></div>').append(photosBtn).append(commentsBtn).append(logpagesBtn)
+    btnGroup = $('<div class="btn-group"></div>').append(photosBtn).append(commentsBtn)
     o = $('<div class="pin-tooltip"></div>').append(tooltipTitle).append(tooltipCountry).append(btnGroup)[0]

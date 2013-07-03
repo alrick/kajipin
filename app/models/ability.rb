@@ -27,12 +27,6 @@ class Ability
       p.pin.user == user
     end
     
-    ##### LOGPAGE
-    # User can manage logpages he owns
-    can :manage, Logpage do |l|
-      l.pin.user == user
-    end
-
     ##### COMMENT
     # User can manage comments in pins he owns
     can :manage, Comment do |c|

@@ -29,7 +29,7 @@ jQuery ->
 
     $(this).toggleClass "active"
     if $(this).hasClass "active"
-      map.width $("#main").width()-344
+      map.width $("#main").width()-side.width()
       side.show()
     else
       side.hide()

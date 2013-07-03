@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522092000) do
-
-  create_table "assignments", :force => true do |t|
-    t.integer  "logpage_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "assignments", ["logpage_id"], :name => "index_assignments_on_logpage_id"
-  add_index "assignments", ["tag_id"], :name => "index_assignments_on_tag_id"
+ActiveRecord::Schema.define(:version => 20130701122929) do
 
   create_table "avatars", :force => true do |t|
     t.string   "url"
@@ -64,16 +54,6 @@ ActiveRecord::Schema.define(:version => 20130522092000) do
 
   add_index "heralds", ["user_id"], :name => "index_heralds_on_user_id"
 
-  create_table "logpages", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "pin_id"
-  end
-
-  add_index "logpages", ["pin_id"], :name => "index_logpages_on_pin_id"
-
   create_table "photos", :force => true do |t|
     t.string   "url"
     t.integer  "pin_id"
@@ -109,13 +89,6 @@ ActiveRecord::Schema.define(:version => 20130522092000) do
     t.integer  "requester_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-  end
-
-  create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "tokens", :force => true do |t|

@@ -7,9 +7,6 @@
     <li>
       <%= link_to content_tag(:i, "", :class => "icon-edit")+" Photos", captain_pin_photos_path(pin), "tabindex" => "-1" %>
     </li>
-    <li>
-      <%= link_to content_tag(:i, "", :class => "icon-edit")+" Logbook", captain_pin_logpages_path(pin), "tabindex" => "-1" %>
-    </li>
     <li class="divider"></li>
     <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to City", pin_path(pin, :type => City.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == City.sti_name) %>
     <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Town", pin_path(pin, :type => Town.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Town.sti_name) %>

@@ -28,7 +28,6 @@
 //= require map/init
 //
 //= require devise
-//= require logpages
 //= require photos
 //= require pins
 //= require requests

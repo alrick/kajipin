@@ -21,11 +21,9 @@ node :properties do |p|
     'marker-color' => p.marker_color,
     'marker-size' => p.marker_size,
     :photos_count => p.photos.count,
-    :logpages_count => p.logpages.count,
     :comments_count => p.comments.count,
     'photos_path' => photos_heralds_path(:key => @herald.key, :pin => p),
     'comments_path' => comments_heralds_path(:key => @herald.key, :pin => p),
-    'logpages_path' => logpages_heralds_path(:key => @herald.key, :pin => p),
     :type => p.type
   }
 end

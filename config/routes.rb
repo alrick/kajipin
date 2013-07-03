@@ -23,10 +23,6 @@ Kajipin::Application.routes.draw do
       delete 'destroy_all', :on => :collection
     end
     resources :comments, :only => [:index, :create, :destroy]
-    resources :logpages, :only => [:index, :create, :update, :destroy], :path => 'logbook' do
-      get 'captain', :on => :collection
-      get 'cancel', :on => :collection
-    end
   end
 
   # FRIENDSHIPS
