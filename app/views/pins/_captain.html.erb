@@ -13,7 +13,7 @@
     <%= content_tag(:li, link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Poi", pin_path(pin, :type => Poi.sti_name), :method => :put, :remote => true, "tabindex" => "-1")) unless (pin.type == Poi.sti_name) %>
     <li class="divider"></li>
     <li>
-      <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :remote => true, :confirm => "All related data will be lost (Photos, Comments and Logbook).", "tabindex" => "-1" %>
+      <%= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :remote => true, :confirm => "All related data will be lost (Photos and Comments).", "tabindex" => "-1" %>
     </li>
   </ul>
 </div>
