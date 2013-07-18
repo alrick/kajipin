@@ -15,7 +15,8 @@
 //= require twitter/bootstrap
 //= require hoverintent/jquery.hoverIntent.minified
 //= require hogan.js
-//= require twitter/typeahead
+// require twitter/typeahead added manually until 0.10
+//= require typeahead-dup
 //= require jquery.spin
 //
 //= require leaflet.markercluster

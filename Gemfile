@@ -31,7 +31,7 @@ gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
 gem 'httparty' #http request with fun :D
 gem 'leaflet-markercluster' #clusters for leaflet/mapbox
-gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
+#waiting 0.10 for dupcheck gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
 gem 'spinjs-rails' #smart js spinner
 
 group :development do
