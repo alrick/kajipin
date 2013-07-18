@@ -33,6 +33,7 @@ gem 'httparty' #http request with fun :D
 gem 'leaflet-markercluster' #clusters for leaflet/mapbox
 #waiting 0.10 for dupcheck gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
 gem 'spinjs-rails' #smart js spinner
+gem 'jquery-hoverIntent-rails' #better jquery hover for users
 
 group :development do
   gem 'rails-erd' #create schema of entities

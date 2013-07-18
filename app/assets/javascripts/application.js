@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require hoverintent/jquery.hoverIntent.minified
+//= require jquery.hoverIntent
 //= require hogan.js
 // require twitter/typeahead added manually until 0.10
 //= require typeahead-dup
