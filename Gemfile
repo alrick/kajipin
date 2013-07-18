@@ -34,6 +34,7 @@ gem 'leaflet-markercluster' #clusters for leaflet/mapbox
 #waiting 0.10 for dupcheck gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
 gem 'spinjs-rails' #smart js spinner
 gem 'jquery-hoverIntent-rails' #better jquery hover for users
+gem 'newrelic_rpm' #monitoring service
 
 group :development do
   gem 'rails-erd' #create schema of entities
@@ -46,4 +47,4 @@ end
 # To use debugger
 # gem 'debugger'
 
-gem "mocha", :group => :test
+gem 'mocha', :group => :test

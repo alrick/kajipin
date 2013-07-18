@@ -110,6 +110,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.7.7)
     multi_xml (0.5.4)
+    newrelic_rpm (3.5.5.38)
     nifty-generators (0.4.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -214,6 +215,7 @@ DEPENDENCIES
   less-rails
   madmimi
   mocha
+  newrelic_rpm
   nifty-generators
   nokogiri
   pg
