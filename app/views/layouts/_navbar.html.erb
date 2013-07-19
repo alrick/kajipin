@@ -64,7 +64,8 @@
               </div>
             </li>
           </ul>
-
+        <% else %>
+          <%= link_to "New to Kajipin? Sign up", new_user_registration_path, :class => "btn btn-social" %>
         <% end %>
 
       </div>
