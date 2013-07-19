@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  BETA_LIMIT = 100
+  BETA_LIMIT = 300
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
