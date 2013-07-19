@@ -4,8 +4,11 @@
 
 <div class="hero-unit">
   <h1><%= Appetizer.appname %>, quesako?</h1>
-  <p><%= Appetizer.appname %> is a social network for people who love to travel and share with friends!</p>
-  <p><%= link_to "New to Kajipin? Sign up", new_user_registration_path, :class => "btn btn-social btn-large" %></p>
+  <p><%= Appetizer.appname %> allows you to create a worldmap of the places you've visited with photos & comments and let you share it with friends and family.</p>
+  <p>
+    <%= link_to "New to Kajipin? Sign up", new_user_registration_path, :class => "btn btn-social btn-large" %> or 
+    <%= link_to "Look at an example", "http://www.kajipin.com/Effj3_0i40cnlCrZDEnTis70BwXK_BXoIw", :class => "btn btn-map btn-large" %>
+  </p>
 </div>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :method => :post, :class => "well form-inline" }) do |f| %>
