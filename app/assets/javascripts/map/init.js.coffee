@@ -44,7 +44,13 @@ jQuery ->
     L.geoJson pins,
       pointToLayer: L.mapbox.marker.style,
       onEachFeature: (feature, layer) ->
-        layer.bindPopup gon.build_tooltip feature
+        layer.bindPopup gon.build_tooltip(feature),
+          closeButton: false
+          maxWidth: 800
+          minWidth: 800
+          maxHeight: 500
+        layer.on "click", (e) -> # center the map on pin location when clicked
+          gon.map.panTo e.latlng
         list.push layer
 
   # Set and add clusters to map

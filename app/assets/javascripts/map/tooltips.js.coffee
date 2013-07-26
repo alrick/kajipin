@@ -6,7 +6,7 @@ jQuery ->
 
   # Allow to enable all zooming and paning
   gon.build_tooltip = (feature) ->
-    tooltipTitle = '<h2>' + feature.properties.title + '</h2>'
+    tooltipTitle = '<h2>' + feature.properties.title + ' <small>' + feature.properties.country_name + '</small></h2>'
     tooltipCountry = '<h3>' + feature.properties.country_name + '</h3>'
     photosBtn = $('<button class="btn btn-small btn-tool modal-open">' + feature.properties.photos_count + ' <i class="icon-camera-retro"></i></button>').click(->
       $.get(feature.properties.photos_path)
