@@ -21,6 +21,7 @@ gem 'devise' #authentification system
 gem 'thin' #thin server
 gem 'simple_form' #better forms
 gem 'rabl' #manage json formating, MUST BE before gon
+gem 'oj' #json parser for rabl
 gem 'gon' #passing data to javascript
 gem 'nokogiri' #xml parsing
 gem 'less-rails' #required for twitter-bootstrap-rails
