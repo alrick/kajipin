@@ -23,7 +23,7 @@
 //= require bootstrap_redefine
 //= require general
 //
-//= require map/tooltips
+//= require map/popup
 //= require map/controls
 //= require map/elements
 //= require map/init
