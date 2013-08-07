@@ -44,7 +44,7 @@ jQuery ->
     L.geoJson pins,
       pointToLayer: L.mapbox.marker.style,
       onEachFeature: (feature, layer) ->
-        layer.bindPopup gon.build_tooltip(feature),
+        layer.bindPopup gon.build_popup(feature),
           closeButton: false
           maxWidth: 800
           minWidth: 800
