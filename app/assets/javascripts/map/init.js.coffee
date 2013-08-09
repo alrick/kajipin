@@ -54,6 +54,8 @@ jQuery ->
         layer.on "click", (e) -> # horizontal center the map on pin location when clicked
           lat = gon.map.getCenter().lat
           lon = e.latlng.lng
+        layer.on "popupopen", (e) -> # Init the gallery when popup is opened
+          gon.init_mfp_gallery()
         list.push layer
 
   # Set and add clusters to map

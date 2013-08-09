@@ -10,4 +10,11 @@ jQuery ->
     comments = ''
     for comment in feature.comments
       comments += '<p>' + comment.value + '</p>'
-    o = $('<div class="popup"></div>').append(title).append(comments)[0]
+    o = $('<div class="popup"></div>').append(title).append(comments)[0]  # PUBLIC : Set gallery for popup
+  gon.init_mfp_gallery = ->
+    $('.popup').magnificPopup
+      key: "pin-photos"
+      preload: [0,2]
+      delegate: "a"
+      gallery:
+        enabled: true
