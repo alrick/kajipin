@@ -46,14 +46,12 @@ jQuery ->
       onEachFeature: (feature, layer) ->
         layer.bindPopup gon.build_popup(feature),
           closeButton: false
-          maxWidth: 800
-          minWidth: 800
-          maxHeight: 500
-        layer.on "click", (e) -> # center the map on pin location when clicked
-          gon.map.panTo e.latlng
+          maxWidth: 2000 # intentionaly big, manage by inner containers
+          maxHeight: 2000 # intentionaly big, manage by inner containers
         layer.on "click", (e) -> # horizontal center the map on pin location when clicked
           lat = gon.map.getCenter().lat
           lon = e.latlng.lng
+          gon.map.panTo [lat, lon]
         layer.on "popupopen", (e) -> # Init the gallery when popup is opened
           gon.init_mfp_gallery()
         list.push layer
