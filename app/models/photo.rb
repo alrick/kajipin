@@ -20,6 +20,21 @@ class Photo < Filepicker
     LIMIT
   end
 
+  # Get url for thumbnail
+  def get_mini
+    width = height = 120
+    fit = "crop"
+    "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
+  end
+
+  # Get url for big
+  def get_big
+    width = 900
+    height = 650
+    fit = "max"
+    "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
+  end
+
   private
 
   # Check limit isn't reached
