@@ -27,3 +27,14 @@ node :properties do |p|
     :type => p.type
   }
 end
+
+child :photos, :object_root => false do
+  attributes :id, :get_mini, :get_big
+end
+
+child :comments, :object_root => false do
+  attributes :value, :created_at
+  child :user do
+    attributes :full_name
+  end
+end
