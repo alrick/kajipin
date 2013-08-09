@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/joshuajansen/magnific-popup-rails.git
+  revision: 59d61fb3b72462191d5f436d3506c51bb9569aef
+  specs:
+    magnific-popup-rails (0.9.4)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 4041f62c2cb9620ceef68da4bdc3020f77ed9c26
   specs:
@@ -215,6 +221,7 @@ DEPENDENCIES
   leaflet-markercluster
   less-rails
   madmimi
+  magnific-popup-rails!
   mocha
   newrelic_rpm
   nifty-generators

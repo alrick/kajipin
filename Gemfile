@@ -36,6 +36,7 @@ gem 'leaflet-markercluster' #clusters for leaflet/mapbox
 gem 'spinjs-rails' #smart js spinner
 gem 'jquery-hoverIntent-rails' #better jquery hover for users
 gem 'newrelic_rpm' #monitoring service
+gem 'magnific-popup-rails', :git => 'git://github.com/joshuajansen/magnific-popup-rails.git' #galleries & co
 
 group :development do
   gem 'rails-erd' #create schema of entities

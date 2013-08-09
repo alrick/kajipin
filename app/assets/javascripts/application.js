@@ -18,6 +18,7 @@
 // require twitter/typeahead added manually until 0.10
 //= require typeahead-dup
 //= require jquery.spin
+//= require magnific-popup
 //
 //= require leaflet.markercluster
 //= require bootstrap_redefine
