@@ -51,6 +51,9 @@ jQuery ->
           maxHeight: 500
         layer.on "click", (e) -> # center the map on pin location when clicked
           gon.map.panTo e.latlng
+        layer.on "click", (e) -> # horizontal center the map on pin location when clicked
+          lat = gon.map.getCenter().lat
+          lon = e.latlng.lng
         list.push layer
 
   # Set and add clusters to map
