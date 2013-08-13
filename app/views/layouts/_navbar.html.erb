@@ -47,7 +47,7 @@
                     <%= link_to(user_path(current_user)) do %>
                       <table>
                         <tr>
-                          <td rowspan="2"><%= image_tag avatar_url(current_user, 28), :class => "img-polaroid" %></td>
+                          <td rowspan="2"><%= image_tag avatar_link(current_user, 28), :class => "img-polaroid" %></td>
                           <td><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></td>
                         </tr>
                         <tr>

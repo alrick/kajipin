@@ -7,5 +7,5 @@
       <%= hidden_field_tag 'last', @comments.num_pages+1 %>
     <% end %>
   </div>
-  <div class="span1"><%= image_tag avatar_url(current_user, 40), :class => 'img-polaroid' %></div>
+  <div class="span1"><%= image_tag avatar_link(current_user, 40), :class => 'img-polaroid' %></div>
 </div>
