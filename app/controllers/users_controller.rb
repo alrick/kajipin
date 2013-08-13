@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ApplicationHelper # Require to access view helpers from gon rabl
+  include PhotoHelper # Require to access view helpers from gon rabl
   
   # Devise authentication
   before_filter :authenticate_user!
