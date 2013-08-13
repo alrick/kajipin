@@ -1,14 +1,40 @@
 // popup of pins
 .popup {
-	max-width: 800px;
+	max-width: 980px;
   //text-align: center;
   background: lighten($main-color, 46%);
   padding: 15px;
-  .inside { max-height: 390px; overflow-x: hidden; overflow-y: scroll; }
-  //h2 { font-size: 24px; line-height: 10px; color: $content-color; }
   h3 { font-size: 14px; line-height: 10px; color: $content-color; }
-  .btn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
-  .photos {
-		.img-polaroid { margin: 5px; width: 120px; height: 120px; }
+  .inside { 
+    max-height: 390px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    .photos {
+      width: 580px;
+      margin-left: 0;
+      margin-right: 50px;
+      float: left;
+      .img-polaroid { margin: 5px; width: 120px; height: 120px; }
+    }
+    .comments {
+      width: 260px;
+      float: left;
+      blockquote {
+        p {
+          font-size: 16px;
+          margin: 0;
+          .tooltip.in { opacity: 1; filter: alpha(opacity=100); } // No transparency for delete tooltips
+          a { text-decoration: none; } // No decoration for remove link
+          i { // Remove sign is transparent and become opaque on hover
+            opacity: 0.3;
+            &:hover { opacity: 1; }
+          }
+        }
+        small { font-size: 12px; }
+      }
+    }
   }
+  //h2 { font-size: 24px; line-height: 10px; color: $content-color; }
+  .btn { min-width: 31px; margin-bottom: 5px; font-size: 12px; }
+  
 }

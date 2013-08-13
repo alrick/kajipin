@@ -13,7 +13,7 @@ jQuery ->
     for photo in feature.photos
       photos.append('<a href="' + photo.get_big + '" class="mfp-image"><img alt="" class="img-polaroid" data-id="' + photo.id + '" src="' + photo.get_mini + '"></a>')
     for comment in feature.comments
-      comments.append('<p>' + comment.value + '</p>')
+      comments.append('<blockquote><p>' + comment.value + '</p><small>' + comment.user.full_name + '- (' + comment.date + ')</small></blockquote>')
     inside.append(photos).append(comments)
     o = $('<div class="popup"></div>').append(title).append(inside)[0]
 
