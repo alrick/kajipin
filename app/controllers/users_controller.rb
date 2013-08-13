@@ -40,11 +40,11 @@ class UsersController < ApplicationController
 
       # Generate geojson
       @pins = @user.pins.city
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "cities"
+      gon.watch.rabl "app/views/pins/index.json.rabl", as: "cities"
       @pins = @user.pins.town
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "towns"
+      gon.watch.rabl "app/views/pins/index.json.rabl", as: "towns"
       @pins = @user.pins.poi
-      gon.watch.rabl "app/views/pins/geo.json.rabl", as: "poi"
+      gon.watch.rabl "app/views/pins/index.json.rabl", as: "poi"
 
       # Reset pins to all pins for side
       @pins = @user.pins
