@@ -33,8 +33,11 @@ child :photos, :object_root => false do
 end
 
 child :comments, :object_root => false do
-  attributes :value, :created_at
+  attributes :value, :date
   child :user do
     attributes :full_name
+    node :avatar do |u|
+      avatar_link(u, 40)
+    end
   end
 end

@@ -3,7 +3,9 @@ Kajipin::Application.routes.draw do
   # USERS
   devise_for :users, :path => "", :controllers => { :registrations => :registrations }
 
-  resources :users, :only => [:index, :show]
+  resources :users, :only => [:index, :show] do
+    resources :pins, :only => [:index], :defaults => { :format => 'json' }
+  end
 
   authenticated :user do
     root :to => "users#show"
