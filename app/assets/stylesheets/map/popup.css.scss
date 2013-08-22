@@ -5,20 +5,41 @@
   background: lighten($main-color, 46%);
   padding: 15px;
   h3 { font-size: 14px; line-height: 10px; color: $content-color; }
-  .inside { 
-    max-height: 390px;
+  .inside {
+    max-height: 500px;
     overflow-x: hidden;
     overflow-y: scroll;
     .photos {
-      width: 580px;
       margin-left: 0;
-      margin-right: 50px;
-      float: left;
-      .img-polaroid { margin: 5px; width: 120px; height: 120px; }
+      .img-polaroid { margin: 5px; width: 135px; height: 135px; }
     }
     .comments {
-      width: 260px;
-      float: left;
+      width: 300px;
+      float: right;
+      margin-left: 30px;
+      .comment {
+        clear: both;
+        .avatar { float: left; height: 100% }
+        .text {
+          border-left: 5px solid lighten($tool-color, 20%);
+          padding-left: 5px;
+          margin: 0 10px 20px 10px;
+          float: left;
+          max-width: 220px;
+          p { font-size: 16px; font-weight: 300; margin: 0 0 8px 0; }
+          small {
+            display: block; 
+            margin: 0;
+            line-height: 14px;
+            color: #999;
+            &.author {
+              font-size : 13px;
+              &:before{ content: "\2014 \00a0"; }
+            }
+            &.datetime { font-size: 12px; }
+          }
+        }
+      }
       blockquote {
         p {
           font-size: 16px;

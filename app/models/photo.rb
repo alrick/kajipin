@@ -22,7 +22,7 @@ class Photo < Filepicker
 
   # Get url for thumbnail
   def get_mini
-    width = height = 120
+    width = height = 135
     fit = "crop"
     "#{url}/convert?w=#{width}&h=#{height}&fit=#{fit}"
   end
