@@ -4,28 +4,29 @@
   //text-align: center;
   background: lighten($main-color, 46%);
   padding: 15px;
+  overflow: auto;
   h3 { font-size: 14px; line-height: 10px; color: $content-color; }
   .inside {
     max-height: 500px;
     overflow-x: hidden;
-    overflow-y: scroll;
-    .photos {
+    overflow-y: auto;
+    &.photos {
       margin-left: 0;
-      .img-polaroid { margin: 5px; width: 135px; height: 135px; }
+      .img-polaroid { margin: 5px; width: 128px; height: 128px; }
     }
-    .comments {
+    &.comments {
       width: 300px;
       float: right;
-      margin-left: 30px;
+      margin-left: 20px;
       .comment {
         clear: both;
-        .avatar { float: left; height: 100% }
+        .avatar { float: left; height: 100%; }
         .text {
           border-left: 5px solid lighten($tool-color, 20%);
           padding-left: 5px;
           margin: 0 10px 20px 10px;
           float: left;
-          max-width: 220px;
+          max-width: 200px;
           p { font-size: 16px; font-weight: 300; margin: 0 0 8px 0; }
           small {
             display: block; 
