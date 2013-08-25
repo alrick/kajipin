@@ -1,0 +1,28 @@
+<div class="pin">
+	
+	<div class="page-header">
+		<h2><%= @pin.title %> <small><%= @pin.country_name %></small></h2>
+	</div>
+
+	<div class="comments inside">
+		<% @pin.comments.each do |comment| %>
+			<div class="comment">
+				<div class="avatar">
+					<%= image_tag avatar_link(comment.user, 40), :alt => "", :class => "img-polaroid" %>
+				</div>
+				<div class="text">
+					<p><%= comment.value %></p>
+					<small class="author"><%= comment.user.full_name %></small>
+					<small class="datetime"><%= comment.date %></small>
+				</div>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="photos inside">
+		<% @pin.photos.each do |photo| %>
+			<%= link_to (image_tag fp_link(photo.url, 128, 128, "crop"), :alt => "", :class => "img-polaroid"), fp_link(photo.url, 900, 650, "max"), :class => "mfp-image" %>
+		<% end %>
+	</div>
+
+</div>
