@@ -44,16 +44,15 @@ jQuery ->
     L.geoJson pins,
       pointToLayer: L.mapbox.marker.style,
       onEachFeature: (feature, layer) ->
-        layer.bindPopup gon.build_popup(feature),
+        layer.bindPopup '<p class="loading-popup"></p>',
           closeButton: false
-          maxWidth: 2000 # intentionaly big, manage by inner containers
-          maxHeight: 2000 # intentionaly big, manage by inner containers
+          maxWidth: 2000 # intentionaly big, managed by inner containers
+          maxHeight: 2000 # intentionaly big, managed by inner containers
         layer.on "click", (e) -> # horizontal center the map on pin location when clicked
-          lat = gon.map.getCenter().lat
-          lon = e.latlng.lng
-          gon.map.panTo [lat, lon]
+          gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
+          gon.build_popup(layer, feature)
         layer.on "popupopen", (e) -> # Init the gallery when popup is opened
-          gon.init_mfp_gallery()
+          $(".loading-popup").spin()
         list.push layer
 
   # Set and add clusters to map

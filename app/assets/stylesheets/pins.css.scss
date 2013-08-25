@@ -20,6 +20,62 @@
   }
 }
 
+// Main pin panel in map popup
+.pin {
+  max-width: 980px;
+  background: lighten($main-color, 46%);
+  padding: 15px;
+  overflow: auto;
+  .inside {
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &.photos {
+      margin-left: 0;
+      .img-polaroid { 
+        margin: 5px;
+        width: 128px;
+        height: 128px;
+      }
+    }
+    &.comments {
+      width: 300px;
+      float: right;
+      margin-left: 20px;
+      .comment {
+        clear: both;
+        .avatar {
+          float: left;
+          height: 100%;
+        }
+        .text {
+          border-left: 5px solid lighten($tool-color, 20%);
+          padding-left: 5px;
+          margin: 0 10px 20px 10px;
+          float: left;
+          max-width: 200px;
+          p {
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0 0 8px 0;
+          }
+          small {
+            display: block;
+            margin: 0;
+            line-height: 14px;
+            color: #999;
+            &.author {
+              font-size: 13px;
+              &:before { content: "\2014 \00a0"; }
+            }
+            &.datetime { font-size: 12px; }
+          }
+        }
+      }
+    }
+  }
+}
+
 // Container allowing user to add a pin to the map
 #new-pin {
   .fields {

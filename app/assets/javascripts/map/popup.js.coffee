@@ -4,33 +4,18 @@ jQuery ->
   # FUNCTIONS
   #################
 
-  # PUBLIC : Allow to enable all zooming and paning
-  gon.build_popup = (feature) ->
-    title = '<div class="page-header"><h2>' + feature.properties.title + ' <small>' + feature.properties.country_name + '</small></h2></div>'
-    photos = $('<ul class="photos inside"></ul>')
-    comments = $('<div class="comments inside"></div>')
-    for photo in feature.photos
-      photos.append('<a href="' + photo.get_big + '" class="mfp-image"><img alt="" class="img-polaroid" data-id="' + photo.id + '" src="' + photo.get_mini + '"></a>')
-    for comment in feature.comments
-      comments.append('<div class="comment">' + 
-        '<div class="avatar">' + 
-          '<img src="' + comment.user.avatar + '" alt="" class="img-polaroid">' + 
-        '</div>' + 
-        '<div class="text">' +
-          '<p>' +
-            comment.value + 
-          '</p>' + 
-          '<small class="author">' + comment.user.full_name + '</small>' + 
-          '<small class="datetime">(' + comment.date + ')</small>' + 
-        '</div>'
-      '</div>')
-    o = $('<div class="popup"></div>').append(title).append(comments).append(photos)[0]
-
-  # PUBLIC : Set gallery for popup
-  gon.init_mfp_gallery = ->
-    $('.popup').magnificPopup
+  # Init gallery when popup set
+  init_mfp_gallery = ->
+    $('.photos').magnificPopup
       key: "pin-photos"
       preload: [0,2]
       delegate: "a"
       gallery:
         enabled: true
+
+  # Retrieve pin view and set the popup
+  gon.build_popup = (layer, feature) ->
+    $.get("/pins/" + feature.id, (data) ->
+      layer.setPopupContent(data)
+      init_mfp_gallery()
+    )
