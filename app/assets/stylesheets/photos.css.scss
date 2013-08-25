@@ -1,4 +1,4 @@
-// Main photos container
+// Photos on captain page
 #cphotos {
   .cphoto {
     &:hover { cursor: pointer; }
@@ -16,7 +16,4 @@
   bottom: 10px;
   right: 20px;
   form { margin: 0; }
-}
-
-  }
 }
