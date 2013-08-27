@@ -24,12 +24,10 @@ class CommentsController < ApplicationController
     @comment = @pin.comments.build(params[:comment])
     @comment.user_id = current_user.id
 
-    if @comment.save
-      redirect_to pin_comments_url(@pin, :page => params[:last])
-    else
-      respond_to do |format|
-        format.js
-      end
+    @comment.save
+
+    respond_to do |format|
+      format.js
     end
   end
 

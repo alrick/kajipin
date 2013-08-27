@@ -2,27 +2,23 @@
 	
 	<div class="page-header">
 		<h2><%= @pin.title %> <small><%= @pin.country_name %></small></h2>
+		<p class="lead">
+			<%= @photos.count %> <i class="icon-camera-retro"></i>
+			<span class="comments-count"><%= @comments.count %></span> <i class="icon-comments"></i>
+		</p>
 	</div>
 
-	<div class="comments inside">
-		<% @pin.comments.each do |comment| %>
-			<div class="comment">
-				<div class="avatar">
-					<%= image_tag avatar_link(comment.user, 40), :alt => "", :class => "img-polaroid" %>
-				</div>
-				<div class="text">
-					<p><%= comment.value %></p>
-					<small class="author"><%= comment.user.full_name %></small>
-					<small class="datetime"><%= comment.date %></small>
-				</div>
-			</div>
-		<% end %>
+	<div class="comments">
+		<div class="inside">
+			<%= render @comments %>
+		</div>
+		<div class="new">
+			<%= render "comments/new" %>
+		</div>
 	</div>
 
-	<div class="photos inside">
-		<% @pin.photos.each do |photo| %>
-			<%= link_to (image_tag fp_link(photo.url, 128, 128, "crop"), :alt => "", :class => "img-polaroid"), fp_link(photo.url, 900, 650, "max"), :class => "mfp-image" %>
-		<% end %>
+	<div class="photos">
+		<%= render @photos %>
 	</div>
 
 </div>

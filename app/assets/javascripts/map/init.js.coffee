@@ -48,10 +48,9 @@ jQuery ->
           closeButton: false
           maxWidth: 2000 # intentionaly big, managed by inner containers
           maxHeight: 2000 # intentionaly big, managed by inner containers
-        layer.on "click", (e) -> # horizontal center the map on pin location when clicked
-          gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
-          gon.build_popup(layer, feature)
-        layer.on "popupopen", (e) -> # Init the gallery when popup is opened
+        layer.on "click", (e) ->
+          gon.build_popup(layer, feature, e)
+        layer.on "popupopen", (e) ->
           $(".loading-popup").spin()
         list.push layer
 

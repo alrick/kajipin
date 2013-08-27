@@ -12,6 +12,9 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find(params[:id])
+    @photos = @pin.photos
+    @comments = @pin.comments
+    
     render layout: false
   end
 
