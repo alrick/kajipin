@@ -15,6 +15,7 @@ end
 
 gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
 gem 'jquery-rails' #jquery integration
+gem 'jquery-ui-rails' #jquery ui allows highlight effect
 gem 'pg' #postgres database
 gem 'json' #self explained
 gem 'devise' #authentification system
