@@ -26,24 +26,3 @@ jQuery ->
   # Refresh the poi count at top of pins sidebar
   refresh_poi = (poiCount) ->
     $("#side-pins").find(".stats").find(".poi-count").html poiCount
-
-  # Resize modal depending on screen size
-  modal_resize = ->
-    doc_height = $(document).height()
-    if doc_height > 800
-      max_height = doc_height - 350 + "px"
-      $(this).children(".modal-body").css "max-height", max_height
-    else
-      $(this).children(".modal-body").css "max-height", "400px"
-
-
-  #################
-  # TRIGGERS
-  #################
-
-  # Adjust modal height with size of document for big resolutions and switch interaction
-  $("#pinModal").on "show", ->
-    modal_resize.call(this)
-    gon.disable_interaction gon.map
-  $("#pinModal").on "hide", ->
-    gon.enable_interaction gon.map
