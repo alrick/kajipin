@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.ui.effect-highlight
 //= require jquery_ujs
+//= require jquery.ui.effect-highlight
 //= require twitter/bootstrap
 //= require jquery.hoverIntent
 //= require hogan.js
