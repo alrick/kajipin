@@ -15,25 +15,6 @@ module ApplicationHelper
     end
   end
 
-  def tools_btn(pin, size, label)
-    if @herald.nil?
-      p_path = pin_photos_path(pin)
-      c_path = pin_comments_path(pin)
-    else
-      p_path = photos_heralds_path(:key => @herald.key, :pin => pin)
-      c_path = comments_heralds_path(:key => @herald.key, :pin => pin)
-    end
-    if label
-      p_text = content_tag(:i, "", :class => "icon-camera-retro") + " Photos (" + pin.photos.count.to_s + ")"
-      c_text = content_tag(:i, "", :class => "icon-comments") + " Comments (" + pin.comments.count.to_s + ")"
-    else
-      p_text = pin.photos.count.to_s + " " + content_tag("i", "", :class => "icon-camera-retro")
-      c_text = pin.comments.count.to_s + " " + content_tag("i", "", :class => "icon-comments")
-    end
-    link_to(p_text.html_safe, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
-    link_to(c_text.html_safe, c_path, :class => "comments btn btn-tool "+size, :remote => true)
-  end
-
   def sharer_label(user)
     if user.isSharingWith(current_user)
       content_tag(:span, "Sharer", :class => "label label-social is-sharer")

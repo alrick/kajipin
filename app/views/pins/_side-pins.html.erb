@@ -1,4 +1,4 @@
-<div id="pins">
+<div id="side-pins">
   <table class="table stats">
     <tr>
       <td><b><span class="pins-count"><%= @pins.count %></span> <a rel="tooltip" title="Pins" data-placement="bottom"><i class="icon-map-marker"></i></a></b></td>
@@ -8,6 +8,6 @@
     </tr>
   </table>
   <table class="table table-striped">
-    <%= render :partial => "pins/pin", :collection => @pins, :as => :pin %>
+    <%= render :partial => "pins/side-pin", :collection => @pins, :as => :pin %>
   </table>
 </div>

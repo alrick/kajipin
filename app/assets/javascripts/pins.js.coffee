@@ -13,19 +13,19 @@ jQuery ->
 
   # Refresh the pins count at top of pins sidebar
   refresh_pins = (pinsCount) ->
-    $("#pins").find(".stats").find(".pins-count").html pinsCount
+    $("#side-pins").find(".stats").find(".pins-count").html pinsCount
 
   # Refresh the cities count at top of pins sidebar
   refresh_cities = (cityCount) ->
-    $("#pins").find(".stats").find(".city-count").html cityCount
+    $("#side-pins").find(".stats").find(".city-count").html cityCount
 
   # Refresh the towns count at top of pins sidebar
   refresh_towns = (townCount) ->
-    $("#pins").find(".stats").find(".town-count").html townCount
+    $("#side-pins").find(".stats").find(".town-count").html townCount
 
   # Refresh the poi count at top of pins sidebar
   refresh_poi = (poiCount) ->
-    $("#pins").find(".stats").find(".poi-count").html poiCount
+    $("#side-pins").find(".stats").find(".poi-count").html poiCount
 
   # Resize modal depending on screen size
   modal_resize = ->
