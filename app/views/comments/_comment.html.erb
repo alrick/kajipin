@@ -16,6 +16,6 @@
         Castaway
       <% end %>
     </small>
-    <small class="datetime"><%= comment.date %></small>
+    <small class="datetime"><%= proper_date(comment.created_at) %></small>
   </div>
 <% end %>

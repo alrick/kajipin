@@ -32,23 +32,23 @@ class User < ActiveRecord::Base
     first_name+" "+last_name
   end
 
-  def number_pins
+  def pins_count
     pins.count
   end
 
-  def number_countries
+  def countries_count
     pins.select("distinct(country_code)").count
   end
 
-  def number_continents
+  def continents_count
     pins.select("distinct(continent_code)").count
   end
 
-  def number_sharing
+  def sharing_count
     friends.count
   end
 
-  def number_sharers
+  def sharers_count
     inverse_friends.count
   end
 

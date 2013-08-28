@@ -7,7 +7,7 @@
   container.load location.href + " #<%= dom_id(@friendship.friend) %> > *"
 
   # Update counter if present
-  $("#sharing-counter").html "<%= @friendship.user.number_sharing %>" if $("#sharing-counter").length
+  $("#sharing-counter").html "<%= @friendship.user.sharing_count %>" if $("#sharing-counter").length
 
   # Fade out the friend if is not sharer and we're on friendships page
   if (!container.hasClass "sharer-userbox") && $("#friendships").length

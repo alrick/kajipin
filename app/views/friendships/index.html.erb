@@ -7,10 +7,10 @@
 <div class="row">
   <div class="span10">
     <p id="friendships-stats">
-      You currently have <span id="sharing-counter" class="badge badge-social"><%= current_user.number_sharing %></span>&nbsp;
+      You currently have <span id="sharing-counter" class="badge badge-social"><%= current_user.sharing_count %></span>&nbsp;
       <a rel="tooltip" title="A person who can see your pins."><strong>Sharing</strong></a>&nbsp;
-      and <span id="sharers-counter" class="badge badge-social"><%= current_user.number_sharers %></span>&nbsp;
-      <a rel="tooltip" title="A person sharing his pins with you."><strong><%= "Sharer".pluralize(current_user.number_sharers) %></strong></a>.
+      and <span id="sharers-counter" class="badge badge-social"><%= current_user.sharers_count %></span>&nbsp;
+      <a rel="tooltip" title="A person sharing his pins with you."><strong><%= "Sharer".pluralize(current_user.sharers_count) %></strong></a>.
     </p>
   </div>
   <div class="span2">

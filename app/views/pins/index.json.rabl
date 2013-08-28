@@ -29,11 +29,11 @@ node :properties do |p|
 end
 
 child :photos, :object_root => false do
-  attributes :id, :get_mini, :get_big
+  attributes :id
 end
 
 child :comments, :object_root => false do
-  attributes :value, :date
+  attributes :value
   child :user do
     attributes :full_name
     node :avatar do |u|

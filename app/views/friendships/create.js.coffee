@@ -17,6 +17,6 @@
       $(this).html("<i class=\"icon-heart\"></i>&nbsp;Sharing").removeClass "btn-remove"
 
   # Update counter if present
-  $("#sharing-counter").html "<%= @friendship.user.number_sharing %>" if $("#sharing-counter").length
+  $("#sharing-counter").html "<%= @friendship.user.sharing_count %>" if $("#sharing-counter").length
 
 <% end %>

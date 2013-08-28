@@ -31,4 +31,8 @@ module ApplicationHelper
     end
   end
 
+  def proper_date(date)
+    date.to_formatted_s(:long_ordinal)
+  end
+
 end
