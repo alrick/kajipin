@@ -1,12 +1,21 @@
 // Pins displayed in side element
 #side-pins {
-  .accessors {
-    .btn { min-width: 45px; }
-  }
-  h2 {
-    font-size: 18px;
-    line-height: 17px;
-    small { font-size: 12px; }
+  .pin {
+    h2 {
+      font-size: 18px;
+      line-height: 17px;
+      margin: 0;
+    }
+    p { margin: 0; }
+    .country {
+      display: block;
+      font-size: 12px;
+      color: #999;
+    }
+    .lead {
+      font-size: 16px;
+      line-height: 25px;
+    }
   }
   .stats {
     font-size: 20px;

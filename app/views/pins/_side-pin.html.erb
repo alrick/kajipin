@@ -1,7 +1,14 @@
 <%= content_tag_for(:tr, pin, :class => pin.type) do %>
+	<td style="vertical-align:middle">
+		<button class="btn btn-locate <%= pin.get_btn %>" data-lat="<%= pin.latitude %>" data-lon="<%= pin.longitude %>" data-zoom="12"><i class="icon-map-marker"></i></button>
+	</td>
   <td>
-    <h2><%= pin.title %> <small><%= pin.country_name %></small> <%= content_tag(:i, "", :class => "icon-upload") if pin.high_populated? %></h2>
-    <button class="btn btn-locate <%= pin.get_btn %> btn-mini" data-lat="<%= pin.latitude %>" data-lon="<%= pin.longitude %>" data-zoom="12"><i class="icon-map-marker"></i></button>
+    <h2><%= pin.title %> <%= content_tag(:i, "", :class => "icon-upload") if pin.high_populated? %></h2>
+    <p class="country"><%= pin.country_name %></p>
+    <p class="lead">
+    	<%= pin.photos.count %> <i class="icon-camera-retro"></i>
+    	<%= pin.comments.count %> <i class="icon-comments"></i>
+    </p>
   </td>
   <td>
     <% if (can? :manage, pin) && (@herald.nil?) %>
