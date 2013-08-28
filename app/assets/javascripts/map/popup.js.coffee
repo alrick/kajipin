@@ -24,7 +24,7 @@ jQuery ->
     ).on "hide", (e) ->
       e.stopPropagation()
 
-  # Retrieve pin view and set the popup
+  # PUBLIC : Retrieve pin view and set the popup
   gon.build_popup = (layer, feature, e) ->
     $.get("/pins/" + feature.id, (data) ->
       layer.setPopupContent(data)
