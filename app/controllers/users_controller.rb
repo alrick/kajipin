@@ -50,12 +50,6 @@ class UsersController < ApplicationController
 
       # Reset pins to all pins for side
       @pins = @user.pins
-
-      # Generate stats accessors
-      gon.watch.pinsCount = @user.pins.count
-      gon.watch.cityCount = @user.pins.city.count
-      gon.watch.townCount = @user.pins.town.count
-      gon.watch.poiCount = @user.pins.poi.count
     end
   end
 
