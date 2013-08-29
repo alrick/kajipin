@@ -32,6 +32,7 @@ select_photo = ->
 #################
 # TRIGGERS
 #################
+
 $(document).ready ->
 
   # Trigger clicks on photos (captain)
