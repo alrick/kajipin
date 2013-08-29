@@ -4,25 +4,44 @@ jQuery ->
   # FUNCTIONS
   #################
 
-  # PUBLIC : Refresh pins stat
-  gon.refresh_stats = ->
-    gon.watch "pinsCount", refresh_pins
-    gon.watch "cityCount", refresh_cities
-    gon.watch "townCount", refresh_towns
-    gon.watch "poiCount", refresh_poi
+  # PUBLIC : Inc cities count
+  gon.update_cities_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())+1)
+    count = $(".cities-count")
+    count.html(parseInt(count.html())+1)
 
-  # Refresh the pins count at top of pins sidebar
-  refresh_pins = (pinsCount) ->
-    $("#side-pins").find(".stats").find(".pins-count").html pinsCount
+  # PUBLIC : Dec cities count
+  gon.dec_cities_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())-1)
+    count = $(".cities-count")
+    count.html(parseInt(count.html())-1)
 
-  # Refresh the cities count at top of pins sidebar
-  refresh_cities = (cityCount) ->
-    $("#side-pins").find(".stats").find(".city-count").html cityCount
+  # PUBLIC : Inc towns count
+  gon.inc_towns_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())+1)
+    count = $(".towns-count")
+    count.html(parseInt(count.html())+1)
 
-  # Refresh the towns count at top of pins sidebar
-  refresh_towns = (townCount) ->
-    $("#side-pins").find(".stats").find(".town-count").html townCount
+  # PUBLIC : Dec towns count
+  gon.dec_towns_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())-1)
+    count = $(".towns-count")
+    count.html(parseInt(count.html())-1)
 
-  # Refresh the poi count at top of pins sidebar
-  refresh_poi = (poiCount) ->
-    $("#side-pins").find(".stats").find(".poi-count").html poiCount
+  # PUBLIC : Inc pois count
+  gon.inc_pois_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())+1)
+    count = $(".pois-count")
+    count.html(parseInt(count.html())+1)
+
+  # PUBLIC : Dec pois count
+  gon.dec_pois_count = ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())-1)
+    count = $(".pois-count")
+    count.html(parseInt(count.html())-1)
