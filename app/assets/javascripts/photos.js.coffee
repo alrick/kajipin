@@ -1,6 +1,16 @@
 #################
 # FUNCTIONS
 #################
+
+# PUBLIC : Init gallery when popup set
+gon.init_mfp_gallery = ->
+  $('.photos').magnificPopup
+    key: "pin-photos"
+    preload: [0,2]
+    delegate: "a"
+    gallery:
+      enabled: true
+
 # Function to update the selected box
 update_selected = ->
   number_selected = $(".selected").length
