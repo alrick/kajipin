@@ -44,21 +44,10 @@ jQuery ->
   build_popup = (layer, feature, e) ->
     $.get("/pins/" + feature.id, (data) ->
       layer.setPopupContent(data)
-      init_delete_tooltip()
       gon.init_mfp_gallery()
+      gon.init_delete_tooltip()
       gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
     )
-
-  # Init delete tooltip
-  init_delete_tooltip = ->
-    $("a[rel=delete-tooltip]").tooltip(
-      html: true
-      placement: "left"
-      trigger: "click"
-    ).on("show", (e) ->
-      e.stopPropagation()
-    ).on "hide", (e) ->
-      e.stopPropagation()
 
 
   #################
@@ -69,4 +58,3 @@ jQuery ->
   if $("#map").length
     init_map()
     init_pins() if gon.hasPins
-      

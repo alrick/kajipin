@@ -21,6 +21,17 @@ jQuery ->
   gon.stop_loading = ->
     $("#loading-backdrop").spin(false)
     $("#loading-backdrop").remove()
+
+  # PUBLIC : Init delete tooltip
+  gon.init_delete_tooltip = ->
+    $("a[rel=delete-tooltip]").tooltip(
+      html: true
+      placement: "left"
+      trigger: "click"
+    ).on("show", (e) ->
+      e.stopPropagation()
+    ).on "hide", (e) ->
+      e.stopPropagation()
   
   # Display the side bar next to the map
   toggler = ->
