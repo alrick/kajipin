@@ -25,10 +25,9 @@
 //= require bootstrap_redefine
 //= require general
 //
-//= require map/popup
 //= require map/controls
 //= require map/elements
-//= require map/init
+//= require map/main
 //
 //= require devise
 //= require photos

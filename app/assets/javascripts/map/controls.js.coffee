@@ -34,15 +34,15 @@ jQuery ->
   # Filter map pins
   filter_map_pins = (type, state) ->
     if type == "City"
-      layer = gon.citiesList
+      layer = gon.citiesLayer
     else if type == "Town"
-      layer = gon.townsList
+      layer = gon.townsLayer
     else if type == "Poi"
-      layer = gon.poiList
+      layer = gon.poisLayer
     if state
-      gon.clusterGroup.addLayers(layer)
+      gon.cluster.addLayers(layer.getLayers())
     else
-      gon.clusterGroup.removeLayers(layer)
+      gon.cluster.removeLayers(layer.getLayers())
 
   # Display countries list
   show_countries_list = (map) ->
@@ -74,19 +74,15 @@ jQuery ->
     filter_side_pins(type, state)
     filter_map_pins(type, state)
 
-  # Display add pins tip
-  add_pins_tip = ->
-    if gon.pinsCount <= 0
-      $("#pin-initiator").tooltip "show"
-      $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})
-
 
   #################
   # FLOW
   #################
 
   # Add pins tip if needed
-  add_pins_tip()
+  if gon.pinsCount <= 0
+    $("#pin-initiator").tooltip "show"
+    $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})
 
 
   #################

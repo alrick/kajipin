@@ -1,3 +1,8 @@
+// Loading popup are displayed during ajax call
+.loading-popup {
+  height: 40px;
+}
+
 // Redefine clusters styling
 $cluster-alpha: 0.7;
 .marker-cluster {
