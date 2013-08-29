@@ -49,6 +49,18 @@ jQuery ->
       gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
     )
 
+  # PUBLIC : Remove pin properly
+  gon.remove_pin = (id) ->
+    pin = gon.pinMap[id]
+    type = pin.feature.properties.type
+    gon.cluster.removeLayer(pin)
+    if type == "City"
+      gon.citiesLayer.removeLayer(pin)
+    else if type == "Town"
+      gon.townsLayer.removeLayer(pin)
+    else if type == "Poi"
+      gon.poisLayer.removeLayer(pin)
+
 
   #################
   # FLOW
