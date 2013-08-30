@@ -25,7 +25,7 @@ jQuery ->
              </div>
              <div class="modal-footer">
                <a data-dismiss="modal" class="btn btn-other">Cancel</a>
-               <a data-dismiss="modal" class="btn btn-confirm confirm">Delete</a>
+               <a data-dismiss="modal" class="btn btn-confirm confirm">Confirm</a>
              </div>
            </div>
            """
