@@ -26,6 +26,7 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
+    @old_type = @pin.type
     @pin.update_attributes(:type => params[:type])
     @pin = @pin.becomes(params[:type].constantize)
 
