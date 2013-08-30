@@ -17,3 +17,17 @@
   right: 20px;
   form { margin: 0; }
 }
+
+// Main photos panel in pin popup
+.photos {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-left: 0;
+  .photo {
+    margin: 5px;
+    .img-polaroid {
+      width: 138px;
+      height: 138px;
+    }
+  }
+}
