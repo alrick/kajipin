@@ -1,6 +1,6 @@
 <%= content_tag_for(:tr, pin, :class => pin.type) do %>
 	<td style="vertical-align:middle">
-		<button class="btn btn-locate <%= pin.get_btn %>" data-lat="<%= pin.latitude %>" data-lon="<%= pin.longitude %>" data-zoom="12"><i class="icon-map-marker"></i></button>
+		<button class="btn btn-locate <%= pin.get_btn %>" data-id="<%= pin.id %>"><i class="icon-map-marker"></i></button>
 	</td>
   <td>
     <h2><%= pin.title %> <%= content_tag(:i, "", :class => "icon-upload") if pin.high_populated? %></h2>
