@@ -4,6 +4,22 @@ jQuery ->
   # FUNCTIONS
   #################
 
+  # PUBLIC : Change pin icon
+  gon.change_pin_icon = (id, size, symbol, color) ->
+    gon.pinMap[id].setIcon(L.mapbox.marker.icon({'marker-size': size, 'marker-symbol': symbol, 'marker-color': color}))
+
+  # PUBLIC : Remove pin properly
+  gon.remove_pin = (id) ->
+    pin = gon.pinMap[id]
+    type = pin.feature.properties.type
+    gon.cluster.removeLayer(pin)
+    if type == "City"
+      gon.citiesLayer.removeLayer(pin)
+    else if type == "Town"
+      gon.townsLayer.removeLayer(pin)
+    else if type == "Poi"
+      gon.poisLayer.removeLayer(pin)
+
   # Init map, only called once
   init_map = ->
     gon.map = L.mapbox.map("map", gon.mapbox_id,
@@ -48,18 +64,6 @@ jQuery ->
       gon.init_delete_tooltip()
       gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
     )
-
-  # PUBLIC : Remove pin properly
-  gon.remove_pin = (id) ->
-    pin = gon.pinMap[id]
-    type = pin.feature.properties.type
-    gon.cluster.removeLayer(pin)
-    if type == "City"
-      gon.citiesLayer.removeLayer(pin)
-    else if type == "Town"
-      gon.townsLayer.removeLayer(pin)
-    else if type == "Poi"
-      gon.poisLayer.removeLayer(pin)
 
 
   #################
