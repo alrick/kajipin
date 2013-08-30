@@ -1,4 +1,4 @@
-<%= content_tag_for(:tr, pin, :class => pin.type) do %>
+<tr id="<%= dom_id(pin) %>" class="side-pin <%= pin.type %>">
 	<td style="vertical-align:middle">
 		<button class="btn btn-locate <%= pin.get_btn %>" data-id="<%= pin.id %>"><i class="icon-map-marker"></i></button>
 	</td>
@@ -15,4 +15,4 @@
       <%= render "pins/captain", :pin => pin %>
     <% end %>
   </td>
-<% end %>
+</tr>
