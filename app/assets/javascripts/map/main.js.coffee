@@ -51,18 +51,18 @@ jQuery ->
           closeButton: false
           maxWidth: 2000 # intentionaly big, managed by inner containers
           maxHeight: 2000 # intentionaly big, managed by inner containers
-        pin.on "click", (e) ->
-          build_popup(pin, feature, e)
         pin.on "popupopen", (e) ->
+          pin.setPopupContent '<p class="loading-popup"></p>'
           $(".loading-popup").spin()
+          build_popup(pin, feature)
 
   # Retrieve pin view and set the popup
-  build_popup = (layer, feature, e) ->
+  build_popup = (pin, feature) ->
     $.get("/pins/" + feature.id, (data) ->
-      layer.setPopupContent(data)
+      pin.setPopupContent(data)
       gon.init_mfp_gallery()
       gon.init_delete_tooltip()
-      gon.map.panTo [gon.map.getCenter().lat, e.latlng.lng]
+      gon.map.panTo [gon.map.getCenter().lat, pin.getLatLng().lng]
     )
 
 
