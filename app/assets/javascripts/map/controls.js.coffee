@@ -59,12 +59,12 @@ jQuery ->
       countriesList.hide()
       gon.enable_interaction(map)
 
-  # Get data from button and setview
-  setview_from_button = (map) ->
-    lat = $(this).data "lat"
-    lon = $(this).data "lon"
-    zoom = $(this).data "zoom"
-    map.setView([lat, lon], zoom)
+  # Locate pin and open popup
+  locate_pin = (map) ->
+    id = $(this).data "id"
+    pin = gon.pinMap[id]
+    gon.cluster.zoomToShowLayer pin, ->
+      pin.openPopup()
 
   # Filter pins
   filter_pins = ->
@@ -114,7 +114,7 @@ jQuery ->
 
   # Locate a pin when click from side
   $("#side").on "click", ".btn-locate", ->
-    setview_from_button.call(this, gon.map)
+    locate_pin.call(this, gon.map)
 
   # Only if user has pins to display
   if gon.hasPins
