@@ -18,13 +18,13 @@ Kajipin::Application.routes.draw do
 
   # PINS
   resources :pins, :only => [:show, :new, :update, :create, :destroy] do
-    resources :photos, :only => [:index, :new] do
+    resources :photos, :only => [:new] do
       get 'captain', :on => :collection
       post 'create_many', :on => :collection
       delete 'destroy_many', :on => :collection
       delete 'destroy_all', :on => :collection
     end
-    resources :comments, :only => [:index, :create, :destroy]
+    resources :comments, :only => [:create, :destroy]
   end
 
   # FRIENDSHIPS
