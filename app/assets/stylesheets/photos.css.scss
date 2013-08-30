@@ -20,14 +20,13 @@
 
 // Main photos panel in pin popup
 .photos {
+  max-width: 650px;
   max-height: 500px;
+  overflow-x: hidden;
   overflow-y: auto;
-  margin-left: 0;
-  .photo {
+  .img-polaroid {
+    width: 138px;
+    height: 138px;
     margin: 5px;
-    .img-polaroid {
-      width: 138px;
-      height: 138px;
-    }
   }
 }

@@ -28,15 +28,20 @@
 
 // Main pin panel in map popup
 .pin {
-  max-width: 980px;
   background: lighten($main-color, 46%);
   padding: 15px;
-  overflow: auto;
   .page-header {
     h2 { display: inline; }
     p {
       display: inline;
       margin-left: 30px;
+    }
+  }
+  .wrap {
+    display: inline-block;
+    .col {
+      display: inline-block;
+      vertical-align: top;
     }
   }
 }

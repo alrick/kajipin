@@ -1,10 +1,10 @@
 // Main comments panel in pin popup
 .comments {
   width: 300px;
-  float: right;
   margin-left: 20px;
+  overflow-x: hidden;
   .inside {
-    max-height: 411px;
+    max-height: 391px;
     overflow-y: auto;
   }
   .comment {
@@ -19,7 +19,7 @@
       padding-left: 5px;
       margin: 0 10px 20px 10px;
       float: left;
-      max-width: 210px;
+      width: 210px;
       word-wrap: break-word;
       p {
         .tooltip.in { opacity: 1; filter: alpha(opacity=100); } // No transparency for delete tooltips
@@ -46,11 +46,15 @@
     }
   }
   .new {
-    padding-top: 25px;
-    textarea {
-      width: 260px;
-      height: 40px;
-      resize: none;
+    padding-top: 20px;
+    height: 89px;
+    form {
+      margin: 0;
+      textarea {
+        width: 260px;
+        height: 40px;
+        resize: none;
+      }
     }
     .btn { margin-top: -20px; }
     .img-polaroid { margin-top: -20px; }

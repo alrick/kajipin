@@ -1,5 +1,4 @@
 <div class="pin">
-	
 	<div class="page-header">
 		<h2><%= @pin.title %> <small><%= @pin.country_name %></small></h2>
 		<p class="lead">
@@ -7,18 +6,17 @@
 			<span class="comments-count"><%= @comments.count %></span> <i class="icon-comments"></i>
 		</p>
 	</div>
-
-	<div class="comments">
-		<div class="inside">
-			<%= render @comments %>
+	<div class="wrap">
+		<div class="photos col">
+			<%= render @photos %>
 		</div>
-		<div class="new">
-			<%= render "comments/new" %>
+		<div class="comments col">
+			<div class="inside">
+				<%= render @comments %>
+			</div>
+			<div class="new">
+				<%= render "comments/new" %>
+			</div>
 		</div>
 	</div>
-
-	<div class="photos">
-		<%= render @photos %>
-	</div>
-
 </div>
