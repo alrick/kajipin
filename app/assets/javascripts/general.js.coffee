@@ -5,22 +5,21 @@ jQuery ->
   #################
 
   # PUBLIC : Render a loading state
-  gon.loading = ->
-    $("<div id=\"loading-backdrop\" class=\"modal-backdrop\"></div>").appendTo("body")
-    $("#loading-backdrop").spin
-      lines: 11 # The number of lines to draw
-      length: 35 # The length of each line
-      width: 9 # The line thickness
-      radius: 48 # The radius of the inner circle
-      color: "#fff" # #rgb or #rrggbb
-      speed: 1 # Rounds per second
-      trail: 60 # Afterglow percentage
-      shadow: false # Whether to render a shadow
-
-  # PUBLIC : Stop the loading state
-  gon.stop_loading = ->
-    $("#loading-backdrop").spin(false)
-    $("#loading-backdrop").remove()
+  gon.loading = (state) ->
+    if state
+      $("<div id=\"loading-backdrop\" class=\"modal-backdrop\"></div>").appendTo("body")
+      $("#loading-backdrop").spin
+        lines: 11 # The number of lines to draw
+        length: 35 # The length of each line
+        width: 9 # The line thickness
+        radius: 48 # The radius of the inner circle
+        color: "#fff" # #rgb or #rrggbb
+        speed: 1 # Rounds per second
+        trail: 60 # Afterglow percentage
+        shadow: false # Whether to render a shadow
+    else
+      $("#loading-backdrop").spin(false)
+      $("#loading-backdrop").remove()
 
   # PUBLIC : Init delete tooltip
   gon.init_delete_tooltip = ->

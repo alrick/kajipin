@@ -1,4 +1,4 @@
-gon.stop_loading()
+gon.loading(false)
 pin = $("#<%= dom_id(@pin) %>")
 
 if <%= @pin.errors.empty? %>
