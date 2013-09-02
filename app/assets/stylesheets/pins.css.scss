@@ -17,13 +17,6 @@
       line-height: 25px;
     }
   }
-  .stats {
-    font-size: 20px;
-    .city { color: $map-color; }
-    .town { color: $main-color; }
-    .poi { color: $extra-color; }
-    a { border-bottom: 1px dotted; }
-  }
 }
 
 // Main pin panel in map popup
@@ -44,6 +37,14 @@
       vertical-align: top;
     }
   }
+}
+
+// Stats in the bottom bar
+#pins-stats {
+  .pins { color: $content-color; }
+  .city { color: $map-color; }
+  .town { color: $main-color; }
+  .poi { color: $extra-color; }
 }
 
 // Container allowing user to add a pin to the map
