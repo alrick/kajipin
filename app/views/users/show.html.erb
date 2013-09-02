@@ -4,7 +4,7 @@
 <%= render "users/controls" %>
 
 <!-- Include side pins -->
-<% if !@pins.empty? %>
+<% if !@pins.nil? && !@pins.empty? %>
 	<% content_for :side do %>
 		<%= render "pins/side-pins" %>
 	<% end %>
