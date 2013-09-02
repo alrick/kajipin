@@ -26,7 +26,6 @@
 //= require general
 //
 //= require map/controls
-//= require map/elements
 //= require map/main
 //
 //= require devise
