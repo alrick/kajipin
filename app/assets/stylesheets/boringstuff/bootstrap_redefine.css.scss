@@ -1,4 +1,11 @@
 // Redefine some bootstrap elements
+.navbar-text {
+  color: $lighter-color !important;
+}
+.navbar-inner {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
 .well {
   background: lighten($main-color, 30%) !important;
 }
@@ -64,4 +71,8 @@ hr {
 }
 .badge-tool, .label-tool {
   background: $tool-color !important;
+}
+.badge-stats {
+  background: lighten($main-color, 36%) !important;
+  color: $content-color !important;
 }
