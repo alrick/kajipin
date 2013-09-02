@@ -1,10 +1,11 @@
 // Main container for the map pages
 #main {
   position: absolute;
-  top: 53px;
+  top: 43px;
   bottom: 0;
   width: 100%;
   background-color: $water-color;
+  margin-bottom: 40px;
   #side {
     width: 300px;
     height: 100%;
