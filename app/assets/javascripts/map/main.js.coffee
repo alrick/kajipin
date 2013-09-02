@@ -22,12 +22,13 @@ jQuery ->
 
   # Init map, only called once
   init_map = ->
+    z = if $(window).width() > 1500 then 3 else 2
     gon.map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
       worldCopyJump: true
-      minZoom: 3
+      minZoom: 2
       keyboard: false # disable for now because re-enable is buggy
-    ).fitWorld()
+    ).setView([30.524413,11.733398], z)
 
   # Set all the pins stuff
   init_pins = ->
