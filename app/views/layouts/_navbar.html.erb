@@ -27,9 +27,32 @@
             </div>
           <% end %>
 
-          <!-- USER MENU -->
+          <!-- FEEDBACK AND SUPPORT -->
+          <a rel="tooltip" title="Feedback &amp; Support" data-placement="bottom" href="javascript:void(0)" class="btn btn-map pull-right" data-uv-lightbox="classic_widget" data-uv-mode="full" data-uv-primary-color="#4b4658" data-uv-link-color="#7fa4b1" data-uv-default-mode="support" data-uv-forum-id="203963"><i class="icon-bullhorn"></i></a>
+          <!-- SEPARATOR -->
           <ul class="nav pull-right">
-            <!-- UTILITIES -->
+            <li class="divider-vertical"></li>
+          </ul>
+          <!-- USER MENU -->
+          <div class="btn-group pull-right">
+            <%= link_to content_tag(:i, "", :class => "icon-user"), user_path(current_user), :class => "btn btn-map" %>
+            <a class="btn btn-map dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li id="global-menufirst" class="disabled">
+                <a href="#">
+                  Logged as <strong><%= current_user.first_name %></strong>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-heart")+" Friendships", friendships_path %></li>
+              <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-cog")+" Settings", edit_user_registration_path %></li>
+              <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+          <!-- UTILITIES -->
+          <ul class="nav pull-right">
             <li class="utility">
               <%= link_to content_tag(:i, "", :class => "icon-link"), heralds_path, :id => "herald-box", :class => "modal-open #{"active" if current_user.hasHerald?}", :remote => true %>
             </li>
@@ -37,31 +60,7 @@
               <%= link_to content_tag(:i, "", :class => "icon-inbox"), requests_path, :id => "requests-box", :class => "modal-open #{"active" if current_user.hasRequest?}", :remote => true %>
             </li>
             <li>
-              <div class="btn-group">
-                <a class="btn btn-map dropdown-toggle" data-toggle="dropdown" href="#">
-                  <i class="icon-user"></i>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                  <li id="global-menufirst">
-                    <%= link_to(user_path(current_user)) do %>
-                      <table>
-                        <tr>
-                          <td rowspan="2"><%= image_tag avatar_link(current_user, 28), :class => "img-polaroid" %></td>
-                          <td><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></td>
-                        </tr>
-                        <tr>
-                          <td><p>View profile</p></td>
-                        </tr>
-                      </table>
-                    <% end %>
-                  </li>
-                  <li class="divider"></li>
-                  <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-heart")+" Friendships", friendships_path %></li>
-                  <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-cog")+" Settings", edit_user_registration_path %></li>
-                  <li class="usermenu-item"><%= link_to content_tag(:i, "", :class => "icon-off")+" Log out", destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </div>
+              
             </li>
           </ul>
         <% else %>
