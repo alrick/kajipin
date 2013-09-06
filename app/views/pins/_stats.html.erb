@@ -1,0 +1,8 @@
+<ul class="nav pull-right">
+	<p id="pins-stats" class="navbar-text">
+		<b class="badge badge-stats"><span class="pins-count"><%= @pins.count %></span> <a rel="tooltip" title="Pins" data-placement="top"><i class="icon-map-marker pins"></i></a></b>
+    <b class="badge badge-stats"><span class="cities-count"><%= @pins.city.count %></span> <a rel="tooltip" title="Cities" data-placement="top"><i class="icon-map-marker city"></i></a></b>
+    <b class="badge badge-stats"><span class="towns-count"><%= @pins.town.count %></span> <a rel="tooltip" title="Towns" data-placement="top"><i class="icon-map-marker town"></i></a></b>
+    <b class="badge badge-stats"><span class="pois-count"><%= @pins.poi.count %></span> <a rel="tooltip" title="Points of interest" data-placement="top"><i class="icon-map-marker poi"></i></a></b>
+	</p>
+</ul>
