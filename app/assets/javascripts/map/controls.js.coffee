@@ -4,6 +4,13 @@ jQuery ->
   # FUNCTIONS
   #################
 
+  # PUBLIC : Locate pin and open popup
+  gon.locate_pin = (map) ->
+    id = $(this).data "id"
+    pin = gon.pinMap[id]
+    gon.cluster.zoomToShowLayer pin, ->
+      pin.openPopup()
+
   # PUBLIC : Define our world zoom
   gon.world_zoom = (map) ->
     map.setView([30.524413,11.733398], map.getMinZoom())
@@ -63,13 +70,6 @@ jQuery ->
       countriesList.hide()
       gon.enable_interaction(map)
 
-  # Locate pin and open popup
-  locate_pin = (map) ->
-    id = $(this).data "id"
-    pin = gon.pinMap[id]
-    gon.cluster.zoomToShowLayer pin, ->
-      pin.openPopup()
-
   # Filter pins
   filter_pins = ->
     icon = $(this).find("i").toggleClass "icon-eye-open icon-eye-close"
@@ -115,10 +115,6 @@ jQuery ->
   # Click on the list doesn't hide it
   $("#countries-list").click (event) ->
     event.stopPropagation()
-
-  # Locate a pin when click from side
-  $("#side").on "click", ".btn-locate", ->
-    locate_pin.call(this, gon.map)
 
   # Only if user has pins to display
   if gon.hasPins

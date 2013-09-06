@@ -1,7 +1,7 @@
-<ul class="dropdown-menu pins" role="menu" aria-labelledby="dropdownMenu">
+<ul id="pins" class="dropdown-menu pins" role="menu" aria-labelledby="dropdownMenu">
 	<% @pins.each do |pin| %>
-		<li id="<%= dom_id(pin) %>">
-			<a tabindex="-1" href="#">
+		<li id="<%= dom_id(pin) %>" class="<%= pin_class(pin.type) %>-type">
+			<a tabindex="-1" href="#" data-id="<%= pin.id %>">
 				<i class="icon-map-marker <%= pin_class(pin.type) %>"></i> <strong><%= pin.title %></strong> <span class="smaller"><%= pin.country_name %> - <%= pin.photos.count %> <i class="icon-camera-retro"></i>  <%= pin.comments.count %> <i class="icon-comments"></i></span>
 			</a>
 		</li>

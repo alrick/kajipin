@@ -27,3 +27,11 @@ jQuery ->
     else if type == "Poi"
       count = $(".pois-count")
     count.html(parseInt(count.html())-1)
+
+  #################
+  # TRIGGERS
+  #################
+
+  # Locate a pin when click from dropdown
+  $(".pins").on "click", "a", ->
+    gon.locate_pin.call(this, gon.map)
