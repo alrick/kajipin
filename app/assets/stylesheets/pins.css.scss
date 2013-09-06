@@ -21,6 +21,8 @@
 
 // Pins dropdown
 .pins {
+  overflow: auto;
+  max-height: 500px;
   .city { color: $map-color; }
   .town { color: $main-color; }
   .poi { color: $extra-color; }
