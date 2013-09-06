@@ -33,22 +33,13 @@ jQuery ->
     map.boxZoom.disable()
     map.keyboard.disable()
 
-  # Filter side pins
-  filter_side_pins = (type, state) ->
-    type = "."+type
-    side = $("#side")
-    if state
-      side.find(type).fadeIn()
-    else
-      side.find(type).fadeOut()
-
   # Filter map pins
   filter_map_pins = (type, state) ->
-    if type == "City"
+    if type == "city"
       layer = gon.citiesLayer
-    else if type == "Town"
+    else if type == "town"
       layer = gon.townsLayer
-    else if type == "Poi"
+    else if type == "poi"
       layer = gon.poisLayer
     if state
       gon.cluster.addLayers(layer.getLayers())
@@ -73,9 +64,9 @@ jQuery ->
   # Filter pins
   filter_pins = ->
     icon = $(this).find("i").toggleClass "icon-eye-open icon-eye-close"
-    type = $(this).data "type"
+    type = $(this).data("type").toLowerCase()
     state = icon.hasClass "icon-eye-open"
-    filter_side_pins(type, state)
+    gon.filter_list_pins(type, state)
     filter_map_pins(type, state)
 
 

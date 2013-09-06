@@ -28,6 +28,16 @@ jQuery ->
       count = $(".pois-count")
     count.html(parseInt(count.html())-1)
 
+  # PUBLIC : Filter pins list
+  gon.filter_list_pins = (type, state) ->
+    type = "."+type+"-type"
+    list = $("#pins")
+    if state
+      list.find(type).fadeIn()
+    else
+      list.find(type).fadeOut()
+
+
   #################
   # TRIGGERS
   #################
