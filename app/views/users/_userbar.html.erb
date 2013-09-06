@@ -1,0 +1,33 @@
+<% content_for :ext do %>
+	<div class="navbar navbar-fixed-bottom">
+	  <div class="navbar-inner">
+
+		    <ul class="nav">
+		      <p class="navbar-text">
+		      	<%= image_tag avatar_link(@user, 30), :class => "img-circle" %> <strong><%= @user.full_name %></strong>'s pins
+		      </p>
+		    </ul>
+		    <%= sharing_btn(@user, "") %>
+
+		    <% if can? :show, @master %>
+		    	<% if !@pins.empty? %>
+			    	<div class="btn-group dropup pull-right">
+						  <a class="btn dropdown-toggle btn-tool" data-toggle="dropdown" href="#">
+						    <i class="icon-list"></i>
+						  </a>
+						  <%= render "pins/pins" %>
+						</div>
+					<% end %>
+			    <%= render "pins/stats" %>
+			  <% else %>
+			  	<%= share_request("pull-right") %>
+			  	<ul class="nav pull-right">
+				  	<p class="navbar-text">
+				  		<strong><%= @user.first_name %></strong> does not share with you.&nbsp;
+				  	</p>
+			  	</ul>
+			  <% end %>
+
+	  </div>
+	</div>
+<% end %>
