@@ -11,8 +11,6 @@
     </p>
   </td>
   <td>
-    <% if (can? :manage, pin) && (@herald.nil?) %>
-      <%= render "pins/captain", :pin => pin %>
-    <% end %>
+    <%= render "pins/captain", :pin => pin %>
   </td>
 </tr>
