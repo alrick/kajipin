@@ -43,4 +43,8 @@ module ApplicationHelper
     date.to_formatted_s(:long_ordinal)
   end
 
+  def pin_class(type)
+    type.downcase
+  end
+  
 end

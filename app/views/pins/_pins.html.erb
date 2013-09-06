@@ -2,7 +2,7 @@
 	<% @pins.each do |pin| %>
 		<li id="<%= dom_id(pin) %>">
 			<a tabindex="-1" href="#">
-				<i class="icon-map-marker" style="color:#8d7d75"></i> <strong><%= pin.title %></strong> <span style="font-size:12px;"><%= pin.country_name %></span> - <%= pin.photos.count %> <i class="icon-camera-retro"></i>  <%= pin.comments.count %> <i class="icon-comments"></i>
+				<i class="icon-map-marker <%= pin_class(pin.type) %>"></i> <strong><%= pin.title %></strong> <span class="smaller"><%= pin.country_name %> - <%= pin.photos.count %> <i class="icon-camera-retro"></i>  <%= pin.comments.count %> <i class="icon-comments"></i></span>
 			</a>
 		</li>
 	<% end %>
