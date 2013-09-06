@@ -31,19 +31,6 @@ jQuery ->
       e.stopPropagation()
     ).on "hide", (e) ->
       e.stopPropagation()
-  
-  # Display the side bar next to the map
-  toggler = ->
-    map = $("#map")
-    side = $("#side")
-
-    $(this).toggleClass "active"
-    if $(this).hasClass "active"
-      map.width $("#main").width()-side.width()
-      side.show()
-    else
-      side.hide()
-      map.css "width", "100%"
 
 
   #################
@@ -60,10 +47,7 @@ jQuery ->
 
   #################
   # TRIGGERS
-  #################      
-
-  # Toggler allow to activate the left sidebar
-  $("#toggler").click toggler
+  #################
 
   # Set unsocial behaviour
   $(".btn-unsocial").hoverIntent(

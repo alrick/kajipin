@@ -3,11 +3,4 @@
 <!-- Include additionals map controls -->
 <%= render "users/controls" %>
 
-<!-- Include side pins -->
-<% if !@pins.nil? && !@pins.empty? %>
-	<% content_for :side do %>
-		<%= render "pins/side-pins" %>
-	<% end %>
-<% end %>
-
 <%= render "users/userbar" %>

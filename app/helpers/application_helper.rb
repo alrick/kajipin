@@ -31,14 +31,6 @@ module ApplicationHelper
     end
   end
 
-  def toggler(layout)
-    if layout == "map" && !@pins.nil?
-      if !@pins.empty?
-        content_tag(:button, content_tag(:i, "", :class => "icon-list"), :id => "toggler", :class => "btn btn-tool", :type => "button")
-      end
-    end
-  end
-
   def proper_date(date)
     date.to_formatted_s(:long_ordinal)
   end

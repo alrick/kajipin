@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       @pins = @user.pins.poi
       gon.watch.rabl "app/views/pins/index.json.rabl", as: "pois"
 
-      # Reset pins to all pins for side
+      # Reset pins to all pins for the list
       @pins = @user.pins
     end
   end
