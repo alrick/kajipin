@@ -33,8 +33,3 @@
     <i class="icon-eye-open"></i>
   </a>
 <% end %>
-
-<!-- Only if current user's profile -->
-<% if @master == current_user %>
-  <%= link_to content_tag(:i, "", :class => "icon-plus"), new_pin_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true, :data => { :placement => "left", :title => "<span id=\"pin-initiator-tooltip\">Add some pins here</span>", :trigger => "manual", :html => true } %>
-<% end %>

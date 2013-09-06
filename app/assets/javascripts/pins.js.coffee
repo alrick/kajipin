@@ -45,3 +45,13 @@ jQuery ->
   # Locate a pin when click from dropdown
   $(".pins").on "click", "a", ->
     gon.locate_pin.call(this, gon.map)
+
+
+  #################
+  # FLOW
+  #################
+
+  # Add pins tip if needed
+  if !gon.hasPins
+    $("#pin-initiator").tooltip "show"
+    $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})
