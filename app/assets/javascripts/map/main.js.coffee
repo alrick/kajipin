@@ -26,9 +26,10 @@ jQuery ->
     gon.map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
       worldCopyJump: true
-      minZoom: 2
+      minZoom: z
       keyboard: false # disable for now because re-enable is buggy
-    ).setView([30.524413,11.733398], z)
+    )
+    gon.world_zoom(gon.map)
 
   # Set all the pins stuff
   init_pins = ->

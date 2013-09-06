@@ -4,6 +4,10 @@ jQuery ->
   # FUNCTIONS
   #################
 
+  # PUBLIC : Define our world zoom
+  gon.world_zoom = (map) ->
+    map.setView([30.524413,11.733398], map.getMinZoom())
+
   # PUBLIC : Allow to enable all zooming and paning
   gon.enable_interaction = (map) ->
     map.dragging.enable()
@@ -91,7 +95,7 @@ jQuery ->
 
   # Set worldmap zoom func
   $("#world-zoom").click ->
-    gon.map.fitWorld()
+    gon.world_zoom(gon.map)
 
   # Set countries bounds func
   $(".country-item").click ->
