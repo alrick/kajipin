@@ -25,7 +25,7 @@ jQuery ->
     z = if $(window).width() > 1500 then 3 else 2
     gon.map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
-      worldCopyJump: true
+      #worldCopyJump: true buggy since 0.6.5
       minZoom: z
       keyboard: false # disable for now because re-enable is buggy
     )
