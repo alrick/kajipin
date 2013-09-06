@@ -19,6 +19,14 @@
   }
 }
 
+// Pins dropdown
+.pins {
+  .city { color: $map-color; }
+  .town { color: $main-color; }
+  .poi { color: $extra-color; }
+  .smaller { font-size: 12px; }
+}
+
 // Main pin panel in map popup
 .pin {
   background: lighten($main-color, 46%);
