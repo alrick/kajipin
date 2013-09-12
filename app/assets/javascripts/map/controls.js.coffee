@@ -5,33 +5,33 @@ jQuery ->
   #################
 
   # PUBLIC : Locate pin and open popup
-  gon.locate_pin = (map) ->
+  gon.locate_pin = ->
     id = $(this).data "id"
     pin = gon.pinMap[id]
     gon.cluster.zoomToShowLayer pin, ->
       pin.openPopup()
 
   # PUBLIC : Define our world zoom
-  gon.world_zoom = (map) ->
-    map.setView([30.524413,11.733398], map.getMinZoom())
+  gon.world_zoom = ->
+    gon.map.setView([30.524413,11.733398], gon.map.getMinZoom())
 
   # PUBLIC : Allow to enable all zooming and paning
-  gon.enable_interaction = (map) ->
-    map.dragging.enable()
-    map.touchZoom.enable()
-    map.scrollWheelZoom.enable()
-    map.doubleClickZoom.enable()
-    map.boxZoom.enable()
-    map.keyboard.enable()
+  gon.enable_interaction = ->
+    gon.map.dragging.enable()
+    gon.map.touchZoom.enable()
+    gon.map.scrollWheelZoom.enable()
+    gon.map.doubleClickZoom.enable()
+    gon.map.boxZoom.enable()
+    gon.map.keyboard.enable()
 
   # PUBLIC : Allow to disable all zooming and paning
-  gon.disable_interaction = (map) ->
-    map.dragging.disable()
-    map.touchZoom.disable()
-    map.scrollWheelZoom.disable()
-    map.doubleClickZoom.disable()
-    map.boxZoom.disable()
-    map.keyboard.disable()
+  gon.disable_interaction = ->
+    gon.map.dragging.disable()
+    gon.map.touchZoom.disable()
+    gon.map.scrollWheelZoom.disable()
+    gon.map.doubleClickZoom.disable()
+    gon.map.boxZoom.disable()
+    gon.map.keyboard.disable()
 
   # Filter map pins
   filter_map_pins = (type, state) ->
@@ -47,19 +47,19 @@ jQuery ->
       gon.cluster.removeLayers(layer.getLayers())
 
   # Display countries list
-  show_countries_list = (map) ->
+  show_countries_list = ->
     countriesList = $("#countries-list")
     if countriesList.is ":hidden"
       event.stopPropagation()
       countriesList.show()
-      gon.disable_interaction(map)
+      gon.disable_interaction()
 
   # Hide countries list
-  hide_countries_list = (map) ->
+  hide_countries_list = ->
     countriesList = $("#countries-list")
     if countriesList.is ":visible"
       countriesList.hide()
-      gon.enable_interaction(map)
+      gon.enable_interaction()
 
   # Filter pins
   filter_pins = ->
@@ -76,7 +76,7 @@ jQuery ->
 
   # Set worldmap zoom func
   $("#world-zoom").click ->
-    gon.world_zoom(gon.map)
+    gon.world_zoom()
 
   # Set countries bounds func
   $(".country-item").click ->
@@ -87,11 +87,11 @@ jQuery ->
 
   # Set the countries list button trigger
   $("#countries-zoom").click ->
-    show_countries_list(gon.map)
+    show_countries_list()
 
   # Hide the countries list on click if visible
   $("html").click ->
-    hide_countries_list(gon.map)
+    hide_countries_list()
 
   # Click on the list doesn't hide it
   $("#countries-list").click (event) ->
