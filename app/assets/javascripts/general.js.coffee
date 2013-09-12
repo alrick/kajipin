@@ -32,6 +32,12 @@ jQuery ->
     ).on "hide", (e) ->
       e.stopPropagation()
 
+  # PUBLIC : Init hoverintent on share btn
+  gon.init_hoverintent = ->
+    $(".btn-unsocial").hoverIntent(
+      -> $(this).html("Unshare").addClass("btn-remove"),
+      -> $(this).html("<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing").removeClass("btn-remove")
+    )
 
   #################
   # FLOW
@@ -49,8 +55,5 @@ jQuery ->
   # TRIGGERS
   #################
 
-  # Set unsocial behaviour
-  $(".btn-unsocial").hoverIntent(
-    -> $(this).html("Unshare").addClass("btn-remove"),
-    -> $(this).html("<i class=\"icon-heart\"></i>&nbsp;&nbsp;Sharing").removeClass("btn-remove")
-  )
+  # Init hoverintent
+  gon.init_hoverintent()

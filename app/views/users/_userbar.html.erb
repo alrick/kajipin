@@ -7,7 +7,7 @@
 		      	<%= image_tag avatar_link(@user, 30), :class => "img-circle" %> <strong><%= @user.full_name %></strong>'s pins
 		      </p>
 		    </ul>
-		    <%= sharing_btn(@user, "") %>
+		    <%= sharing_btn(@user) %>
 
 		    <% if can? :show, @master %>
 			    <% if @master == current_user %>
