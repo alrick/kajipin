@@ -6,4 +6,5 @@
 	inside.append "<%= escape_javascript(render @comment) %>"
 	inside.scrollTop(inside[0].scrollHeight)
 	gon.init_delete_tooltip()
+	gon.update_comments(<%= @comment.pin.id %>, <%= @comment.pin.comments.count %>)
 <% end %>

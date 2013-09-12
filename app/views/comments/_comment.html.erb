@@ -5,7 +5,7 @@
   <div class="text">
     <p>
       <% if (can? :destroy, comment) %>
-        <%= link_to content_tag("i", "", :class => "icon-remove-sign"), pin_comment_path(@pin, comment), :method => :delete, :remote => true %>
+        <%= link_to content_tag("i", "", :class => "icon-remove-sign"), "#", :rel => "delete-tooltip", "data-title" => "#{ link_to "Delete", pin_comment_path(@pin, comment), :class => "btn btn-confirm", :method => :delete, :remote => true }" %>
       <% end %>
       <%= comment.value %>
     </p>

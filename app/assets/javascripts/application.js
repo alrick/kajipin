@@ -33,3 +33,4 @@
 //= require pins
 //= require requests
 //= require heralds
+//= require comments
