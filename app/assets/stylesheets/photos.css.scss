@@ -2,6 +2,10 @@
 #cphotos {
   .cphoto {
     &:hover { cursor: pointer; }
+    .img-polaroid {
+      width: 200px;
+      height: 200px;
+    }
   }
   .selected {
     background-color: $extra-color;
