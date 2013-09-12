@@ -5,4 +5,5 @@
 	inside = $("div.comments").find(".inside")
 	inside.append "<%= escape_javascript(render @comment) %>"
 	inside.scrollTop(inside[0].scrollHeight)
+	gon.init_delete_tooltip()
 <% end %>
