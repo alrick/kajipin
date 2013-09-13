@@ -50,9 +50,10 @@ jQuery ->
       onEachFeature: (feature, pin) ->
         gon.pinMap[feature.id] = pin
         pin.bindPopup '<p class="loading-popup"></p>',
+          autoPan: false
           closeButton: false
-          maxWidth: 2000 # intentionaly big, managed by inner containers
-          maxHeight: 2000 # intentionaly big, managed by inner containers
+          maxWidth: 8000 # intentionaly big, managed by inner containers
+          maxHeight: 8000 # intentionaly big, managed by inner containers
         pin.on "popupopen", (e) ->
           pin.setPopupContent '<p class="loading-popup"></p>'
           $(".loading-popup").spin()
@@ -62,9 +63,13 @@ jQuery ->
   build_popup = (pin, feature) ->
     $.get("/pins/" + feature.id, (data) ->
       pin.setPopupContent(data)
+      gon.adjust_popup_size()
       gon.init_mfp_gallery()
       gon.init_delete_tooltip()
-      gon.map.panTo [gon.map.getCenter().lat, pin.getLatLng().lng]
+
+      pointY = -($(".pin").height()/2+70)
+      gon.map.setView(pin.getLatLng(), gon.map.getZoom())
+      gon.map.panBy [0, pointY]
     )
 
 

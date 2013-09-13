@@ -1,10 +1,10 @@
 // Main comments panel in pin popup
 .comments {
-  width: 300px;
+  width: 270px;
   margin-left: 20px;
   overflow-x: hidden;
   .inside {
-    max-height: 391px;
+    max-height: $inside-comments-height;
     overflow-y: auto;
   }
   .comment {
@@ -19,7 +19,7 @@
       padding-left: 5px;
       margin: 0 10px 20px 10px;
       float: left;
-      width: 210px;
+      width: 180px;
       word-wrap: break-word;
       p {
         a { text-decoration: none; } // No decoration for remove link
@@ -45,12 +45,12 @@
     }
   }
   .new {
-    padding-top: 20px;
+    padding-top: $new-comment-padding;
     height: 89px;
     form {
       margin: 0;
       textarea {
-        width: 260px;
+        width: 250px;
         height: 40px;
         resize: none;
       }

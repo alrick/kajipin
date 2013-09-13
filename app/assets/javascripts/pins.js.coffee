@@ -37,6 +37,15 @@ jQuery ->
     else
       list.find(type).fadeOut()
 
+  # PUBLIC : Adjust popup of pins size
+  gon.adjust_popup_size = ->
+    winWidth = $(window).width()
+    winHeight = $(window).height()
+    if winHeight > 795
+      height = winHeight-450
+      $(".photos").css("max-height", height)
+      $(".comments").find(".inside").css("max-height", height-109)
+
 
   #################
   # TRIGGERS

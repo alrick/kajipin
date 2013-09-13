@@ -24,8 +24,8 @@
 
 // Main photos panel in pin popup
 .photos {
-  max-width: 650px;
-  max-height: 500px;
+  max-width: 655px;
+  max-height: $pin-popup-maxheight;
   overflow-x: hidden;
   overflow-y: auto;
   .img-polaroid {
