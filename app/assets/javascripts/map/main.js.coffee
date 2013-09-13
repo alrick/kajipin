@@ -34,7 +34,8 @@ jQuery ->
   # Set all the pins stuff
   init_pins = ->
     gon.pinMap = {} # pinMap reference all the pin, whatever the type
-    gon.cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:30 }) # the cluster group the pins by proximity
+    r = if $(window).width() > 1500 then 30 else 50
+    gon.cluster = new L.MarkerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:r }) # the cluster group the pins by proximity
     gon.citiesLayer = init_layer(gon.cities) # layer grouping all cities
     gon.townsLayer = init_layer(gon.towns) # layer grouping all towns
     gon.poisLayer = init_layer(gon.pois) # layer grouping all pois
