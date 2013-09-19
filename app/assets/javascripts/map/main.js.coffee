@@ -25,10 +25,21 @@ jQuery ->
     z = if $(window).width() > 1500 then 3 else 2
     gon.map = L.mapbox.map("map", gon.mapbox_id,
       attributionControl: false
+      zoomControl: false
       #worldCopyJump: true buggy since 0.6.5
       minZoom: z
       keyboard: false # disable for now because re-enable is buggy
-    )
+    ).on "zoomend", (e) ->
+      zoom = gon.map.getZoom()
+      if zoom == gon.map.getMinZoom()
+        gon.disable_zoom("minus")
+        gon.disable_zoom("world")
+      else if zoom == gon.map.getMaxZoom()
+        gon.disable_zoom("plus")
+      else
+        gon.enable_zoom("minus")
+        gon.enable_zoom("plus")
+        gon.enable_zoom("world")
     gon.world_zoom(gon.map)
 
   # Set all the pins stuff

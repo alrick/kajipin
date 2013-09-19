@@ -24,9 +24,16 @@
   left: 10px;
   color: $content-color !important;
   &:hover { color: lighten($content-color, 20%); }
+  &.disable {
+    background-color: #eee;
+    color: #A9A9A9 !important;
+    cursor: default;
+  }
 }
-#world-zoom { top: 68px; }
-#countries-zoom { top: 99px; }
+#plus-zoom { top: 9px; }
+#minus-zoom { top: 40px; }
+#world-zoom { top: 71px; }
+#countries-zoom { top: 102px; }
 
 // Filter controls
 .pins-filter {

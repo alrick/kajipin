@@ -15,6 +15,14 @@ jQuery ->
   gon.world_zoom = ->
     gon.map.setView([30.524413,11.733398], gon.map.getMinZoom())
 
+  # PUBLIC : Allow to enable zoom button
+  gon.enable_zoom = (zoom) ->
+    $("#"+zoom+"-zoom").removeClass("disable")
+
+  # PUBLIC : Allow to disable zoom button
+  gon.disable_zoom = (zoom) ->
+    $("#"+zoom+"-zoom").addClass("disable")
+
   # PUBLIC : Allow to enable all zooming and paning
   gon.enable_interaction = ->
     gon.map.dragging.enable()
@@ -73,6 +81,14 @@ jQuery ->
   #################
   # TRIGGERS
   #################
+
+  # Set plus zoom func
+  $("#plus-zoom").click ->
+    gon.map.zoomIn()
+
+  # Set minus zoom func
+  $("#minus-zoom").click ->
+    gon.map.zoomOut()
 
   # Set worldmap zoom func
   $("#world-zoom").click ->
