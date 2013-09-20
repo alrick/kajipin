@@ -1,11 +1,4 @@
 #################
-# FUNCTIONS
-#################
-hide_this = ->
-  $("#new-pin").remove()
-
-
-#################
 # FLOW
 #################
 
@@ -35,7 +28,8 @@ typeA.typeahead
   engine: Hogan
 
 # Bind the hider to backdrop
-$(".modal-backdrop").click hide_this
+$(".modal-backdrop").click ->
+  $("#new-pin").remove()
 
 # Register event on item selection
 typeA.on "typeahead:selected", (evt, data) ->
