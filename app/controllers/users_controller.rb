@@ -2,15 +2,12 @@ class UsersController < ApplicationController
   include ApplicationHelper # Require to access view helpers from gon rabl
   include PhotoHelper # Require to access view helpers from gon rabl
   
-  # Devise authentication
-  before_filter :authenticate_user!
-  
   before_filter :get_user, :only => [:show]
-  before_filter :clear_herald, :only => [:show]
 
   layout "map", :only => [:show]
 
   def index
+    :authenticate_user!
     busers = User.where("id != '#{current_user.id}'").search(params[:q])
     @users = Kaminari.paginate_array(busers).page(params[:page]).per(20)
     @q = "All"
@@ -18,11 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # Master is used to check permissions
-    @master = @user
-
-    # Define if current user
-    gon.is_current_user = (@user == current_user)
+    # Set the key if herald
+    gon.key = @herald.key if !@herald.nil?
 
     # Set mapbox id from env config
     gon.mapbox_id = ENV["MAPBOX_ID"]
@@ -55,17 +49,17 @@ class UsersController < ApplicationController
 
   # Get user to display the map
   def get_user
-    # If no id provided, auto redirect to the logged user profile
-    if params[:id].nil?
-      redirect_to user_url(current_user)
-    else
-      @user = User.find(params[:id])
+    @herald = Herald.find_by_key(params[:key])
+    if current_user.instance_of?(User)
+      :authenticate_user!
+      if params[:id].nil?
+        redirect_to user_url(current_user)
+      else
+        @user = User.find(params[:id])
+      end
+    elsif current_user.instance_of?(Herald)
+      @user = @herald.user
     end
-  end
-
-  # Clear herald ensure current user use not herald accesses
-  def clear_herald
-    session[:herald] = nil
   end
   
 end

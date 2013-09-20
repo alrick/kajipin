@@ -1,11 +1,14 @@
 class PinsController < ApplicationController
   # Devise authentication
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
 
   # Cancan authorize
   load_and_authorize_resource
 
   def show
+    if current_user.instance_of?(User)
+      :authenticate_user!
+    end
     @pin = Pin.find(params[:id])
     @photos = @pin.photos
     @comments = @pin.comments

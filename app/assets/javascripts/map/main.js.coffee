@@ -73,7 +73,10 @@ jQuery ->
 
   # Retrieve pin view and set the popup
   build_popup = (pin, feature) ->
-    $.get("/pins/" + feature.id, (data) ->
+    # Herald stuff here
+    if gon.key
+      key = "?key="+gon.key
+    $.get("/pins/" + feature.id + key, (data) ->
       pin.setPopupContent(data)
       gon.adjust_popup_size()
       gon.init_mfp_gallery()

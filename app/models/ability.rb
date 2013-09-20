@@ -10,15 +10,25 @@ class Ability
     can :manage, User, :id => user.id
     # User can read users(profile) that are sharing with him
     can :read, User do |u|
-      u.isSharingWith(user)
+      if user.instance_of?(User)
+        u.isSharingWith(user)
+      elsif user.instance_of?(Herald)
+        user.user == u
+      end
     end
 
     ##### PIN
     # User can manage pins he owns
-    can :manage, Pin, :user_id => user.id
+    can :manage, Pin do |p|
+      p.user == user
+    end
     # User can read pins of users that are sharing with him (includes photos, logpage and comments)
     can :read, Pin do |p|
-      p.user.isSharingWith(user)
+      if user.instance_of?(User)
+        p.user.isSharingWith(user)
+      elsif user.instance_of?(Herald)
+        user.user == p.user
+      end
     end
 
     ##### PHOTO

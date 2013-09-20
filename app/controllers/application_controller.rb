@@ -2,6 +2,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  # Override devise current user to allow heralds
+  def devise_current_user
+    @devise_current_user ||= warden.authenticate(:scope => :user)
+  end
+  def current_user
+    if params[:key].blank?
+      devise_current_user
+    else
+      herald = Herald.find_by_key(params[:key]) || not_found
+    end   
+  end
+
   # Cancan custom access denied
   rescue_from CanCan::AccessDenied do |exception|
     render file: "#{Rails.root}/public/403", formats: [:html], status: 403,

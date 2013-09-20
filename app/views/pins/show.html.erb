@@ -5,7 +5,9 @@
 			<%= @photos.count %> <i class="icon-camera-retro"></i>
 			<span class="comments-count <%= @pin.id %>"><%= @comments.count %></span> <i class="icon-comments"></i>
 		</p>
-		<%= render "pins/captain", :pin => @pin %>
+		<% if can? :manage, @pin %>
+			<%= render "pins/captain", :pin => @pin %>
+		<% end %>
 	</div>
 	<div class="wrap">
 		<div class="photos col">
@@ -15,9 +17,11 @@
 			<div class="inside">
 				<%= render @comments %>
 			</div>
-			<div class="new">
-				<%= render "comments/new" %>
-			</div>
+			<% if current_user.instance_of?(User) %>
+				<div class="new">
+					<%= render "comments/new" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

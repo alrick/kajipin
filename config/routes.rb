@@ -28,6 +28,7 @@ Kajipin::Application.routes.draw do
   # FRIENDSHIPS
   resources :friendships, :only => [:index, :create, :destroy]
 
+  # REQUESTS
   resources :requests, :only => [:index, :create, :destroy] do
     post 'approve', :on => :member
   end
@@ -40,11 +41,8 @@ Kajipin::Application.routes.draw do
 
   # HERALDS
   resources :heralds, :only => [:index, :create] do
-    get 'photos', :on => :collection
-    get 'comments', :on => :collection
-    get 'logpages', :on => :collection
     delete 'destroy', :on => :collection
   end
-  match "/:key" => "heralds#show"
+  match "/:key" => "users#show"
 
 end

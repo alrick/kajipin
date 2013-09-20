@@ -9,8 +9,8 @@
 		    </ul>
 		    <%= sharing_btn(@user) %>
 
-		    <% if can? :show, @master %>
-			    <% if @master == current_user %>
+		    <% if can? :show, @user %>
+			    <% if can? :manage, @user %>
 					  <%= link_to content_tag(:i, "", :class => "icon-plus"), new_pin_path, :id => "pin-initiator", :class => "btn btn-tool modal-open pull-right marl", :remote => true, :data => { :placement => "top", :title => "<span id=\"pin-initiator-tooltip\">Add some pins here</span>", :trigger => "manual", :html => true } %>
 					<% end %>
 		    	<% if !@pins.empty? %>
