@@ -5,11 +5,6 @@ class PinsController < ApplicationController
   # Cancan authorize
   load_and_authorize_resource
 
-  def index
-    @user = User.find(params[:user_id])
-    @pins = @user.pins
-  end
-
   def show
     @pin = Pin.find(params[:id])
     @photos = @pin.photos
