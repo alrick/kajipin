@@ -33,13 +33,11 @@ jQuery ->
       zoom = gon.map.getZoom()
       if zoom == gon.map.getMinZoom()
         gon.disable_zoom("minus")
-        gon.disable_zoom("world")
       else if zoom == gon.map.getMaxZoom()
         gon.disable_zoom("plus")
       else
         gon.enable_zoom("minus")
         gon.enable_zoom("plus")
-        gon.enable_zoom("world")
     gon.world_zoom(gon.map)
 
   # Set all the pins stuff
