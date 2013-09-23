@@ -6,8 +6,9 @@ class PinsController < ApplicationController
   load_and_authorize_resource
 
   def show
-    if current_user.instance_of?(User)
-      :authenticate_user!
+    # If current_user is an herald, no need to authenticate
+    if !current_user.instance_of?(Herald)
+      authenticate_user!
     end
     @pin = Pin.find(params[:id])
     @photos = @pin.photos

@@ -22,7 +22,7 @@ class Ability
     can :manage, Pin do |p|
       p.user == user
     end
-    # User can read pins of users that are sharing with him (includes photos, logpage and comments)
+    # User can read pins of users that are sharing with him
     can :read, Pin do |p|
       if user.instance_of?(User)
         p.user.isSharingWith(user)
