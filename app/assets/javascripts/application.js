@@ -12,24 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.effect-highlight
 //= require twitter/bootstrap
 //= require jquery.hoverIntent
 //= require hogan.js
 // require twitter/typeahead added manually until 0.10
 //= require typeahead-dup
 //= require jquery.spin
+//= require magnific-popup
 //
 //= require leaflet.markercluster
 //= require bootstrap_redefine
 //= require general
 //
-//= require map/tooltips
 //= require map/controls
-//= require map/elements
-//= require map/init
+//= require map/main
 //
 //= require devise
 //= require photos
 //= require pins
 //= require requests
 //= require heralds
+//= require comments

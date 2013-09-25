@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/joshuajansen/magnific-popup-rails.git
+  revision: 59d61fb3b72462191d5f436d3506c51bb9569aef
+  specs:
+    magnific-popup-rails (0.9.4)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 4041f62c2cb9620ceef68da4bdc3020f77ed9c26
   specs:
@@ -87,11 +93,15 @@ GEM
     jquery-rails (3.0.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.4)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    leaflet-markercluster (0.4.2)
+    leaflet-markercluster-rails (0.6.0)
+      railties (>= 3.1)
     less (2.3.2)
       commonjs (~> 0.2.6)
     less-rails (2.3.3)
@@ -114,6 +124,7 @@ GEM
     nifty-generators (0.4.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    oj (2.1.4)
     orm_adapter (0.4.0)
     parser (2.0.0.beta5)
       ast (~> 1.0)
@@ -209,15 +220,18 @@ DEPENDENCIES
   httparty
   jquery-hoverIntent-rails
   jquery-rails
+  jquery-ui-rails
   json
   kaminari
-  leaflet-markercluster
+  leaflet-markercluster-rails
   less-rails
   madmimi
+  magnific-popup-rails!
   mocha
   newrelic_rpm
   nifty-generators
   nokogiri
+  oj
   pg
   rabl
   rails (= 3.2.13)

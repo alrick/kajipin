@@ -1,0 +1,49 @@
+// Loading popup are displayed during ajax call
+.loading-popup { height: 40px; }
+
+// Redefine clusters styling
+$cluster-alpha: 0.7;
+.marker-cluster {
+  background-color: rgba(lighten($map-color, 10%), $cluster-alpha);
+  background-clip: padding-box;
+  border-radius: 20px;
+  div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: rgba($map-color, $cluster-alpha);
+    color: $lighter-color;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold !important;
+    text-align: center;
+    border-radius: 15px;
+  }
+  span { line-height: 30px; }
+}
+
+// Custom alert for map
+.alert-map {
+  position: absolute;
+  width: 888px;
+  z-index: 999;
+  left: 50%;
+  margin-left: -444px;
+  box-shadow: 0 1px 5px #888;
+}
+
+// Copyright block
+#copyright {
+  background: $lighter-color;
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  font-size: 11px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0 5px;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.6;
+  a { color: $main-color; }
+}

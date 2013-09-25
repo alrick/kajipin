@@ -4,46 +4,63 @@ jQuery ->
   # FUNCTIONS
   #################
 
-  # PUBLIC : Refresh pins stat
-  gon.refresh_stats = ->
-    gon.watch "pinsCount", refresh_pins
-    gon.watch "cityCount", refresh_cities
-    gon.watch "townCount", refresh_towns
-    gon.watch "poiCount", refresh_poi
+  # PUBLIC : Inc pins count
+  gon.inc_pins_count = (type) ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())+1)
+    if type == "City"
+      count = $(".cities-count")
+    else if type == "Town"
+      count = $(".towns-count")
+    else if type == "Poi"
+      count = $(".pois-count")
+    count.html(parseInt(count.html())+1)
 
-  # Refresh the pins count at top of pins sidebar
-  refresh_pins = (pinsCount) ->
-    $("#pins").find(".stats").find(".pins-count").html pinsCount
+  # PUBLIC : Dec pins count
+  gon.dec_pins_count = (type) ->
+    count = $(".pins-count")
+    count.html(parseInt(count.html())-1)
+    if type == "City"
+      count = $(".cities-count")
+    else if type == "Town"
+      count = $(".towns-count")
+    else if type == "Poi"
+      count = $(".pois-count")
+    count.html(parseInt(count.html())-1)
 
-  # Refresh the cities count at top of pins sidebar
-  refresh_cities = (cityCount) ->
-    $("#pins").find(".stats").find(".city-count").html cityCount
-
-  # Refresh the towns count at top of pins sidebar
-  refresh_towns = (townCount) ->
-    $("#pins").find(".stats").find(".town-count").html townCount
-
-  # Refresh the poi count at top of pins sidebar
-  refresh_poi = (poiCount) ->
-    $("#pins").find(".stats").find(".poi-count").html poiCount
-
-  # Resize modal depending on screen size
-  modal_resize = ->
-    doc_height = $(document).height()
-    if doc_height > 800
-      max_height = doc_height - 350 + "px"
-      $(this).children(".modal-body").css "max-height", max_height
+  # PUBLIC : Filter pins list
+  gon.filter_list_pins = (type, state) ->
+    type = "."+type+"-type"
+    list = $("#pins")
+    if state
+      list.find(type).fadeIn()
     else
-      $(this).children(".modal-body").css "max-height", "400px"
+      list.find(type).fadeOut()
+
+  # PUBLIC : Adjust popup of pins size
+  gon.adjust_popup_size = ->
+    winWidth = $(window).width()
+    winHeight = $(window).height()
+    if winHeight > 795
+      height = winHeight-450
+      $(".photos").css("max-height", height)
+      $(".comments").find(".inside").css("max-height", height-109)
 
 
   #################
   # TRIGGERS
   #################
 
-  # Adjust modal height with size of document for big resolutions and switch interaction
-  $("#pinModal").on "show", ->
-    modal_resize.call(this)
-    gon.disable_interaction gon.map
-  $("#pinModal").on "hide", ->
-    gon.enable_interaction gon.map
+  # Locate a pin when click from dropdown
+  $(".pins").on "click", "a", ->
+    gon.locate_pin.call(this, gon.map)
+
+
+  #################
+  # FLOW
+  #################
+
+  # Add pins tip if needed
+  if !gon.hasPins
+    $("#pin-initiator").tooltip "show"
+    $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})

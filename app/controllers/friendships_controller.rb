@@ -32,12 +32,8 @@ class FriendshipsController < ApplicationController
     @friendship.friend_id = friend.id
     @friendship.save
 
-    if params[:page] == "user"
-      redirect_to modal_user_url(friend)
-    else
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -45,12 +41,8 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
 
-    if params[:page] == "user"
-      redirect_to modal_user_url(@friendship.friend)
-    else
-      respond_to do |format|
-        format.js
-      end
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -1,10 +1,7 @@
-<% if @pin.destroyed? %>
-  gon.refresh_pins() # Refresh map too
-  gon.refresh_stats() # Refresh the stats at top
-  gon.stop_loading()
-  $("#<%= dom_id(@pin) %>").fadeOut()
-<% else %>
-  gon.stop_loading()
-  $("#<%= dom_id(@pin) %>").fadeOut ->
-    $(this).fadeIn()
-<% end %>
+gon.loading(false)
+pin = $("#<%= dom_id(@pin) %>")
+
+if <%= @pin.destroyed? %>
+	gon.dec_pins_count("<%= @pin.type %>")
+	pin.fadeOut()
+	gon.remove_pin(<%= @pin.id %>)

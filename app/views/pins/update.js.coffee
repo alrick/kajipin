@@ -1,14 +1,9 @@
-<% if @pin.errors.empty? %>
-  $("#<%= dom_id(@pin) %>").replaceWith "<%= j(render('pins/pin', :pin => @pin)) %>"
-  gon.refresh_pins() # Refresh map too
-  gon.refresh_stats() # Refresh the stats at top
-<% else %>
-  pin = $("#<%= dom_id(@pin) %>")
-  pin.find(".dropdown-toggle").dropdown()
-  pin.find(".btn-locate").fadeOut ->
-    $(this).addClass "btn-confirm"
-    $(this).fadeIn ->
-      $(this).fadeOut ->
-        $(this).removeClass "btn-confirm"
-        $(this).fadeIn()
-<% end %>
+gon.loading(false)
+pin = $("#<%= dom_id(@pin) %>")
+
+if <%= @pin.errors.empty? %>
+  gon.pinMap[<%= @pin.id %>].closePopup()
+  pin.find(".icon-map-marker").removeClass("<%= pin_class(@old_type) %>").addClass("<%= pin_class(@pin.type) %>")
+  gon.change_pin_icon(<%= @pin.id %>, "<%= @pin.marker_size %>", "<%= @pin.marker_symbol %>", "<%= @pin.marker_color %>")
+  gon.dec_pins_count("<%= @old_type %>")
+  gon.inc_pins_count("<%= @pin.type %>")

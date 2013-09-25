@@ -1,13 +1,9 @@
-<div id="pins">
-  <table class="table stats">
-    <tr>
-      <td><b><span class="pins-count"><%= @pins.count %></span> <a rel="tooltip" title="Pins" data-placement="bottom"><i class="icon-map-marker"></i></a></b></td>
-      <td><b><span class="city-count"><%= @pins.city.count %></span> <a rel="tooltip" title="Cities" data-placement="bottom"><i class="icon-map-marker city"></i></a></b></td>
-      <td><b><span class="town-count"><%= @pins.town.count %></span> <a rel="tooltip" title="Towns" data-placement="bottom"><i class="icon-map-marker town"></i></a></b></td>
-      <td><b><span class="poi-count"><%= @pins.poi.count %></span> <a rel="tooltip" title="Points of interest" data-placement="bottom"><i class="icon-map-marker poi"></i></a></b></td>
-    </tr>
-  </table>
-  <table class="table table-striped">
-    <%= render :partial => "pins/pin", :collection => @pins, :as => :pin %>
-  </table>
-</div>
+<ul id="pins" class="dropdown-menu pins" role="menu" aria-labelledby="dropdownMenu">
+	<% @pins.each do |pin| %>
+		<li id="<%= dom_id(pin) %>" class="<%= pin_class(pin.type) %>-type">
+			<a tabindex="-1" href="#" data-id="<%= pin.id %>">
+				<i class="icon-map-marker <%= pin_class(pin.type) %>"></i> <strong><%= pin.title %></strong> <span class="smaller"><%= pin.country_name %> - <%= pin.photos.count %> <i class="icon-camera-retro"></i>  <span class="comments-count <%= pin.id %>"><%= pin.comments.count %></span> <i class="icon-comments"></i></span>
+			</a>
+		</li>
+	<% end %>
+</ul>

@@ -8,7 +8,7 @@ jQuery ->
 
   $.rails.confirmed = (link) ->
     link.removeAttr('data-confirm')
-    gon.loading()
+    gon.loading(true)
     link.trigger('click.rails')
 
   # Boostrap
@@ -25,7 +25,7 @@ jQuery ->
              </div>
              <div class="modal-footer">
                <a data-dismiss="modal" class="btn btn-other">Cancel</a>
-               <a data-dismiss="modal" class="btn btn-confirm confirm">Delete</a>
+               <a data-dismiss="modal" class="btn btn-confirm confirm">Confirm</a>
              </div>
            </div>
            """

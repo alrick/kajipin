@@ -1,28 +1,61 @@
-// Space comments
-#comments-container {
-  margin-left: 20px;
-  a { color: $main-color; }
-}
-
-// Style comments of a pin
-#comments {
-  blockquote {
-    p {
-      .tooltip.in { opacity: 1; filter: alpha(opacity=100); } // No transparency for delete tooltips
-      a { text-decoration: none; } // No decoration for remove link
-      i { // Remove sign is transparent and become opaque on hover
-        opacity: 0.3;
-        &:hover { opacity: 1; }
+// Main comments panel in pin popup
+.comments {
+  width: 270px;
+  margin-left: 15px;
+  overflow-x: hidden;
+  .inside {
+    max-height: $inside-comments-height;
+    overflow-y: auto;
+  }
+  .comment {
+    clear: both;
+    a { color: #8d7d75; }
+    .avatar {
+      float: left;
+      height: 100%;
+    }
+    .text {
+      border-left: 5px solid lighten($tool-color, 20%);
+      padding-left: 5px;
+      margin: 0 10px 20px 10px;
+      float: left;
+      width: 180px;
+      word-wrap: break-word;
+      p {
+        a { text-decoration: none; } // No decoration for remove link
+        i { // Remove sign is transparent and become opaque on hover
+          opacity: 0.3;
+          &:hover { opacity: 1; }
+        }
+        font-size: 15px;
+        font-weight: 300;
+        margin: 0 0 8px 0;
+      }
+      small {
+        display: block;
+        margin: 0;
+        line-height: 14px;
+        color: #999;
+        &.author {
+          font-size: 13px;
+          &:before { content: "\2014 \00a0"; }
+        }
+        &.datetime { font-size: 12px; }
       }
     }
-    small { font-size: 12px; }
   }
-}
-
-// Style comments add box
-#comments-new {
-  small { font-size: 65%; }
-  textarea { width: 300px; height: 50px; resize: vertical; }
-  .lead { margin-bottom: 0; margin-top: 20px; }
-  .btn { margin-top: -20px; }
+  .new {
+    padding-top: $new-comment-padding;
+    height: 89px;
+    form {
+      margin: 0;
+      textarea {
+        width: 250px;
+        height: 40px;
+        resize: none;
+      }
+    }
+    .btn { margin-top: -20px; }
+    .img-polaroid { margin-top: -20px; }
+  }
 }

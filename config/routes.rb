@@ -15,19 +15,20 @@ Kajipin::Application.routes.draw do
   end
 
   # PINS
-  resources :pins, :only => [:new, :update, :create, :destroy] do
-    resources :photos, :only => [:index, :new] do
+  resources :pins, :only => [:show, :new, :update, :create, :destroy] do
+    resources :photos, :only => [:new] do
       get 'captain', :on => :collection
       post 'create_many', :on => :collection
       delete 'destroy_many', :on => :collection
       delete 'destroy_all', :on => :collection
     end
-    resources :comments, :only => [:index, :create, :destroy]
+    resources :comments, :only => [:create, :destroy]
   end
 
   # FRIENDSHIPS
   resources :friendships, :only => [:index, :create, :destroy]
 
+  # REQUESTS
   resources :requests, :only => [:index, :create, :destroy] do
     post 'approve', :on => :member
   end
@@ -40,11 +41,8 @@ Kajipin::Application.routes.draw do
 
   # HERALDS
   resources :heralds, :only => [:index, :create] do
-    get 'photos', :on => :collection
-    get 'comments', :on => :collection
-    get 'logpages', :on => :collection
     delete 'destroy', :on => :collection
   end
-  match "/:key" => "heralds#show"
+  match "/:key" => "users#show"
 
 end

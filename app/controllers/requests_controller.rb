@@ -22,7 +22,7 @@ class RequestsController < ApplicationController
     @request.requester_id = requester
 
     if @request.save
-      redirect_to user_url(user), :notice => t('controllers.requests.create.success')
+      redirect_to user_url(user)
     else
       redirect_to user_url(user), :alert => t('controllers.requests.create.fail')
     end

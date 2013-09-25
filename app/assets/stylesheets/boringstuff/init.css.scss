@@ -8,3 +8,9 @@ $content-color: #333; // dark grey
 $lighter-color: #fff; // white
 $water-color: #72b7e2; // blue of the water in map
 $error-color: #8e1c1c; // dark red
+
+// Some vars
+$pin-popup-maxheight: 345px;
+$new-comment-height: 89px;
+$new-comment-padding: 20px;
+$inside-comments-height: $pin-popup-maxheight - $new-comment-height - $new-comment-padding;

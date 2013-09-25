@@ -1,6 +1,6 @@
 <% content_for :page_title do %><%= @user.first_name %>'s Pins<% end %>
 
-<!-- Include all user intefaces -->
+<!-- Include additionals map controls -->
 <%= render "users/controls" %>
-<%= render "users/elements" %>
-<%= render "users/modals" %>
+
+<%= render "users/userbar" %>

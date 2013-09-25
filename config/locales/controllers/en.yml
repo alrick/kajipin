@@ -20,5 +20,4 @@ en:
         fail: "<strong>Oh snap!</strong> Something went wrong while creating your pin"
     requests:
       create:
-        success: "Successfully created request."
         fail: "<strong>Oh Snap!</strong> Something went wrong with your request, please retry."

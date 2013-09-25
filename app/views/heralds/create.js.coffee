@@ -5,11 +5,4 @@ path = "<%= j(render('heralds/heralds')) %>"
 $("#heraldModal .modal-body").html(path)
 
 # Init delete tooltip
-$("a[rel=delete-tooltip]").tooltip(
-  html: true
-  placement: "left"
-  trigger: "click"
-).on("show", (e) ->
-  e.stopPropagation()
-).on "hide", (e) ->
-  e.stopPropagation()
+gon.init_delete_tooltip()

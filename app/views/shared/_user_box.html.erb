@@ -1,22 +1,22 @@
 <div id="<%= dom_id(mate) %>" class="userbox well<%= " sharer-userbox" if mate.isSharingWith(current_user) %>">
   <%= link_to content_tag("strong", mate.full_name), user_path(mate) %>
-  <%= link_to image_tag(avatar_url(mate, 150), :class => "img-polaroid"), user_path(mate) %>
+  <%= link_to image_tag(avatar_link(mate, 150), :class => "img-polaroid"), user_path(mate) %>
   <table>
     <tr>
-      <td><span class="badge badge-map"><%= mate.number_pins %></span></td>
-      <td><strong><%= "Pin".pluralize(mate.number_pins) %></strong></td>
+      <td><span class="badge badge-map"><%= mate.pins_count %></span></td>
+      <td><strong><%= "Pin".pluralize(mate.pins_count) %></strong></td>
     </tr>
     <tr>
-      <td><span class="badge badge-map"><%= mate.number_countries %></span></td>
-      <td><strong><%= "Country".pluralize(mate.number_pins) %></strong></td>
+      <td><span class="badge badge-map"><%= mate.countries_count %></span></td>
+      <td><strong><%= "Country".pluralize(mate.countries_count) %></strong></td>
     </tr>
     <tr>
-      <td><span class="badge badge-map"><%= mate.number_continents %></span></td>
-      <td><strong><%= "Continent".pluralize(mate.number_continents) %></strong></td>
+      <td><span class="badge badge-map"><%= mate.continents_count %></span></td>
+      <td><strong><%= "Continent".pluralize(mate.continents_count) %></strong></td>
     </tr>
   </table>
   <p>
-    <%= sharing_btn(mate, "") %>
+    <%= sharing_btn(mate) %>
   </p>
   <p>
     <%= sharer_label(mate) %>

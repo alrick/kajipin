@@ -18,12 +18,10 @@ class Pin < ActiveRecord::Base
   validates :type, :inclusion => { :in => %w(City Town Poi),
     :message => "%{value} is not a valid type" }
   validate :check_limit, :on => :create
-  validate :check_high_populated_limit, :on => :create
 
   scope :city, where(:type => "City")
   scope :town, where(:type => "Town")
   scope :poi, where(:type => "Poi")
-  scope :high_populated, where("population >= 1000000")
 
   def initialize(attributes = {})
     super
@@ -39,23 +37,9 @@ class Pin < ActiveRecord::Base
     super
   end
 
-  # Check if pin is a high populated
-  def high_populated?
-    if population >= 1000000
-      return true
-    else
-      return false
-    end
-  end
-
   # Pins limit getter
   def self.limit
     LIMIT
-  end
-
-  # High populated limit getter
-  def self.high_populated_limit
-    HIGH_POPULATED_LIMIT
   end
 
   private
@@ -76,13 +60,6 @@ class Pin < ActiveRecord::Base
   def check_limit
     if user.pins.count >= LIMIT
       errors[:base] << "Pins limit reached"
-    end
-  end
-
-  # Check high populated limit isn't reached
-  def check_high_populated_limit
-    if high_populated? && user.pins.high_populated.count >= HIGH_POPULATED_LIMIT
-      errors[:base] << "High populated limit reached"
     end
   end
 

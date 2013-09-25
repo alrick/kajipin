@@ -1,34 +1,13 @@
 // Main container for the map pages
-#main {
+#map {
   position: absolute;
-  top: 53px;
+  top: 43px;
   bottom: 0;
   width: 100%;
   background-color: $water-color;
-  #side {
-    width: 300px;
-    height: 100%;
-    background: lighten($main-color, 46%);
-    margin: 0;
-    overflow: auto;
-    float: left;
-    .in-side { padding: 20px; }
-  }
-  #map {
-    width: 100%;
-    height: 100%;
-    float: right;
-    padding: 0;
-    margin: 0;
-    background-color: $water-color;
-  }
-}
-
-// Style main menu
-#global-menufirst {
-  img { margin-right: 9px; } // Style for the avatar of the main menu
-  strong { font-size: 14px; } // Style for the username of the main menu
-  p { font-size: 11px; height: 7px; } // Style for the View profile info of the main menu
+  margin-bottom: 40px;
+  padding: 0;
+  margin: 0;
 }
 
 // For the beta information
@@ -54,12 +33,8 @@
 .side-title { margin-top: 50px; }
 
 // Define text selection color
-::selection {
-  background: lighten($extra-color, 20%);
-}
-::-moz-selection {
-  background: lighten($extra-color, 20%);
-}
+::selection { background: lighten($extra-color, 20%); }
+::-moz-selection { background: lighten($extra-color, 20%); }
 
 // Utilities are requests and heralt box
 .utility {
@@ -71,6 +46,3 @@
 .modal-footer {
   .description { font-size: 17px; }
 }
-
-// Button allowing to toggle the list of pins
-#toggler { float:left; margin-left:20px; }

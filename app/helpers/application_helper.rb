@@ -1,37 +1,18 @@
 module ApplicationHelper
 
-  def sharing_btn(user, size)
-    if @herald.nil? # if isn't accessed via herald
+  def sharing_btn(user)
+    if @herald.nil?
       if user == current_user
-        link_to "That's you!", "#", :class => "btn btn-social #{size}", :rel => "tooltip", :data => { :title => "Yeah really..", :placement => "left" }
+        link_to "That's you!", "#", :class => "btn btn-social", :rel => "tooltip", :data => { :title => "Yeah really..", :placement => "top" }
       else
         if current_user.isSharingWith(user)
           friendship = current_user.friendships.where(:friend_id => user.id).first
-          link_to content_tag("i", "", :class => "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial #{size}"
+          link_to content_tag("i", "", :class => "icon-heart")+" Sharing", friendship_path(friendship), :method => :delete, :remote => true, :class => "btn btn-social btn-unsocial sharing-btn #{user.id}"
         else
-          link_to "Share", friendships_path(:friend => user), :method => :post, :remote => true, :class => "btn btn-social #{size}"
+          link_to "Share", friendships_path(:friend => user), :method => :post, :remote => true, :class => "btn btn-social sharing-btn #{user.id}"
         end
       end
     end
-  end
-
-  def tools_btn(pin, size, label)
-    if @herald.nil?
-      p_path = pin_photos_path(pin)
-      c_path = pin_comments_path(pin)
-    else
-      p_path = photos_heralds_path(:key => @herald.key, :pin => pin)
-      c_path = comments_heralds_path(:key => @herald.key, :pin => pin)
-    end
-    if label
-      p_text = content_tag(:i, "", :class => "icon-camera-retro") + " Photos (" + pin.photos.count.to_s + ")"
-      c_text = content_tag(:i, "", :class => "icon-comments") + " Comments (" + pin.comments.count.to_s + ")"
-    else
-      p_text = pin.photos.count.to_s + " " + content_tag("i", "", :class => "icon-camera-retro")
-      c_text = pin.comments.count.to_s + " " + content_tag("i", "", :class => "icon-comments")
-    end
-    link_to(p_text.html_safe, p_path, :class => "photos btn btn-tool "+size, :remote => true)+
-    link_to(c_text.html_safe, c_path, :class => "comments btn btn-tool "+size, :remote => true)
   end
 
   def sharer_label(user)
@@ -42,12 +23,20 @@ module ApplicationHelper
     end
   end
 
-  def toggler(layout)
-    if layout == "map" && !@pins.nil?
-      if !@pins.empty?
-        content_tag(:button, content_tag(:i, "", :class => "icon-list"), :id => "toggler", :class => "btn btn-tool", :type => "button")
-      end
+  def share_request(custom_classes)
+    if Request.where(:user_id => @user.id, :requester_id => current_user.id).exists?
+      link_to "Request sent", "#", :class => "btn btn-social disabled #{custom_classes}"
+    else
+      link_to "Request", requests_path(:user => @user, :requester => current_user), :method => :post, :class => "btn btn-social #{custom_classes}"
     end
   end
 
+  def proper_date(date)
+    date.to_formatted_s(:long_ordinal)
+  end
+
+  def pin_class(type)
+    type.downcase
+  end
+  
 end

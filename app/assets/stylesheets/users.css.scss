@@ -35,3 +35,9 @@
   // Different color for sharer userbox
   &.sharer-userbox { background: lighten($main-color, 20%) !important; }
 }
+
+// Bottom bar for user
+.userbar {
+  .marl { margin-left: 10px; }
+  .sharing-btn { width: 100px; }
+}

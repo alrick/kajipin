@@ -15,12 +15,14 @@ end
 
 gem 'coffee-rails', '~> 3.2.1' #coffee for better javascript
 gem 'jquery-rails' #jquery integration
+gem 'jquery-ui-rails' #jquery ui allows highlight effect
 gem 'pg' #postgres database
 gem 'json' #self explained
 gem 'devise' #authentification system
 gem 'thin' #thin server
 gem 'simple_form' #better forms
 gem 'rabl' #manage json formating, MUST BE before gon
+gem 'oj' #json parser for rabl
 gem 'gon' #passing data to javascript
 gem 'nokogiri' #xml parsing
 gem 'less-rails' #required for twitter-bootstrap-rails
@@ -30,11 +32,12 @@ gem 'cancan' #authorization library
 gem 'madmimi' #interaction with madmimi email marketing
 gem 'figaro' #config variables made easy
 gem 'httparty' #http request with fun :D
-gem 'leaflet-markercluster' #clusters for leaflet/mapbox
+gem 'leaflet-markercluster-rails' #clusters for leaflet/mapbox
 #waiting 0.10 for dupcheck gem 'twitter-typeahead-rails' #typeahead by twitter, better than bootstrap one
 gem 'spinjs-rails' #smart js spinner
 gem 'jquery-hoverIntent-rails' #better jquery hover for users
 gem 'newrelic_rpm' #monitoring service
+gem 'magnific-popup-rails', :git => 'git://github.com/joshuajansen/magnific-popup-rails.git' #galleries & co
 
 group :development do
   gem 'rails-erd' #create schema of entities

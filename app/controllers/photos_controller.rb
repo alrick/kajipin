@@ -6,14 +6,6 @@ class PhotosController < ApplicationController
   load_and_authorize_resource :pin
   load_and_authorize_resource :photo, :through => :pin
 
-  def index
-    @photos = @pin.photos.all
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def new
     @key = ENV["FILEPICKER_KEY"]
 

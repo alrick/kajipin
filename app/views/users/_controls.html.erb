@@ -1,3 +1,9 @@
+<a id="plus-zoom" class="control zoom">
+  <i class="icon-plus"></i>
+</a>
+<a id="minus-zoom" class="control zoom">
+  <i class="icon-minus"></i>
+</a>
 <a id="world-zoom" class="control zoom">
   <i class="icon-globe"></i>
 </a>
@@ -21,20 +27,12 @@
   <% end %>
 </ul>
 
-<!-- Only if via herald or if user is a friend -->
-<% if can? :show, @master %>
-  <a id="city-filter" class="control pins-filter" data-type="<%= City.sti_name %>">
-    <i class="icon-eye-open"></i>
-  </a>
-  <a id="town-filter" class="control pins-filter" data-type="<%= Town.sti_name %>">
-    <i class="icon-eye-open"></i>
-  </a>
-  <a id="poi-filter" class="control pins-filter" data-type="<%= Poi.sti_name %>">
-    <i class="icon-eye-open"></i>
-  </a>
-<% end %>
-
-<!-- Only if current user's profile -->
-<% if @master == current_user %>
-  <%= link_to content_tag(:i, "", :class => "icon-plus"), new_pin_path, :id => "pin-initiator", :class => "modal-open control big", :remote => true, :data => { :placement => "left", :title => "<span id=\"pin-initiator-tooltip\">Add some pins here</span>", :trigger => "manual", :html => true } %>
-<% end %>
+<a id="city-filter" class="control pins-filter" data-type="<%= City.sti_name %>">
+  <i class="icon-eye-open"></i>
+</a>
+<a id="town-filter" class="control pins-filter" data-type="<%= Town.sti_name %>">
+  <i class="icon-eye-open"></i>
+</a>
+<a id="poi-filter" class="control pins-filter" data-type="<%= Poi.sti_name %>">
+  <i class="icon-eye-open"></i>
+</a>

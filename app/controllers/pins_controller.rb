@@ -1,9 +1,21 @@
 class PinsController < ApplicationController
   # Devise authentication
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
 
   # Cancan authorize
   load_and_authorize_resource
+
+  def show
+    # If current_user is an herald, no need to authenticate
+    if !current_user.instance_of?(Herald)
+      authenticate_user!
+    end
+    @pin = Pin.find(params[:id])
+    @photos = @pin.photos
+    @comments = @pin.comments
+    
+    render layout: false
+  end
 
   def new
     respond_to do |format|
@@ -13,6 +25,7 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
+    @old_type = @pin.type
     @pin.update_attributes(:type => params[:type])
     @pin = @pin.becomes(params[:type].constantize)
 

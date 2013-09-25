@@ -1,5 +1,5 @@
 <tr id="<%= dom_id(request) %>" class="request">
-  <td><%= image_tag avatar_url(request.requester, 20), :class => "img-polaroid" %></td>
+  <td><%= image_tag avatar_link(request.requester, 20), :class => "img-polaroid" %></td>
   <td>
     <strong><%= link_to request.requester.full_name, user_path(request.requester) %></strong>
   </td>

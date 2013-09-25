@@ -1,1 +1,1 @@
-<%= image_tag fp_url(photo.url, 190, 190, "crop"), :alt => "", :class => "photo mini img-polaroid", "data-id" => photo.id %>
+<%= link_to (image_tag fp_link(photo.url, 138, 138, "crop"), :alt => "", :class => "img-polaroid"), fp_link(photo.url, 900, 650, "max"), :class => "photo mfp-image" %>

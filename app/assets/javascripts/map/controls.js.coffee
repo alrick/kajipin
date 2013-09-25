@@ -4,98 +4,95 @@ jQuery ->
   # FUNCTIONS
   #################
 
+  # PUBLIC : Locate pin and open popup
+  gon.locate_pin = ->
+    id = $(this).data "id"
+    pin = gon.pinMap[id]
+    gon.cluster.zoomToShowLayer pin, ->
+      pin.openPopup()
+
+  # PUBLIC : Define our world zoom
+  gon.world_zoom = ->
+    gon.map.setView([30.524413,11.733398], gon.map.getMinZoom())
+
+  # PUBLIC : Allow to enable zoom button
+  gon.enable_zoom = (zoom) ->
+    $("#"+zoom+"-zoom").removeClass("disable")
+
+  # PUBLIC : Allow to disable zoom button
+  gon.disable_zoom = (zoom) ->
+    $("#"+zoom+"-zoom").addClass("disable")
+
   # PUBLIC : Allow to enable all zooming and paning
-  gon.enable_interaction = (map) ->
-    map.dragging.enable()
-    map.touchZoom.enable()
-    map.scrollWheelZoom.enable()
-    map.doubleClickZoom.enable()
-    map.boxZoom.enable()
-    map.keyboard.enable()
+  gon.enable_interaction = ->
+    gon.map.dragging.enable()
+    gon.map.touchZoom.enable()
+    gon.map.scrollWheelZoom.enable()
+    gon.map.doubleClickZoom.enable()
+    gon.map.boxZoom.enable()
+    gon.map.keyboard.enable()
 
   # PUBLIC : Allow to disable all zooming and paning
-  gon.disable_interaction = (map) ->
-    map.dragging.disable()
-    map.touchZoom.disable()
-    map.scrollWheelZoom.disable()
-    map.doubleClickZoom.disable()
-    map.boxZoom.disable()
-    map.keyboard.disable()
-
-  # Filter side pins
-  filter_side_pins = (type, state) ->
-    type = "."+type
-    side = $("#side")
-    if state
-      side.find(type).fadeIn()
-    else
-      side.find(type).fadeOut()
+  gon.disable_interaction = ->
+    gon.map.dragging.disable()
+    gon.map.touchZoom.disable()
+    gon.map.scrollWheelZoom.disable()
+    gon.map.doubleClickZoom.disable()
+    gon.map.boxZoom.disable()
+    gon.map.keyboard.disable()
 
   # Filter map pins
   filter_map_pins = (type, state) ->
-    if type == "City"
-      layer = gon.citiesList
-    else if type == "Town"
-      layer = gon.townsList
-    else if type == "Poi"
-      layer = gon.poiList
+    if type == "city"
+      layer = gon.citiesLayer
+    else if type == "town"
+      layer = gon.townsLayer
+    else if type == "poi"
+      layer = gon.poisLayer
     if state
-      gon.clusterGroup.addLayers(layer)
+      gon.cluster.addLayers(layer.getLayers())
     else
-      gon.clusterGroup.removeLayers(layer)
+      gon.cluster.removeLayers(layer.getLayers())
 
   # Display countries list
-  show_countries_list = (map) ->
+  show_countries_list = ->
     countriesList = $("#countries-list")
     if countriesList.is ":hidden"
       event.stopPropagation()
       countriesList.show()
-      gon.disable_interaction(map)
+      gon.disable_interaction()
 
   # Hide countries list
-  hide_countries_list = (map) ->
+  hide_countries_list = ->
     countriesList = $("#countries-list")
     if countriesList.is ":visible"
       countriesList.hide()
-      gon.enable_interaction(map)
-
-  # Get data from button and setview
-  setview_from_button = (map) ->
-    lat = $(this).data "lat"
-    lon = $(this).data "lon"
-    zoom = $(this).data "zoom"
-    map.setView([lat, lon], zoom)
+      gon.enable_interaction()
 
   # Filter pins
   filter_pins = ->
     icon = $(this).find("i").toggleClass "icon-eye-open icon-eye-close"
-    type = $(this).data "type"
+    type = $(this).data("type").toLowerCase()
     state = icon.hasClass "icon-eye-open"
-    filter_side_pins(type, state)
+    gon.filter_list_pins(type, state)
     filter_map_pins(type, state)
-
-  # Display add pins tip
-  add_pins_tip = ->
-    if gon.pinsCount <= 0
-      $("#pin-initiator").tooltip "show"
-      $("#pin-initiator-tooltip").closest(".tooltip").css({"font-size": "14px", "font-weight": "bold", "left": "", "right": "43px"})
-
-
-  #################
-  # FLOW
-  #################
-
-  # Add pins tip if needed
-  add_pins_tip()
 
 
   #################
   # TRIGGERS
   #################
 
+  # Set plus zoom func
+  $("#plus-zoom").click ->
+    gon.map.zoomIn()
+
+  # Set minus zoom func
+  $("#minus-zoom").click ->
+    gon.map.zoomOut()
+
   # Set worldmap zoom func
   $("#world-zoom").click ->
-    gon.map.fitWorld()
+    gon.world_zoom()
 
   # Set countries bounds func
   $(".country-item").click ->
@@ -106,19 +103,15 @@ jQuery ->
 
   # Set the countries list button trigger
   $("#countries-zoom").click ->
-    show_countries_list(gon.map)
+    show_countries_list()
 
   # Hide the countries list on click if visible
   $("html").click ->
-    hide_countries_list(gon.map)
+    hide_countries_list()
 
   # Click on the list doesn't hide it
   $("#countries-list").click (event) ->
     event.stopPropagation()
-
-  # Locate a pin when click from side
-  $("#side").on "click", ".btn-locate", ->
-    setview_from_button.call(this, gon.map)
 
   # Only if user has pins to display
   if gon.hasPins

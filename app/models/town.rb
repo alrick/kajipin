@@ -16,10 +16,10 @@ class Town < Pin
 
   # Class methods
   def self.marker_size
-    "medium"
+    "large"
   end
   def self.marker_symbol
-    "town-hall"
+    "town"
   end
   def self.marker_color
     "#887D75"

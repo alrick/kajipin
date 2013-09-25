@@ -1,7 +1,11 @@
-// Main photos container
+// Photos on captain page
 #cphotos {
   .cphoto {
     &:hover { cursor: pointer; }
+    .img-polaroid {
+      width: 200px;
+      height: 200px;
+    }
   }
   .selected {
     background-color: $extra-color;
@@ -18,36 +22,15 @@
   form { margin: 0; }
 }
 
-// Photos on map page
-#photos {
-  .photo { 
-    margin: 10px;
-    cursor: pointer;
-  }
-}
-
-// Modal for fullscreen photos
-#photoModal {
-  position: fixed;
-  top: 10%;
-  left: 50%;
-  display: none;
-  z-index: 1050;
-  text-align: center;
-  .active { display: inline; }
-  i { 
-    position: absolute;
-    cursor: pointer;
-    color: $lighter-color;
-  }
-  .icon-angle-left {
-    top: 50%;
-    left: -80px;
-    font-size: 60px;
-  }
-  .icon-angle-right {
-    top: 50%;
-    right: -80px;
-    font-size: 60px;
+// Main photos panel in pin popup
+.photos {
+  max-width: 620px;
+  max-height: $pin-popup-maxheight;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .img-polaroid {
+    width: 130px;
+    height: 130px;
+    margin: 5px;
   }
 }

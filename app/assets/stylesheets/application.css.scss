@@ -11,7 +11,8 @@
  *= require_self
  *= require boringstuff/bootstrap_and_overrides
  *= require boringstuff/buttons
- *= require markercluster
+ *= require leaflet.markercluster
+ *= require magnific-popup
 */
 
 @import "boringstuff/init.css.scss";
@@ -19,10 +20,8 @@
 @import "boringstuff/twitter_typeahead.css.scss";
 @import "boringstuff/general.css.scss";
 
-@import "map/clusters.css.scss";
+@import "map/main.css.scss";
 @import "map/controls.css.scss";
-@import "map/elements.css.scss";
-@import "map/tooltips.css.scss";
 
 @import "comments.css.scss";
 @import "devise.css.scss";
