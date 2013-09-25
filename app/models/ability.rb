@@ -19,9 +19,7 @@ class Ability
 
     ##### PIN
     # User can manage pins he owns
-    can :manage, Pin do |p|
-      p.user == user
-    end
+    can :manage, Pin, :user_id => user.id
     # User can read pins of users that are sharing with him
     can :read, Pin do |p|
       if user.instance_of?(User)
