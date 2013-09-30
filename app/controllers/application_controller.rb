@@ -1,6 +1,15 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_gon_current_user
+
+  # Allow to access current user from javascript
+  def set_gon_current_user
+    if user_signed_in?
+      gon.current_user_name = current_user.first_name + " " + current_user.last_name
+      gon.current_user_email = current_user.email
+    end
+  end
 
   # Override devise current user to allow heralds
   def devise_current_user
