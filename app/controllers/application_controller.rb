@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # Allow to access current user from javascript
   def set_gon_current_user
-    if user_signed_in?
+    if user_signed_in? && current_user.instance_of?(User)
       gon.current_user_name = current_user.first_name + " " + current_user.last_name
       gon.current_user_email = current_user.email
     end
