@@ -1,0 +1,22 @@
+#new-pin
+  .fields
+    .alert.alert-info
+      %strong Heads up!
+      You can still add
+      %strong= Pin.limit - current_user.pins.count
+      pins.
+    %div{:class => "btn-group", "data-toggle" => "buttons-radio"}
+      %button{:class => "type btn btn-city active", :value => "#{City.sti_name}"}
+        %i.icon-map-marker
+        City
+      %button{:class => "type btn btn-town", :value => "#{Town.sti_name}"}
+        %i.icon-map-marker
+        Town
+      %button{:class => "type btn btn-poi", :value => "#{Poi.sti_name}"}
+        %i.icon-map-marker
+        Poi
+    %input{:class => "name", :type => "text", :placeholder => "eg: London, Eiffel Tower, &c"}
+  = form_tag("/pins", :method => "post", :id => "new-pin-form") do
+    = hidden_field_tag "type", City.sti_name
+    = hidden_field_tag "geoname_id", "not_yet_filled"
+  .modal-backdrop

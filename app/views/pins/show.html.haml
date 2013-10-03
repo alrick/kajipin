@@ -1,0 +1,18 @@
+.pin
+	.page-header
+		%h2
+			= @pin.title
+			%small= @pin.country_name
+		%p.lead
+			= @photos.count
+			%i.icon-camera-retro
+			%span{:class => "comments-count #{@pin.id}"}= @comments.count
+			%i.icon-comments
+		-if can? :manage, @pin
+			= render "captain", :pin => @pin
+	.wrap
+		.photos.col= render @photos
+		.comments.col
+			.inside= render @comments
+			-if current_user.instance_of?(User)
+				.new= render "comments/new"
