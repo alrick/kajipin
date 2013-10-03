@@ -1,0 +1,16 @@
+= content_for :page_title do
+  = current_user.first_name
+  's Friendships
+
+.page-header
+  %h1
+    Your Friendships 
+    %small A list of all your Sharing & Sharers
+.row
+  .span10
+    = render("stats")
+  .span2
+    = render("filters")
+  #friendships
+    = render(:partial => "shared/user_box", :collection => @mates, :as => :mate)
+= paginate @mates
