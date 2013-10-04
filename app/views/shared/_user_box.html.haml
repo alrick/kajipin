@@ -1,0 +1,21 @@
+%div{:class => "userbox well #{"sharer-userbox" if mate.isSharingWith(current_user)}", :id => "#{dom_id(mate)}"}
+  = link_to content_tag("strong", mate.full_name), user_path(mate)
+  = link_to image_tag(avatar_link(mate, 150), :class => "img-polaroid"), user_path(mate)
+  %table
+    %tr
+      %td
+        %span.badge.badge-map= mate.pins_count
+      %td
+        %strong= "Pin".pluralize(mate.pins_count)
+    %tr
+      %td
+        %span.badge.badge-map= mate.countries_count
+      %td
+        %strong= "Country".pluralize(mate.countries_count)
+    %tr
+      %td
+        %span.badge.badge-map= mate.continents_count
+      %td
+        %strong= "Continent".pluralize(mate.continents_count)
+  %p= sharing_btn(mate)
+  %p= sharer_label(mate)
