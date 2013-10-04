@@ -1,5 +1,0 @@
-<table id="requests" class="table table-striped table-hover">
-  <%= render(@requests) || content_tag("strong", "No pending request.", :class => "empty-set") %>
-</table>
-
-<%= paginate @requests, :remote => true, :theme => "small" %>
