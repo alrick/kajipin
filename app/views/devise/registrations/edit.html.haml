@@ -1,0 +1,42 @@
+= content_for :page_title do
+  = current_user.first_name
+  's Settings
+
+.alert.alert-error.fp-fail.hide
+  %button{:class => "close", :type => "button", :data => {:dismiss => "alert"}} &times;
+  %strong Oh snap!
+  Something went wrong while adding your profile photo.
+  %br
+  %em Please try again later.
+.page-header
+  %h1
+    Settings
+    %small Everything you can tweak.
+.row
+  .span9
+    %h2 Informations
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "well form-horizontal"}) do |f|
+      = f.input :first_name, :label => 'First name <i class="icon-globe"></i>'
+      = f.input :last_name, :label => 'Last name <i class="icon-globe"></i>'
+      = f.input :password, :label => 'New password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it."
+      = f.input :password_confirmation, :label => 'Confirm new password', :autocomplete => "off", :hint => "Leave blank if you don't want to change it."
+      = f.input :current_password, :hint => "We need your current password to confirm your changes."
+      .form-actions= f.submit "Modify", :class => "btn btn-other btn-block"
+    %dl.dl-horizontal
+      %dt
+        Public
+        %i.icon-globe
+      %dd Everyone can see this information.
+  .span3
+    %h3.avatar-title
+      Profile photo
+      %small
+        %i.icon-globe
+    .avatar
+      = image_tag avatar_link(current_user, 205), :class => "img-polaroid"
+      .hide.btn-group
+        = link_to content_tag("i", "", :class => "icon-cloud-upload")+" Pick", new_avatar_path, :remote => true, :class => "btn btn-other"
+        = link_to content_tag("i", "", :class => "icon-off")+" Gravatar", avatar_path(current_user.avatar), :method => :delete, :class => "btn btn-other" if !current_user.avatar.nil?
+%hr
+%h4 Want a bad idea?
+= link_to "Delete my account", registration_path(resource_name), :confirm => "All your pins will be removed, all informations associated with your pins will be removed and your comments on the pins of your friends will remain as &laquo;Castaway&raquo; authored.", :method => :delete, :class => "btn btn-confirm"

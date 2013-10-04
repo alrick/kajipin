@@ -1,0 +1,31 @@
+= content_for :page_title do
+  Sign up
+
+= render "devise/shared/note"
+.hero-unit
+  %h1
+    = Appetizer.appname
+    , quesako?
+  %p
+    = Appetizer.appname
+    allows you to create a worldmap of the places you've visited with photos & comments and let you share it with friends and family.
+-if User.count >= User.beta_limit
+  %p.well
+    %span.badge.badge-social Closed
+    %strong Sorry regristrations are now closed.
+-else
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "well form-inline"}) do |f|
+    = devise_error_messages!
+    = f.input_field :first_name, :class => "input-medium", :placeholder => "First name"
+    = f.input_field :last_name, :class => "input-medium", :placeholder => "Last name"
+    = f.input_field :email, :class => "input-medium", :placeholder => "Email"
+    = f.input_field :password, :class => "input-medium", :placeholder => "Password"
+    = f.input_field :password_confirmation, :class => "input-medium", :placeholder => "Confirm password"
+    %p
+      %label.checkbox.home-terms
+        = check_box(:user, "terms")
+        I accept the
+        = Appetizer.appname
+        = link_to "Terms of Service", "/tos", :target => "_blank"
+    = f.submit "Sign up", :class => "btn btn-social btn-large btn-block"
+= render "devise/shared/links"

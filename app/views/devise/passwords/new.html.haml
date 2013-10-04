@@ -1,0 +1,11 @@
+= content_for :page_title do
+	Password Reset
+
+.hero-unit
+	%h1 Bad things happen..
+	%p If you want to reset your password, please fill the form below.
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "well form-inline" }) do |f|
+	= devise_error_messages!
+	= f.input_field :email, :class => "input-large", :placeholder => "Email"
+	= f.submit "Reset", :class => "btn btn-map"
+= render "devise/shared/links"

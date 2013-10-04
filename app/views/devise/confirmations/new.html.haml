@@ -1,0 +1,11 @@
+= content_for :page_title do
+	Resend confirmation instructions
+
+.hero-unit
+	%h1 To err is not necessarily human..
+	%p If you did not receive the confirmation instructions, please fill the form below to resend.
+= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => "well form-inline" }) do |f|
+	= devise_error_messages!
+	= f.input_field :email, :class => "input-large", :placeholder => "Email"
+	= f.submit "Send", :class => "btn btn-map"
+= render "devise/shared/links"
