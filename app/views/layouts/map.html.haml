@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %title= Appetizer.appname + " / " + yield(:page_title)
+    = include_gon(:init => true, :watch => true)
+    = render "layouts/mapbox"
+    /[if lt IE 9]
+      %script{:type => "text/javascript", :src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %meta{:name => "description", :content => "Kajipin allows you to create a worldmap of the places you've visited with photos & comments and let you share it with friends and family."}
+    %meta{:name => "keywords", :content => "travel pin world map photos comments logbook trip journey adventure interactive openstreet board expedition excursion tour riding voyage walk wandering globe-trotting wayfaring trek"}
+  %body
+    = render "layouts/show_flash", :layout => "application"
+    #map
+      = yield
+      %p#copyright= link_to "Map Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank"
+    = yield :ext
+    = render "layouts/navbar", :layout => "map"
+    = render "heralds/modal"
+    = render "requests/modal"
+    = render "layouts/filepicker"
+    = render "layouts/uservoice"

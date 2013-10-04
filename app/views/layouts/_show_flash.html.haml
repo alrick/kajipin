@@ -1,0 +1,13 @@
+- flash.each do |name, msg|
+  -if !msg.blank?
+    -if name == :notice
+      - type = "alert-success"
+    -elsif name == :alert
+      - type = "alert-error"
+    -else
+      - type = ""
+    -if layout == "map"
+      - clayout = "alert-map"
+    %div{:class => "alert #{type} #{clayout}"}
+      %a{:class => "close", :href => "#", :data => {:dismiss => "alert"}} &times;
+      = raw(msg)
