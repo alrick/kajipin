@@ -5,7 +5,7 @@
       You can still add
       %strong= Pin.limit - current_user.pins.count
       pins.
-    %div{:class => "btn-group", "data-toggle" => "buttons-radio"}
+    %div{:class => "btn-group", :data => { :toggle => "buttons-radio" }}
       %button{:class => "type btn btn-city active", :value => "#{City.sti_name}"}
         %i.icon-map-marker
         City

@@ -3,7 +3,7 @@
   's Photos
 
 .alert.alert-error.fp-fail.hide
-  %button{:type => "button", :class => "close", "data-dismiss" => "alert"} &times;
+  %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
   %strong Oh snap!
   Something went wrong while adding your photos, no photo added.
   %br
@@ -28,7 +28,7 @@
   %ul.thumbnails#cphotos
     = render(:partial => "captain_photo", :collection => @photos, :as => :photo)
   .well.hide#selected-box
-    = button_tag(:type => "submit", :class => "btn btn-large btn-tool", "data-loading-text" => "Removing...") do
+    = button_tag(:type => "submit", :class => "btn btn-large btn-tool", :data => {:"loading-text" => "Removing..."}) do
       %i.icon-trash
       Remove selected
       (

@@ -1,7 +1,7 @@
 %ul{:class => "dropdown-menu pins", :id => "pins", :role => "menu", "aria-labelledby" => "dropdownMenu"}
 	- @pins.each do |pin|
 		%li{:class => "#{pin_class(pin.type)}-type", :id => "#{dom_id(pin)}"}
-			%a{:href => "#", :tabindex => "-1", "data-id" => "#{pin.id}"}
+			%a{:href => "#", :tabindex => "-1", :data => { :id => "#{pin.id}" }}
 				%i{:class => "icon-map-marker #{pin_class(pin.type)}"}
 				%strong= pin.title
 				%span.smaller
