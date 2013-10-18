@@ -78,6 +78,8 @@ GEM
     gon (4.1.1)
       actionpack (>= 2.3.0)
       json
+    haml (4.0.3)
+      tilt
     hike (1.2.3)
     hirb (0.7.1)
     hogan_assets (1.6.0)
@@ -215,6 +217,7 @@ DEPENDENCIES
   faker
   figaro
   gon
+  haml
   hirb
   hogan_assets
   httparty

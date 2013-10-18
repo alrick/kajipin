@@ -1,0 +1,14 @@
+= content_for :page_title do
+	Password reset
+
+.hero-unit
+	%h1 Bad things can be fixed!
+	%p You can now choose a new password with the form below.
+
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "well form-inline" }) do |f|
+	= devise_error_messages!
+	= f.hidden_field :reset_password_token
+	= f.password_field :password, :class => "input-large", :placeholder => "New password"
+	= f.password_field :password_confirmation, :class => "input-large", :placeholder => "Confirm new password"
+	= f.submit "Change my password", :class => "btn btn-map"
+= render "devise/shared/links"

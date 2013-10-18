@@ -1,0 +1,13 @@
+%div{:class => "modal hide fade", :id => "heraldModal", :tabindex => "-1", :role => "dialog", :"aria-labelledby" => "heraldModalLabel", :"aria-hidden" => "true"}
+	.modal-header
+		%button{:class => "close", :type => "button", :"aria-hidden" => "true", :data => {:dismiss => "modal"}} &times;
+		%h2
+			%i.icon-link
+			Herald
+	.modal-body
+		%strong There is nothing to see that way !
+	.modal-footer
+		%p.description.no-margin 
+			The Herald allows you to share your profile with non
+			= Appetizer.appname
+			users.

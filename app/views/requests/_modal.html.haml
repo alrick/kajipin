@@ -1,0 +1,10 @@
+%div{:class => "modal hide fade", :id => "reqModal", :tabindex => "-1", :role => "dialog", :"aria-labelledby" => "reqModalLabel", :"aria-hidden" => "true"}
+	.modal-header
+		%button{:class => "close", :type => "button", :"aria-hidden" => "true", :data => {:dismiss => "modal"}} &times;
+		%h2#reqModalLabel
+			%i.icon-inbox
+			Requests
+	.modal-body
+		%strong There is nothing to see that way !
+	.modal-footer
+		%p.description.no-margin People wishing to view your profile will appear here.

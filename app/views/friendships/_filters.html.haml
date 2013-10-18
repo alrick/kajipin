@@ -1,0 +1,23 @@
+-if !@empty
+  .dropdown#friendship-filter
+    %button{:class => "btn btn-other", :id => "friendship-filter-btn", :type => "button", :data => {:toggle => "dropdown"}}
+      %i.icon-filter
+      Filter 
+      %b.caret
+    %ul{:class => "dropdown-menu", :role => "menu", "aria-labelledby" => "friendship-filter-btn"}
+      %li
+        -if @filter == "sharing"
+          = link_to "Only Sharing ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharing"), "tabindex" => "-1"
+        -else
+          = link_to "Only Sharing", friendships_path(:filter => "sharing"), "tabindex" => "-1"
+      %li
+        -if @filter == "sharers"
+          = link_to "Only Sharers ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path(:filter => "sharers"), "tabindex" => "-1"
+        -else
+          = link_to "Only Sharers", friendships_path(:filter => "sharers"), "tabindex" => "-1"
+      %li.divider
+      %li
+        -if @filter == "both"
+          = link_to "Both ".html_safe+content_tag("i", "", :class => "icon-ok"), friendships_path, "tabindex" => "-1"
+        -else
+          = link_to "Both", friendships_path, "tabindex" => "-1"

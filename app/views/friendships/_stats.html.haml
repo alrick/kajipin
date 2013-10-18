@@ -1,0 +1,11 @@
+%p#friendships-stats
+	You currently have
+	%span.badge.badge-social#sharing-counter
+		= current_user.sharing_count
+	%a{:rel => "tooltip", :title => "A person who can see your pins."}
+		%strong Sharing
+	and
+	%span.badge.badge-social#sharers-counter
+		= current_user.sharers_count
+	%a{:rel => "tooltip", :title => "A person sharing his pins with you."}
+		%strong= "Sharer".pluralize(current_user.sharers_count)

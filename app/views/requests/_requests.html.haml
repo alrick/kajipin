@@ -1,0 +1,3 @@
+%table.table.table-striped.table-hover#requests
+	= render(@requests) || content_tag("strong", "No pending request.", :class => "empty-set")
+= paginate @requests, :remote => true, :theme => "small"

@@ -1,0 +1,26 @@
+%a.control.zoom#plus-zoom
+  %i.icon-plus
+%a.control.zoom#minus-zoom
+  %i.icon-minus
+%a.control.zoom#world-zoom
+  %i.icon-globe
+%a.control.zoom#countries-zoom
+  %i.icon-list-alt
+
+%ul#countries-list
+  -if !@visited_countries.empty?
+    - @visited_countries.each do |c|
+      %li{:class => "country-item", :data => {:north => "#{c["north"]}", :east => "#{c["east"]}", :south => "#{c["south"]}", :west => "#{c["west"]}"}}
+        %i.icon-map-marker
+        = c["name"]
+    %li ------
+  - @countries_list.each do |c|
+    %li{:class => "country-item", :data => {:north => "#{c["north"]}", :east => "#{c["east"]}", :south => "#{c["south"]}", :west => "#{c["west"]}"}}
+      = c["name"]
+
+%a{:class => "control pins-filter", :id => "city-filter", :data => {:type => "#{City.sti_name}"}}
+  %i.icon-eye-open
+%a{:class => "control pins-filter", :id => "town-filter", :data => {:type => "#{Town.sti_name}"}}
+  %i.icon-eye-open
+%a{:class => "control pins-filter", :id => "poi-filter", :data => {:type => "#{Poi.sti_name}"}}
+  %i.icon-eye-open

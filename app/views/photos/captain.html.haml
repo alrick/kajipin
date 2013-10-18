@@ -1,0 +1,39 @@
+= content_for :page_title do
+  = @pin.title
+  's Photos
+
+.alert.alert-error.fp-fail.hide
+  %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+  %strong Oh snap!
+  Something went wrong while adding your photos, no photo added.
+  %br
+  %em
+    Please try again later.
+.page-header
+  %h1{:style => "display:inline"}
+    Photos
+    %small= @pin.title
+  = link_to "Return to profile", user_path(current_user), :class => "btn btn-map btn-small"
+.alert.alert-info
+  %strong Heads up!
+  You currently have
+  %strong #{@pin.photos.count}/#{Photo.limit}
+  authorized photos for this pin.
+%p.well
+  -if @pin.photos.count >= Photo.limit
+    %button.btn.btn-large.btn-block.btn-tool.disabled Limit of photos reached
+  -else
+    = link_to content_tag("i", "", :class => "icon-plus-sign")+" Add some photos", new_pin_photo_path(@pin), :remote => true, :class => "btn btn-large btn-block btn-tool"
+= form_tag destroy_many_pin_photos_path(@pin), :id => "cphotos-form", :method => :delete do
+  %ul.thumbnails#cphotos
+    = render(:partial => "captain_photo", :collection => @photos, :as => :photo)
+  .well.hide#selected-box
+    = button_tag(:type => "submit", :class => "btn btn-large btn-tool", :data => {:"loading-text" => "Removing..."}) do
+      %i.icon-trash
+      Remove selected
+      (
+      %span 0
+      )
+-if @pin.photos.count > 0
+  %p.well
+    = link_to content_tag("i", "", :class => "icon-trash")+" Remove all photos", destroy_all_pin_photos_path(@pin), :confirm => "Do you want to remove all the photos of #{@pin.title}?", :method => :delete, :class => "btn btn-large btn-block btn-tool removing-modal"

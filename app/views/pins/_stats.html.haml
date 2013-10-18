@@ -1,0 +1,18 @@
+%ul.nav.pull-right
+	%p.navbar-text#pins-stats
+		%b.badge.badge-stats
+			%span.pins-count= @pins.count
+			%a{:rel => "tooltip", :title => "Pins", :data => { :placement => "top" }}
+				%i.icon-map-marker.pins
+		%b.badge.badge-stats
+			%span.cities-count= @pins.city.count
+			%a{:rel => "tooltip", :title => "Cities", :data => { :placement => "top" }}
+				%i.icon-map-marker.city
+		%b.badge.badge-stats
+			%span.towns-count= @pins.town.count
+			%a{:rel => "tooltip", :title => "Towns", :data => { :placement => "top" }}
+				%i.icon-map-marker.town
+		%b.badge.badge-stats
+			%span.pois-count= @pins.poi.count
+			%a{:rel => "tooltip", :title => "Points of interest", :data => { :placement => "top" }}
+				%i.icon-map-marker.poi

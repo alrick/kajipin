@@ -1,0 +1,8 @@
+#heralds
+	- if @herald.nil? || @herald.destroyed?
+		= link_to "Generate my Herald", heralds_path, :method => :post, :remote => true, :class => "btn btn-social btn-block btn-large"
+	- else
+		%p Your profile is publicly accessible with the following address :
+		%code= request.host+"/"+@herald.key
+		= link_to content_tag("i", "", :class => "icon-external-link"), "/"+@herald.key, :class => "btn btn-social btn-mini"
+		= link_to content_tag("i", "", :class => "icon-trash"), "#", :rel => "delete-tooltip", :class => "btn btn-social btn-mini", :data => {:title => "#{ link_to "Delete", heralds_path, :class => "btn btn-confirm", :method => :delete, :remote => true }"}

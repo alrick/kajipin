@@ -1,0 +1,15 @@
+.btn-group.captain
+  %a{:class => "btn btn-mini btn-other dropdown-toggle", :href => "#", :data => { :toggle => "dropdown" }}
+    %i.icon-pencil
+    %span.caret
+  %ul.dropdown-menu.pull-right
+    %li= link_to content_tag(:i, "", :class => "icon-pencil")+" Photos", captain_pin_photos_path(pin), "tabindex" => "-1"
+    %li.divider
+    -unless pin.type == City.sti_name
+      %li= link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to City", pin_path(pin, :type => City.sti_name), :method => :put, :remote => true, :confirm => "You are about to change the type of the pin.", "tabindex" => "-1")
+    -unless pin.type == Town.sti_name
+      %li= link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Town", pin_path(pin, :type => Town.sti_name), :method => :put, :remote => true, :confirm => "You are about to change the type of the pin.", "tabindex" => "-1")
+    -unless pin.type == Poi.sti_name
+      %li= link_to(content_tag(:i, "", :class => "icon-map-marker") + " Change type to Poi", pin_path(pin, :type => Poi.sti_name), :method => :put, :remote => true, :confirm => "You are about to change the type of the pin.", "tabindex" => "-1")
+    %li.divider
+    %li= link_to content_tag("i", "", :class => "icon-trash")+" Remove", pin_path(pin), :method => :delete, :remote => true, :confirm => "All related data will be lost (Photos and Comments).", "tabindex" => "-1"
