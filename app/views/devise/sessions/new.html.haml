@@ -9,7 +9,10 @@
   %p
     = Appetizer.appname
     allows you to create a worldmap of the places you've visited with photos & comments and let you share it with friends and family.
-  %p= link_to "New to Kajipin? Sign up", new_user_registration_path, :class => "btn btn-social btn-large"
+  %p
+    = link_to "New to Kajipin? Sign up", new_user_registration_path, :class => "btn btn-social btn-large"
+    or
+    = link_to "Look at an example", "http://www.kajipin.com/R8g44RWxLrEC1_uCnMp00ZiwpUjahvAlQQ", :class => "btn btn-map btn-large"
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :method => :post, :class => "well form-inline" }) do |f|
   = f.email_field :email, :class => "input-large", :placeholder => "Email"
   = f.password_field :password, :class => "input-large", :placeholder => "Password"
