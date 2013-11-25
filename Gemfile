@@ -49,6 +49,8 @@ group :development do
   gem 'rubocop' #a Ruby code style checker
 end
 
+gem 'rails_12factor', :group => :production
+
 # To use debugger
 # gem 'debugger'
 
