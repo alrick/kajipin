@@ -7,7 +7,7 @@ class PinsController < ApplicationController
 
   def show
     # If current_user isn't an herald, we need to authenticate
-    unless current_user.instance_of(Herald)
+    unless current_user.instance_of?(Herald)
       authenticate_user!
     end
     @pin = Pin.find(params[:id])
