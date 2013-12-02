@@ -1,7 +1,4 @@
 class Pin < ActiveRecord::Base
-  LIMIT = 50
-  HIGH_POPULATED_LIMIT = 10
-
   attr_accessible :title, :user_id, :latitude, :longitude, :country_name, :country_code, :continent_code, :ext_id, :population, :type
 
   belongs_to :user
@@ -37,11 +34,6 @@ class Pin < ActiveRecord::Base
     super
   end
 
-  # Pins limit getter
-  def self.limit
-    LIMIT
-  end
-
   private
 
   def init_datas
@@ -58,7 +50,7 @@ class Pin < ActiveRecord::Base
 
   # Check limit isn't reached
   def check_limit
-    if user.pins.count >= LIMIT
+    if user.pins.count >= user.pins_limit
       errors[:base] << "Pins limit reached"
     end
   end
