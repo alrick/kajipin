@@ -3,7 +3,7 @@
     .alert.alert-info
       %strong Heads up!
       You can still add
-      %strong= Pin.limit - current_user.pins.count
+      %strong= current_user.pins_limit - current_user.pins.count
       pins.
     %div{:class => "btn-group", :data => { :toggle => "buttons-radio" }}
       %button{:class => "type btn btn-city active", :value => "#{City.sti_name}"}
