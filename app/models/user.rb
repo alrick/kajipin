@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   BETA_LIMIT = 1000
+  STANDARD_PINS_LIMIT = 50
+  EXPLORER_PINS_LIMIT = 200
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -67,21 +69,21 @@ class User < ActiveRecord::Base
     friends.where(:id => user.id).exists?
   end
 
-  # Search func for users
-  def self.search(q)
-    if q
-      find(:all, :conditions => ["lower(first_name) LIKE ? or lower(last_name) LIKE ? or concat(lower(first_name), ' ', lower(last_name)) LIKE ?", "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%"])
-    else
-      find(:all)
-    end
-  end
-
   # Get list of countries
   def visited_countries
     countries = Country.list
     visited_codes = pins.map(&:country_code).uniq
     countries.select! { |c| visited_codes.include? c["countryCode"] }
     countries.sort! { |a,b| a["name"].downcase <=> b["name"].downcase }
+  end
+
+  # Get the limit of pins, depending of status
+  def pins_limit
+    if status == "explorer"
+      EXPLORER_PINS_LIMIT
+    else
+      STANDARD_PINS_LIMIT
+    end
   end
 
   # Overriding confirm to add user to Madmimi
@@ -102,6 +104,15 @@ class User < ActiveRecord::Base
   def beta_limit_reached?
     if User.count >= BETA_LIMIT
       errors[:base] << "We do not accept more users at this time."
+    end
+  end
+
+  # Search func for users
+  def self.search(q)
+    if q
+      find(:all, :conditions => ["lower(first_name) LIKE ? or lower(last_name) LIKE ? or concat(lower(first_name), ' ', lower(last_name)) LIKE ?", "%#{q.downcase}%", "%#{q.downcase}%", "%#{q.downcase}%"])
+    else
+      find(:all)
     end
   end
 
