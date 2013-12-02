@@ -6,21 +6,27 @@
 					= image_tag avatar_link(@user, 30), :class => "img-circle"
 					%strong= @user.full_name
 					's pins
-			= sharing_btn(@user)
 			-if can? :show, @user
 				-if can? :manage, @user
 					= link_to content_tag(:i, "", :class => "icon-plus"), new_pin_path, :id => "pin-initiator", :class => "btn btn-tool modal-open pull-right marl", :remote => true, :data => { :placement => "top", :title => "<span id=\"pin-initiator-tooltip\">Add some pins here</span>", :trigger => "manual", :html => true }
-				-if !@pins.empty?
+				-else
+					%div.btn-group.pull-right
+						= sharing_btn(@user)
+					%div.nav.pull-right
+						&nbsp;&nbsp;
+				-unless @pins.empty?
 					.btn-group.dropup.pull-right.marl
 						%a{:class => "btn dropdown-toggle btn-tool", :href => "#", :data => {:toggle => "dropdown"}}
 							%i.icon-list
 						= render "pins/pins"
 				= render "pins/stats"
 			-else
-				= share_request("pull-right")
+				%div.btn-group.pull-right
+					= share_request
+					= sharing_btn(@user)
 				%div.nav.pull-right
 					&nbsp;&nbsp;
 				%ul.nav.pull-right
 					%p.navbar-text
 						%strong= @user.first_name
-						does not share with you. 
+						does not share with you.
