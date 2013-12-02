@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
 
   # Get the limit of pins, depending of status
   def pins_limit
-    if status == "explorer"
+    if explorer
       EXPLORER_PINS_LIMIT
     else
       STANDARD_PINS_LIMIT
