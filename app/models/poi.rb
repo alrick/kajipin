@@ -16,7 +16,7 @@ class Poi < Pin
 
   # Class methods
   def self.marker_size
-    "medium"
+    "large"
   end
   def self.marker_symbol
     "star"
