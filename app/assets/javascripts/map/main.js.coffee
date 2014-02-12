@@ -48,9 +48,11 @@ jQuery ->
     gon.citiesLayer = init_layer(gon.cities) # layer grouping all cities
     gon.townsLayer = init_layer(gon.towns) # layer grouping all towns
     gon.poisLayer = init_layer(gon.pois) # layer grouping all pois
+    gon.flysLayer = init_layer(gon.flys)
     gon.cluster.addLayers(gon.citiesLayer.getLayers())
     gon.cluster.addLayers(gon.townsLayer.getLayers())
     gon.cluster.addLayers(gon.poisLayer.getLayers())
+    gon.cluster.addLayers(gon.flysLayer.getLayers())
     gon.map.addLayer gon.cluster
 
   # Add pins to layer and init behaviour

@@ -39,6 +39,8 @@ class UsersController < ApplicationController
       gon.watch.rabl "app/views/pins/index.json.rabl", as: "towns"
       @pins = @user.pins.poi
       gon.watch.rabl "app/views/pins/index.json.rabl", as: "pois"
+      @pins = @user.pins.fly
+      gon.watch.rabl "app/views/pins/index.json.rabl", as: "flys"
 
       # Reset pins to all pins for the list
       @pins = @user.pins
