@@ -12,13 +12,14 @@ class Pin < ActiveRecord::Base
   validates :user_id, :ext_id, :numericality => { :greater_than => 0}
   validates :user_id, :uniqueness => { :scope => [:latitude, :longitude],
     :message => "Pins can't have same latitude and longitude" }
-  validates :type, :inclusion => { :in => %w(City Town Poi),
+  validates :type, :inclusion => { :in => %w(City Town Poi Fly),
     :message => "%{value} is not a valid type" }
   validate :check_limit, :on => :create
 
   scope :city, where(:type => "City")
   scope :town, where(:type => "Town")
   scope :poi, where(:type => "Poi")
+  scope :fly, where(:type => "Fly")
 
   def initialize(attributes = {})
     super
