@@ -25,6 +25,7 @@
 //= require bootstrap_redefine
 //= require general
 //
+//= require map/swiss
 //= require map/controls
 //= require map/main
 //

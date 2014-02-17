@@ -93,4 +93,9 @@ jQuery ->
   # Check that we're on correct page
   if $("#map").length
     init_map()
-    init_pins() if gon.hasPins
+    init_pins() if gon.hasPins && !gon.noUser
+    if gon.swiss
+      if gon.noUser
+        gon.full_swiss_pins()
+      else
+        gon.swiss_pins()

@@ -42,6 +42,15 @@ class UsersController < ApplicationController
 
       # Reset pins to all pins for the list
       @pins = @user.pins
+
+      # Check showcase partner
+      if params[:partner] == "swiss"
+        gon.swiss = true
+        @swiss = true
+      end
+      if params[:mode] == "full"
+        gon.noUser = true
+      end
     end
   end
 
