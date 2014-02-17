@@ -17,6 +17,7 @@
     #map
       = yield
       %p#copyright= link_to "Map Terms & Feedback", "http://mapbox.com/about/maps/", :target => "_blank"
+      %p#swiss= link_to image_tag("https://dl.dropboxusercontent.com/s/opuk5a8apo7y9ed/swiss.png"), 'http://www.swiss.com' if @swiss
     = yield :ext
     = render "layouts/navbar", :layout => "map"
     = render "heralds/modal"

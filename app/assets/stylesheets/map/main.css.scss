@@ -49,3 +49,12 @@ body.map-layout {
   opacity: 0.6;
   a { color: $main-color; }
 }
+
+// Swiss block
+#swiss {
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  bottom: 41px;
+  right: 5px;
+}
