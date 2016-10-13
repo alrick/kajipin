@@ -1,7 +1,13 @@
-kajipin
-===========
+# kajipin
+
+## What is kajipin?
 kajipin was a side project.
 
 The goal was to provide a way to share travels through pins and photos.
 
-You can take a look at https://www.dropbox.com/sh/2jlxhyyhmb0nkk7/AAAFCnPhKtOsy8XgufH_MhuFa?dl=0 for some screenshots.
+## Captures
+![](https://github.com/alrick/kajipin/blob/master/captures/kajipin_1.png)
+![](https://github.com/alrick/kajipin/blob/master/captures/kajipin_2.png)
+![](https://github.com/alrick/kajipin/blob/master/captures/kajipin_guilin.png)
+![](https://github.com/alrick/kajipin/blob/master/captures/kajipin_london.png)
+![](https://github.com/alrick/kajipin/blob/master/captures/kajipin_newyork.png)
